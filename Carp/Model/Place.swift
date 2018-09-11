@@ -11,46 +11,42 @@ import CoreLocation
 import GoogleMaps
 import GooglePlaces
 
-class Place {
+struct Place: Decodable {
+    let name: String
+    let locations: Locations
     
-    var name: String
-    var coordinate: CLLocationCoordinate2D
-    var viewPortBounds: GMSCoordinateBounds
-    
-    init() {
-        name = ""
-        coordinate = CLLocationCoordinate2D()
-        viewPortBounds = GMSCoordinateBounds()
+    enum CodingKeys : String, CodingKey {
+        case name
+        case locations = "geometry"
     }
+}
+
+struct Locations: Decodable {
+    let coordinate: Coordinate
+    let viewPortBounds: ViewPortBounds
     
-    init(name: String, coordinate: CLLocationCoordinate2D, viewPort: GMSCoordinateBounds) {
-        self.name = name
-        self.coordinate = coordinate
-        self.viewPortBounds = viewPort
+    
+    enum CodingKeys : String, CodingKey {
+        case coordinate = "location"
+        case viewPortBounds = "viewport"
     }
+}
+
+struct Coordinate: Decodable {
+    let lat: Double
+    let lng: Double
     
-    init(json: [String: Any]) {
-        name = ""
-        coordinate = CLLocationCoordinate2D()
-        viewPortBounds = GMSCoordinateBounds()
-        
-        guard let name = json[keyPath: "result.name"] as? String else { return }
-        self.name = name
-        
-        guard let latitude = json[keyPath: "result.geometry.location.lat"] as? Double else { return }
-        guard let longitude = json[keyPath: "result.geometry.location.lng"] as? Double else { return }
-        self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        
-        guard let ne_latitude = json[keyPath: "result.geometry.viewport.northeast.lat"] as? Double else { return }
-        guard let ne_longitude = json[keyPath: "result.geometry.viewport.northeast.lng"] as? Double else { return }
-        let northeastCoordinates = CLLocationCoordinate2D(latitude: ne_latitude, longitude: ne_longitude)
-        
-        guard let sw_latitude = json[keyPath: "result.geometry.viewport.southwest.lat"] as? Double else { return }
-        guard let sw_longitude = json[keyPath: "result.geometry.viewport.southwest.lng"] as? Double else { return }
-        let southwestCoordinates = CLLocationCoordinate2D(latitude: sw_latitude, longitude: sw_longitude)
-        
-        self.viewPortBounds = GMSCoordinateBounds(coordinate: northeastCoordinates, coordinate: southwestCoordinates)
-        
+    var clLocation: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: lat, longitude: lng)
     }
+}
+
+struct ViewPortBounds: Decodable {
+    let northeast: Coordinate
+    let southwest: Coordinate
     
+    var gmsViewPortBounds: GMSCoordinateBounds {
+        return GMSCoordinateBounds(coordinate: northeast.clLocation, coordinate: southwest.clLocation)
+    }
+
 }

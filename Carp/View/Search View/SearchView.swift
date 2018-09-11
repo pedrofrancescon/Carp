@@ -51,7 +51,6 @@ class SearchView: UIView {
         delegate?.primaryActionTriggered(self)
     }
     
-    
 }
 
 protocol SearchViewDelegate: class {

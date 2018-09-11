@@ -48,10 +48,10 @@ class LocationsManager: CLLocationManager, CLLocationManagerDelegate, GMSAutocom
         placesFetcher?.sourceTextHasChanged(text)
     }
     
-    func getPlace(of id: String, _ completion: @escaping (Place) -> ()) {
+    func getPlace(ofID id: String, _ completion: @escaping (Place) -> ()) {
         
-        // Set up the URL request
         let placeEndpoint: String = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(id)&fields=name,geometry&key=AIzaSyA3yZXPM1qHkElDS6GoAb4co9W-fxYXk4M"
+        print(placeEndpoint)
         guard let url = URL(string: placeEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -59,41 +59,46 @@ class LocationsManager: CLLocationManager, CLLocationManagerDelegate, GMSAutocom
         
         let urlRequest = URLRequest(url: url)
         
-        // set up the session
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         
-        // make the request
         let task = session.dataTask(with: urlRequest) {
             (data, response, error) in
-            // check for any errors
+            
             guard error == nil else {
                 print("error calling GET on /todos/1")
                 print(error!)
                 return
             }
-            // make sure we got data
+            
             guard let responseData = data else {
-                print("Error: did not receive data")
+                print("Error: did not receive data from Google API URL request")
                 return
             }
-            // parse the result as JSON, since that's what the API provides
+            
             do {
-                guard let place = try JSONSerialization.jsonObject(with: responseData, options: [])
+                guard let dictionary = try JSONSerialization.jsonObject(with: responseData, options: [])
                     as? [String: Any] else {
                         print("error trying to convert data to JSON")
                         return
                 }
                 
-                print(place["status"] as! String)
+                guard let result = dictionary["result"] as? [String: Any] else { return }
                 
-                let placeFromJson = Place(json: place)
-                completion(placeFromJson)
+                let jsonData = try? JSONSerialization.data(withJSONObject: result, options: [])
                 
+                guard let place: Place = try? JSONDecoder().decode(Place.self, from: jsonData!) else {
+                    print("Error: Couldn't decode data into Place")
+                    return
+                }
+                
+                completion(place)
+
             } catch  {
                 print("error trying to convert data to JSON")
                 return
             }
+            
         }
         
         task.resume()

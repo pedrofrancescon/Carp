@@ -116,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CD3B3A22140141C00BF588D /* Sliding View */ = {
+			isa = PBXGroup;
+			children = (
+				5CF74701213CF39C00964ABC /* SlidingView.swift */,
+			);
+			path = "Sliding View";
+			sourceTree = "<group>";
+		};
 		5CDA7A232139DA4E009F24CB = {
 			isa = PBXGroup;
 			children = (
@@ -163,10 +171,11 @@
 		5CDA7A422139DA85009F24CB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5CDA7A522139DB5D009F24CB /* PopUp View */,
+				5CD3B3A22140141C00BF588D /* Sliding View */,
 				5CF746FF213CEFD400964ABC /* TouchesPassThrough View */,
 				5CDA7A542139DB6C009F24CB /* SearchResults Cell */,
 				5CDA7A532139DB65009F24CB /* Search View */,
-				5CDA7A522139DB5D009F24CB /* PopUp View */,
 				5CDA7A512139DB53009F24CB /* RideDetails View */,
 				5CDA7A502139DB43009F24CB /* Results View */,
 			);
@@ -315,7 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				5CF746F3213C8ED500964ABC /* TouchesPassThroughView.swift */,
-				5CF74701213CF39C00964ABC /* SlidingView.swift */,
 			);
 			path = "TouchesPassThrough View";
 			sourceTree = "<group>";

@@ -9,6 +9,11 @@
 import UIKit
 import GooglePlaces
 
+private enum PlaceType {
+    case destiny
+    case origin
+}
+
 class SearchesVC: UIViewController {
 
     @IBOutlet weak var destinySearchView: SearchView!
@@ -60,6 +65,14 @@ class SearchesVC: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+    
+    func userSelected() {
+        
+        
+        
     }
     
 }
@@ -146,6 +159,10 @@ extension SearchesVC: SearchViewDelegate {
     func primaryActionTriggered(_ view: UIView) {
         if view == destinySearchView {
             guard let place = destinyPredictions.first else { return }
+            locationsManager.getPlace(ofID: place.placeID!) { (place) in
+                
+            }
+            
             //userSelectedDestiny(with: place)
         } else if view == originSearchView {
             guard let place = originPredictions.first else { return }

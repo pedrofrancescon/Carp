@@ -39,13 +39,13 @@ class MapVC: UIViewController {
     func createMapMarker(of place: Place) {
         
         let marker = GMSMarker()
-        marker.position = place.coordinate
+        marker.position = place.locations.coordinate.clLocation
         marker.title = place.name
         //marker.snippet = "Australia"
         marker.map = mapView
         
-        mapView.moveCamera(GMSCameraUpdate.fit(place.viewPortBounds))
-        mapView.animate(toLocation: place.coordinate)
+        mapView.moveCamera(GMSCameraUpdate.fit(place.locations.viewPortBounds.gmsViewPortBounds))
+        mapView.animate(toLocation: place.locations.coordinate.clLocation)
     }
     
     required init?(coder aDecoder: NSCoder) {

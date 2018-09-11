@@ -36,12 +36,6 @@ class SlidingView: TouchesPassThroughView {
     private var destinyStateConstraint: CGFloat = 0
     private var originStateConstraint: CGFloat = 0
     
-    private lazy var tapRecognizer: UITapGestureRecognizer = {
-        let recognizer = UITapGestureRecognizer()
-        recognizer.addTarget(self, action: #selector(self.onTap(_:)))
-        return recognizer
-    }()
-    
     private lazy var panRecognizer: UIPanGestureRecognizer = {
         let recognizer = UIPanGestureRecognizer()
         recognizer.addTarget(self, action: #selector(self.onDrag(_:)))
@@ -49,7 +43,6 @@ class SlidingView: TouchesPassThroughView {
     }()
     
     override func didMoveToSuperview() {
-        addGestureRecognizer(tapRecognizer)
         addGestureRecognizer(panRecognizer)
         layout()
     }
