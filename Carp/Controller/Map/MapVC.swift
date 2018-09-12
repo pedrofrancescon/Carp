@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class MapVC: UIViewController {
+class MapVC: UIViewController, MapControllerDelegate {
 
     @IBOutlet weak var mapView: GMSMapView!
     private let locationsManager: LocationsManager
@@ -18,6 +18,7 @@ class MapVC: UIViewController {
         super.viewDidLoad()
 
         mapView.isMyLocationEnabled = true
+        mapView.animate(toLocation: locationsManager.userCoordinate)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,5 +52,9 @@ class MapVC: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+}
 
+protocol MapControllerDelegate: class {
+    func createMapMarker(of place: Place)
 }

@@ -28,6 +28,36 @@ class SearchesVC: UIViewController {
     private let locationsManager: LocationsManager
     @IBOutlet weak var widthConst: NSLayoutConstraint!
     
+    private var mapDelegate: MapControllerDelegate
+    
+    var slidingView: SlidingView? {
+        get {
+            guard let sliding = self.view as? SlidingView else {
+                return nil
+            }
+            return sliding
+        }
+    }
+    
+    private var origin: Place? {
+        didSet {
+            DispatchQueue.main.async {
+                self.viewEndEditing()
+                self.originSearchView.textField.text = self.origin?.name
+                self.mapDelegate.createMapMarker(of: self.origin!)
+            }
+        }
+    }
+    private var destiny: Place? {
+        didSet {
+            DispatchQueue.main.async {
+                self.viewEndEditing()
+                self.destinySearchView.textField.text = self.destiny?.name
+                self.mapDelegate.createMapMarker(of: self.destiny!)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,10 +84,11 @@ class SearchesVC: UIViewController {
         originTableView.isHidden = true
     }
     
-    init() {
+    init(mapDelegate: MapControllerDelegate) {
         destinyPredictions = [GMSAutocompletePrediction]()
         originPredictions = [GMSAutocompletePrediction]()
         
+        self.mapDelegate = mapDelegate
         locationsManager = LocationsManager.locationsManager
         
         super.init(nibName: "SearchesVC", bundle: nil)
@@ -67,12 +98,12 @@ class SearchesVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
     
-    func userSelected() {
-        
-        
-        
+    func viewEndEditing() {
+        destinyTableView.isHidden = true
+        originTableView.isHidden = true
+        view.endEditing(true)
     }
     
 }
@@ -120,15 +151,35 @@ extension SearchesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == destinyTableView {
-            //userSelectedDestiny(with: destinyPredictions[indexPath.row])
+            guard let placeID = destinyPredictions[indexPath.row].placeID else { return }
+            locationsManager.getPlace(ofID: placeID) { (place) in
+                self.destiny = place
+            }
         } else if tableView == originTableView {
-            //userSelectedOrigin(with: originPredictions[indexPath.row])
+            guard let placeID = originPredictions[indexPath.row].placeID else { return }
+            locationsManager.getPlace(ofID: placeID) { (place) in
+                self.origin = place
+            }
         }
-        
     }
 }
 
 extension SearchesVC: SearchViewDelegate {
+    
+    func didTapNextButton() {
+        
+        guard let currentState = slidingView?.currentState else { return }
+        
+        if currentState == SlidingViewState.origin {
+            if self.destiny != nil && self.origin != nil  {
+                //carrega outra telinha
+                return
+            }
+        }
+        
+        slidingView?.slideViewAnimated()
+        
+    }
     
     func searchFieldDidChange(_ view: UIView, newText: String) {
         if view == destinySearchView {
@@ -158,16 +209,16 @@ extension SearchesVC: SearchViewDelegate {
     
     func primaryActionTriggered(_ view: UIView) {
         if view == destinySearchView {
-            guard let place = destinyPredictions.first else { return }
-            locationsManager.getPlace(ofID: place.placeID!) { (place) in
-                
+            guard let placeID = destinyPredictions.first?.placeID else { return }
+            locationsManager.getPlace(ofID: placeID) { (place) in
+                self.destiny = place
             }
             
-            //userSelectedDestiny(with: place)
         } else if view == originSearchView {
-            guard let place = originPredictions.first else { return }
-            //userSelectedOrigin(with: place)
+            guard let placeID = originPredictions.first?.placeID else { return }
+            locationsManager.getPlace(ofID: placeID) { (place) in
+                self.origin = place
+            }
         }
     }
-    
 }

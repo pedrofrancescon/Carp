@@ -25,7 +25,6 @@ struct Locations: Decodable {
     let coordinate: Coordinate
     let viewPortBounds: ViewPortBounds
     
-    
     enum CodingKeys : String, CodingKey {
         case coordinate = "location"
         case viewPortBounds = "viewport"
@@ -48,5 +47,4 @@ struct ViewPortBounds: Decodable {
     var gmsViewPortBounds: GMSCoordinateBounds {
         return GMSCoordinateBounds(coordinate: northeast.clLocation, coordinate: southwest.clLocation)
     }
-
 }

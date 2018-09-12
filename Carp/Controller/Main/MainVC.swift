@@ -11,7 +11,7 @@ import UIKit
 class MainVC: UIViewController {
 
     private let searchesVC: SearchesVC
-    private let mappVC: MapVC
+    private let mapVC: MapVC
     private var resultsVC: ResultsVC
     
     override func viewDidLoad() {
@@ -32,11 +32,11 @@ class MainVC: UIViewController {
         
         navigationItem.title = "Nova Busca"
         
-        addChildViewController(mappVC)
+        addChildViewController(mapVC)
         addChildViewController(searchesVC)
         addChildViewController(resultsVC)
         
-        view.addSubview(mappVC.view)
+        view.addSubview(mapVC.view)
         view.addSubview(searchesVC.view)
         view.addSubview(resultsVC.view)
         
@@ -48,8 +48,8 @@ class MainVC: UIViewController {
     }
     
     init() {
-        searchesVC = SearchesVC()
-        mappVC = MapVC()
+        mapVC = MapVC()
+        searchesVC = SearchesVC(mapDelegate: mapVC)
         resultsVC = ResultsVC()
         
         super.init(nibName: "MainVC", bundle: nil)
