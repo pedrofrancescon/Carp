@@ -42,7 +42,6 @@ class MapVC: UIViewController, MapControllerDelegate {
         let marker = GMSMarker()
         marker.position = place.locations.coordinate.clLocation
         marker.title = place.name
-        //marker.snippet = "Australia"
         marker.map = mapView
         
         mapView.moveCamera(GMSCameraUpdate.fit(place.locations.viewPortBounds.gmsViewPortBounds))
