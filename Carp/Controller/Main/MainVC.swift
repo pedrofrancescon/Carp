@@ -11,11 +11,12 @@ import UIKit
 class MainVC: UIViewController {
 
     private let searchesVC: SearchesVC
-    private let mappVC: MapVC
+    private let mapVC: MapVC
     private var resultsVC: ResultsVC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         let navigationBtnAttributes = [
             NSAttributedStringKey.font: UIFont(name: "FontAwesome5FreeSolid", size: 20.0) as Any,
@@ -32,11 +33,11 @@ class MainVC: UIViewController {
         
         navigationItem.title = "Nova Busca"
         
-        addChildViewController(mappVC)
+        addChildViewController(mapVC)
         addChildViewController(searchesVC)
         addChildViewController(resultsVC)
         
-        view.addSubview(mappVC.view)
+        view.addSubview(mapVC.view)
         view.addSubview(searchesVC.view)
         view.addSubview(resultsVC.view)
         
@@ -48,8 +49,8 @@ class MainVC: UIViewController {
     }
     
     init() {
-        searchesVC = SearchesVC()
-        mappVC = MapVC()
+        mapVC = MapVC()
+        searchesVC = SearchesVC(mapDelegate: mapVC)
         resultsVC = ResultsVC()
         
         super.init(nibName: "MainVC", bundle: nil)

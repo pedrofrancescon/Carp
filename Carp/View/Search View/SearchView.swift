@@ -19,6 +19,12 @@ class SearchView: UIView {
     
     var delegate: SearchViewDelegate?
     
+    private lazy var tapRecognizer: UITapGestureRecognizer = {
+        let recognizer = UITapGestureRecognizer()
+        recognizer.addTarget(self, action: #selector(self.didTapNextButton))
+        return recognizer
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         comminInit()
@@ -34,6 +40,8 @@ class SearchView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        nextBtnLabel.addGestureRecognizer(tapRecognizer)
         
         iconLabel.text = "\u{f3c5}"
         nextBtnLabel.text = "\u{f054}"
@@ -51,10 +59,14 @@ class SearchView: UIView {
         delegate?.primaryActionTriggered(self)
     }
     
+    @objc func didTapNextButton() {
+        delegate?.didTapNextButton()
+    }
     
 }
 
 protocol SearchViewDelegate: class {
     func searchFieldDidChange(_ view: UIView, newText: String)
     func primaryActionTriggered(_ view: UIView)
+    func didTapNextButton()
 }

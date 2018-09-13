@@ -8,7 +8,7 @@
 
 import UIKit
 
-private enum SlidingViewState {
+enum SlidingViewState {
     case destiny
     case origin
 }
@@ -29,18 +29,18 @@ class SlidingView: TouchesPassThroughView {
     @IBOutlet weak var originLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var destinyWidthConstraint: NSLayoutConstraint!
     
-    private var currentState: SlidingViewState = .destiny
+    private var _currentState: SlidingViewState = .destiny
     
-    var runningAnimators: [UIViewPropertyAnimator] = []
+    var currentState: SlidingViewState {
+        get {
+            return self._currentState
+        }
+    }
+    
+    private var runningAnimators: [UIViewPropertyAnimator] = []
     
     private var destinyStateConstraint: CGFloat = 0
     private var originStateConstraint: CGFloat = 0
-    
-    private lazy var tapRecognizer: UITapGestureRecognizer = {
-        let recognizer = UITapGestureRecognizer()
-        recognizer.addTarget(self, action: #selector(self.onTap(_:)))
-        return recognizer
-    }()
     
     private lazy var panRecognizer: UIPanGestureRecognizer = {
         let recognizer = UIPanGestureRecognizer()
@@ -49,9 +49,13 @@ class SlidingView: TouchesPassThroughView {
     }()
     
     override func didMoveToSuperview() {
-        addGestureRecognizer(tapRecognizer)
         addGestureRecognizer(panRecognizer)
         layout()
+    }
+    
+    func slideViewAnimated() {
+        animateIfNeeded(to: _currentState.opposite, duration: 0.4)
+        runningAnimators.forEach { $0.startAnimation() }
     }
     
     func layout() {
@@ -69,7 +73,7 @@ class SlidingView: TouchesPassThroughView {
     
     func showView() {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.animateIfNeeded(to: self.currentState.opposite, duration: 0.4)
+            self.animateIfNeeded(to: self._currentState.opposite, duration: 0.4)
             self.runningAnimators.forEach { $0.startAnimation() }
         })
     }
@@ -94,7 +98,7 @@ class SlidingView: TouchesPassThroughView {
         
         basicAnimator.addCompletion { position in
             self.runningAnimators.removeAll()
-            self.currentState = self.currentState.opposite
+            self._currentState = self._currentState.opposite
         }
         
         
@@ -106,7 +110,7 @@ class SlidingView: TouchesPassThroughView {
         
         switch gesture.state {
         case .began:
-            animateIfNeeded(to: currentState.opposite, duration: 0.4)
+            animateIfNeeded(to: _currentState.opposite, duration: 0.4)
         case .changed:
             let translation = gesture.translation(in: self)
             let fraction = abs(translation.x / self.originStateConstraint)
@@ -118,13 +122,6 @@ class SlidingView: TouchesPassThroughView {
             runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
         default:
             break
-        }
-    }
-    
-    @objc func onTap(_ gesture: UITapGestureRecognizer) {
-        if currentState == SlidingViewState.destiny {
-            animateIfNeeded(to: currentState.opposite, duration: 0.4)
-            runningAnimators.forEach { $0.startAnimation() }
         }
     }
 
