@@ -29,7 +29,7 @@ class PopUpView: UIView {
     
     var runningAnimators: [UIViewPropertyAnimator] = []
     
-    let viewOffset: CGFloat = 440
+    private var viewOffset: CGFloat = 480
     
     private lazy var tapRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer()
@@ -56,16 +56,18 @@ class PopUpView: UIView {
         })
     }
     
+    
+    
     private func layout() {
         guard let superView = self.superview else { return }
-        
         translatesAutoresizingMaskIntoConstraints = false
         
         leadingAnchor.constraint(equalTo: superView.leadingAnchor).isActive = true
         trailingAnchor.constraint(equalTo: superView.trailingAnchor).isActive = true
         bottomConstraint = bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: viewOffset)
         bottomConstraint.isActive = true
-        heightAnchor.constraint(equalToConstant: viewOffset).isActive = true
+        
+        heightAnchor.constraint(lessThanOrEqualToConstant: 480).isActive = true
     }
     
     fileprivate func animateIfNeeded(to state: PopUpViewState, duration: TimeInterval) {

@@ -58,7 +58,12 @@ class SlidingView: TouchesPassThroughView {
         runningAnimators.forEach { $0.startAnimation() }
     }
     
+    
+    
     func layout() {
+
+        
+        
         
         let searchViewWidth = frame.width * destinyWidthConstraint.multiplier
         

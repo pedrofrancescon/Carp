@@ -195,26 +195,26 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8w-Cp-NQY">
                     <rect key="frame" x="0.0" y="235" width="375" height="208"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12-15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Luj-Mt-bmM">
-                            <rect key="frame" x="134" y="52.5" width="107" height="48"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="12-15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Luj-Mt-bmM">
+                            <rect key="frame" x="134" y="52" width="107" height="48"/>
                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="40"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="valor a ser dividido" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoC-SX-d1C">
-                            <rect key="frame" x="137" y="105.5" width="101" height="14.5"/>
+                            <rect key="frame" x="137" y="105" width="101" height="15"/>
                             <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExS-qV-okg">
-                            <rect key="frame" x="113" y="75" width="21" height="20.5"/>
+                            <rect key="frame" x="113" y="74.5" width="21" height="20.5"/>
                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YK2-vc-8aR">
-                            <rect key="frame" x="150.5" y="30.5" width="74" height="18"/>
+                            <rect key="frame" x="150.5" y="30" width="74" height="18"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="swY-iZ-JfW">
                                     <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
@@ -252,6 +252,7 @@
                         <constraint firstItem="WoC-SX-d1C" firstAttribute="top" secondItem="Luj-Mt-bmM" secondAttribute="bottom" constant="5" id="NI1-wP-TjQ"/>
                         <constraint firstItem="WoC-SX-d1C" firstAttribute="centerX" secondItem="Y8w-Cp-NQY" secondAttribute="centerX" id="OPa-KN-lMd"/>
                         <constraint firstItem="Luj-Mt-bmM" firstAttribute="leading" secondItem="ExS-qV-okg" secondAttribute="trailing" id="h9H-lq-6e8"/>
+                        <constraint firstItem="YK2-vc-8aR" firstAttribute="top" secondItem="Y8w-Cp-NQY" secondAttribute="top" constant="30" id="iXB-Bm-eZG"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bja-Qh-l0X">
@@ -293,7 +294,7 @@
                 <constraint firstItem="s4h-Wh-6Fm" firstAttribute="top" secondItem="zFy-jy-MyZ" secondAttribute="bottom" constant="7" id="09f-ed-tv4"/>
                 <constraint firstItem="FPp-H3-Kd1" firstAttribute="centerY" secondItem="KDJ-ZV-oK5" secondAttribute="centerY" id="0rw-rW-in2"/>
                 <constraint firstItem="cDv-Qg-c9s" firstAttribute="leading" secondItem="nDj-sO-kTf" secondAttribute="trailing" constant="13" id="0td-Ap-erP"/>
-                <constraint firstItem="Y8w-Cp-NQY" firstAttribute="top" secondItem="Rnr-X7-jot" secondAttribute="bottom" constant="20" id="1i5-K8-Y3A"/>
+                <constraint firstItem="Y8w-Cp-NQY" firstAttribute="top" secondItem="zx5-EF-7Ls" secondAttribute="bottom" constant="20" id="3t2-Px-AIr"/>
                 <constraint firstItem="spR-xd-d0X" firstAttribute="leading" secondItem="zx5-EF-7Ls" secondAttribute="leading" id="BPh-5v-C8a"/>
                 <constraint firstItem="O13-6S-9qL" firstAttribute="trailing" secondItem="bks-70-2nM" secondAttribute="trailing" id="CfY-ra-mcR"/>
                 <constraint firstItem="Y8w-Cp-NQY" firstAttribute="top" secondItem="AvC-90-CcZ" secondAttribute="bottom" id="Dbt-ft-uAI"/>
@@ -340,7 +341,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-64.5" y="17.5"/>
+            <point key="canvasLocation" x="-61" y="59"/>
         </view>
         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qii-3E-x0a">
             <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
@@ -352,9 +353,6 @@
         </label>
     </objects>
     <resources>
-        <namedColor name="Main Green">
-            <color red="0.030999999493360519" green="0.45500001311302185" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Main Green">
             <color red="0.030999999493360519" green="0.45500001311302185" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
