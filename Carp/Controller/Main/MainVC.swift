@@ -13,6 +13,7 @@ class MainVC: UIViewController {
     private let searchesVC: SearchesVC
     private let mapVC: MapVC
     private var resultsVC: ResultsVC
+    private var rideDetailsVC: RideDetailsVC
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +36,13 @@ class MainVC: UIViewController {
         
         addChildViewController(mapVC)
         addChildViewController(searchesVC)
-        addChildViewController(resultsVC)
+        //addChildViewController(resultsVC)
+        addChildViewController(rideDetailsVC)
         
         view.addSubview(mapVC.view)
         view.addSubview(searchesVC.view)
-        view.addSubview(resultsVC.view)
+        //view.addSubview(resultsVC.view)
+        view.addSubview(rideDetailsVC.view)
         
     }
     
@@ -52,6 +55,7 @@ class MainVC: UIViewController {
         mapVC = MapVC()
         searchesVC = SearchesVC(mapDelegate: mapVC)
         resultsVC = ResultsVC()
+        rideDetailsVC = RideDetailsVC()
         
         super.init(nibName: "MainVC", bundle: nil)
     }
@@ -61,7 +65,8 @@ class MainVC: UIViewController {
     }
     
     @objc func clicked() {
-        resultsVC.resultsView.showView()
+        //resultsVC.resultsView.showView()
+        rideDetailsVC.rideDetailsView.showView()
     }
 
 }

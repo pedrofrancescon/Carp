@@ -29,7 +29,7 @@ class PopUpView: UIView {
     
     var runningAnimators: [UIViewPropertyAnimator] = []
     
-    var viewOffset: CGFloat = 400
+    let viewOffset: CGFloat = 440
     
     private lazy var tapRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer()
@@ -79,7 +79,7 @@ class PopUpView: UIView {
             case .open:
                 self.bottomConstraint.constant = 0
             case .closed:
-                self.bottomConstraint.constant = self.viewOffset - 100
+                self.bottomConstraint.constant = self.viewOffset - 150
             }
             self.superview?.layoutIfNeeded()
         }

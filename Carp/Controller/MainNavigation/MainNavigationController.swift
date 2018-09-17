@@ -20,7 +20,7 @@ class MainNavigationController: UINavigationController {
             NSAttributedStringKey.foregroundColor: UIColor.white as Any
         ]
         
-        navigationBar.barTintColor = #colorLiteral(red: 0.03137254902, green: 0.4549019608, blue: 0.262745098, alpha: 1)
+        navigationBar.barTintColor = UIColor(color: .mainGreen)
         navigationBar.titleTextAttributes = navigationTitleAttributes
         
         let mainVC = MainVC()

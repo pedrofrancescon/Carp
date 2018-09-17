@@ -25,13 +25,17 @@
 		5C0D0A43213A28C200385A3A /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0D0A41213A28C200385A3A /* MainVC.xib */; };
 		5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D0A46213A294C00385A3A /* MainNavigationController.swift */; };
 		5C0D0A49213A294C00385A3A /* MainNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0D0A47213A294C00385A3A /* MainNavigationController.xib */; };
+		5C5CE6EF214C80C1003059F0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CE6EE214C80C1003059F0 /* TextField.swift */; };
+		5C5CE6F3214DFE14003059F0 /* PPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CE6F2214DFE14003059F0 /* PPopUpView.swift */; };
+		5CBA6DC2214B38560062EBF2 /* RideDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */; };
+		5CBA6DC3214B38560062EBF2 /* RideDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */; };
 		5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A2F2139DA4E009F24CB /* AppDelegate.swift */; };
 		5CDA7A372139DA4F009F24CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A362139DA4F009F24CB /* Assets.xcassets */; };
 		5CDA7A3A2139DA4F009F24CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A382139DA4F009F24CB /* LaunchScreen.storyboard */; };
 		5CDA7A472139DAD6009F24CB /* LocationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A462139DAD6009F24CB /* LocationsManager.swift */; };
 		5CDA7A492139DAED009F24CB /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A482139DAED009F24CB /* Place.swift */; };
 		5CDA7A4B2139DB0C009F24CB /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */; };
-		5CDA7A4D2139DB22009F24CB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A4C2139DB22009F24CB /* Extensions.swift */; };
+		5CDA7A4D2139DB22009F24CB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A4C2139DB22009F24CB /* Colors.swift */; };
 		5CDA7A562139DB94009F24CB /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A552139DB94009F24CB /* SearchResultsCell.swift */; };
 		5CDA7A582139DBAC009F24CB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A572139DBAC009F24CB /* SearchView.swift */; };
 		5CDA7A5A2139DBE2009F24CB /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A592139DBE2009F24CB /* PopUpView.swift */; };
@@ -59,6 +63,10 @@
 		5C0D0A41213A28C200385A3A /* MainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
 		5C0D0A46213A294C00385A3A /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		5C0D0A47213A294C00385A3A /* MainNavigationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNavigationController.xib; sourceTree = "<group>"; };
+		5C5CE6EE214C80C1003059F0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		5C5CE6F2214DFE14003059F0 /* PPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPopUpView.swift; path = "../../../../../../Downloads/interactive-animations-master/InteractiveAnimations/InteractiveAnimations/PPopUpView.swift"; sourceTree = "<group>"; };
+		5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsVC.swift; sourceTree = "<group>"; };
+		5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideDetailsVC.xib; sourceTree = "<group>"; };
 		5CDA7A2C2139DA4E009F24CB /* Carp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CDA7A2F2139DA4E009F24CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CDA7A362139DA4F009F24CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,7 +75,7 @@
 		5CDA7A462139DAD6009F24CB /* LocationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsManager.swift; sourceTree = "<group>"; };
 		5CDA7A482139DAED009F24CB /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPath.swift; sourceTree = "<group>"; };
-		5CDA7A4C2139DB22009F24CB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5CDA7A4C2139DB22009F24CB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5CDA7A552139DB94009F24CB /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
 		5CDA7A572139DBAC009F24CB /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5CDA7A592139DBE2009F24CB /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
@@ -116,12 +124,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5CD3B3A22140141C00BF588D /* Sliding View */ = {
+		5CBA6DC4214B388B0062EBF2 /* Ride Detais */ = {
 			isa = PBXGroup;
 			children = (
-				5CF74701213CF39C00964ABC /* SlidingView.swift */,
+				5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */,
+				5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */,
 			);
-			path = "Sliding View";
+			path = "Ride Detais";
 			sourceTree = "<group>";
 		};
 		5CDA7A232139DA4E009F24CB = {
@@ -163,7 +172,7 @@
 				5CDA7A462139DAD6009F24CB /* LocationsManager.swift */,
 				5CDA7A482139DAED009F24CB /* Place.swift */,
 				5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */,
-				5CDA7A4C2139DB22009F24CB /* Extensions.swift */,
+				5CDA7A4C2139DB22009F24CB /* Colors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,9 +180,11 @@
 		5CDA7A422139DA85009F24CB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5CDA7A522139DB5D009F24CB /* PopUp View */,
-				5CD3B3A22140141C00BF588D /* Sliding View */,
-				5CF746FF213CEFD400964ABC /* TouchesPassThrough View */,
+				5CDA7A592139DBE2009F24CB /* PopUpView.swift */,
+				5C5CE6F2214DFE14003059F0 /* PPopUpView.swift */,
+				5CF74701213CF39C00964ABC /* SlidingView.swift */,
+				5CF746F3213C8ED500964ABC /* TouchesPassThroughView.swift */,
+				5C5CE6EE214C80C1003059F0 /* TextField.swift */,
 				5CDA7A542139DB6C009F24CB /* SearchResults Cell */,
 				5CDA7A532139DB65009F24CB /* Search View */,
 				5CDA7A512139DB53009F24CB /* RideDetails View */,
@@ -190,6 +201,7 @@
 				5CF746FD213CEFAD00964ABC /* Map */,
 				5CF746FE213CEFBC00964ABC /* Searches */,
 				5CF74700213CEFE100964ABC /* Results */,
+				5CBA6DC4214B388B0062EBF2 /* Ride Detais */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -211,14 +223,6 @@
 				5CDA7A662139DC7D009F24CB /* RideDetailsView.xib */,
 			);
 			path = "RideDetails View";
-			sourceTree = "<group>";
-		};
-		5CDA7A522139DB5D009F24CB /* PopUp View */ = {
-			isa = PBXGroup;
-			children = (
-				5CDA7A592139DBE2009F24CB /* PopUpView.swift */,
-			);
-			path = "PopUp View";
 			sourceTree = "<group>";
 		};
 		5CDA7A532139DB65009F24CB /* Search View */ = {
@@ -318,14 +322,6 @@
 				5CF746F0213A3E1500964ABC /* SearchesVC.xib */,
 			);
 			path = Searches;
-			sourceTree = "<group>";
-		};
-		5CF746FF213CEFD400964ABC /* TouchesPassThrough View */ = {
-			isa = PBXGroup;
-			children = (
-				5CF746F3213C8ED500964ABC /* TouchesPassThroughView.swift */,
-			);
-			path = "TouchesPassThrough View";
 			sourceTree = "<group>";
 		};
 		5CF74700213CEFE100964ABC /* Results */ = {
@@ -431,6 +427,7 @@
 				5C0D0A3A213A0E1100385A3A /* Lato-LightItalic.ttf in Resources */,
 				5C0D0A35213A0E0400385A3A /* Lato-BoldItalic.ttf in Resources */,
 				5CDA7A372139DA4F009F24CB /* Assets.xcassets in Resources */,
+				5CBA6DC3214B38560062EBF2 /* RideDetailsVC.xib in Resources */,
 				5CF746F9213C96AC00964ABC /* ResultsVC.xib in Resources */,
 				5C0D0A43213A28C200385A3A /* MainVC.xib in Resources */,
 				5C0D0A31213A0DF200385A3A /* fa-solid-900.ttf in Resources */,
@@ -490,13 +487,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C5CE6F3214DFE14003059F0 /* PPopUpView.swift in Sources */,
 				5CDA7A5C2139DC01009F24CB /* RideDetaisView.swift in Sources */,
 				5CDA7A562139DB94009F24CB /* SearchResultsCell.swift in Sources */,
 				5CF746F1213A3E1500964ABC /* SearchesVC.swift in Sources */,
+				5C5CE6EF214C80C1003059F0 /* TextField.swift in Sources */,
 				5CDA7A612139DC4B009F24CB /* ResultsCell.swift in Sources */,
+				5CBA6DC2214B38560062EBF2 /* RideDetailsVC.swift in Sources */,
 				5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */,
 				5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */,
-				5CDA7A4D2139DB22009F24CB /* Extensions.swift in Sources */,
+				5CDA7A4D2139DB22009F24CB /* Colors.swift in Sources */,
 				5CDA7A5A2139DBE2009F24CB /* PopUpView.swift in Sources */,
 				5CDA7A5E2139DC24009F24CB /* ResultsView.swift in Sources */,
 				5CF746EB213A3DB300964ABC /* MapVC.swift in Sources */,

@@ -24,5 +24,26 @@ extension UIColor {
             blue: rgb & 0xFF
         )
     }
+    
+    convenience init(color: HexColors) {
+        let rgb = color.rawValue
+        
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
+}
+
+enum HexColors: Int {
+    case mainGreen = 0x087443
+    case green = 0x388F68
+    case softGreen = 0xEEF5F2
+    case mainBlue = 0x4A90E2
+    case mainOrange = 0xF5A623
+    case softGreyBoxes = 0xF5F5F5
+    case darkGreyIcon = 0x6D6D6D
+    case darkGreyText = 0x3F3F3F
 }
 

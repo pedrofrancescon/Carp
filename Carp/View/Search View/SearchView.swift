@@ -41,10 +41,12 @@ class SearchView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        nextBtnLabel.addGestureRecognizer(tapRecognizer)
-        
         iconLabel.text = "\u{f3c5}"
         nextBtnLabel.text = "\u{f054}"
+        
+        nextBtnLabel.textColor = UIColor(color: .green)
+        
+        nextBtnLabel.addGestureRecognizer(tapRecognizer)
         
         textField.borderStyle = .none
         
