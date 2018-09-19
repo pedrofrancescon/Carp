@@ -56,8 +56,6 @@ class PopUpView: UIView {
         })
     }
     
-    
-    
     private func layout() {
         guard let superView = self.superview else { return }
         translatesAutoresizingMaskIntoConstraints = false

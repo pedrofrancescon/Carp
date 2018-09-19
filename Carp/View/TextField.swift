@@ -16,8 +16,13 @@ class TextField: UITextField {
         font = UIFont(name: "Lato-Regular", size: 15.0)
         textColor = UIColor(color: .darkGreyText)
         backgroundColor = UIColor(color: .softGreyBoxes)
+        //isEnabled = false
         
         super.layoutSubviews()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("OOOOO")
     }
     
     override func draw(_ rect: CGRect) {

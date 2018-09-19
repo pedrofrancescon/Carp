@@ -19,8 +19,8 @@ class SearchesVC: UIViewController {
     @IBOutlet weak var destinySearchView: SearchView!
     @IBOutlet weak var originSearchView: SearchView!
     
-    @IBOutlet weak var destinyTableView: UITableView!
-    @IBOutlet weak var originTableView: UITableView!
+    @IBOutlet weak var destinyTableView: SearchTableView!
+    @IBOutlet weak var originTableView: SearchTableView!
     
     private var destinyPredictions: [GMSAutocompletePrediction]
     private var originPredictions: [GMSAutocompletePrediction]
@@ -29,8 +29,6 @@ class SearchesVC: UIViewController {
     @IBOutlet weak var widthConst: NSLayoutConstraint!
     
     private var mapDelegate: MapControllerDelegate
-    
-    var firstTime = true
     
     var slidingView: SlidingView? {
         get {
@@ -87,13 +85,9 @@ class SearchesVC: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        if firstTime {
-            slidingView?.layout()
-            firstTime = false
-        }
+        slidingView?.layout()
         
         super.viewDidLayoutSubviews()
-
     }
     
     init(mapDelegate: MapControllerDelegate) {
@@ -182,10 +176,12 @@ extension SearchesVC: SearchViewDelegate {
         
         guard let currentState = slidingView?.currentState else { return }
         
+        viewEndEditing()
+        
         if currentState == SlidingViewState.origin {
-            if self.destiny != nil && self.origin != nil  {
+            if let destiny = destiny, let origin = origin  {
                 guard let parent = parent as? MainVC else { return }
-                //parent.callRideDetailsVC()
+                parent.callRideDetailsVC(origin: origin, destiny: destiny)
                 return
             }
         }
@@ -199,8 +195,12 @@ extension SearchesVC: SearchViewDelegate {
             destinyTableView.isHidden = false
             
             locationsManager.getPlacePredictions(with: newText) { (predictions) in
+                
+                print(predictions.count)
+                
                 self.destinyPredictions = predictions
                 self.destinyTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                
             }
             
             if newText == "" {
@@ -212,6 +212,8 @@ extension SearchesVC: SearchViewDelegate {
             locationsManager.getPlacePredictions(with: newText) { (predictions) in
                 self.originPredictions = predictions
                 self.originTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                
+                //self.originTableView.updateTableSize()
             }
             
             if newText == "" {

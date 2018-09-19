@@ -48,11 +48,21 @@ class RideDetailsView: PopUpView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        originIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 10)
         originIcon.text = "\u{f111}"
+        
+        destinyIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 15)
         destinyIcon.text = "\u{f3c5}"
+        
+        timeIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 14)
         timeIcon.text = "\u{f017}"
+        
+        timeIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 16)
         seatsIcon.text = "\u{f0c0}"
+        
+        timeIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 15)
         restrictionsIcon.text = "\u{f502}"
+        
         
         originIcon.textColor = UIColor(color: .mainGreen)
         destinyIcon.textColor = UIColor(color: .mainGreen)

@@ -12,8 +12,8 @@ class MainVC: UIViewController {
 
     private let searchesVC: SearchesVC
     private let mapVC: MapVC
-    private var resultsVC: ResultsVC
-    private var rideDetailsVC: RideDetailsVC
+    private var resultsVC: ResultsVC?
+    private var rideDetailsVC: RideDetailsVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,16 +48,25 @@ class MainVC: UIViewController {
     }
     
     func callRideDetailsVC(origin: Place, destiny: Place) {
+        if rideDetailsVC != nil {
+            return
+        }
+        
+        rideDetailsVC = RideDetailsVC()
+        guard let rideDetailsVC = rideDetailsVC else { return }
+        
+        rideDetailsVC.origin = origin
+        rideDetailsVC.destiny = destiny
+        
         addChildViewController(rideDetailsVC)
         view.addSubview(rideDetailsVC.view)
+        
         rideDetailsVC.rideDetailsView.showView()
     }
     
     init() {
         mapVC = MapVC()
         searchesVC = SearchesVC(mapDelegate: mapVC)
-        resultsVC = ResultsVC()
-        rideDetailsVC = RideDetailsVC()
         
         super.init(nibName: "MainVC", bundle: nil)
     }
@@ -67,7 +76,17 @@ class MainVC: UIViewController {
     }
     
     @objc func clicked() {
+        if rideDetailsVC != nil {
+            return
+        }
         
+        rideDetailsVC = RideDetailsVC()
+        guard let rideDetailsVC = rideDetailsVC else { return }
+        
+        addChildViewController(rideDetailsVC)
+        view.addSubview(rideDetailsVC.view)
+        
+        rideDetailsVC.rideDetailsView.showView()
     }
 
 }

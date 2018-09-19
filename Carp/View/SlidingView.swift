@@ -37,6 +37,22 @@ class SlidingView: TouchesPassThroughView {
         }
     }
     
+    lazy var layout: () -> Void = {
+        
+        let searchViewWidth = frame.width * destinyWidthConstraint.multiplier
+
+        let sideMargins = (frame.width - searchViewWidth)/2.0
+
+        destinyLeadingConstraint.constant = sideMargins
+        originLeadingConstraint.constant = sideMargins/2.0
+
+        destinyStateConstraint = sideMargins
+        originStateConstraint = -searchViewWidth + (sideMargins/2.0)
+        
+        return {}
+        
+    }()
+    
     private var runningAnimators: [UIViewPropertyAnimator] = []
     
     private var destinyStateConstraint: CGFloat = 0
@@ -55,20 +71,6 @@ class SlidingView: TouchesPassThroughView {
     func slideViewAnimated() {
         animateIfNeeded(to: _currentState.opposite, duration: 0.4)
         runningAnimators.forEach { $0.startAnimation() }
-    }
-    
-    func layout() {
-        
-        let searchViewWidth = frame.width * destinyWidthConstraint.multiplier
-        
-        let sideMargins = (frame.width - searchViewWidth)/2.0
-
-        destinyLeadingConstraint.constant = sideMargins
-        originLeadingConstraint.constant = sideMargins/2.0
-        
-        destinyStateConstraint = sideMargins
-        originStateConstraint = -searchViewWidth + (sideMargins/2.0)
-        
     }
     
     fileprivate func animateIfNeeded(to state: SlidingViewState, duration: TimeInterval) {

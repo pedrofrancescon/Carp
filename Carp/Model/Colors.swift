@@ -45,5 +45,6 @@ enum HexColors: Int {
     case softGreyBoxes = 0xF5F5F5
     case darkGreyIcon = 0x6D6D6D
     case darkGreyText = 0x3F3F3F
+    case searchGrey = 0x717171
 }
 

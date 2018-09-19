@@ -19,6 +19,8 @@ class SearchView: UIView {
     
     var delegate: SearchViewDelegate?
     
+    private static var isFirst: Bool = true
+    
     private lazy var tapRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer()
         recognizer.addTarget(self, action: #selector(self.didTapNextButton))
@@ -41,10 +43,20 @@ class SearchView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        iconLabel.text = "\u{f3c5}"
+        if SearchView.isFirst {
+            iconLabel.font = UIFont(name: "FontAwesome5FreeSolid", size: 12)
+            iconLabel.text = "\u{f3c5}"
+            SearchView.isFirst = false
+        } else {
+             iconLabel.font = UIFont(name: "FontAwesome5FreeSolid", size: 8)
+            iconLabel.text = "\u{f111}"
+        }
+        
+        iconLabel.textColor = UIColor(color: .searchGrey)
         nextBtnLabel.text = "\u{f054}"
         
         nextBtnLabel.textColor = UIColor(color: .green)
+        textField.textColor = UIColor(color: .searchGrey)
         
         nextBtnLabel.addGestureRecognizer(tapRecognizer)
         

@@ -86,7 +86,7 @@
                         <constraint firstItem="Cd3-vh-SQT" firstAttribute="centerX" secondItem="AvC-90-CcZ" secondAttribute="centerX" id="xCy-AS-PJe"/>
                     </constraints>
                 </view>
-                <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Esse texto é um teste" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zFy-jy-MyZ" customClass="TextField" customModule="Carp" customModuleProvider="target">
+                <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zFy-jy-MyZ" customClass="TextField" customModule="Carp" customModuleProvider="target">
                     <rect key="frame" x="45" y="20" width="310" height="35"/>
                     <color key="backgroundColor" red="0.83570172639999996" green="0.0" blue="0.50049476159999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
