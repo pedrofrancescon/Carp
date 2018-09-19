@@ -50,7 +50,6 @@ class SlidingView: TouchesPassThroughView {
     
     override func didMoveToSuperview() {
         addGestureRecognizer(panRecognizer)
-        layout()
     }
     
     func slideViewAnimated() {
@@ -58,12 +57,7 @@ class SlidingView: TouchesPassThroughView {
         runningAnimators.forEach { $0.startAnimation() }
     }
     
-    
-    
     func layout() {
-
-        
-        
         
         let searchViewWidth = frame.width * destinyWidthConstraint.multiplier
         
@@ -74,13 +68,7 @@ class SlidingView: TouchesPassThroughView {
         
         destinyStateConstraint = sideMargins
         originStateConstraint = -searchViewWidth + (sideMargins/2.0)
-    }
-    
-    func showView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.animateIfNeeded(to: self._currentState.opposite, duration: 0.4)
-            self.runningAnimators.forEach { $0.startAnimation() }
-        })
+        
     }
     
     fileprivate func animateIfNeeded(to state: SlidingViewState, duration: TimeInterval) {

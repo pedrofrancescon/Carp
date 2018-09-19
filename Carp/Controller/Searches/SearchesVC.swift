@@ -30,6 +30,8 @@ class SearchesVC: UIViewController {
     
     private var mapDelegate: MapControllerDelegate
     
+    var firstTime = true
+    
     var slidingView: SlidingView? {
         get {
             guard let sliding = self.view as? SlidingView else {
@@ -82,6 +84,16 @@ class SearchesVC: UIViewController {
         originTableView.delegate = self
         originTableView.dataSource = self
         originTableView.isHidden = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if firstTime {
+            slidingView?.layout()
+            firstTime = false
+        }
+        
+        super.viewDidLayoutSubviews()
+
     }
     
     init(mapDelegate: MapControllerDelegate) {
@@ -172,7 +184,8 @@ extension SearchesVC: SearchViewDelegate {
         
         if currentState == SlidingViewState.origin {
             if self.destiny != nil && self.origin != nil  {
-                //carrega outra telinha
+                guard let parent = parent as? MainVC else { return }
+                //parent.callRideDetailsVC()
                 return
             }
         }

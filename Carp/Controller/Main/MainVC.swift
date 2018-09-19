@@ -36,19 +36,21 @@ class MainVC: UIViewController {
         
         addChildViewController(mapVC)
         addChildViewController(searchesVC)
-        //addChildViewController(resultsVC)
-        addChildViewController(rideDetailsVC)
         
         view.addSubview(mapVC.view)
         view.addSubview(searchesVC.view)
-        //view.addSubview(resultsVC.view)
-        view.addSubview(rideDetailsVC.view)
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    func callRideDetailsVC(origin: Place, destiny: Place) {
+        addChildViewController(rideDetailsVC)
+        view.addSubview(rideDetailsVC.view)
+        rideDetailsVC.rideDetailsView.showView()
     }
     
     init() {
@@ -65,8 +67,7 @@ class MainVC: UIViewController {
     }
     
     @objc func clicked() {
-        //resultsVC.resultsView.showView()
-        rideDetailsVC.rideDetailsView.showView()
+        
     }
 
 }
