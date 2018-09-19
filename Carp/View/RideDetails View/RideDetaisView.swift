@@ -32,6 +32,9 @@ class RideDetailsView: PopUpView {
     
     @IBOutlet weak var fareEstimateLabel: UILabel!
     
+    private let datePicker = UIDatePicker()
+    private let deadlineDatePicker = UIDatePicker()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         comminInit()
@@ -71,6 +74,9 @@ class RideDetailsView: PopUpView {
         restrictionsIcon.textColor = UIColor(color: .darkGreyIcon)
         
         makeButtonSelected(oneSeatButton)
+        
+        setupDatePicker()
+        setupDeadlineDatePicker()
         
     }
     
@@ -119,6 +125,63 @@ class RideDetailsView: PopUpView {
         makeButtonSelected(button)
         
     }
+    
+    func setupDatePicker(){
+        datePicker.datePickerMode = .dateAndTime
+        
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        
+        toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
+        
+        timeTextField.inputAccessoryView = toolbar
+        timeTextField.inputView = datePicker
+        
+    }
+    
+    @objc func doneDatePicker(){
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat =  "E, d MMM - HH:mm"
+        timeTextField.text = formatter.string(from: datePicker.date)
+        endEditing(true)
+    }
+    
+    @objc func cancelDatePicker(){
+        endEditing(true)
+    }
+    
+    func setupDeadlineDatePicker(){
+        deadlineDatePicker.datePickerMode = .time
+        
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDeadlineDatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDeadlineDatePicker));
+        
+        toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
+        
+        timeDeadlineTextField.inputAccessoryView = toolbar
+        timeDeadlineTextField.inputView = deadlineDatePicker
+        
+    }
+    
+    @objc func doneDeadlineDatePicker(){
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat =  "HH:mm"
+        timeDeadlineTextField.text = formatter.string(from: deadlineDatePicker.date)
+        endEditing(true)
+    }
+    
+    @objc func cancelDeadlineDatePicker(){
+        endEditing(true)
+    }
+
     
     
 }
