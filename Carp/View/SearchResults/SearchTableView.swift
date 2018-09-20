@@ -18,8 +18,6 @@ class SearchTableView: UITableView {
 //            self.frame.size.height = self.contentSize.height
 //        }
     }
-    
-    
 
 
 }

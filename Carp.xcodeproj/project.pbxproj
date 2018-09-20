@@ -28,6 +28,7 @@
 		5C350ACE2152056200BA6E79 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C350ACD2152056200BA6E79 /* SearchTableView.swift */; };
 		5C5CE6EF214C80C1003059F0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CE6EE214C80C1003059F0 /* TextField.swift */; };
 		5C5CE6F3214DFE14003059F0 /* PPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CE6F2214DFE14003059F0 /* PPopUpView.swift */; };
+		5C5F396321531DD900B396E8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F396221531DD900B396E8 /* Extensions.swift */; };
 		5CBA6DC2214B38560062EBF2 /* RideDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */; };
 		5CBA6DC3214B38560062EBF2 /* RideDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */; };
 		5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A2F2139DA4E009F24CB /* AppDelegate.swift */; };
@@ -70,6 +71,7 @@
 		5C350ACD2152056200BA6E79 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
 		5C5CE6EE214C80C1003059F0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		5C5CE6F2214DFE14003059F0 /* PPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPopUpView.swift; path = "../../../../../../Downloads/interactive-animations-master/InteractiveAnimations/InteractiveAnimations/PPopUpView.swift"; sourceTree = "<group>"; };
+		5C5F396221531DD900B396E8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsVC.swift; sourceTree = "<group>"; };
 		5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideDetailsVC.xib; sourceTree = "<group>"; };
 		5CDA7A2C2139DA4E009F24CB /* Carp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +178,7 @@
 				5C350AC72151D2AB00BA6E79 /* Ride.swift */,
 				5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */,
 				5CDA7A4C2139DB22009F24CB /* Colors.swift */,
+				5C5F396221531DD900B396E8 /* Extensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				5CF746F8213C96AC00964ABC /* ResultsVC.swift in Sources */,
 				5CF746F4213C8ED500964ABC /* TouchesPassThroughView.swift in Sources */,
 				5CDA7A582139DBAC009F24CB /* SearchView.swift in Sources */,
+				5C5F396321531DD900B396E8 /* Extensions.swift in Sources */,
 				5CDA7A472139DAD6009F24CB /* LocationsManager.swift in Sources */,
 				5CF74702213CF39C00964ABC /* SlidingView.swift in Sources */,
 				5CDA7A492139DAED009F24CB /* Place.swift in Sources */,

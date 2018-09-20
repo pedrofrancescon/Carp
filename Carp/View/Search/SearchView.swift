@@ -62,6 +62,8 @@ class SearchView: UIView {
         
         textField.borderStyle = .none
         
+        addShadow(blur: 10)
+        
     }
     
     @IBAction func didChangeTextField(_ sender: Any) {

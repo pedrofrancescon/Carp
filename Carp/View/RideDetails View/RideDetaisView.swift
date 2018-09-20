@@ -84,6 +84,8 @@ class RideDetailsView: PopUpView {
         
         timeDeadlineTextField.isEnabled = false
         
+        addShadow(blur: 10)
+        
     }
     
     private func makeButtonSelected(_ button: UIButton) {
