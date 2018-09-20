@@ -21,10 +21,11 @@ class RideDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        rideDetailsView.parentVC = self
         view = rideDetailsView
         
         numberOfSeats = .one
-        restriction = .none
+        restriction = .noRestriction
         
         guard let origin = origin, let destiny = destiny else { return }
         rideDetailsView.originTextField.text = origin.name
@@ -41,4 +42,24 @@ class RideDetailsVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+}
+
+extension RideDetailsVC: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Restrictions.allCases.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Restrictions.allCases[row].rawValue
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        restriction = Restrictions.allCases[row]
+    }
+    
 }

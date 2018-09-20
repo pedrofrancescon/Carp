@@ -35,6 +35,14 @@ class RideDetailsView: PopUpView {
     private let datePicker = UIDatePicker()
     private let deadlineDatePicker = UIDatePicker()
     
+    var parentVC: RideDetailsVC? {
+        didSet {
+            setupDatePicker()
+            setupDeadlineDatePicker()
+            setupRestrictionsPicker()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         comminInit()
@@ -66,7 +74,6 @@ class RideDetailsView: PopUpView {
         timeIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 15)
         restrictionsIcon.text = "\u{f502}"
         
-        
         originIcon.textColor = UIColor(color: .mainGreen)
         destinyIcon.textColor = UIColor(color: .mainGreen)
         timeIcon.textColor = UIColor(color: .mainBlue)
@@ -75,8 +82,7 @@ class RideDetailsView: PopUpView {
         
         makeButtonSelected(oneSeatButton)
         
-        setupDatePicker()
-        setupDeadlineDatePicker()
+        timeDeadlineTextField.isEnabled = false
         
     }
     
@@ -93,6 +99,8 @@ class RideDetailsView: PopUpView {
             threeSeatsButton.backgroundColor = UIColor(color: .softGreyBoxes)
             threeSeatsButton.setTitleColor(UIColor(color: .darkGreyText), for: .normal)
             
+            parentVC?.numberOfSeats = .one
+            
         case twoSeatsButton:
             twoSeatsButton.backgroundColor = UIColor(color: .mainOrange)
             twoSeatsButton.setTitleColor(UIColor(color: .softGreyBoxes), for: .normal)
@@ -103,6 +111,8 @@ class RideDetailsView: PopUpView {
             threeSeatsButton.backgroundColor = UIColor(color: .softGreyBoxes)
             threeSeatsButton.setTitleColor(UIColor(color: .darkGreyText), for: .normal)
             
+            parentVC?.numberOfSeats = .two
+            
         case threeSeatsButton:
             threeSeatsButton.backgroundColor = UIColor(color: .mainOrange)
             threeSeatsButton.setTitleColor(UIColor(color: .softGreyBoxes), for: .normal)
@@ -112,6 +122,8 @@ class RideDetailsView: PopUpView {
             
             twoSeatsButton.backgroundColor = UIColor(color: .softGreyBoxes)
             twoSeatsButton.setTitleColor(UIColor(color: .darkGreyText), for: .normal)
+            
+            parentVC?.numberOfSeats = .twree
             
         default:
             return
@@ -126,14 +138,40 @@ class RideDetailsView: PopUpView {
         
     }
     
+    func setupRestrictionsPicker() {
+        
+        let pickerView = UIPickerView()
+        
+        pickerView.delegate = parentVC
+        pickerView.dataSource = parentVC
+        
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Ok", style: .plain, target: self, action: #selector(doneRestrictionsPicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelPicker));
+        
+        toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
+        
+        restrictionsTextField.inputAccessoryView = toolbar
+        restrictionsTextField.inputView = pickerView
+        
+    }
+    
+    @objc func doneRestrictionsPicker() {
+        
+        restrictionsTextField.text = parentVC?.restriction?.rawValue
+        endEditing(true)
+    }
+    
     func setupDatePicker(){
         datePicker.datePickerMode = .dateAndTime
         
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker));
+        let doneButton = UIBarButtonItem(title: "Ok", style: .plain, target: self, action: #selector(doneDatePicker));
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelPicker));
         
         toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
         
@@ -147,10 +185,17 @@ class RideDetailsView: PopUpView {
         let formatter = DateFormatter()
         formatter.dateFormat =  "E, d MMM - HH:mm"
         timeTextField.text = formatter.string(from: datePicker.date)
-        endEditing(true)
-    }
-    
-    @objc func cancelDatePicker(){
+        
+        deadlineDatePicker.minimumDate = datePicker.date
+        deadlineDatePicker.date = Date(timeInterval: 900, since: datePicker.date)
+        
+        formatter.dateFormat =  "HH:mm"
+        timeDeadlineTextField.text = formatter.string(from: deadlineDatePicker.date)
+        
+        parentVC?.timeInterval = DateInterval(start: datePicker.date, end: deadlineDatePicker.date)
+        
+        timeDeadlineTextField.isEnabled = true
+        
         endEditing(true)
     }
     
@@ -159,9 +204,9 @@ class RideDetailsView: PopUpView {
         
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDeadlineDatePicker));
+        let doneButton = UIBarButtonItem(title: "Ok", style: .plain, target: self, action: #selector(doneDeadlineDatePicker));
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDeadlineDatePicker));
+        let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelPicker));
         
         toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
         
@@ -175,13 +220,20 @@ class RideDetailsView: PopUpView {
         let formatter = DateFormatter()
         formatter.dateFormat =  "HH:mm"
         timeDeadlineTextField.text = formatter.string(from: deadlineDatePicker.date)
+        
+        parentVC?.timeInterval = DateInterval(start: datePicker.date, end: deadlineDatePicker.date)
+        
         endEditing(true)
     }
     
-    @objc func cancelDeadlineDatePicker(){
+    @objc func cancelPicker(){
         endEditing(true)
     }
+    
+}
 
+protocol RideDetailsViewDelegate: class {
     
-    
+    func didChange(timeInterval: DateInterval)
+    func didChange(numberOfSeats: NumberOfSeats)
 }

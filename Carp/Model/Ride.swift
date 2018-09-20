@@ -14,8 +14,9 @@ enum NumberOfSeats: Int, Decodable {
     case twree = 3
 }
 
-enum Restrictions: String, Decodable {
-    case womenOnly
+enum Restrictions: String, Decodable, CaseIterable {
+    case noRestriction = "Nenhuma Restrição"
+    case sameSex = "Pessoas do mesmo sexo"
 }
 
 struct Ride: Decodable {

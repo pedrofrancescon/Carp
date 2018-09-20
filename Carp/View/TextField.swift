@@ -9,27 +9,39 @@
 import UIKit
 
 class TextField: UITextField {
-    
-    let padding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
 
     override func layoutSubviews() {
         font = UIFont(name: "Lato-Regular", size: 15.0)
         textColor = UIColor(color: .darkGreyText)
         backgroundColor = UIColor(color: .softGreyBoxes)
-        //isEnabled = false
         
         super.layoutSubviews()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("OOOOO")
+    override func caretRect(for position: UITextPosition) -> CGRect {
+        return CGRect.zero
+    }
+    
+    override func selectionRects(for range: UITextRange) -> [Any] {
+        return []
+    }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(copy(_:)) || action == #selector(selectAll(_:)) || action == #selector(paste(_:)) {
+            
+            return false
+        }
+        
+        return super.canPerformAction(action, withSender: sender)
     }
     
     override func draw(_ rect: CGRect) {
         leftViewMode = .always
+        rightViewMode = .always
         
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: frame.height))
         leftView = paddingView
+        rightView = paddingView
         
         super.draw(rect)
     }
