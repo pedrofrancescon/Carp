@@ -86,6 +86,29 @@ class RideDetailsView: PopUpView {
         
         addShadow(blur: 10)
         
+        addToStackView(image: UIImage(named: "Uber")!)
+        addToStackView(image: UIImage(named: "Cabify")!)
+        addToStackView(image: UIImage(named: "99.jpeg")!)
+        
+    }
+    
+    func addToStackView(image: UIImage) {
+        let imageView = UIImageView(image: image)
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 4
+        imageView.clipsToBounds = true
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.addConstraint(NSLayoutConstraint(item: imageView,
+                                                        attribute: NSLayoutAttribute.height,
+                                                        relatedBy: NSLayoutRelation.equal,
+                                                        toItem: imageView,
+                                                        attribute: NSLayoutAttribute.width,
+                                                        multiplier: imageView.frame.size.height / imageView.frame.size.width,
+                                                        constant: 0))
+        
+        servicesIconsStackView.addArrangedSubview(imageView)
     }
     
     private func makeButtonSelected(_ button: UIButton) {

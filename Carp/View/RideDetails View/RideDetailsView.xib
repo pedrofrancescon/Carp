@@ -213,31 +213,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YK2-vc-8aR">
-                            <rect key="frame" x="150.5" y="26" width="74" height="18"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="swY-iZ-JfW">
-                                    <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
-                                    <color key="backgroundColor" name="Main Green"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="swY-iZ-JfW" secondAttribute="height" multiplier="1:1" id="FCy-Mm-l8j"/>
-                                    </constraints>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mzq-qV-ImD">
-                                    <rect key="frame" x="28" y="0.0" width="18" height="18"/>
-                                    <color key="backgroundColor" name="Main Green"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="Mzq-qV-ImD" secondAttribute="height" multiplier="1:1" id="XUx-pM-ZTR"/>
-                                    </constraints>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zzb-og-B8S">
-                                    <rect key="frame" x="56" y="0.0" width="18" height="18"/>
-                                    <color key="backgroundColor" name="Main Green"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="Zzb-og-B8S" secondAttribute="height" multiplier="1:1" id="MvC-F1-cA5"/>
-                                    </constraints>
-                                </imageView>
-                            </subviews>
+                            <rect key="frame" x="178.5" y="26" width="18" height="18"/>
                             <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="BVj-MJ-IXi"/>
+                                <constraint firstAttribute="width" priority="999" constant="18" id="ICq-SE-kff"/>
                                 <constraint firstAttribute="height" constant="18" id="fqD-t7-18X"/>
                             </constraints>
                         </stackView>
