@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3851172DF45B102A2B70A3F0 /* libPods-Carp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E16524090A1CAA6184A56BA /* libPods-Carp.a */; };
 		511B79F821545F930025B110 /* EntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511B79F721545F930025B110 /* EntityMapper.swift */; };
+		5194E33821558B110015B0DF /* CarpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33721558B110015B0DF /* CarpUser.swift */; };
 		5C0D0A32213A0DF500385A3A /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A722139DDBE009F24CB /* Lato-Black.ttf */; };
 		5C0D0A33213A0DFC00385A3A /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A752139DDBE009F24CB /* Lato-BlackItalic.ttf */; };
 		5C0D0A34213A0E0200385A3A /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A712139DDBE009F24CB /* Lato-Bold.ttf */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		345E43C47982DE3654D94CA7 /* Pods-Carp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Carp/Pods-Carp.debug.xcconfig"; sourceTree = "<group>"; };
 		511B79F721545F930025B110 /* EntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityMapper.swift; sourceTree = "<group>"; };
+		5194E33721558B110015B0DF /* CarpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarpUser.swift; sourceTree = "<group>"; };
 		5C0D0A40213A28C200385A3A /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		5C0D0A41213A28C200385A3A /* MainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
 		5C0D0A46213A294C00385A3A /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */,
 				5CDA7A4C2139DB22009F24CB /* Colors.swift */,
 				5C5F396221531DD900B396E8 /* Extensions.swift */,
+				5194E33721558B110015B0DF /* CarpUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				5CDA7A5C2139DC01009F24CB /* RideDetaisView.swift in Sources */,
 				5CDA7A562139DB94009F24CB /* SearchResultsCell.swift in Sources */,
 				5CF746F1213A3E1500964ABC /* SearchesVC.swift in Sources */,
+				5194E33821558B110015B0DF /* CarpUser.swift in Sources */,
 				5C5CE6EF214C80C1003059F0 /* TextField.swift in Sources */,
 				5C350AC82151D2AB00BA6E79 /* Ride.swift in Sources */,
 				5CDA7A612139DC4B009F24CB /* ResultsCell.swift in Sources */,

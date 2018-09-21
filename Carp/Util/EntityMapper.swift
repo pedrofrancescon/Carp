@@ -42,6 +42,15 @@ fileprivate enum GenderRestriction: String, Codable {
     case sameSex
 }
 
+fileprivate struct DbUser: Codable {
+    var creationTime: Timestamp
+    var firstName: String
+    var lastName: String
+    var profilePictureUrl: String
+    var uid: String
+    var gender: String?
+}
+
 func RideToDbFormat(ride: Ride) -> [String : Any] {
     return [
         "departureTimeRange": [
@@ -72,7 +81,7 @@ func RideToDbFormat(ride: Ride) -> [String : Any] {
     ]
 }
 
-func RideFromDbFormat(dictionary: [String: Any]) throws -> Ride {
+func RideFromDbFormat(_ dictionary: [String: Any]) throws -> Ride {
     let ride: RideRequest = try DicDeserialize(dictionary)
     return Ride(
         origin: Place(
@@ -108,6 +117,32 @@ func RideFromDbFormat(dictionary: [String: Any]) throws -> Ride {
         numberOfSeats: NumberOfSeats(rawValue: ride.numberOfSeats) ?? NumberOfSeats.one,
         restriction: ConvertGenderRestriction(ride.genderRestriction),
         userId: ride.uid
+    )
+}
+
+func UserToDbFormat(user: CarpUser) -> [String: Any] {
+    var outputObj = [
+        "firstName": user.firstName,
+        "lastName": user.lastName,
+        "profilePictureUrl": user.profilePictureUrl,
+        "uid": user.id
+    ]
+    
+    if let gender = user.gender {
+        outputObj["gender"] = gender
+    }
+    
+    return outputObj
+}
+
+func UserFromDbFormat(_ dictionary: [String: Any]) throws -> CarpUser {
+    let user: DbUser = try DicDeserialize(dictionary)
+    return CarpUser(
+        id: user.uid,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        profilePictureUrl: user.profilePictureUrl,
+        gender: user.gender
     )
 }
 
