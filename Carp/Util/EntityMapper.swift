@@ -51,6 +51,12 @@ fileprivate struct DbUser: Codable {
     var gender: String?
 }
 
+fileprivate struct DbCar: Codable {
+    var rideRequests: [String]
+    var hostRequest: String
+    var price: Float
+}
+
 func RideToDbFormat(ride: Ride) -> [String : Any] {
     return [
         "departureTimeRange": [
@@ -81,7 +87,7 @@ func RideToDbFormat(ride: Ride) -> [String : Any] {
     ]
 }
 
-func RideFromDbFormat(_ dictionary: [String: Any]) throws -> Ride {
+func RideFromDbFormat(docId: String, _ dictionary: [String: Any]) throws -> Ride {
     let ride: RideRequest = try DicDeserialize(dictionary)
     return Ride(
         origin: Place(
@@ -116,7 +122,8 @@ func RideFromDbFormat(_ dictionary: [String: Any]) throws -> Ride {
         ),
         numberOfSeats: NumberOfSeats(rawValue: ride.numberOfSeats) ?? NumberOfSeats.one,
         restriction: ConvertGenderRestriction(ride.genderRestriction),
-        userId: ride.uid
+        userId: ride.uid,
+        id: docId
     )
 }
 
@@ -143,6 +150,23 @@ func UserFromDbFormat(_ dictionary: [String: Any]) throws -> CarpUser {
         lastName: user.lastName,
         profilePictureUrl: user.profilePictureUrl,
         gender: user.gender
+    )
+}
+
+func CarToDbFormat(_ car: Car) -> [String: Any] {
+    return [
+        "hostRequest": car.owner.id,
+        "rideRequests": car.riders.map({ $0.id }),
+        "price": car.price
+    ]
+}
+
+func CarFromDbFormat(docId: String, riders: [Ride], owner: Ride, _ dictionary: [String: Any]) throws -> Car {
+    let car: DbCar = try DicDeserialize(dictionary)
+    return Car(
+        riders: riders,
+        owner: owner,
+        price: car.price
     )
 }
 
