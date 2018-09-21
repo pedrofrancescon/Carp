@@ -34,6 +34,7 @@
 		5C5F3969215322B100B396E8 /* Cabify.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3968215322B000B396E8 /* Cabify.png */; };
 		5CBA6DC2214B38560062EBF2 /* RideDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */; };
 		5CBA6DC3214B38560062EBF2 /* RideDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */; };
+		5CBFB7A7215462940088A210 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CBFB7A6215462940088A210 /* GoogleService-Info.plist */; };
 		5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A2F2139DA4E009F24CB /* AppDelegate.swift */; };
 		5CDA7A372139DA4F009F24CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A362139DA4F009F24CB /* Assets.xcassets */; };
 		5CDA7A3A2139DA4F009F24CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A382139DA4F009F24CB /* LaunchScreen.storyboard */; };
@@ -80,6 +81,7 @@
 		5C5F3968215322B000B396E8 /* Cabify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cabify.png; sourceTree = "<group>"; };
 		5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsVC.swift; sourceTree = "<group>"; };
 		5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideDetailsVC.xib; sourceTree = "<group>"; };
+		5CBFB7A6215462940088A210 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5CDA7A2C2139DA4E009F24CB /* Carp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CDA7A2F2139DA4E009F24CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CDA7A362139DA4F009F24CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				5C5F3964215322A000B396E8 /* Uber.png */,
 				5CDA7A362139DA4F009F24CB /* Assets.xcassets */,
 				5CDA7A382139DA4F009F24CB /* LaunchScreen.storyboard */,
+				5CBFB7A6215462940088A210 /* GoogleService-Info.plist */,
 				5CDA7A3B2139DA4F009F24CB /* Info.plist */,
 				5CDA7A432139DA89009F24CB /* Controller */,
 				5CDA7A422139DA85009F24CB /* View */,
@@ -429,6 +432,7 @@
 				5C5F3967215322A700B396E8 /* 99.jpeg in Resources */,
 				5C0D0A39213A0E0E00385A3A /* Lato-Light.ttf in Resources */,
 				5CF746EC213A3DB300964ABC /* MapVC.xib in Resources */,
+				5CBFB7A7215462940088A210 /* GoogleService-Info.plist in Resources */,
 				5CDA7A652139DC72009F24CB /* SearchView.xib in Resources */,
 				5CF746F2213A3E1500964ABC /* SearchesVC.xib in Resources */,
 				5C0D0A3B213A0E1300385A3A /* Lato-Regular.ttf in Resources */,
@@ -671,7 +675,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Carp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -690,7 +694,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Carp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

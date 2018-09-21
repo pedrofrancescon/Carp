@@ -9,7 +9,7 @@
 import UIKit
 import GooglePlaces
 
-private enum PlaceType {
+enum PlaceType {
     case destiny
     case origin
 }
@@ -44,7 +44,7 @@ class SearchesVC: UIViewController {
             DispatchQueue.main.async {
                 self.viewEndEditing()
                 self.originSearchView.textField.text = self.origin?.name
-                self.mapDelegate.createMapMarker(of: self.origin!)
+                self.mapDelegate.createMapMarker(of: .origin, with: self.origin!)
             }
         }
     }
@@ -53,7 +53,7 @@ class SearchesVC: UIViewController {
             DispatchQueue.main.async {
                 self.viewEndEditing()
                 self.destinySearchView.textField.text = self.destiny?.name
-                self.mapDelegate.createMapMarker(of: self.destiny!)
+                self.mapDelegate.createMapMarker(of: .destiny, with: self.destiny!)
             }
         }
     }
@@ -181,7 +181,8 @@ extension SearchesVC: SearchViewDelegate {
         if currentState == SlidingViewState.origin {
             if let destiny = destiny, let origin = origin  {
                 guard let parent = parent as? MainVC else { return }
-                parent.callRideDetailsVC(origin: origin, destiny: destiny)
+                self.mapDelegate.drawRoute(from: origin, to: destiny)
+                //parent.callRideDetailsVC(origin: origin, destiny: destiny)
                 return
             }
         }

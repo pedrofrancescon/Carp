@@ -74,11 +74,13 @@ class RideDetailsView: PopUpView {
         timeIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 15)
         restrictionsIcon.text = "\u{f502}"
         
+        fareEstimateLabel.textColor = UIColor(color: .darkGreyText)
+        
         originIcon.textColor = UIColor(color: .mainGreen)
         destinyIcon.textColor = UIColor(color: .mainGreen)
         timeIcon.textColor = UIColor(color: .mainBlue)
         seatsIcon.textColor = UIColor(color: .mainOrange)
-        restrictionsIcon.textColor = UIColor(color: .darkGreyIcon)
+        restrictionsIcon.textColor = UIColor(color: .greyIcon)
         
         makeButtonSelected(oneSeatButton)
         
@@ -119,10 +121,10 @@ class RideDetailsView: PopUpView {
             oneSeatButton.setTitleColor(UIColor(color: .softGreyBoxes), for: .normal)
             
             twoSeatsButton.backgroundColor = UIColor(color: .softGreyBoxes)
-            twoSeatsButton.setTitleColor(UIColor(color: .darkGreyText), for: .normal)
+            twoSeatsButton.setTitleColor(UIColor(color: .greyText), for: .normal)
             
             threeSeatsButton.backgroundColor = UIColor(color: .softGreyBoxes)
-            threeSeatsButton.setTitleColor(UIColor(color: .darkGreyText), for: .normal)
+            threeSeatsButton.setTitleColor(UIColor(color: .greyText), for: .normal)
             
             parentVC?.numberOfSeats = .one
             
@@ -131,10 +133,10 @@ class RideDetailsView: PopUpView {
             twoSeatsButton.setTitleColor(UIColor(color: .softGreyBoxes), for: .normal)
             
             oneSeatButton.backgroundColor = UIColor(color: .softGreyBoxes)
-            oneSeatButton.setTitleColor(UIColor(color: .darkGreyText), for: .normal)
+            oneSeatButton.setTitleColor(UIColor(color: .greyText), for: .normal)
             
             threeSeatsButton.backgroundColor = UIColor(color: .softGreyBoxes)
-            threeSeatsButton.setTitleColor(UIColor(color: .darkGreyText), for: .normal)
+            threeSeatsButton.setTitleColor(UIColor(color: .greyText), for: .normal)
             
             parentVC?.numberOfSeats = .two
             
@@ -143,10 +145,10 @@ class RideDetailsView: PopUpView {
             threeSeatsButton.setTitleColor(UIColor(color: .softGreyBoxes), for: .normal)
             
             oneSeatButton.backgroundColor = UIColor(color: .softGreyBoxes)
-            oneSeatButton.setTitleColor(UIColor(color: .darkGreyText), for: .normal)
+            oneSeatButton.setTitleColor(UIColor(color: .greyText), for: .normal)
             
             twoSeatsButton.backgroundColor = UIColor(color: .softGreyBoxes)
-            twoSeatsButton.setTitleColor(UIColor(color: .darkGreyText), for: .normal)
+            twoSeatsButton.setTitleColor(UIColor(color: .greyText), for: .normal)
             
             parentVC?.numberOfSeats = .twree
             

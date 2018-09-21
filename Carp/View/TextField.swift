@@ -12,7 +12,7 @@ class TextField: UITextField {
 
     override func layoutSubviews() {
         font = UIFont(name: "Lato-Regular", size: 15.0)
-        textColor = UIColor(color: .darkGreyText)
+        textColor = UIColor(color: .greyText)
         backgroundColor = UIColor(color: .softGreyBoxes)
         
         super.layoutSubviews()

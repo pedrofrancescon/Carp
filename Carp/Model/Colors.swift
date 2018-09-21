@@ -43,8 +43,8 @@ enum HexColors: Int {
     case mainBlue = 0x4A90E2
     case mainOrange = 0xF5A623
     case softGreyBoxes = 0xF5F5F5
-    case darkGreyIcon = 0x6D6D6D
-    case darkGreyText = 0x3F3F3F
-    case searchGrey = 0x717171
+    case greyIcon = 0x6D6D6D
+    case greyText = 0x3F3F3F
+    case darkGreyText = 0x717171
 }
 

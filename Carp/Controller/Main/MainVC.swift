@@ -49,6 +49,7 @@ class MainVC: UIViewController {
     
     func callRideDetailsVC(origin: Place, destiny: Place) {
         if rideDetailsVC != nil {
+            rideDetailsVC?.rideDetailsView.showView()
             return
         }
         

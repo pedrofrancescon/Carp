@@ -52,11 +52,11 @@ class SearchView: UIView {
             iconLabel.text = "\u{f111}"
         }
         
-        iconLabel.textColor = UIColor(color: .searchGrey)
+        iconLabel.textColor = UIColor(color: .darkGreyText)
         nextBtnLabel.text = "\u{f054}"
         
         nextBtnLabel.textColor = UIColor(color: .green)
-        textField.textColor = UIColor(color: .searchGrey)
+        textField.textColor = UIColor(color: .darkGreyText)
         
         nextBtnLabel.addGestureRecognizer(tapRecognizer)
         

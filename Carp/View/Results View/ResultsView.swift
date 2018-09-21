@@ -42,7 +42,7 @@ class ResultsView: PopUpView {
         resultsButton.setTitleColor(UIColor(rgb: 0x489773), for: .normal)
         
         chatButton.setTitle("Chat", for: .normal)
-        chatButton.setTitleColor(UIColor(color: .darkGreyText), for: .normal)
+        chatButton.setTitleColor(UIColor(color: .greyText), for: .normal)
         
     }
     
