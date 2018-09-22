@@ -11,6 +11,7 @@ import UIKit
 enum SlidingViewState {
     case destiny
     case origin
+    case hidden
 }
 
 extension SlidingViewState {
@@ -18,6 +19,7 @@ extension SlidingViewState {
         switch self {
         case .origin: return .destiny
         case .destiny: return .origin
+        case .hidden: return .hidden
         }
     }
 }
@@ -30,6 +32,7 @@ class SlidingView: TouchesPassThroughView {
     
     private var destinyStateConstraint: CGFloat = 0
     private var originStateConstraint: CGFloat = 0
+    private var hiddenStateConstraint: CGFloat = 0
     
     // MARK: - View Controller Lifecycle
     
@@ -37,8 +40,8 @@ class SlidingView: TouchesPassThroughView {
         addGestureRecognizer(panRecognizer)
     }
     
-    func slideViewAnimated() {
-        animateTransitionIfNeeded(to: currentState.opposite, duration: 1.0)
+    func slideViewAnimated(to state: SlidingViewState, withDuration duration: Double) {
+        animateTransitionIfNeeded(to: state, duration: duration)
         runningAnimators.forEach { $0.startAnimation() }
     }
     
@@ -53,6 +56,7 @@ class SlidingView: TouchesPassThroughView {
         
         destinyStateConstraint = sideMargins
         originStateConstraint = -searchViewWidth + (sideMargins/2.0)
+        hiddenStateConstraint = (-searchViewWidth)*2 - (sideMargins/2.0)
         
         return {}
         
@@ -69,11 +73,12 @@ class SlidingView: TouchesPassThroughView {
     /// The progress of each animator. This array is parallel to the `runningAnimators` array.
     private var animationProgress = [CGFloat]()
     
-    private lazy var panRecognizer: InstantPanGestureRecognizer = {
-        let recognizer = InstantPanGestureRecognizer()
+    private lazy var panRecognizer: UIPanGestureRecognizer = {
+        let recognizer = UIPanGestureRecognizer()
         recognizer.addTarget(self, action: #selector(popupViewPanned(recognizer:)))
         return recognizer
     }()
+
     
     /// Animates the transition, if the animation is not already running.
     private func animateTransitionIfNeeded(to state: SlidingViewState, duration: TimeInterval) {
@@ -89,6 +94,9 @@ class SlidingView: TouchesPassThroughView {
                 
             case .destiny:
                 self.destinyLeadingConstraint.constant = self.destinyStateConstraint
+                
+            case .hidden:
+                self.destinyLeadingConstraint.constant = self.hiddenStateConstraint
             }
             self.superview?.layoutIfNeeded()
         })
@@ -113,6 +121,9 @@ class SlidingView: TouchesPassThroughView {
                 
             case .destiny:
                 self.destinyLeadingConstraint.constant = self.destinyStateConstraint
+                
+            case .hidden:
+                self.destinyLeadingConstraint.constant = self.hiddenStateConstraint
             }
             
             // remove all running animators
@@ -176,6 +187,8 @@ class SlidingView: TouchesPassThroughView {
             case .destiny:
                 if shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
                 if !shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+            case .hidden:
+                break
             }
             
             // continue all animations

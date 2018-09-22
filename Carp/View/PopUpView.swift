@@ -37,14 +37,14 @@ class PopUpView: UIView {
     override func didMoveToSuperview() {
         layout()
         addGestureRecognizer(panRecognizer)
+        addGestureRecognizer(tapRecognizer)
     }
     
     func showView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+        DispatchQueue.main.async {
             self.animateTransitionIfNeeded(to: self.currentState.opposite, duration: 1.0)
             self.runningAnimators.forEach { $0.startAnimation() }
-            print(self.frame.height)
-        })
+        }
     }
     
     // MARK: - Layout
@@ -70,28 +70,28 @@ class PopUpView: UIView {
     
     // MARK: - Animation
     
-    /// The current state of the animation. This variable is changed only when an animation completes.
     private var currentState: State = .closed
     
-    /// All of the currently running animators.
     private var runningAnimators = [UIViewPropertyAnimator]()
     
-    /// The progress of each animator. This array is parallel to the `runningAnimators` array.
     private var animationProgress = [CGFloat]()
     
-    private lazy var panRecognizer: InstantPanGestureRecognizer = {
-        let recognizer = InstantPanGestureRecognizer()
-        recognizer.addTarget(self, action: #selector(popupViewPanned(recognizer:)))
+    private lazy var tapRecognizer: UITapGestureRecognizer = {
+        let recognizer = UITapGestureRecognizer()
+        recognizer.addTarget(self, action: #selector(popupViewTapped(recognizer:)))
         return recognizer
     }()
     
-    /// Animates the transition, if the animation is not already running.
+    private lazy var panRecognizer: UIPanGestureRecognizer = {
+        let recognizer = UIPanGestureRecognizer()
+        recognizer.addTarget(self, action: #selector(popupViewPanned(recognizer:)))
+        return recognizer
+    }()
+
     private func animateTransitionIfNeeded(to state: State, duration: TimeInterval) {
         
-        // ensure that the animators array is empty (which implies new animations need to be created)
         guard runningAnimators.isEmpty else { return }
         
-        // an animator for the transition
         let transitionAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1, animations: {
             switch state {
             case .open:
@@ -102,10 +102,9 @@ class PopUpView: UIView {
             self.superview?.layoutIfNeeded()
         })
         
-        // the transition completion block
         transitionAnimator.addCompletion { position in
             
-            // update the state
+
             switch position {
             case .start:
                 self.currentState = state.opposite
@@ -115,7 +114,6 @@ class PopUpView: UIView {
                 ()
             }
             
-            // manually reset the constraint positions
             switch self.currentState {
             case .open:
                 self.bottomConstraint.constant = 0
@@ -123,15 +121,12 @@ class PopUpView: UIView {
                 self.bottomConstraint.constant = self.popupOffset - 150
             }
             
-            // remove all running animators
             self.runningAnimators.removeAll()
             
         }
         
-        // start all animators
         transitionAnimator.startAnimation()
         
-        // keep track of all running animators
         runningAnimators.append(transitionAnimator)
         
     }
@@ -140,43 +135,34 @@ class PopUpView: UIView {
         switch recognizer.state {
         case .began:
             
-            // start the animations
             animateTransitionIfNeeded(to: currentState.opposite, duration: 1)
             
-            // pause all animations, since the next event may be a pan changed
             runningAnimators.forEach { $0.pauseAnimation() }
             
-            // keep track of each animator's progress
             animationProgress = runningAnimators.map { $0.fractionComplete }
             
         case .changed:
             
-            // variable setup
             let translation = recognizer.translation(in: self)
             var fraction = -translation.y / popupOffset
             
-            // adjust the fraction for the current state and reversed state
             if currentState == .open { fraction *= -1 }
             if runningAnimators[0].isReversed { fraction *= -1 }
             
-            // apply the new fraction
             for (index, animator) in runningAnimators.enumerated() {
                 animator.fractionComplete = fraction + animationProgress[index]
             }
             
         case .ended:
             
-            // variable setup
             let yVelocity = recognizer.velocity(in: self).y
             let shouldClose = yVelocity > 0
             
-            // if there is no motion, continue all animations and exit early
             if yVelocity == 0 {
                 runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
                 break
             }
             
-            // reverse the animations based on their current state and pan motion
             switch currentState {
             case .open:
                 if !shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
@@ -186,23 +172,20 @@ class PopUpView: UIView {
                 if !shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
             }
             
-            // continue all animations
             runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
             
         default:
             ()
         }
     }
-
-}
-
-class InstantPanGestureRecognizer: UIPanGestureRecognizer {
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
-        if (self.state == UIGestureRecognizer.State.began) { return }
-        super.touchesBegan(touches, with: event)
-        self.state = UIGestureRecognizer.State.began
+    @objc private func popupViewTapped(recognizer: UITapGestureRecognizer) {
+        if currentState == .closed {
+            DispatchQueue.main.async {
+                self.animateTransitionIfNeeded(to: self.currentState.opposite, duration: 1.0)
+                self.runningAnimators.forEach { $0.startAnimation() }
+            }
+        }
     }
-    
-}
 
+}

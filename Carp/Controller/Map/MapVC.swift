@@ -67,15 +67,11 @@ class MapVC: UIViewController, MapControllerDelegate {
         
         switch placeType {
         case .origin:
-            originMapMarker.map = nil
-            
             originMapMarker.position = place.locations.coordinate.clLocation
             originMapMarker.title = place.name
             originMapMarker.map = mapView
             
         case .destiny:
-            destinyMapMarker.map = nil
-            
             destinyMapMarker.position = place.locations.coordinate.clLocation
             destinyMapMarker.title = place.name
             destinyMapMarker.map = mapView

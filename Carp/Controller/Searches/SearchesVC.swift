@@ -181,14 +181,18 @@ extension SearchesVC: SearchViewDelegate {
         if currentState == SlidingViewState.origin {
             if let _destiny = self.destiny, let _origin = self.origin  {
                 guard let parent = parent as? MainVC else { return }
-                self.mapDelegate.drawRoute(from: _origin, to: _destiny)
-                parent.callRideDetailsVC(origin: _origin, destiny: _destiny)
-                self.view.isHidden = true
+                slidingView?.slideViewAnimated(to: .hidden, withDuration: 0.8)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    parent.callRideDetailsVC(origin: _origin, destiny: _destiny)
+                    self.mapDelegate.drawRoute(from: _origin, to: _destiny)
+                }
+                
                 return
             }
         }
         
-        slidingView?.slideViewAnimated()
+        slidingView?.slideViewAnimated(to: currentState.opposite, withDuration: 1.0)
         
     }
     
