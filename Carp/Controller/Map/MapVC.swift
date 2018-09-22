@@ -20,13 +20,28 @@ class MapVC: UIViewController, MapControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //originMapMarker.isDraggable = true
-        //destinyMapMarker.isDraggable = true
-
         mapView.settings.allowScrollGesturesDuringRotateOrZoom = false
         mapView.settings.myLocationButton = true
         mapView.isMyLocationEnabled = true
         mapView.animate(toLocation: locationsManager.userCoordinate)
+        
+        originMapMarker.icon = UIImage(named: "origin_map_marker")
+        originMapMarker.appearAnimation = .pop
+        originMapMarker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
+        
+        destinyMapMarker.icon = UIImage(named: "destiny_map_marker")
+        destinyMapMarker.appearAnimation = .pop
+        
+        do {
+            if let styleURL = Bundle.main.url(forResource: "MapStyle", withExtension: "json") {
+                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+            } else {
+                NSLog("Unable to find style.json")
+            }
+        } catch {
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,9 +87,9 @@ class MapVC: UIViewController, MapControllerDelegate {
     func drawRoute(from origin: Place, to destiny: Place) {
         
         let origin = "\(origin.locations.coordinate.lat),\(origin.locations.coordinate.lng)"
-        let destination = "\(destiny.locations.coordinate.lat),\(destiny.locations.coordinate.lat)"
+        let destination = "\(destiny.locations.coordinate.lat),\(destiny.locations.coordinate.lng)"
         
-        let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=drivingoogleg&key=AIzaSyDwfMVcDzcQ_w8XKJ-edAUu7NwZ1HJuEco"
+        let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyDwfMVcDzcQ_w8XKJ-edAUu7NwZ1HJuEco"
         
         print(urlString)
         
@@ -87,21 +102,24 @@ class MapVC: UIViewController, MapControllerDelegate {
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String : AnyObject]
                     let routes = json["routes"] as! NSArray
-                    self.mapView.clear()
+                    //self.mapView.clear()
                     
                     OperationQueue.main.addOperation({
-                        for route in routes
-                        {
+                        for route in routes {
                             let routeOverviewPolyline:NSDictionary = (route as! NSDictionary).value(forKey: "overview_polyline") as! NSDictionary
                             let points = routeOverviewPolyline.object(forKey: "points")
                             let path = GMSPath.init(fromEncodedPath: points! as! String)
                             let polyline = GMSPolyline.init(path: path)
-                            polyline.strokeWidth = 3
+                            polyline.strokeWidth = 5
+                            polyline.strokeColor = UIColor(color: .mainGreen)
                             
                             let bounds = GMSCoordinateBounds(path: path!)
                             self.mapView!.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 30.0))
                             
                             polyline.map = self.mapView
+                            
+                            self.originMapMarker.position = (path?.coordinate(at: 0))!
+                            self.destinyMapMarker.position = (path?.coordinate(at: (path?.count())! - 1))!
                             
                         }
                     })

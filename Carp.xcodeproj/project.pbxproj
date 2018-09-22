@@ -28,6 +28,7 @@
 		5C350ACE2152056200BA6E79 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C350ACD2152056200BA6E79 /* SearchTableView.swift */; };
 		5C5CE6EF214C80C1003059F0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CE6EE214C80C1003059F0 /* TextField.swift */; };
 		5C5CE6F3214DFE14003059F0 /* PPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CE6F2214DFE14003059F0 /* PPopUpView.swift */; };
+		5C5D2B232155C72D00C8DC55 /* MapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C5D2B222155C72D00C8DC55 /* MapStyle.json */; };
 		5C5F396321531DD900B396E8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F396221531DD900B396E8 /* Extensions.swift */; };
 		5C5F3965215322A100B396E8 /* Uber.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3964215322A000B396E8 /* Uber.png */; };
 		5C5F3967215322A700B396E8 /* 99.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3966215322A600B396E8 /* 99.jpeg */; };
@@ -75,6 +76,7 @@
 		5C350ACD2152056200BA6E79 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
 		5C5CE6EE214C80C1003059F0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		5C5CE6F2214DFE14003059F0 /* PPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPopUpView.swift; path = "../../../../../../Downloads/interactive-animations-master/InteractiveAnimations/InteractiveAnimations/PPopUpView.swift"; sourceTree = "<group>"; };
+		5C5D2B222155C72D00C8DC55 /* MapStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapStyle.json; sourceTree = "<group>"; };
 		5C5F396221531DD900B396E8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5C5F3964215322A000B396E8 /* Uber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Uber.png; sourceTree = "<group>"; };
 		5C5F3966215322A600B396E8 /* 99.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 99.jpeg; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 		5CF746FD213CEFAD00964ABC /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				5C5D2B222155C72D00C8DC55 /* MapStyle.json */,
 				5CF746E9213A3DB300964ABC /* MapVC.swift */,
 				5CF746EA213A3DB300964ABC /* MapVC.xib */,
 			);
@@ -454,6 +457,7 @@
 				5CDA7A672139DC7D009F24CB /* RideDetailsView.xib in Resources */,
 				5CDA7A632139DC5D009F24CB /* SearchResultsCell.xib in Resources */,
 				5C0D0A37213A0E0900385A3A /* Lato-HairlineItalic.ttf in Resources */,
+				5C5D2B232155C72D00C8DC55 /* MapStyle.json in Resources */,
 				5C350ACA2151FE9300BA6E79 /* fa-regular-400.ttf in Resources */,
 				5C0D0A38213A0E0B00385A3A /* Lato-Italic.ttf in Resources */,
 				5CDA7A692139DC85009F24CB /* ResultsView.xib in Resources */,

@@ -179,9 +179,9 @@ extension SearchesVC: SearchViewDelegate {
         viewEndEditing()
         
         if currentState == SlidingViewState.origin {
-            if let destiny = destiny, let origin = origin  {
+            if let _destiny = self.destiny, let _origin = self.origin  {
                 guard let parent = parent as? MainVC else { return }
-                self.mapDelegate.drawRoute(from: origin, to: destiny)
+                self.mapDelegate.drawRoute(from: _origin, to: _destiny)
                 //parent.callRideDetailsVC(origin: origin, destiny: destiny)
                 return
             }
