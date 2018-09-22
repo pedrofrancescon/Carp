@@ -26,5 +26,6 @@ struct Ride: Decodable {
     let timeInterval: DateInterval
     let numberOfSeats: NumberOfSeats
     let restriction: Restrictions
-    
+    let userId: String
+    let id: String
 }
