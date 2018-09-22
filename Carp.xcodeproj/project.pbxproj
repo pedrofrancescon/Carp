@@ -29,6 +29,7 @@
 		5C5CE6EF214C80C1003059F0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CE6EE214C80C1003059F0 /* TextField.swift */; };
 		5C5D2B232155C72D00C8DC55 /* MapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C5D2B222155C72D00C8DC55 /* MapStyle.json */; };
 		5C5D2B252156818900C8DC55 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D2B242156818900C8DC55 /* PopUpView.swift */; };
+		5C5D2B27215685BA00C8DC55 /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D2B26215685BA00C8DC55 /* SlidingView.swift */; };
 		5C5F396321531DD900B396E8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F396221531DD900B396E8 /* Extensions.swift */; };
 		5C5F3965215322A100B396E8 /* Uber.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3964215322A000B396E8 /* Uber.png */; };
 		5C5F3967215322A700B396E8 /* 99.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3966215322A600B396E8 /* 99.jpeg */; };
@@ -61,7 +62,7 @@
 		5CF746F4213C8ED500964ABC /* TouchesPassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF746F3213C8ED500964ABC /* TouchesPassThroughView.swift */; };
 		5CF746F8213C96AC00964ABC /* ResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF746F6213C96AC00964ABC /* ResultsVC.swift */; };
 		5CF746F9213C96AC00964ABC /* ResultsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF746F7213C96AC00964ABC /* ResultsVC.xib */; };
-		5CF74702213CF39C00964ABC /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF74701213CF39C00964ABC /* SlidingView.swift */; };
+		5CF74702213CF39C00964ABC /* old_SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF74701213CF39C00964ABC /* old_SlidingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		5C5CE6EE214C80C1003059F0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		5C5D2B222155C72D00C8DC55 /* MapStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapStyle.json; sourceTree = "<group>"; };
 		5C5D2B242156818900C8DC55 /* PopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		5C5D2B26215685BA00C8DC55 /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingView.swift; sourceTree = "<group>"; };
 		5C5F396221531DD900B396E8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5C5F3964215322A000B396E8 /* Uber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Uber.png; sourceTree = "<group>"; };
 		5C5F3966215322A600B396E8 /* 99.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 99.jpeg; sourceTree = "<group>"; };
@@ -121,7 +123,7 @@
 		5CF746F3213C8ED500964ABC /* TouchesPassThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesPassThroughView.swift; sourceTree = "<group>"; };
 		5CF746F6213C96AC00964ABC /* ResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsVC.swift; sourceTree = "<group>"; };
 		5CF746F7213C96AC00964ABC /* ResultsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsVC.xib; sourceTree = "<group>"; };
-		5CF74701213CF39C00964ABC /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingView.swift; sourceTree = "<group>"; };
+		5CF74701213CF39C00964ABC /* old_SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = old_SlidingView.swift; sourceTree = "<group>"; };
 		7E16524090A1CAA6184A56BA /* libPods-Carp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Carp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B319F3237E5CA8DC30EC3668 /* Pods-Carp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Carp/Pods-Carp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,9 +202,10 @@
 		5CDA7A422139DA85009F24CB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C5D2B26215685BA00C8DC55 /* SlidingView.swift */,
+				5CF74701213CF39C00964ABC /* old_SlidingView.swift */,
 				5C5D2B242156818900C8DC55 /* PopUpView.swift */,
 				5CDA7A592139DBE2009F24CB /* old_PopUpView.swift */,
-				5CF74701213CF39C00964ABC /* SlidingView.swift */,
 				5CF746F3213C8ED500964ABC /* TouchesPassThroughView.swift */,
 				5C5CE6EE214C80C1003059F0 /* TextField.swift */,
 				5CDA7A542139DB6C009F24CB /* SearchResults */,
@@ -534,9 +537,10 @@
 				5CDA7A582139DBAC009F24CB /* SearchView.swift in Sources */,
 				5C5F396321531DD900B396E8 /* Extensions.swift in Sources */,
 				5CDA7A472139DAD6009F24CB /* LocationsManager.swift in Sources */,
-				5CF74702213CF39C00964ABC /* SlidingView.swift in Sources */,
+				5CF74702213CF39C00964ABC /* old_SlidingView.swift in Sources */,
 				5CDA7A492139DAED009F24CB /* Place.swift in Sources */,
 				5C0D0A42213A28C200385A3A /* MainVC.swift in Sources */,
+				5C5D2B27215685BA00C8DC55 /* SlidingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
