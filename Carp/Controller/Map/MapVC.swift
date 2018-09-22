@@ -31,6 +31,7 @@ class MapVC: UIViewController, MapControllerDelegate {
         
         destinyMapMarker.icon = UIImage(named: "destiny_map_marker")
         destinyMapMarker.appearAnimation = .pop
+        destinyMapMarker.groundAnchor = CGPoint(x: 0.5, y: 0.91)
         
         do {
             if let styleURL = Bundle.main.url(forResource: "MapStyle", withExtension: "json") {
@@ -102,7 +103,6 @@ class MapVC: UIViewController, MapControllerDelegate {
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String : AnyObject]
                     let routes = json["routes"] as! NSArray
-                    //self.mapView.clear()
                     
                     OperationQueue.main.addOperation({
                         for route in routes {
@@ -114,12 +114,15 @@ class MapVC: UIViewController, MapControllerDelegate {
                             polyline.strokeColor = UIColor(color: .mainGreen)
                             
                             let bounds = GMSCoordinateBounds(path: path!)
-                            self.mapView!.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 30.0))
+                            // needs fixing for iPhone X
+                            self.mapView!.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 20, left: 20, bottom: 460, right: 20)))
                             
                             polyline.map = self.mapView
                             
-                            self.originMapMarker.position = (path?.coordinate(at: 0))!
-                            self.destinyMapMarker.position = (path?.coordinate(at: (path?.count())! - 1))!
+                            self.mapView.isMyLocationEnabled = false
+                            
+                            self.originMapMarker.position = path!.coordinate(at: 0)
+                            self.destinyMapMarker.position = path!.coordinate(at: path!.count() - 1)
                             
                         }
                     })

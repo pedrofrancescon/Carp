@@ -86,8 +86,6 @@ class RideDetailsView: PopUpView {
         
         timeDeadlineTextField.isEnabled = false
         
-        addShadow(blur: 10)
-        
         addToStackView(image: UIImage(named: "Uber")!)
         addToStackView(image: UIImage(named: "Cabify")!)
         addToStackView(image: UIImage(named: "99.jpeg")!)
@@ -103,10 +101,10 @@ class RideDetailsView: PopUpView {
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.addConstraint(NSLayoutConstraint(item: imageView,
-                                                        attribute: NSLayoutAttribute.height,
-                                                        relatedBy: NSLayoutRelation.equal,
+                                                        attribute: NSLayoutConstraint.Attribute.height,
+                                                        relatedBy: NSLayoutConstraint.Relation.equal,
                                                         toItem: imageView,
-                                                        attribute: NSLayoutAttribute.width,
+                                                        attribute: NSLayoutConstraint.Attribute.width,
                                                         multiplier: imageView.frame.size.height / imageView.frame.size.width,
                                                         constant: 0))
         
@@ -175,7 +173,7 @@ class RideDetailsView: PopUpView {
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Ok", style: .plain, target: self, action: #selector(doneRestrictionsPicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelPicker));
         
         toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
@@ -197,7 +195,7 @@ class RideDetailsView: PopUpView {
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Ok", style: .plain, target: self, action: #selector(doneDatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelPicker));
         
         toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
@@ -232,7 +230,7 @@ class RideDetailsView: PopUpView {
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Ok", style: .plain, target: self, action: #selector(doneDeadlineDatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelPicker));
         
         toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)

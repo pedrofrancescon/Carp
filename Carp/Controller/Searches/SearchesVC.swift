@@ -182,7 +182,8 @@ extension SearchesVC: SearchViewDelegate {
             if let _destiny = self.destiny, let _origin = self.origin  {
                 guard let parent = parent as? MainVC else { return }
                 self.mapDelegate.drawRoute(from: _origin, to: _destiny)
-                //parent.callRideDetailsVC(origin: origin, destiny: destiny)
+                parent.callRideDetailsVC(origin: _origin, destiny: _destiny)
+                self.view.isHidden = true
                 return
             }
         }

@@ -22,7 +22,7 @@ class TextField: UITextField {
         return CGRect.zero
     }
     
-    override func selectionRects(for range: UITextRange) -> [Any] {
+    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
         return []
     }
     

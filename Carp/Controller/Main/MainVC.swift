@@ -20,8 +20,8 @@ class MainVC: UIViewController {
         
         
         let navigationBtnAttributes = [
-            NSAttributedStringKey.font: UIFont(name: "FontAwesome5FreeSolid", size: 20.0) as Any,
-            NSAttributedStringKey.foregroundColor: UIColor.white as Any
+            NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 20.0) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor.white as Any
         ]
         
         let rightBarBtn = UIBarButtonItem(title: "\u{f013}", style: .plain, target: self, action: #selector(clicked))
@@ -34,8 +34,8 @@ class MainVC: UIViewController {
         
         navigationItem.title = "Nova Busca"
         
-        addChildViewController(mapVC)
-        addChildViewController(searchesVC)
+        addChild(mapVC)
+        addChild(searchesVC)
         
         view.addSubview(mapVC.view)
         view.addSubview(searchesVC.view)
@@ -59,7 +59,7 @@ class MainVC: UIViewController {
         rideDetailsVC.origin = origin
         rideDetailsVC.destiny = destiny
         
-        addChildViewController(rideDetailsVC)
+        addChild(rideDetailsVC)
         view.addSubview(rideDetailsVC.view)
         
         rideDetailsVC.rideDetailsView.showView()
@@ -84,7 +84,7 @@ class MainVC: UIViewController {
         rideDetailsVC = RideDetailsVC()
         guard let rideDetailsVC = rideDetailsVC else { return }
         
-        addChildViewController(rideDetailsVC)
+        addChild(rideDetailsVC)
         view.addSubview(rideDetailsVC.view)
         
         rideDetailsVC.rideDetailsView.showView()

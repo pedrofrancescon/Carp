@@ -10,7 +10,7 @@ import UIKit
 
 class SearchTableView: UITableView {
     
-    override func reloadSections(_ sections: IndexSet, with animation: UITableViewRowAnimation) {
+    override func reloadSections(_ sections: IndexSet, with animation: UITableView.RowAnimation) {
         super.reloadSections(sections, with: animation)
         
 //        UIView.animate(withDuration: 0.5) {
