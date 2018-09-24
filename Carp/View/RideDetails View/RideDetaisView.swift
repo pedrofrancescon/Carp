@@ -180,6 +180,7 @@ class RideDetailsView: PopUpView {
         
         restrictionsTextField.inputAccessoryView = toolbar
         restrictionsTextField.inputView = pickerView
+        restrictionsTextField.text = Restrictions.noRestriction.rawValue
         
     }
     
@@ -253,6 +254,11 @@ class RideDetailsView: PopUpView {
     
     @objc func cancelPicker(){
         endEditing(true)
+    }
+    
+    
+    @IBAction func pressedSearchRidesButton(_ sender: Any) {
+        parentVC?.createRide()
     }
     
 }

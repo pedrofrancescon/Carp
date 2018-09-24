@@ -14,13 +14,15 @@ import UIKit.UIGestureRecognizerSubclass
 private enum State {
     case closed
     case open
+    case half
 }
 
 extension State {
     var opposite: State {
         switch self {
-        case .open: return .closed
+        case .open: return .half
         case .closed: return .open
+        case .half: return .open
         }
     }
 }
@@ -42,7 +44,14 @@ class PopUpView: UIView {
     
     func showView() {
         DispatchQueue.main.async {
-            self.animateTransitionIfNeeded(to: self.currentState.opposite, duration: 1.0)
+            self.animateTransitionIfNeeded(to: .open, duration: 1.0)
+            self.runningAnimators.forEach { $0.startAnimation() }
+        }
+    }
+    
+    func hideView() {
+        DispatchQueue.main.async {
+            self.animateTransitionIfNeeded(to: .closed, duration: 1.0)
             self.runningAnimators.forEach { $0.startAnimation() }
         }
     }
@@ -97,6 +106,8 @@ class PopUpView: UIView {
             case .open:
                 self.bottomConstraint.constant = 0
             case .closed:
+                self.bottomConstraint.constant = self.popupOffset
+            case.half:
                 self.bottomConstraint.constant = self.popupOffset - 150
             }
             self.superview?.layoutIfNeeded()
@@ -118,6 +129,8 @@ class PopUpView: UIView {
             case .open:
                 self.bottomConstraint.constant = 0
             case .closed:
+                self.bottomConstraint.constant = self.popupOffset
+            case.half:
                 self.bottomConstraint.constant = self.popupOffset - 150
             }
             
@@ -168,6 +181,9 @@ class PopUpView: UIView {
                 if !shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
                 if shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
             case .closed:
+                if shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+                if !shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+            case .half:
                 if shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
                 if !shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
             }

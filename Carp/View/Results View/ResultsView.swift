@@ -44,13 +44,10 @@ class ResultsView: PopUpView {
         chatButton.setTitle("Chat", for: .normal)
         chatButton.setTitleColor(UIColor(color: .greyText), for: .normal)
         
-    }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        
         tableView.frame = contentView.frame
+        tableView.separatorStyle = .singleLine
         containerView.addSubview(tableView)
+        
     }
     
 }
