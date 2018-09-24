@@ -31,6 +31,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        let coordinate = Coordinate(lat: 0, lng: 0)
+        let locations = Locations(coordinate: Coordinate(lat: 0, lng: 0), viewPortBounds: ViewPortBounds(northeast: coordinate, southwest: coordinate))
+        let place = Place(name: "Busca de teste", locations: locations)
+        
+        RideRequestsManager().findMatches(
+            Ride(
+                origin: place,
+                destiny: place,
+                timeInterval: DateInterval(),
+                numberOfSeats: NumberOfSeats.one,
+                restriction: Restrictions.noRestriction,
+                userId: "eldade",
+                id: ""
+            ),
+            onUpdate: { cars in
+                print(cars)
+            }
+        )
+        
         return true
     }
     

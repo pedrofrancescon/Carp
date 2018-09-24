@@ -27,6 +27,26 @@ class RideRequestsManager {
         }
     }
     
-    
-    
+    func findMatches(_ ride: Ride, onUpdate: @escaping ([Car]) -> Void) -> ListenerRegistration {
+        return db.collection("cars").addSnapshotListener({ (snapshot, error) in
+            if let error = error {
+                print("Could not retrieve matches: \(error)")
+            } else {
+                snapshot!.documents.forEach({ doc in
+                    let hostRideId = doc.data()["hostRequest"] as! String
+                    self
+                        .db
+                        .document("ride-requests/\(hostRideId)")
+                        .getDocument(completion: { (rideRef, error) in
+                        if let error = error {
+                            print("Could not retrieve host ride: \(error)")
+                        } else {
+                            let ride = try! RideFromDbFormat(docId: rideRef!.documentID, rideRef!.data() ?? [:])
+                            onUpdate([try? CarFromDbFormat(docId: doc.documentID, riders: [], owner: ride, doc.data())].filter({ $0 != nil }) as! [Car])
+                        }
+                    })
+                })
+            }
+        })
+    }
 }
