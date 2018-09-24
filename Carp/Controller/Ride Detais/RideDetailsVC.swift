@@ -41,6 +41,18 @@ class RideDetailsVC: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func createRide() {
+        
+        if let origin = origin, let destiny = destiny, let timeInterval = timeInterval, let numberOfSeats = numberOfSeats, let restriction = restriction {
+            
+            let newRide = Ride.init(origin: origin, destiny: destiny, timeInterval: timeInterval, numberOfSeats: numberOfSeats, restriction: restriction, userId: "", id: "")
+            
+        }
+        
+        
+        
+    }
 
 }
 

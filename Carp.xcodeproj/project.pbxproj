@@ -38,6 +38,7 @@
 		5CBA6DC3214B38560062EBF2 /* RideDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */; };
 		5CD41B3121593D7900996514 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD41B3021593D7800996514 /* GoogleService-Info.plist */; };
 		5CD41B3321593E9100996514 /* MapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CD41B3221593E9100996514 /* MapStyle.json */; };
+		5CD41B352159432400996514 /* RideRequestsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD41B342159432400996514 /* RideRequestsManager.swift */; };
 		5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A2F2139DA4E009F24CB /* AppDelegate.swift */; };
 		5CDA7A372139DA4F009F24CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A362139DA4F009F24CB /* Assets.xcassets */; };
 		5CDA7A3A2139DA4F009F24CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A382139DA4F009F24CB /* LaunchScreen.storyboard */; };
@@ -88,6 +89,7 @@
 		5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideDetailsVC.xib; sourceTree = "<group>"; };
 		5CD41B3021593D7800996514 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5CD41B3221593E9100996514 /* MapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapStyle.json; sourceTree = "<group>"; };
+		5CD41B342159432400996514 /* RideRequestsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestsManager.swift; sourceTree = "<group>"; };
 		5CDA7A2C2139DA4E009F24CB /* Carp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CDA7A2F2139DA4E009F24CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CDA7A362139DA4F009F24CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				5CDA7A462139DAD6009F24CB /* LocationsManager.swift */,
+				5CD41B342159432400996514 /* RideRequestsManager.swift */,
 				5CDA7A482139DAED009F24CB /* Place.swift */,
 				5C350AC72151D2AB00BA6E79 /* Ride.swift */,
 				5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */,
@@ -490,11 +493,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Carp/Pods-Carp-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC/gRPCCertificates.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -534,6 +539,7 @@
 				5C5CE6EF214C80C1003059F0 /* TextField.swift in Sources */,
 				5C350AC82151D2AB00BA6E79 /* Ride.swift in Sources */,
 				5CDA7A612139DC4B009F24CB /* ResultsCell.swift in Sources */,
+				5CD41B352159432400996514 /* RideRequestsManager.swift in Sources */,
 				5CBA6DC2214B38560062EBF2 /* RideDetailsVC.swift in Sources */,
 				5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */,
 				5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */,

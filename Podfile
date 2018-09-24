@@ -3,6 +3,6 @@ target 'Carp' do
 	pod 'GoogleMaps'
   	pod 'GooglePlaces'
 	pod 'Firebase/Core'
-	pod 'Firebase/Database'
-	pod 'Firebase/Auth'
+	pod 'Firebase/Firestore'
+
 end
