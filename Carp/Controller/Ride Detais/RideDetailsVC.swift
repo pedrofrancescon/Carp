@@ -48,9 +48,10 @@ class RideDetailsVC: UIViewController {
             
             let newRide = Ride.init(origin: origin, destiny: destiny, timeInterval: timeInterval, numberOfSeats: numberOfSeats, restriction: restriction, userId: "", id: "")
             
+            guard let parent = parent as? MainVC else { return }
+            
+            parent.callResultsVC(ride: newRide)
         }
-        
-        
         
     }
 

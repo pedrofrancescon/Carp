@@ -12,6 +12,8 @@ class ResultsVC: UIViewController {
     
     let resultsView: ResultsView
     
+    //private let ride: Ride?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,12 @@ class ResultsVC: UIViewController {
     }
     
     init() {
+        resultsView = ResultsView(frame: .zero)
+        super.init(nibName: "ResultsVC", bundle: nil)
+    }
+    
+    init(ride: Ride) {
+        //self.ride = ride
         resultsView = ResultsView(frame: .zero)
         super.init(nibName: "ResultsVC", bundle: nil)
     }
@@ -44,17 +52,18 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 74
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let currentCell = cell as! ResultsCell
         
-        currentCell.userNameLabel.text = "Alfredo Gulismão da Silva"
         currentCell.originDistanceLabel.text = "500 m"
         currentCell.destinyDistanceLabel.text = "200 m"
         currentCell.timeLabel.text = "14h24"
-        currentCell.userProfileImage.image = UIImage(named: "Bitmap")
+        currentCell.addToStackView(image: UIImage(named: "Uber")!)
+        currentCell.addToStackView(image: UIImage(named: "Cabify")!)
+        currentCell.addToStackView(image: UIImage(named: "99.jpeg")!)
         
     }
     
