@@ -34,8 +34,8 @@ class MainVC: UIViewController {
         
         navigationItem.title = "Nova Busca"
         
-        addChild(mapVC)
-        addChild(searchesVC)
+        addChildViewController(mapVC)
+        addChildViewController(searchesVC)
         
         view.addSubview(mapVC.view)
         view.addSubview(searchesVC.view)
@@ -59,7 +59,7 @@ class MainVC: UIViewController {
         rideDetailsVC.origin = origin
         rideDetailsVC.destiny = destiny
         
-        addChild(rideDetailsVC)
+        addChildViewController(rideDetailsVC)
         view.addSubview(rideDetailsVC.view)
         
         rideDetailsVC.rideDetailsView.showView()
@@ -84,7 +84,7 @@ class MainVC: UIViewController {
         rideDetailsVC = RideDetailsVC()
         guard let rideDetailsVC = rideDetailsVC else { return }
         
-        addChild(rideDetailsVC)
+        addChildViewController(rideDetailsVC)
         view.addSubview(rideDetailsVC.view)
         
         rideDetailsVC.rideDetailsView.showView()

@@ -16,7 +16,6 @@ extension UIView {
         layer.shadowOpacity = 27/100
         layer.shadowRadius = blur
         layer.shadowOffset = CGSize.zero
-        
     }
     
 }

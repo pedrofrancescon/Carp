@@ -121,7 +121,7 @@ class LocationsManager: CLLocationManager, CLLocationManagerDelegate, GMSAutocom
     override init() {
         
         let filter = GMSAutocompleteFilter()
-        filter.type = .establishment
+        filter.type = .noFilter
         filter.country = "BR"
         
         placesFetcher = GMSAutocompleteFetcher(bounds: nil, filter: filter)

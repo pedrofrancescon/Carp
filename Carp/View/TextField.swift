@@ -22,9 +22,9 @@ class TextField: UITextField {
         return CGRect.zero
     }
     
-    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
-        return []
-    }
+//    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
+//        return []
+//    }
     
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(copy(_:)) || action == #selector(selectAll(_:)) || action == #selector(paste(_:)) {

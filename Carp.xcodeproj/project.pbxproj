@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3851172DF45B102A2B70A3F0 /* libPods-Carp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E16524090A1CAA6184A56BA /* libPods-Carp.a */; };
+		511B79F821545F930025B110 /* EntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511B79F721545F930025B110 /* EntityMapper.swift */; };
+		5194E33821558B110015B0DF /* CarpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33721558B110015B0DF /* CarpUser.swift */; };
+		5194E33A21558F3D0015B0DF /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33921558F3D0015B0DF /* Car.swift */; };
 		5C0D0A32213A0DF500385A3A /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A722139DDBE009F24CB /* Lato-Black.ttf */; };
 		5C0D0A33213A0DFC00385A3A /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A752139DDBE009F24CB /* Lato-BlackItalic.ttf */; };
 		5C0D0A34213A0E0200385A3A /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A712139DDBE009F24CB /* Lato-Bold.ttf */; };
@@ -27,16 +30,14 @@
 		5C350ACC2151FEDC00BA6E79 /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C350ACB2151FEDB00BA6E79 /* fa-solid-900.ttf */; };
 		5C350ACE2152056200BA6E79 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C350ACD2152056200BA6E79 /* SearchTableView.swift */; };
 		5C5CE6EF214C80C1003059F0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CE6EE214C80C1003059F0 /* TextField.swift */; };
-		5C5D2B232155C72D00C8DC55 /* MapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C5D2B222155C72D00C8DC55 /* MapStyle.json */; };
-		5C5D2B252156818900C8DC55 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D2B242156818900C8DC55 /* PopUpView.swift */; };
-		5C5D2B27215685BA00C8DC55 /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D2B26215685BA00C8DC55 /* SlidingView.swift */; };
 		5C5F396321531DD900B396E8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F396221531DD900B396E8 /* Extensions.swift */; };
 		5C5F3965215322A100B396E8 /* Uber.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3964215322A000B396E8 /* Uber.png */; };
 		5C5F3967215322A700B396E8 /* 99.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3966215322A600B396E8 /* 99.jpeg */; };
 		5C5F3969215322B100B396E8 /* Cabify.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3968215322B000B396E8 /* Cabify.png */; };
 		5CBA6DC2214B38560062EBF2 /* RideDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */; };
 		5CBA6DC3214B38560062EBF2 /* RideDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */; };
-		5CBFB7A7215462940088A210 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CBFB7A6215462940088A210 /* GoogleService-Info.plist */; };
+		5CD41B3121593D7900996514 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD41B3021593D7800996514 /* GoogleService-Info.plist */; };
+		5CD41B3321593E9100996514 /* MapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CD41B3221593E9100996514 /* MapStyle.json */; };
 		5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A2F2139DA4E009F24CB /* AppDelegate.swift */; };
 		5CDA7A372139DA4F009F24CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A362139DA4F009F24CB /* Assets.xcassets */; };
 		5CDA7A3A2139DA4F009F24CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A382139DA4F009F24CB /* LaunchScreen.storyboard */; };
@@ -46,6 +47,7 @@
 		5CDA7A4D2139DB22009F24CB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A4C2139DB22009F24CB /* Colors.swift */; };
 		5CDA7A562139DB94009F24CB /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A552139DB94009F24CB /* SearchResultsCell.swift */; };
 		5CDA7A582139DBAC009F24CB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A572139DBAC009F24CB /* SearchView.swift */; };
+		5CDA7A5A2139DBE2009F24CB /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A592139DBE2009F24CB /* PopUpView.swift */; };
 		5CDA7A5C2139DC01009F24CB /* RideDetaisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A5B2139DC01009F24CB /* RideDetaisView.swift */; };
 		5CDA7A5E2139DC24009F24CB /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A5D2139DC24009F24CB /* ResultsView.swift */; };
 		5CDA7A612139DC4B009F24CB /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A602139DC4B009F24CB /* ResultsCell.swift */; };
@@ -61,10 +63,14 @@
 		5CF746F4213C8ED500964ABC /* TouchesPassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF746F3213C8ED500964ABC /* TouchesPassThroughView.swift */; };
 		5CF746F8213C96AC00964ABC /* ResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF746F6213C96AC00964ABC /* ResultsVC.swift */; };
 		5CF746F9213C96AC00964ABC /* ResultsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF746F7213C96AC00964ABC /* ResultsVC.xib */; };
+		5CF74702213CF39C00964ABC /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF74701213CF39C00964ABC /* SlidingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		345E43C47982DE3654D94CA7 /* Pods-Carp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Carp/Pods-Carp.debug.xcconfig"; sourceTree = "<group>"; };
+		511B79F721545F930025B110 /* EntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityMapper.swift; sourceTree = "<group>"; };
+		5194E33721558B110015B0DF /* CarpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarpUser.swift; sourceTree = "<group>"; };
+		5194E33921558F3D0015B0DF /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		5C0D0A40213A28C200385A3A /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		5C0D0A41213A28C200385A3A /* MainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
 		5C0D0A46213A294C00385A3A /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -74,16 +80,14 @@
 		5C350ACB2151FEDB00BA6E79 /* fa-solid-900.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-solid-900.ttf"; sourceTree = "<group>"; };
 		5C350ACD2152056200BA6E79 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
 		5C5CE6EE214C80C1003059F0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		5C5D2B222155C72D00C8DC55 /* MapStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapStyle.json; sourceTree = "<group>"; };
-		5C5D2B242156818900C8DC55 /* PopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
-		5C5D2B26215685BA00C8DC55 /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingView.swift; sourceTree = "<group>"; };
 		5C5F396221531DD900B396E8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5C5F3964215322A000B396E8 /* Uber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Uber.png; sourceTree = "<group>"; };
 		5C5F3966215322A600B396E8 /* 99.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 99.jpeg; sourceTree = "<group>"; };
 		5C5F3968215322B000B396E8 /* Cabify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cabify.png; sourceTree = "<group>"; };
 		5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsVC.swift; sourceTree = "<group>"; };
 		5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideDetailsVC.xib; sourceTree = "<group>"; };
-		5CBFB7A6215462940088A210 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5CD41B3021593D7800996514 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5CD41B3221593E9100996514 /* MapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapStyle.json; sourceTree = "<group>"; };
 		5CDA7A2C2139DA4E009F24CB /* Carp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CDA7A2F2139DA4E009F24CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CDA7A362139DA4F009F24CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 		5CDA7A4C2139DB22009F24CB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5CDA7A552139DB94009F24CB /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
 		5CDA7A572139DBAC009F24CB /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		5CDA7A592139DBE2009F24CB /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		5CDA7A5B2139DC01009F24CB /* RideDetaisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetaisView.swift; sourceTree = "<group>"; };
 		5CDA7A5D2139DC24009F24CB /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		5CDA7A602139DC4B009F24CB /* ResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
@@ -120,6 +125,7 @@
 		5CF746F3213C8ED500964ABC /* TouchesPassThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesPassThroughView.swift; sourceTree = "<group>"; };
 		5CF746F6213C96AC00964ABC /* ResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsVC.swift; sourceTree = "<group>"; };
 		5CF746F7213C96AC00964ABC /* ResultsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsVC.xib; sourceTree = "<group>"; };
+		5CF74701213CF39C00964ABC /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingView.swift; sourceTree = "<group>"; };
 		7E16524090A1CAA6184A56BA /* libPods-Carp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Carp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B319F3237E5CA8DC30EC3668 /* Pods-Carp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Carp/Pods-Carp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +142,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		511B79F621545F7A0025B110 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				511B79F721545F930025B110 /* EntityMapper.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		5CBA6DC4214B388B0062EBF2 /* Ride Detais */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +180,7 @@
 		5CDA7A2E2139DA4E009F24CB /* Carp */ = {
 			isa = PBXGroup;
 			children = (
+				511B79F621545F7A0025B110 /* Util */,
 				5CDA7A6C2139DD9F009F24CB /* Fonts */,
 				5CDA7A2F2139DA4E009F24CB /* AppDelegate.swift */,
 				5C5F3966215322A600B396E8 /* 99.jpeg */,
@@ -173,7 +188,7 @@
 				5C5F3964215322A000B396E8 /* Uber.png */,
 				5CDA7A362139DA4F009F24CB /* Assets.xcassets */,
 				5CDA7A382139DA4F009F24CB /* LaunchScreen.storyboard */,
-				5CBFB7A6215462940088A210 /* GoogleService-Info.plist */,
+				5CD41B3021593D7800996514 /* GoogleService-Info.plist */,
 				5CDA7A3B2139DA4F009F24CB /* Info.plist */,
 				5CDA7A432139DA89009F24CB /* Controller */,
 				5CDA7A422139DA85009F24CB /* View */,
@@ -191,6 +206,8 @@
 				5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */,
 				5CDA7A4C2139DB22009F24CB /* Colors.swift */,
 				5C5F396221531DD900B396E8 /* Extensions.swift */,
+				5194E33721558B110015B0DF /* CarpUser.swift */,
+				5194E33921558F3D0015B0DF /* Car.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,8 +215,8 @@
 		5CDA7A422139DA85009F24CB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5C5D2B26215685BA00C8DC55 /* SlidingView.swift */,
-				5C5D2B242156818900C8DC55 /* PopUpView.swift */,
+				5CDA7A592139DBE2009F24CB /* PopUpView.swift */,
+				5CF74701213CF39C00964ABC /* SlidingView.swift */,
 				5CF746F3213C8ED500964ABC /* TouchesPassThroughView.swift */,
 				5C5CE6EE214C80C1003059F0 /* TextField.swift */,
 				5CDA7A542139DB6C009F24CB /* SearchResults */,
@@ -326,7 +343,7 @@
 		5CF746FD213CEFAD00964ABC /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				5C5D2B222155C72D00C8DC55 /* MapStyle.json */,
+				5CD41B3221593E9100996514 /* MapStyle.json */,
 				5CF746E9213A3DB300964ABC /* MapVC.swift */,
 				5CF746EA213A3DB300964ABC /* MapVC.xib */,
 			);
@@ -402,7 +419,6 @@
 				TargetAttributes = {
 					5CDA7A2B2139DA4E009F24CB = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -433,7 +449,7 @@
 				5C5F3967215322A700B396E8 /* 99.jpeg in Resources */,
 				5C0D0A39213A0E0E00385A3A /* Lato-Light.ttf in Resources */,
 				5CF746EC213A3DB300964ABC /* MapVC.xib in Resources */,
-				5CBFB7A7215462940088A210 /* GoogleService-Info.plist in Resources */,
+				5CD41B3121593D7900996514 /* GoogleService-Info.plist in Resources */,
 				5CDA7A652139DC72009F24CB /* SearchView.xib in Resources */,
 				5CF746F2213A3E1500964ABC /* SearchesVC.xib in Resources */,
 				5C0D0A3B213A0E1300385A3A /* Lato-Regular.ttf in Resources */,
@@ -455,7 +471,7 @@
 				5CDA7A672139DC7D009F24CB /* RideDetailsView.xib in Resources */,
 				5CDA7A632139DC5D009F24CB /* SearchResultsCell.xib in Resources */,
 				5C0D0A37213A0E0900385A3A /* Lato-HairlineItalic.ttf in Resources */,
-				5C5D2B232155C72D00C8DC55 /* MapStyle.json in Resources */,
+				5CD41B3321593E9100996514 /* MapStyle.json in Resources */,
 				5C350ACA2151FE9300BA6E79 /* fa-regular-400.ttf in Resources */,
 				5C0D0A38213A0E0B00385A3A /* Lato-Italic.ttf in Resources */,
 				5CDA7A692139DC85009F24CB /* ResultsView.xib in Resources */,
@@ -512,8 +528,9 @@
 			files = (
 				5CDA7A5C2139DC01009F24CB /* RideDetaisView.swift in Sources */,
 				5CDA7A562139DB94009F24CB /* SearchResultsCell.swift in Sources */,
-				5C5D2B252156818900C8DC55 /* PopUpView.swift in Sources */,
 				5CF746F1213A3E1500964ABC /* SearchesVC.swift in Sources */,
+				5194E33821558B110015B0DF /* CarpUser.swift in Sources */,
+				5194E33A21558F3D0015B0DF /* Car.swift in Sources */,
 				5C5CE6EF214C80C1003059F0 /* TextField.swift in Sources */,
 				5C350AC82151D2AB00BA6E79 /* Ride.swift in Sources */,
 				5CDA7A612139DC4B009F24CB /* ResultsCell.swift in Sources */,
@@ -521,8 +538,10 @@
 				5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */,
 				5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */,
 				5CDA7A4D2139DB22009F24CB /* Colors.swift in Sources */,
+				5CDA7A5A2139DBE2009F24CB /* PopUpView.swift in Sources */,
 				5CDA7A5E2139DC24009F24CB /* ResultsView.swift in Sources */,
 				5C350ACE2152056200BA6E79 /* SearchTableView.swift in Sources */,
+				511B79F821545F930025B110 /* EntityMapper.swift in Sources */,
 				5CF746EB213A3DB300964ABC /* MapVC.swift in Sources */,
 				5CDA7A4B2139DB0C009F24CB /* KeyPath.swift in Sources */,
 				5CF746F8213C96AC00964ABC /* ResultsVC.swift in Sources */,
@@ -530,9 +549,9 @@
 				5CDA7A582139DBAC009F24CB /* SearchView.swift in Sources */,
 				5C5F396321531DD900B396E8 /* Extensions.swift in Sources */,
 				5CDA7A472139DAD6009F24CB /* LocationsManager.swift in Sources */,
+				5CF74702213CF39C00964ABC /* SlidingView.swift in Sources */,
 				5CDA7A492139DAED009F24CB /* Place.swift in Sources */,
 				5C0D0A42213A28C200385A3A /* MainVC.swift in Sources */,
-				5C5D2B27215685BA00C8DC55 /* SlidingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,9 +695,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.carp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Carp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -695,9 +714,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.carp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Carp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

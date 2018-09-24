@@ -65,6 +65,8 @@ class MapVC: UIViewController, MapControllerDelegate {
     
     func createMapMarker(of placeType: PlaceType, with place: Place) {
         
+        mapView.isMyLocationEnabled = false
+        
         switch placeType {
         case .origin:
             originMapMarker.position = place.locations.coordinate.clLocation
@@ -111,7 +113,7 @@ class MapVC: UIViewController, MapControllerDelegate {
                             
                             let bounds = GMSCoordinateBounds(path: path!)
                             // needs fixing for iPhone X
-                            self.mapView!.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 20, left: 20, bottom: 460, right: 20)))
+                            self.mapView!.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 35, left: 20, bottom: 460, right: 20)))
                             
                             polyline.map = self.mapView
                             
