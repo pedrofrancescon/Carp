@@ -219,8 +219,6 @@ extension SearchesVC: SearchViewDelegate {
             locationsManager.getPlacePredictions(with: newText) { (predictions) in
                 self.originPredictions = predictions
                 self.originTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-                
-                //self.originTableView.updateTableSize()
             }
             
             if newText == "" {

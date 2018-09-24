@@ -61,6 +61,7 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
         currentCell.originDistanceLabel.text = "500 m"
         currentCell.destinyDistanceLabel.text = "200 m"
         currentCell.timeLabel.text = "14h24"
+        
         currentCell.addToStackView(image: UIImage(named: "Uber")!)
         currentCell.addToStackView(image: UIImage(named: "Cabify")!)
         currentCell.addToStackView(image: UIImage(named: "99.jpeg")!)

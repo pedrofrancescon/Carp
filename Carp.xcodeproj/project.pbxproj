@@ -237,8 +237,8 @@
 				5CF746FC213CEF9F00964ABC /* Main */,
 				5CF746FD213CEFAD00964ABC /* Map */,
 				5CF746FE213CEFBC00964ABC /* Searches */,
-				5CF74700213CEFE100964ABC /* Results */,
 				5CBA6DC4214B388B0062EBF2 /* Ride Detais */,
+				5CF74700213CEFE100964ABC /* Results */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

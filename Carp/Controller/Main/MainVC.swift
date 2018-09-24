@@ -111,6 +111,7 @@ class MainVC: UIViewController {
     }
     
     @objc func clicked() {
+        
 //        if rideDetailsVC != nil {
 //            rideDetailsVC?.rideDetailsView.showView()
 //            return

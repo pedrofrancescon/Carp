@@ -28,6 +28,8 @@ class RideDetailsView: PopUpView {
     @IBOutlet weak var twoSeatsButton: UIButton!
     @IBOutlet weak var threeSeatsButton: UIButton!
     
+    @IBOutlet weak var searchButton: UIButton!
+    
     @IBOutlet weak var servicesIconsStackView: UIStackView!
     
     @IBOutlet weak var fareEstimateLabel: UILabel!
@@ -73,6 +75,26 @@ class RideDetailsView: PopUpView {
         
         timeIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 15)
         restrictionsIcon.text = "\u{f502}"
+        
+        let iconAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 16.0) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor.white as Any
+        ]
+        
+        let textAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16.0) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor.white as Any
+        ]
+        
+        let stringIcon = NSMutableAttributedString(string: "\u{f002}", attributes: iconAttributes)
+        let stringText = NSMutableAttributedString(string: " Procurar Pessoas", attributes: textAttributes)
+        
+        let resultsCombination = NSMutableAttributedString()
+        
+        resultsCombination.append(stringIcon)
+        resultsCombination.append(stringText)
+        
+        searchButton.setAttributedTitle(resultsCombination, for: .normal)
         
         fareEstimateLabel.textColor = UIColor(color: .darkGreyText)
         

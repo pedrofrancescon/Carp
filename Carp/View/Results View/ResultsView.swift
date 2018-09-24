@@ -38,11 +38,45 @@ class ResultsView: PopUpView {
     }
     
     override func layoutSubviews() {
-        resultsButton.setTitle("Resultados", for: .normal)
-        resultsButton.setTitleColor(UIColor(rgb: 0x489773), for: .normal)
+        let greenIconAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 16.0) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor(rgb: 0x489773) as Any
+        ]
         
-        chatButton.setTitle("Chat", for: .normal)
-        chatButton.setTitleColor(UIColor(color: .greyText), for: .normal)
+        let greenTextAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16.0) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor(rgb: 0x489773) as Any
+        ]
+        
+        let greyIconAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 16.0) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor(color: .greyText) as Any
+        ]
+        
+        let greyTextAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16.0) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor(color: .greyText) as Any
+        ]
+        
+        let resultsStringIcon = NSMutableAttributedString(string: "\u{f0ca}", attributes: greenIconAttributes)
+        let resultsStringText = NSMutableAttributedString(string: "  Resultados", attributes: greenTextAttributes)
+        
+        let resultsCombination = NSMutableAttributedString()
+        
+        resultsCombination.append(resultsStringIcon)
+        resultsCombination.append(resultsStringText)
+        
+        resultsButton.setAttributedTitle(resultsCombination, for: .normal)
+        
+        let carStringIcon = NSMutableAttributedString(string: "\u{f1ba}", attributes: greyIconAttributes)
+        let carStringText = NSMutableAttributedString(string: "  Carro", attributes: greyTextAttributes)
+        
+        let carCombination = NSMutableAttributedString()
+        
+        carCombination.append(carStringIcon)
+        carCombination.append(carStringText)
+        
+        chatButton.setAttributedTitle(carCombination, for: .normal)
         
         tableView.frame = contentView.frame
         tableView.separatorStyle = .singleLine
