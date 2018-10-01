@@ -26,6 +26,7 @@
 		5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D0A46213A294C00385A3A /* MainNavigationController.swift */; };
 		5C0D0A49213A294C00385A3A /* MainNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0D0A47213A294C00385A3A /* MainNavigationController.xib */; };
 		5C175B132162D9D600C1FDA2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C175B122162D9D600C1FDA2 /* MapView.swift */; };
+		5C175B172162E9C500C1FDA2 /* PersistantDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C175B162162E9C500C1FDA2 /* PersistantDataManager.swift */; };
 		5C350AC82151D2AB00BA6E79 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C350AC72151D2AB00BA6E79 /* Ride.swift */; };
 		5C350ACA2151FE9300BA6E79 /* fa-regular-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C350AC92151FE5900BA6E79 /* fa-regular-400.ttf */; };
 		5C350ACC2151FEDC00BA6E79 /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C350ACB2151FEDB00BA6E79 /* fa-solid-900.ttf */; };
@@ -78,6 +79,7 @@
 		5C0D0A46213A294C00385A3A /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		5C0D0A47213A294C00385A3A /* MainNavigationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNavigationController.xib; sourceTree = "<group>"; };
 		5C175B122162D9D600C1FDA2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		5C175B162162E9C500C1FDA2 /* PersistantDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantDataManager.swift; sourceTree = "<group>"; };
 		5C350AC72151D2AB00BA6E79 /* Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
 		5C350AC92151FE5900BA6E79 /* fa-regular-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-regular-400.ttf"; sourceTree = "<group>"; };
 		5C350ACB2151FEDB00BA6E79 /* fa-solid-900.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-solid-900.ttf"; sourceTree = "<group>"; };
@@ -163,6 +165,16 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		5C175B182162E9CE00C1FDA2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5C175B162162E9C500C1FDA2 /* PersistantDataManager.swift */,
+				5CDA7A462139DAD6009F24CB /* LocationsManager.swift */,
+				5CD41B342159432400996514 /* RideRequestsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		5CBA6DC4214B388B0062EBF2 /* Ride Detais */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,8 +225,7 @@
 		5CDA7A412139DA80009F24CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5CDA7A462139DAD6009F24CB /* LocationsManager.swift */,
-				5CD41B342159432400996514 /* RideRequestsManager.swift */,
+				5C175B182162E9CE00C1FDA2 /* Managers */,
 				5CDA7A482139DAED009F24CB /* Place.swift */,
 				5C350AC72151D2AB00BA6E79 /* Ride.swift */,
 				5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */,
@@ -555,6 +566,7 @@
 				5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */,
 				5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */,
 				5CDA7A4D2139DB22009F24CB /* Colors.swift in Sources */,
+				5C175B172162E9C500C1FDA2 /* PersistantDataManager.swift in Sources */,
 				5CDA7A5A2139DBE2009F24CB /* PopUpView.swift in Sources */,
 				5CDA7A5E2139DC24009F24CB /* ResultsView.swift in Sources */,
 				5C350ACE2152056200BA6E79 /* SearchTableView.swift in Sources */,

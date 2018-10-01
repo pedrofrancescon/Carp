@@ -88,6 +88,8 @@ class MainVC: UIViewController {
         resultsVC = ResultsVC(ride: ride)
         guard let resultsVC = resultsVC else { return }
         
+        PersistantDataManager.dataManager.saveRideToDisk(ride: ride)
+        
         rideDetailsVC?.rideDetailsView.hideView()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
@@ -111,6 +113,32 @@ class MainVC: UIViewController {
     }
     
     @objc func clicked() {
+        if resultsVC != nil {
+            rideDetailsVC?.rideDetailsView.hideView()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                self.resultsVC?.resultsView.showView()
+            }
+
+            return
+        }
+        
+        let ride = PersistantDataManager.dataManager.getRideFromDisk()
+        
+        if ride != nil {
+            resultsVC = ResultsVC(ride: ride as! Ride)
+            guard let resultsVC = resultsVC else { return }
+            
+            rideDetailsVC?.rideDetailsView.hideView()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                self.addChildViewController(resultsVC)
+                self.view.addSubview(resultsVC.view)
+                
+                resultsVC.resultsView.showView()
+            }
+
+        }
         
     }
 
