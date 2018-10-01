@@ -11,38 +11,13 @@ import GoogleMaps
 
 class MapVC: UIViewController, MapControllerDelegate {
 
-    @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var mapView: MapView!
     private let locationsManager: LocationsManager
-    
-    private var originMapMarker: GMSMarker
-    private var destinyMapMarker: GMSMarker
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapView.settings.allowScrollGesturesDuringRotateOrZoom = false
-        mapView.settings.myLocationButton = true
-        mapView.isMyLocationEnabled = true
         mapView.animate(toLocation: locationsManager.userCoordinate)
-        
-        originMapMarker.icon = UIImage(named: "origin_map_marker")
-        originMapMarker.appearAnimation = .pop
-        originMapMarker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
-        
-        destinyMapMarker.icon = UIImage(named: "destiny_map_marker")
-        destinyMapMarker.appearAnimation = .pop
-        destinyMapMarker.groundAnchor = CGPoint(x: 0.5, y: 0.91)
-        
-        do {
-            if let styleURL = Bundle.main.url(forResource: "MapStyle", withExtension: "json") {
-                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-            } else {
-                NSLog("Unable to find style.json")
-            }
-        } catch {
-            NSLog("One or more of the map styles failed to load. \(error)")
-        }
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,30 +32,11 @@ class MapVC: UIViewController, MapControllerDelegate {
 
     init() {
         locationsManager = LocationsManager.locationsManager
-        originMapMarker = GMSMarker()
-        destinyMapMarker = GMSMarker()
-        
         super.init(nibName: "MapVC", bundle: nil)
     }
     
     func createMapMarker(of placeType: PlaceType, with place: Place) {
-        
-        mapView.isMyLocationEnabled = false
-        
-        switch placeType {
-        case .origin:
-            originMapMarker.position = place.locations.coordinate.clLocation
-            originMapMarker.title = place.name
-            originMapMarker.map = mapView
-            
-        case .destiny:
-            destinyMapMarker.position = place.locations.coordinate.clLocation
-            destinyMapMarker.title = place.name
-            destinyMapMarker.map = mapView
-        }
-        
-        mapView.moveCamera(GMSCameraUpdate.fit(place.locations.viewPortBounds.gmsViewPortBounds))
-        mapView.animate(toLocation: place.locations.coordinate.clLocation)
+        mapView.createMapMarker(of: placeType, with: place)
     }
     
     func drawRoute(from origin: Place, to destiny: Place) {
@@ -102,28 +58,7 @@ class MapVC: UIViewController, MapControllerDelegate {
                     let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String : AnyObject]
                     let routes = json["routes"] as! NSArray
                     
-                    OperationQueue.main.addOperation({
-                        for route in routes {
-                            let routeOverviewPolyline:NSDictionary = (route as! NSDictionary).value(forKey: "overview_polyline") as! NSDictionary
-                            let points = routeOverviewPolyline.object(forKey: "points")
-                            let path = GMSPath.init(fromEncodedPath: points! as! String)
-                            let polyline = GMSPolyline.init(path: path)
-                            polyline.strokeWidth = 5
-                            polyline.strokeColor = UIColor(color: .mainGreen)
-                            
-                            let bounds = GMSCoordinateBounds(path: path!)
-                            // needs fixing for iPhone X
-                            self.mapView!.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 35, left: 20, bottom: 460, right: 20)))
-                            
-                            polyline.map = self.mapView
-                            
-                            self.mapView.isMyLocationEnabled = false
-                            
-                            self.originMapMarker.position = path!.coordinate(at: 0)
-                            self.destinyMapMarker.position = path!.coordinate(at: path!.count() - 1)
-                            
-                        }
-                    })
+                    self.mapView.draw(routes: routes)
                     
                 } catch let error as NSError{
                     print("error:\(error)")

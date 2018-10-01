@@ -43,12 +43,6 @@ class ResultsCell: UITableViewCell {
         
     }
     
-//    override func layoutSubviews() {
-//        addToStackView(image: UIImage(named: "Uber")!)
-//        addToStackView(image: UIImage(named: "Cabify")!)
-//        addToStackView(image: UIImage(named: "99.jpeg")!)
-//    }
-    
     func addToStackView(image: UIImage) {
         let imageView = UIImageView(image: image)
         

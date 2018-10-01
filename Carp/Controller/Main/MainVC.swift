@@ -112,37 +112,6 @@ class MainVC: UIViewController {
     
     @objc func clicked() {
         
-//        if rideDetailsVC != nil {
-//            rideDetailsVC?.rideDetailsView.showView()
-//            return
-//        }
-//
-//        rideDetailsVC = RideDetailsVC()
-//        guard let rideDetailsVC = rideDetailsVC else { return }
-//
-//        addChildViewController(rideDetailsVC)
-//        view.addSubview(rideDetailsVC.view)
-//
-//        rideDetailsVC.rideDetailsView.showView()
-        
-        if resultsVC != nil {
-            resultsVC?.resultsView.showView()
-            return
-        }
-
-        resultsVC = ResultsVC()
-        guard let resultsVC = resultsVC else { return }
-
-        rideDetailsVC?.view.removeFromSuperview()
-        rideDetailsVC?.removeFromParentViewController()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            self.addChildViewController(resultsVC)
-            self.view.addSubview(resultsVC.view)
-
-            resultsVC.resultsView.showView()
-        }
-        
     }
 
 }
