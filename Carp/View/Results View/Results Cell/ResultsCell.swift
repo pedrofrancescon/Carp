@@ -10,8 +10,7 @@ import UIKit
 
 class ResultsCell: UITableViewCell {
     
-    @IBOutlet weak var userProfileImage: UIImageView!
-    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak private var originIcon: UILabel!
     @IBOutlet weak private var destinyIcon: UILabel!
@@ -21,8 +20,12 @@ class ResultsCell: UITableViewCell {
     @IBOutlet weak var destinyDistanceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var usersStackView: UIStackView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        originIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 10)
         
         originIcon.text = "\u{f111}"
         destinyIcon.text = "\u{f3c5}"
@@ -32,26 +35,31 @@ class ResultsCell: UITableViewCell {
         destinyIcon.textColor = UIColor(rgb: 0x489773)
         timeIcon.textColor = UIColor(rgb: 0x4A90E2)
         
-        userNameLabel.textColor = UIColor(rgb: 0x3F3F3F)
+        priceLabel.textColor = UIColor(rgb: 0x3F3F3F)
         
         originDistanceLabel.textColor = UIColor(rgb: 0x6D6D6D)
         destinyDistanceLabel.textColor = UIColor(rgb: 0x6D6D6D)
         timeLabel.textColor = UIColor(rgb: 0x6D6D6D)
-    }
-    
-    override func layoutSubviews() {
         
     }
     
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
+    func addToStackView(image: UIImage) {
+        let imageView = UIImageView(image: image)
         
-        userProfileImage.layer.cornerRadius = userProfileImage.frame.width/2
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = imageView.frame.width/2
+        imageView.clipsToBounds = true
         
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.addConstraint(NSLayoutConstraint(item: imageView,
+                                                   attribute: NSLayoutConstraint.Attribute.height,
+                                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                                   toItem: imageView,
+                                                   attribute: NSLayoutConstraint.Attribute.width,
+                                                   multiplier: imageView.frame.size.height / imageView.frame.size.width,
+                                                   constant: 0))
+        
+        usersStackView.addArrangedSubview(imageView)
     }
     
 }

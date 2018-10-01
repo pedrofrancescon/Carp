@@ -183,8 +183,9 @@ extension SearchesVC: SearchViewDelegate {
                 guard let parent = parent as? MainVC else { return }
                 slidingView?.slideViewAnimated(to: .hidden, withDuration: 0.8)
                 
+                parent.callRideDetailsVC(origin: _origin, destiny: _destiny)
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                    parent.callRideDetailsVC(origin: _origin, destiny: _destiny)
                     self.mapDelegate.drawRoute(from: _origin, to: _destiny)
                 }
                 
@@ -218,8 +219,6 @@ extension SearchesVC: SearchViewDelegate {
             locationsManager.getPlacePredictions(with: newText) { (predictions) in
                 self.originPredictions = predictions
                 self.originTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-                
-                //self.originTableView.updateTableSize()
             }
             
             if newText == "" {

@@ -49,20 +49,54 @@ class MainVC: UIViewController {
     
     func callRideDetailsVC(origin: Place, destiny: Place) {
         if rideDetailsVC != nil {
-            rideDetailsVC?.rideDetailsView.showView()
+            resultsVC?.resultsView.hideView()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                self.rideDetailsVC?.rideDetailsView.showView()
+            }
+            
             return
         }
         
         rideDetailsVC = RideDetailsVC()
         guard let rideDetailsVC = rideDetailsVC else { return }
         
+        resultsVC?.resultsView.hideView()
+        
         rideDetailsVC.origin = origin
         rideDetailsVC.destiny = destiny
         
-        addChildViewController(rideDetailsVC)
-        view.addSubview(rideDetailsVC.view)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            self.addChildViewController(rideDetailsVC)
+            self.view.addSubview(rideDetailsVC.view)
+            
+            rideDetailsVC.rideDetailsView.showView()
+        }
+    }
+    
+    func callResultsVC(ride: Ride) {
+        if resultsVC != nil {
+            rideDetailsVC?.rideDetailsView.hideView()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                self.resultsVC?.resultsView.showView()
+            }
+            
+            return
+        }
         
-        rideDetailsVC.rideDetailsView.showView()
+        resultsVC = ResultsVC(ride: ride)
+        guard let resultsVC = resultsVC else { return }
+        
+        rideDetailsVC?.rideDetailsView.hideView()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            self.addChildViewController(resultsVC)
+            self.view.addSubview(resultsVC.view)
+            
+            resultsVC.resultsView.showView()
+        }
+        
     }
     
     init() {
@@ -77,17 +111,7 @@ class MainVC: UIViewController {
     }
     
     @objc func clicked() {
-        if rideDetailsVC != nil {
-            return
-        }
         
-        rideDetailsVC = RideDetailsVC()
-        guard let rideDetailsVC = rideDetailsVC else { return }
-        
-        addChildViewController(rideDetailsVC)
-        view.addSubview(rideDetailsVC.view)
-        
-        rideDetailsVC.rideDetailsView.showView()
     }
 
 }

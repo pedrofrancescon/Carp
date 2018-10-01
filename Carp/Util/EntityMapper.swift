@@ -7,15 +7,11 @@
 //
 
 import Foundation
-
-fileprivate struct Timestamp: Codable {
-    var seconds: Double
-    var nanoseconds: Double
-}
+import Firebase
 
 fileprivate struct TimeRange: Codable {
-    var min: Timestamp
-    var max: Timestamp
+    var min: Double
+    var max: Double
 }
 
 fileprivate struct Geopoint: Codable {
@@ -43,7 +39,7 @@ fileprivate enum GenderRestriction: String, Codable {
 }
 
 fileprivate struct DbUser: Codable {
-    var creationTime: Timestamp
+    var creationTime: Double
     var firstName: String
     var lastName: String
     var profilePictureUrl: String
@@ -52,7 +48,7 @@ fileprivate struct DbUser: Codable {
 }
 
 fileprivate struct DbCar: Codable {
-    var rideRequests: [String]
+    var rideRequests: [String]?
     var hostRequest: String
     var price: Float
 }
@@ -60,14 +56,8 @@ fileprivate struct DbCar: Codable {
 func RideToDbFormat(ride: Ride) -> [String : Any] {
     return [
         "departureTimeRange": [
-            "min": [
-                "seconds": ride.timeInterval.start.timeIntervalSince1970,
-                "nanoseconds": 0
-            ],
-            "max": [
-                "seconds": ride.timeInterval.end.timeIntervalSince1970,
-                "nanoseconds": 0
-            ]
+            "min": ride.timeInterval.start.timeIntervalSince1970,
+            "max": ride.timeInterval.end.timeIntervalSince1970
         ],
         "destination": [
             "legibleName": ride.destiny.name,
@@ -117,8 +107,8 @@ func RideFromDbFormat(docId: String, _ dictionary: [String: Any]) throws -> Ride
             )
         ),
         timeInterval: DateInterval(
-            start: Date(timeIntervalSince1970: ride.departureTimeRange.min.seconds),
-            end: Date(timeIntervalSince1970: ride.departureTimeRange.max.seconds)
+            start: Date(timeIntervalSince1970: ride.departureTimeRange.min),
+            end: Date(timeIntervalSince1970: ride.departureTimeRange.max)
         ),
         numberOfSeats: NumberOfSeats(rawValue: ride.numberOfSeats) ?? NumberOfSeats.one,
         restriction: ConvertGenderRestriction(ride.genderRestriction),

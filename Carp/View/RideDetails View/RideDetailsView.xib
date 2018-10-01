@@ -36,6 +36,7 @@
                 <outlet property="originTextField" destination="zFy-jy-MyZ" id="01f-bt-h81"/>
                 <outlet property="restrictionsIcon" destination="nDj-sO-kTf" id="cPi-Ke-23L"/>
                 <outlet property="restrictionsTextField" destination="cDv-Qg-c9s" id="V8K-Pa-hjc"/>
+                <outlet property="searchButton" destination="bja-Qh-l0X" id="gbW-WW-VQf"/>
                 <outlet property="seatsIcon" destination="SGf-wS-TW1" id="PSQ-RH-I1m"/>
                 <outlet property="servicesIconsStackView" destination="YK2-vc-8aR" id="ItX-J4-vCf"/>
                 <outlet property="threeSeatsButton" destination="Jkh-bM-Q6b" id="Muh-pu-0M9"/>
@@ -243,6 +244,9 @@
                     <state key="normal" title="Procurar pessoas">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="pressedSearchRidesButton:" destination="-1" eventType="touchUpInside" id="Byb-rG-xig"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDj-sO-kTf">
                     <rect key="frame" x="177" y="190" width="20" height="15"/>
