@@ -18,7 +18,6 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let navigationBtnAttributes = [
             NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 20.0) as Any,
             NSAttributedString.Key.foregroundColor: UIColor.white as Any

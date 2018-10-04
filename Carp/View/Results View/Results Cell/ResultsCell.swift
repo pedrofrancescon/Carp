@@ -20,7 +20,7 @@ class ResultsCell: UITableViewCell {
     @IBOutlet weak var destinyDistanceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
-    @IBOutlet weak var usersStackView: UIStackView!
+    @IBOutlet weak var usersStackView: UsersStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,22 +44,8 @@ class ResultsCell: UITableViewCell {
     }
     
     func addToStackView(image: UIImage) {
-        let imageView = UIImageView(image: image)
         
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = imageView.frame.width/2
-        imageView.clipsToBounds = true
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.addConstraint(NSLayoutConstraint(item: imageView,
-                                                   attribute: NSLayoutConstraint.Attribute.height,
-                                                   relatedBy: NSLayoutConstraint.Relation.equal,
-                                                   toItem: imageView,
-                                                   attribute: NSLayoutConstraint.Attribute.width,
-                                                   multiplier: imageView.frame.size.height / imageView.frame.size.width,
-                                                   constant: 0))
-        
-        usersStackView.addArrangedSubview(imageView)
     }
     
 }
