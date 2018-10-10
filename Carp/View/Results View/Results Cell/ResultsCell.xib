@@ -69,11 +69,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ouc-te-76H" customClass="UsersStackView" customModule="Carp" customModuleProvider="target">
-                        <rect key="frame" x="386" y="18.5" width="40" height="40"/>
+                        <rect key="frame" x="392" y="21.5" width="34" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="ZMF-fq-RWv"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="aic-mV-8Q7"/>
-                            <constraint firstAttribute="width" priority="999" constant="40" id="plz-FZ-Cjz"/>
+                            <constraint firstAttribute="height" constant="34" id="ZMF-fq-RWv"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="aic-mV-8Q7"/>
+                            <constraint firstAttribute="width" priority="999" constant="34" id="plz-FZ-Cjz"/>
                         </constraints>
                     </stackView>
                 </subviews>

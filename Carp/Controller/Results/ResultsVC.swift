@@ -97,7 +97,9 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
         
         cell?.usersStackView.add(UIImage(named: "Uber")!)
         cell?.usersStackView.add(UIImage(named: "Cabify")!)
-        cell?.usersStackView.add(UIImage(named: "99.jpeg")!)
+        //cell?.usersStackView.add(UIImage(named: "99.jpeg")!)
+        
+        cell?.usersStackView.addExtraNumber(2)
         
         return cell!
     }
