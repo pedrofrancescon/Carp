@@ -78,8 +78,9 @@ class ResultsView: PopUpView {
         
         chatButton.setAttributedTitle(carCombination, for: .normal)
         
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .singleLine
         tableView.frame = contentView.frame
-        tableView.separatorStyle = .none
         containerView.addSubview(tableView)
         
     }

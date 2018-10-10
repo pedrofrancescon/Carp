@@ -27,9 +27,6 @@ class UsersStackView: UIStackView {
     func add(_ image: UIImage) {
         
         let imageView = UIImageView(image: image)
-        //let imageView = UIImageView()
-        
-        //imageView.backgroundColor = .red
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
@@ -39,11 +36,24 @@ class UsersStackView: UIStackView {
         imageView.layer.cornerRadius = frame.height/2
         imageView.clipsToBounds = true
         
+//        let border = CALayer()
+//        let width: CGFloat = 1.5
+//        border.borderColor = UIColor.black.cgColor
+//        
+//        border.frame = imageView.frame
+//        border.borderWidth = width
+//        border.cornerRadius = frame.height/2
+//
+//        imageView.layer.addSublayer(border)
+//        imageView.layer.masksToBounds = true
+//
+//        imageView.layoutIfNeeded()
+        
         addArrangedSubview(imageView)
         
     }
     
-    func addExtraNumber(_ number: Int) {
+    func add(_ number: String) {
         
         let label = UILabel()
         
@@ -52,7 +62,7 @@ class UsersStackView: UIStackView {
         label.widthAnchor.constraint(equalTo: label.heightAnchor, multiplier: 0.5).isActive = true
         
         label.font = UIFont(name: "Lato-Bold", size: 14)
-        label.text = "+\(number)"
+        label.text = number
         label.textAlignment = .center
         label.textColor = UIColor(color: .greenText)
         

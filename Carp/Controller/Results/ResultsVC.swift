@@ -26,7 +26,7 @@ class ResultsVC: UIViewController {
         
         guard let ride = ride else { return }
         
-        RideRequestsManager().findMatches( ride,
+        _ = RideRequestsManager().findMatches( ride,
             onUpdate: { cars in
                 self.cars = self.cars.filter({ car in
                     return !cars.contains(where: { _car in
@@ -60,13 +60,6 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if cars.count > 0 {
-            tableView.separatorStyle = .singleLine
-            return cars.count
-        }
-        
-        tableView.separatorStyle = .none
-        
         return cars.count
     }
     
@@ -97,9 +90,8 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
         
         cell?.usersStackView.add(UIImage(named: "Uber")!)
         cell?.usersStackView.add(UIImage(named: "Cabify")!)
-        //cell?.usersStackView.add(UIImage(named: "99.jpeg")!)
         
-        cell?.usersStackView.addExtraNumber(2)
+        cell?.usersStackView.add("+2")
         
         return cell!
     }
