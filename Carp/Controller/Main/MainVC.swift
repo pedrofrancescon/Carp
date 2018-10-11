@@ -18,7 +18,6 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let navigationBtnAttributes = [
             NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 20.0) as Any,
             NSAttributedString.Key.foregroundColor: UIColor.white as Any
@@ -53,6 +52,7 @@ class MainVC: UIViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                 self.rideDetailsVC?.rideDetailsView.showView()
+                self.navigationItem.title = "Detalhes"
             }
             
             return
@@ -71,6 +71,7 @@ class MainVC: UIViewController {
             self.view.addSubview(rideDetailsVC.view)
             
             rideDetailsVC.rideDetailsView.showView()
+            self.navigationItem.title = "Detalhes"
         }
     }
     
@@ -80,6 +81,7 @@ class MainVC: UIViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                 self.resultsVC?.resultsView.showView()
+                self.navigationItem.title = "Resultados"
             }
             
             return
@@ -88,6 +90,8 @@ class MainVC: UIViewController {
         resultsVC = ResultsVC(ride: ride)
         guard let resultsVC = resultsVC else { return }
         
+        PersistantDataManager.dataManager.saveRideToDisk(ride: ride)
+        
         rideDetailsVC?.rideDetailsView.hideView()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
@@ -95,6 +99,7 @@ class MainVC: UIViewController {
             self.view.addSubview(resultsVC.view)
             
             resultsVC.resultsView.showView()
+            self.navigationItem.title = "Resultados"
         }
         
     }
@@ -111,6 +116,32 @@ class MainVC: UIViewController {
     }
     
     @objc func clicked() {
+        if resultsVC != nil {
+            rideDetailsVC?.rideDetailsView.hideView()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                self.resultsVC?.resultsView.showView()
+            }
+
+            return
+        }
+        
+        let ride = PersistantDataManager.dataManager.getRideFromDisk()
+        
+        if ride != nil {
+            resultsVC = ResultsVC(ride: ride as! Ride)
+            guard let resultsVC = resultsVC else { return }
+            
+            rideDetailsVC?.rideDetailsView.hideView()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                self.addChildViewController(resultsVC)
+                self.view.addSubview(resultsVC.view)
+                
+                resultsVC.resultsView.showView()
+            }
+
+        }
         
     }
 

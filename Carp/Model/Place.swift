@@ -11,7 +11,7 @@ import CoreLocation
 import GoogleMaps
 import GooglePlaces
 
-struct Place: Decodable {
+struct Place: Codable {
     let name: String
     let locations: Locations
     
@@ -21,7 +21,7 @@ struct Place: Decodable {
     }
 }
 
-struct Locations: Decodable {
+struct Locations: Codable {
     let coordinate: Coordinate
     let viewPortBounds: ViewPortBounds
     
@@ -31,7 +31,7 @@ struct Locations: Decodable {
     }
 }
 
-struct Coordinate: Decodable {
+struct Coordinate: Codable {
     let lat: Double
     let lng: Double
     
@@ -40,7 +40,7 @@ struct Coordinate: Decodable {
     }
 }
 
-struct ViewPortBounds: Decodable {
+struct ViewPortBounds: Codable {
     let northeast: Coordinate
     let southwest: Coordinate
     

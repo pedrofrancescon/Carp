@@ -61,14 +61,39 @@ class SearchView: UIView {
         nextBtnLabel.addGestureRecognizer(tapRecognizer)
         
         textField.borderStyle = .none
+        textField.autocorrectionType = .no
         
         addShadow(blur: 10)
         
     }
     
+    private var timeoutInSeconds: TimeInterval {
+        
+        return 0.5 //second
+    }
+    
+    private var idleTimer: Timer?
+    
+    private func resetIdleTimer() {
+        if let idleTimer = idleTimer {
+            idleTimer.invalidate()
+        }
+        
+        idleTimer = Timer.scheduledTimer(timeInterval: timeoutInSeconds,
+                                         target: self,
+                                         selector: #selector(timeHasExceeded),
+                                         userInfo: nil,
+                                         repeats: false
+        )
+    }
+    
+    @objc private func timeHasExceeded() {
+        delegate?.searchFieldDidChange(self, newText: textField.text!)
+    }
+    
     @IBAction func didChangeTextField(_ sender: Any) {
-        guard let delegate = delegate else { return }
-        delegate.searchFieldDidChange(self, newText: textField.text!)
+        self.resetIdleTimer()
+        
     }
     
     @IBAction func primaryActionTriggered(_ sender: Any) {

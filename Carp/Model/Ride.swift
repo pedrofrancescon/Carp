@@ -8,18 +8,18 @@
 
 import UIKit
 
-enum NumberOfSeats: Int, Decodable {
+enum NumberOfSeats: Int, Codable {
     case one = 1
     case two = 2
     case twree = 3
 }
 
-enum Restrictions: String, Decodable, CaseIterable {
+enum Restrictions: String, Codable, CaseIterable {
     case noRestriction = "Nenhuma Restrição"
     case sameSex = "Pessoas do mesmo sexo"
 }
 
-struct Ride: Decodable {
+struct Ride: Codable {
     
     let origin: Place
     let destiny: Place

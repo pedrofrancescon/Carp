@@ -19,13 +19,8 @@ class SearchResultsCell: UITableViewCell {
         super.awakeFromNib()
         
         iconLabel.text = "\u{f276}"
+        iconLabel.textColor = UIColor(color: .greyIcon)
         
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
 }

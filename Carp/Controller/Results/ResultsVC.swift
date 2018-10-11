@@ -26,7 +26,7 @@ class ResultsVC: UIViewController {
         
         guard let ride = ride else { return }
         
-        RideRequestsManager().findMatches( ride,
+        _ = RideRequestsManager().findMatches( ride,
             onUpdate: { cars in
                 self.cars = self.cars.filter({ car in
                     return !cars.contains(where: { _car in
@@ -60,13 +60,6 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if cars.count > 0 {
-            tableView.separatorStyle = .singleLine
-            return cars.count
-        }
-        
-        tableView.separatorStyle = .none
-        
         return cars.count
     }
     
@@ -75,17 +68,7 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let currentCell = cell as! ResultsCell
-        
-        currentCell.originDistanceLabel.text = "\(Int.random(in: ClosedRange<Int>(uncheckedBounds: (lower: 300, upper: 600)))) m"
-        currentCell.destinyDistanceLabel.text = "\(Int.random(in: ClosedRange<Int>(uncheckedBounds: (lower: 200, upper: 700)))) m"
-        currentCell.timeLabel.text = "14h24"
-        
-        currentCell.priceLabel.text = "R$ \(cars[indexPath.row].price)"
-        
-        currentCell.addToStackView(image: UIImage(named: "Uber")!)
-        currentCell.addToStackView(image: UIImage(named: "Cabify")!)
-        currentCell.addToStackView(image: UIImage(named: "99.jpeg")!)
+        let _ = cell as! ResultsCell
         
     }
     
@@ -96,6 +79,19 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
             tableView.register(UINib(nibName: "ResultsCell", bundle: nil), forCellReuseIdentifier: "resultsCell")
             cell = tableView.dequeueReusableCell(withIdentifier: "resultsCell") as? ResultsCell
         }
+        
+        cell?.originDistanceLabel.text = "\(Int.random(in: ClosedRange<Int>(uncheckedBounds: (lower: 300, upper: 600)))) m"
+        cell?.destinyDistanceLabel.text = "\(Int.random(in: ClosedRange<Int>(uncheckedBounds: (lower: 200, upper: 700)))) m"
+        cell?.timeLabel.text = "14h24"
+        
+        cell?.priceLabel.text = "R$ \(cars[indexPath.row].price)"
+        
+        cell?.usersStackView.removeAllArrangedSubviews()
+        
+        cell?.usersStackView.add(UIImage(named: "Uber")!)
+        cell?.usersStackView.add(UIImage(named: "Cabify")!)
+        
+        cell?.usersStackView.add("+2")
         
         return cell!
     }

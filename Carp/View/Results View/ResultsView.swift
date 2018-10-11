@@ -40,12 +40,12 @@ class ResultsView: PopUpView {
     override func layoutSubviews() {
         let greenIconAttributes = [
             NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 16.0) as Any,
-            NSAttributedString.Key.foregroundColor: UIColor(rgb: 0x489773) as Any
+            NSAttributedString.Key.foregroundColor: UIColor(color: .greenText) as Any
         ]
         
         let greenTextAttributes = [
             NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16.0) as Any,
-            NSAttributedString.Key.foregroundColor: UIColor(rgb: 0x489773) as Any
+            NSAttributedString.Key.foregroundColor: UIColor(color: .greenText) as Any
         ]
         
         let greyIconAttributes = [
@@ -78,8 +78,9 @@ class ResultsView: PopUpView {
         
         chatButton.setAttributedTitle(carCombination, for: .normal)
         
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .singleLine
         tableView.frame = contentView.frame
-        tableView.separatorStyle = .none
         containerView.addSubview(tableView)
         
     }
