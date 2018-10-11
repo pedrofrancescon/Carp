@@ -77,11 +77,9 @@ class SearchesVC: UIViewController {
         
         destinyTableView.delegate = self
         destinyTableView.dataSource = self
-        //destinyTableView.isHidden = true
         
         originTableView.delegate = self
         originTableView.dataSource = self
-        //originTableView.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -146,8 +144,13 @@ extension SearchesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == destinyTableView {
+            destinyTableView.changeHeightTo(numberOfCells: destinyPredictions.count)
+            
+            
             return destinyPredictions.count
         }
+        
+        destinyTableView.changeHeightTo(numberOfCells: originPredictions.count)
         return originPredictions.count
     }
     
@@ -209,20 +212,12 @@ extension SearchesVC: SearchViewDelegate {
                 self.destinyTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
                 
             }
-            
-            if newText == "" {
-                destinyTableView.isHidden = true
-            }
         } else if view == originSearchView {
             originTableView.isHidden = false
             
             locationsManager.getPlacePredictions(with: newText) { (predictions) in
                 self.originPredictions = predictions
                 self.originTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-            }
-            
-            if newText == "" {
-                originTableView.isHidden = true
             }
         }
     }

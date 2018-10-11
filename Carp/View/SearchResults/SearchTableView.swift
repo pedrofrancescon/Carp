@@ -10,15 +10,6 @@ import UIKit
 
 class SearchTableView: UITableView {
     
-    override func reloadSections(_ sections: IndexSet, with animation: UITableView.RowAnimation) {
-        super.reloadSections(sections, with: animation)
-        
-        UIView.animate(withDuration: 0.5) {
-            self.heightAnchor.constraint(equalToConstant: self.contentSize.height)
-            //self.frame.size.height = self.contentSize.height
-        }
-    }
-    
     lazy var layout: () -> Void = {
         
         separatorStyle = .singleLine
@@ -31,6 +22,27 @@ class SearchTableView: UITableView {
     
     override func layoutSubviews() {
         layout()
+        
+        self.heightAnchor.constraint(equalToConstant: contentSize.height)
+        self.frame.size.height = contentSize.height
+        
+    }
+    
+    func changeHeightTo(numberOfCells number: Int) {
+        
+        if number > 1 {
+            separatorStyle = .singleLine
+        } else {
+            separatorStyle = .none
+        }
+        
+        let tableHeight: CGFloat = 50 * CGFloat(number)
+        
+        UIView.animate(withDuration: 0.5) {
+            self.heightAnchor.constraint(equalToConstant: tableHeight)
+            self.frame.size.height = tableHeight
+        }
+        
     }
 
 }
