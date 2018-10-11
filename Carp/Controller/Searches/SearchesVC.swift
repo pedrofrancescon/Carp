@@ -145,12 +145,10 @@ extension SearchesVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == destinyTableView {
             destinyTableView.changeHeightTo(numberOfCells: destinyPredictions.count)
-            
-            
             return destinyPredictions.count
         }
         
-        destinyTableView.changeHeightTo(numberOfCells: originPredictions.count)
+        originTableView.changeHeightTo(numberOfCells: originPredictions.count)
         return originPredictions.count
     }
     
@@ -205,8 +203,6 @@ extension SearchesVC: SearchViewDelegate {
             destinyTableView.isHidden = false
             
             locationsManager.getPlacePredictions(with: newText) { (predictions) in
-                
-                print(predictions.count)
                 
                 self.destinyPredictions = predictions
                 self.destinyTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
