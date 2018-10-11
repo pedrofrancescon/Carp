@@ -19,6 +19,7 @@ class SearchResultsCell: UITableViewCell {
         super.awakeFromNib()
         
         iconLabel.text = "\u{f276}"
+        iconLabel.textColor = UIColor(color: .greyIcon)
         
     }
     

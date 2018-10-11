@@ -77,11 +77,11 @@ class SearchesVC: UIViewController {
         
         destinyTableView.delegate = self
         destinyTableView.dataSource = self
-        destinyTableView.isHidden = true
+        //destinyTableView.isHidden = true
         
         originTableView.delegate = self
         originTableView.dataSource = self
-        originTableView.isHidden = true
+        //originTableView.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {

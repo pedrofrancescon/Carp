@@ -69,7 +69,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ouc-te-76H" customClass="UsersStackView" customModule="Carp" customModuleProvider="target">
-                        <rect key="frame" x="392" y="21.5" width="34" height="34"/>
+                        <rect key="frame" x="402" y="21.5" width="34" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="ZMF-fq-RWv"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="aic-mV-8Q7"/>
@@ -83,7 +83,7 @@
                     <constraint firstItem="yDb-DY-EMi" firstAttribute="leading" secondItem="5xK-50-fPg" secondAttribute="trailing" constant="15" id="7UM-nb-TKI"/>
                     <constraint firstItem="5hl-kr-fiC" firstAttribute="centerY" secondItem="rYo-d9-ezf" secondAttribute="centerY" id="AcE-Fn-Tpe"/>
                     <constraint firstItem="LSU-aS-8Hf" firstAttribute="centerY" secondItem="PKU-Ra-9rv" secondAttribute="centerY" multiplier="0.7" id="Peq-Sk-M5Z"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="ouc-te-76H" secondAttribute="trailing" constant="10" id="UrU-Lz-VOn"/>
+                    <constraint firstAttribute="trailing" secondItem="ouc-te-76H" secondAttribute="trailing" constant="20" id="UrU-Lz-VOn"/>
                     <constraint firstItem="5xK-50-fPg" firstAttribute="centerY" secondItem="PIX-ah-A3g" secondAttribute="centerY" id="X6Y-42-qWW"/>
                     <constraint firstItem="rYo-d9-ezf" firstAttribute="centerY" secondItem="zpK-jv-0vN" secondAttribute="centerY" id="XL5-VP-ra5"/>
                     <constraint firstItem="PIX-ah-A3g" firstAttribute="leading" secondItem="LSU-aS-8Hf" secondAttribute="leading" id="auY-OS-RsS"/>

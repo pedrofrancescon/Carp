@@ -52,6 +52,7 @@ class MainVC: UIViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                 self.rideDetailsVC?.rideDetailsView.showView()
+                self.navigationItem.title = "Detalhes"
             }
             
             return
@@ -70,6 +71,7 @@ class MainVC: UIViewController {
             self.view.addSubview(rideDetailsVC.view)
             
             rideDetailsVC.rideDetailsView.showView()
+            self.navigationItem.title = "Detalhes"
         }
     }
     
@@ -79,6 +81,7 @@ class MainVC: UIViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                 self.resultsVC?.resultsView.showView()
+                self.navigationItem.title = "Resultados"
             }
             
             return
@@ -96,6 +99,7 @@ class MainVC: UIViewController {
             self.view.addSubview(resultsVC.view)
             
             resultsVC.resultsView.showView()
+            self.navigationItem.title = "Resultados"
         }
         
     }

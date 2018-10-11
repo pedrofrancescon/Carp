@@ -27,22 +27,22 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1A6-xK-5UO">
-                        <rect key="frame" x="0.0" y="0.0" width="66.5" height="66.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="53" height="66.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="1A6-xK-5UO" secondAttribute="height" multiplier="1:1" id="gBa-iL-8XK"/>
+                            <constraint firstAttribute="width" secondItem="1A6-xK-5UO" secondAttribute="height" multiplier="4:5" id="gBa-iL-8XK"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="FontAwesome5FreeSolid" family="Font Awesome 5 Free" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMo-fv-OP5">
-                        <rect key="frame" x="66.5" y="10" width="40.5" height="20"/>
+                        <rect key="frame" x="53" y="10" width="302" height="20"/>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDM-iP-rF9">
-                        <rect key="frame" x="66.5" y="34.5" width="33.5" height="17"/>
+                        <rect key="frame" x="53" y="34.5" width="302" height="17"/>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -50,8 +50,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="oDM-iP-rF9" firstAttribute="leading" secondItem="1A6-xK-5UO" secondAttribute="trailing" id="2Vi-Kq-aRD"/>
+                    <constraint firstAttribute="trailing" secondItem="OMo-fv-OP5" secondAttribute="trailing" constant="20" id="35x-v4-bAR"/>
                     <constraint firstItem="OMo-fv-OP5" firstAttribute="centerY" secondItem="6mr-WS-zoR" secondAttribute="centerY" multiplier="0.6" id="Gmj-gS-aud"/>
                     <constraint firstAttribute="bottom" secondItem="1A6-xK-5UO" secondAttribute="bottom" id="c7A-iJ-xqP"/>
+                    <constraint firstAttribute="trailing" secondItem="oDM-iP-rF9" secondAttribute="trailing" constant="20" id="cHr-q5-MVD"/>
                     <constraint firstItem="1A6-xK-5UO" firstAttribute="leading" secondItem="6mr-WS-zoR" secondAttribute="leading" id="cO3-a0-sh8"/>
                     <constraint firstItem="OMo-fv-OP5" firstAttribute="leading" secondItem="1A6-xK-5UO" secondAttribute="trailing" id="cr4-jU-Ubg"/>
                     <constraint firstItem="1A6-xK-5UO" firstAttribute="top" secondItem="6mr-WS-zoR" secondAttribute="top" id="fhn-1Y-kup"/>
