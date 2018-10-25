@@ -6,11 +6,18 @@
 //  Copyright © 2018 Pedro Francescon Cittolin. All rights reserved.
 //
 
+enum ViewState {
+    case onlyResults,resultsAndCar
+}
+
 import UIKit
 
 class ResultsView: PopUpView {
     
     @IBOutlet var contentView: UIView!
+    
+    @IBOutlet weak var buttonsView: UIView!
+    @IBOutlet weak var newCarLabelView: UIView!
     
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var resultsButton: UIButton!
@@ -83,6 +90,29 @@ class ResultsView: PopUpView {
         tableView.frame = contentView.frame
         containerView.addSubview(tableView)
         
+        changeViewTo(.onlyResults)
     }
+    
+    func changeViewTo(_ state: ViewState) {
+        
+        switch state {
+        case .onlyResults:
+            buttonsView.isHidden = true
+            newCarLabelView.isHidden = false
+            break
+        case .resultsAndCar:
+            buttonsView.isHidden = false
+            newCarLabelView.isHidden = true
+            break
+        }
+        
+    }
+    
+    @IBAction func didTapNewCarLabel(_ sender: Any) {
+        
+        
+        
+    }
+    
     
 }
