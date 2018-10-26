@@ -55,6 +55,10 @@ class ResultsVC: UIViewController, ResultsDelegate {
     func didTouchNewCarButton() {
         
         let alertView = AlertVC()
+        
+        alertView.modalTransitionStyle = .crossDissolve
+        alertView.modalPresentationStyle = .overCurrentContext
+        
         present(alertView, animated: true, completion: nil)
         
     }

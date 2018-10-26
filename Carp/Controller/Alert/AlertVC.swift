@@ -33,17 +33,9 @@ class AlertVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        view.backgroundColor = UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
         
         containerView = alertView
         
-        guard let haha = containerView as? AlertView else {
-            print("Não deu")
-            return
-        }
     }
-
-
-    
-
 }
