@@ -20,7 +20,6 @@ enum Restrictions: String, Codable, CaseIterable {
 }
 
 struct Ride: Codable {
-    
     let origin: Place
     let destiny: Place
     let timeInterval: DateInterval
@@ -28,4 +27,5 @@ struct Ride: Codable {
     let restriction: Restrictions
     let userId: String
     let id: String
+    let priceEstimate: PriceEstimate
 }

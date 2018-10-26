@@ -46,7 +46,11 @@ class RideDetailsVC: UIViewController {
         
         if let origin = origin, let destiny = destiny, let timeInterval = timeInterval, let numberOfSeats = numberOfSeats, let restriction = restriction {
             
-            let newRide = Ride.init(origin: origin, destiny: destiny, timeInterval: timeInterval, numberOfSeats: numberOfSeats, restriction: restriction, userId: "", id: "")
+            let priceEstimate = PriceEstimate.init(lowerPrice: 0.0, upperPrice: 0.0)
+            
+            let newRide = Ride.init(origin: origin, destiny: destiny, timeInterval: timeInterval, numberOfSeats: numberOfSeats, restriction: restriction, userId: "", id: "", priceEstimate: priceEstimate)
+            
+            PersistantDataManager.dataManager.saveRideToDisk(ride: newRide)
             
             guard let parent = parent as? MainVC else { return }
             

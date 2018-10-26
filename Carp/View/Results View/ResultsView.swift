@@ -6,7 +6,7 @@
 //  Copyright © 2018 Pedro Francescon Cittolin. All rights reserved.
 //
 
-enum ViewState {
+enum ResultsViewState {
     case onlyResults,resultsAndCar
 }
 
@@ -19,12 +19,16 @@ class ResultsView: PopUpView {
     @IBOutlet weak var buttonsView: UIView!
     @IBOutlet weak var newCarLabelView: UIView!
     
+    @IBOutlet weak var newCarLabel: UILabel!
+    
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var resultsButton: UIButton!
     
     @IBOutlet weak var containerView: UIView!
     
     var tableView: UITableView = UITableView()
+    
+    weak var resultsDelegate: ResultsDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,10 +94,12 @@ class ResultsView: PopUpView {
         tableView.frame = contentView.frame
         containerView.addSubview(tableView)
         
-        changeViewTo(.onlyResults)
+        newCarLabel.textColor = UIColor(color: .green)
+        
+        changeStateTo(.onlyResults)
     }
     
-    func changeViewTo(_ state: ViewState) {
+    func changeStateTo(_ state: ResultsViewState) {
         
         switch state {
         case .onlyResults:
@@ -110,7 +116,7 @@ class ResultsView: PopUpView {
     
     @IBAction func didTapNewCarLabel(_ sender: Any) {
         
-        
+        resultsDelegate?.didTouchNewCarButton()
         
     }
     

@@ -16,6 +16,7 @@
                 <outlet property="chatButton" destination="sL2-Dw-6Pv" id="zUM-mc-fbm"/>
                 <outlet property="containerView" destination="pWX-mJ-mVR" id="7lI-em-Akp"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="xc9-WO-V2c"/>
+                <outlet property="newCarLabel" destination="rIh-IM-w5I" id="fVL-ss-fHF"/>
                 <outlet property="newCarLabelView" destination="QAz-Ax-hIh" id="Kmd-F0-BWz"/>
                 <outlet property="resultsButton" destination="lwu-Eu-oft" id="yam-9l-NN2"/>
             </connections>

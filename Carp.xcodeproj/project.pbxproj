@@ -60,6 +60,11 @@
 		5CDA7A672139DC7D009F24CB /* RideDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A662139DC7D009F24CB /* RideDetailsView.xib */; };
 		5CDA7A692139DC85009F24CB /* ResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A682139DC85009F24CB /* ResultsView.xib */; };
 		5CDA7A6B2139DC8D009F24CB /* ResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A6A2139DC8D009F24CB /* ResultsCell.xib */; };
+		5CE5C1BD218150540004917C /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5C1BB218150540004917C /* AlertVC.swift */; };
+		5CE5C1BE218150540004917C /* AlertVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE5C1BC218150540004917C /* AlertVC.xib */; };
+		5CE5C1C9218264C10004917C /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5C1C8218264C10004917C /* AlertView.swift */; };
+		5CE5C1CB218264CD0004917C /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE5C1CA218264CD0004917C /* AlertView.xib */; };
+		5CE5C1CD218349E00004917C /* PriceEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5C1CC218349E00004917C /* PriceEstimate.swift */; };
 		5CF746EB213A3DB300964ABC /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF746E9213A3DB300964ABC /* MapVC.swift */; };
 		5CF746EC213A3DB300964ABC /* MapVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF746EA213A3DB300964ABC /* MapVC.xib */; };
 		5CF746F1213A3E1500964ABC /* SearchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF746EF213A3E1500964ABC /* SearchesVC.swift */; };
@@ -126,6 +131,11 @@
 		5CDA7A762139DDBE009F24CB /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
 		5CDA7A772139DDBF009F24CB /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		5CDA7A782139DDBF009F24CB /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		5CE5C1BB218150540004917C /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
+		5CE5C1BC218150540004917C /* AlertVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertVC.xib; sourceTree = "<group>"; };
+		5CE5C1C8218264C10004917C /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		5CE5C1CA218264CD0004917C /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		5CE5C1CC218349E00004917C /* PriceEstimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceEstimate.swift; sourceTree = "<group>"; };
 		5CF746E9213A3DB300964ABC /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		5CF746EA213A3DB300964ABC /* MapVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapVC.xib; sourceTree = "<group>"; };
 		5CF746EF213A3E1500964ABC /* SearchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchesVC.swift; sourceTree = "<group>"; };
@@ -230,6 +240,7 @@
 				5C175B182162E9CE00C1FDA2 /* Managers */,
 				5CDA7A482139DAED009F24CB /* Place.swift */,
 				5C350AC72151D2AB00BA6E79 /* Ride.swift */,
+				5CE5C1CC218349E00004917C /* PriceEstimate.swift */,
 				5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */,
 				5CDA7A4C2139DB22009F24CB /* Colors.swift */,
 				5C5F396221531DD900B396E8 /* Extensions.swift */,
@@ -251,6 +262,7 @@
 				5CDA7A532139DB65009F24CB /* Search */,
 				5CDA7A512139DB53009F24CB /* RideDetails View */,
 				5CDA7A502139DB43009F24CB /* Results View */,
+				5CE5C1BA21814F480004917C /* Alert */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -264,6 +276,7 @@
 				5CF746FE213CEFBC00964ABC /* Searches */,
 				5CBA6DC4214B388B0062EBF2 /* Ride Detais */,
 				5CF74700213CEFE100964ABC /* Results */,
+				5CE5C1BF218150590004917C /* Alert */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -349,6 +362,24 @@
 				5C350ACB2151FEDB00BA6E79 /* fa-solid-900.ttf */,
 			);
 			path = "Font Awesome";
+			sourceTree = "<group>";
+		};
+		5CE5C1BA21814F480004917C /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				5CE5C1C8218264C10004917C /* AlertView.swift */,
+				5CE5C1CA218264CD0004917C /* AlertView.xib */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		5CE5C1BF218150590004917C /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				5CE5C1BB218150540004917C /* AlertVC.swift */,
+				5CE5C1BC218150540004917C /* AlertVC.xib */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		5CF746FB213CEF9100964ABC /* MainNavigation */ = {
@@ -475,6 +506,7 @@
 			files = (
 				5CDA7A3A2139DA4F009F24CB /* LaunchScreen.storyboard in Resources */,
 				5C5F3967215322A700B396E8 /* 99.jpeg in Resources */,
+				5CE5C1BE218150540004917C /* AlertVC.xib in Resources */,
 				5C0D0A39213A0E0E00385A3A /* Lato-Light.ttf in Resources */,
 				5CF746EC213A3DB300964ABC /* MapVC.xib in Resources */,
 				5CD41B3121593D7900996514 /* GoogleService-Info.plist in Resources */,
@@ -489,6 +521,7 @@
 				5C0D0A36213A0E0600385A3A /* Lato-Hairline.ttf in Resources */,
 				5C0D0A34213A0E0200385A3A /* Lato-Bold.ttf in Resources */,
 				5C5F3969215322B100B396E8 /* Cabify.png in Resources */,
+				5CE5C1CB218264CD0004917C /* AlertView.xib in Resources */,
 				5C0D0A3A213A0E1100385A3A /* Lato-LightItalic.ttf in Resources */,
 				5C0D0A35213A0E0400385A3A /* Lato-BoldItalic.ttf in Resources */,
 				5CDA7A372139DA4F009F24CB /* Assets.xcassets in Resources */,
@@ -557,7 +590,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CDA7A5C2139DC01009F24CB /* RideDetaisView.swift in Sources */,
+				5CE5C1CD218349E00004917C /* PriceEstimate.swift in Sources */,
 				5CDA7A562139DB94009F24CB /* SearchResultsCell.swift in Sources */,
+				5CE5C1BD218150540004917C /* AlertVC.swift in Sources */,
 				5CF746F1213A3E1500964ABC /* SearchesVC.swift in Sources */,
 				5194E33821558B110015B0DF /* CarpUser.swift in Sources */,
 				5194E33A21558F3D0015B0DF /* Car.swift in Sources */,
@@ -584,6 +619,7 @@
 				5C5F396321531DD900B396E8 /* Extensions.swift in Sources */,
 				5CDA7A472139DAD6009F24CB /* LocationsManager.swift in Sources */,
 				5CF74702213CF39C00964ABC /* SlidingView.swift in Sources */,
+				5CE5C1C9218264C10004917C /* AlertView.swift in Sources */,
 				5CDA7A492139DAED009F24CB /* Place.swift in Sources */,
 				5C0D0A42213A28C200385A3A /* MainVC.swift in Sources */,
 			);

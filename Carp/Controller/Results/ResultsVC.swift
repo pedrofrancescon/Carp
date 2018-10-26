@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultsVC: UIViewController {
+class ResultsVC: UIViewController, ResultsDelegate {
     
     let resultsView: ResultsView
     
@@ -20,6 +20,7 @@ class ResultsVC: UIViewController {
         super.viewDidLoad()
         
         view = resultsView
+        resultsView.resultsDelegate = self
         
         resultsView.tableView.dataSource = self
         resultsView.tableView.delegate = self
@@ -50,6 +51,14 @@ class ResultsVC: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func didTouchNewCarButton() {
+        
+        let alertView = AlertVC()
+        present(alertView, animated: true, completion: nil)
+        
+    }
+    
 
 }
 
@@ -95,5 +104,10 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
         
         return cell!
     }
+    
+}
+
+protocol ResultsDelegate: class {
+    func didTouchNewCarButton()
     
 }
