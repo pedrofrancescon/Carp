@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ResultsVC: UIViewController, ResultsDelegate {
+class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
     
     let resultsView: ResultsView
     
-    private let ride: Ride?
+    private let ride: Ride
     
     var cars: [Car]
     
@@ -24,8 +24,6 @@ class ResultsVC: UIViewController, ResultsDelegate {
         
         resultsView.tableView.dataSource = self
         resultsView.tableView.delegate = self
-        
-        guard let ride = ride else { return }
         
         _ = RideRequestsManager().findMatches( ride,
             onUpdate: { cars in
@@ -52,14 +50,33 @@ class ResultsVC: UIViewController, ResultsDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func didTouchNewCarButton() {
+    func callAlertVC() {
         
-        let alertView = AlertVC()
+        let alertVC = AlertVC()
         
-        alertView.modalTransitionStyle = .crossDissolve
-        alertView.modalPresentationStyle = .overCurrentContext
+        alertVC.modalTransitionStyle = .crossDissolve
+        alertVC.modalPresentationStyle = .overCurrentContext
+        alertVC.delegate = self
         
-        present(alertView, animated: true, completion: nil)
+        present(alertVC, animated: true, completion: nil)
+        
+    }
+    
+    func callPriceAlertVC() {
+        
+        let alertVC = AlertVC(priceEstimate: ride.priceEstimate)
+        
+        alertVC.modalTransitionStyle = .crossDissolve
+        alertVC.modalPresentationStyle = .overCurrentContext
+        alertVC.delegate = self
+        
+        present(alertVC, animated: true, completion: nil)
+        
+    }
+    
+    func createNewCar(price: Float) {
+        
+        
         
     }
     
@@ -112,6 +129,15 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 protocol ResultsDelegate: class {
-    func didTouchNewCarButton()
+    func callAlertVC()
     
 }
+
+protocol AlertDelegate: class {
+    func callPriceAlertVC()
+    func createNewCar(price: Float)
+    
+}
+
+
+

@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum AlertViewKind {
+    case disclaimer,priceInput
+}
+
 class AlertView: UIView {
 
     @IBOutlet var contentView: UIView!
@@ -27,24 +31,28 @@ class AlertView: UIView {
     
     var priceEstimate: PriceEstimate?
     
-    init(priceEstimate: PriceEstimate) {
-        self.priceEstimate = priceEstimate
-        
-        super.init(frame: CGRect.zero)
-        commonInit()
-    }
+    let kind: AlertViewKind
     
-    init() {
-        super.init(frame: CGRect.zero)
+    var parentVC: AlertVC?
+    
+    init(frame: CGRect, priceEstimate: PriceEstimate) {
+        self.priceEstimate = priceEstimate
+        self.kind = .priceInput
+        
+        super.init(frame: frame)
         commonInit()
     }
     
     override init(frame: CGRect) {
+        self.kind = .disclaimer
+        
         super.init(frame: frame)
         commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
+        self.kind = .disclaimer
+        
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -83,18 +91,12 @@ class AlertView: UIView {
             NSAttributedString.Key.foregroundColor: UIColor.white as Any
         ]
         
-        if let _ = priceEstimate {
-            
-            titleContainerView.isHidden = false
-            textContainerView.isHidden = false
-            priceInputContainerView.isHidden = false
-            buttonContainerView.isHidden = false
-            
-            let buttonString = NSMutableAttributedString(string: "Criar meu carro!", attributes: buttonTextAttributes)
-            
-            doneButton.setAttributedTitle(buttonString, for: .normal)
-            
-        } else {
+        let lineBreak = NSMutableAttributedString(string: " \n\n", attributes: lineBreakTextAttributes)
+        
+        let combination = NSMutableAttributedString()
+        
+        switch kind {
+        case .disclaimer:
             
             titleContainerView.isHidden = false
             textContainerView.isHidden = false
@@ -111,10 +113,6 @@ class AlertView: UIView {
             
             let fourthPart = NSMutableAttributedString(string: "Não se preocupe, assim que chegar o horário da corrida o nosso aplicativo cobrará a parte de cada um e você não sairá no prejuizo!", attributes: normalTextAttributes)
             
-            let lineBreak = NSMutableAttributedString(string: " \n\n", attributes: lineBreakTextAttributes)
-            
-            let combination = NSMutableAttributedString()
-            
             combination.append(firstPart)
             combination.append(lineBreak)
             combination.append(secondPart)
@@ -128,7 +126,28 @@ class AlertView: UIView {
             
             doneButton.setAttributedTitle(buttonString, for: .normal)
             
+        case .priceInput:
             
+            titleContainerView.isHidden = false
+            textContainerView.isHidden = false
+            priceInputContainerView.isHidden = false
+            buttonContainerView.isHidden = false
+            
+            titleLabel.text = "Quanto vai custar?"
+            
+            let firstPart = NSMutableAttributedString(string: "O preço da corrida quem define é você!", attributes: normalTextAttributes)
+            
+            let secondPart = NSMutableAttributedString(string: "O valor será automaticamente distribuído de forma igual para todos os passageiros no carro.", attributes: normalTextAttributes)
+            
+            combination.append(firstPart)
+            combination.append(lineBreak)
+            combination.append(secondPart)
+            
+            textView.attributedText = combination
+            
+            let buttonString = NSMutableAttributedString(string: "Criar meu carro!", attributes: buttonTextAttributes)
+            
+            doneButton.setAttributedTitle(buttonString, for: .normal)
         }
         
         doneButton.backgroundColor = UIColor(color: .mainGreen)
@@ -150,5 +169,10 @@ class AlertView: UIView {
         textView.layoutIfNeeded()
         
     }
+    
+    @IBAction func didPressDoneButton(_ sender: Any) {
+        parentVC?.doneButtonPressed()
+    }
+    
 
 }

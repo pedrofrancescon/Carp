@@ -21,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ptm-kk-HVM" customClass="AlertView" customModule="Carp" customModuleProvider="target">
+                <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ptm-kk-HVM">
                     <rect key="frame" x="37.5" y="66.5" width="300" height="534"/>
                 </view>
             </subviews>

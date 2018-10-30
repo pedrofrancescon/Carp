@@ -116,7 +116,7 @@ class ResultsView: PopUpView {
     
     @IBAction func didTapNewCarLabel(_ sender: Any) {
         
-        resultsDelegate?.didTouchNewCarButton()
+        resultsDelegate?.callAlertVC()
         
     }
     
