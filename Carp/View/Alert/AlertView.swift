@@ -23,7 +23,7 @@ class AlertView: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var priceInputField: UITextField!
+    @IBOutlet weak var priceInputField: LineTextField!
     @IBOutlet weak var doneButton: UIButton!
     
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
@@ -132,6 +132,8 @@ class AlertView: UIView {
             textContainerView.isHidden = false
             priceInputContainerView.isHidden = false
             buttonContainerView.isHidden = false
+            
+            priceInputField.placeholder = "Preço sugerido: R$ \(String(format: "%.0f", priceEstimate!.upperPrice)),00"
             
             titleLabel.text = "Quanto vai custar?"
             

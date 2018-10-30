@@ -114,7 +114,7 @@ func RideFromDbFormat(docId: String, _ dictionary: [String: Any]) throws -> Ride
         restriction: ConvertGenderRestriction(ride.genderRestriction),
         userId: ride.uid,
         id: docId,
-        priceEstimate: PriceEstimate.init(lowerPrice: 0.0, upperPrice: 0.0)
+        priceEstimate: PriceEstimate.init(lowerPrice: 12.0, upperPrice: 14.0)
     )
 }
 

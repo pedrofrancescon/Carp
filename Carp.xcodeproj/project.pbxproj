@@ -32,7 +32,7 @@
 		5C350ACA2151FE9300BA6E79 /* fa-regular-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C350AC92151FE5900BA6E79 /* fa-regular-400.ttf */; };
 		5C350ACC2151FEDC00BA6E79 /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C350ACB2151FEDB00BA6E79 /* fa-solid-900.ttf */; };
 		5C350ACE2152056200BA6E79 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C350ACD2152056200BA6E79 /* SearchTableView.swift */; };
-		5C5CE6EF214C80C1003059F0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CE6EE214C80C1003059F0 /* TextField.swift */; };
+		5C5CE6EF214C80C1003059F0 /* BoxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5CE6EE214C80C1003059F0 /* BoxTextField.swift */; };
 		5C5F396321531DD900B396E8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F396221531DD900B396E8 /* Extensions.swift */; };
 		5C5F3965215322A100B396E8 /* Uber.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3964215322A000B396E8 /* Uber.png */; };
 		5C5F3967215322A700B396E8 /* 99.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3966215322A600B396E8 /* 99.jpeg */; };
@@ -65,6 +65,7 @@
 		5CE5C1C9218264C10004917C /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5C1C8218264C10004917C /* AlertView.swift */; };
 		5CE5C1CB218264CD0004917C /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE5C1CA218264CD0004917C /* AlertView.xib */; };
 		5CE5C1CD218349E00004917C /* PriceEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5C1CC218349E00004917C /* PriceEstimate.swift */; };
+		5CE5C1CF2188B4A30004917C /* LineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5C1CE2188B4A30004917C /* LineTextField.swift */; };
 		5CF746EB213A3DB300964ABC /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF746E9213A3DB300964ABC /* MapVC.swift */; };
 		5CF746EC213A3DB300964ABC /* MapVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF746EA213A3DB300964ABC /* MapVC.xib */; };
 		5CF746F1213A3E1500964ABC /* SearchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF746EF213A3E1500964ABC /* SearchesVC.swift */; };
@@ -91,7 +92,7 @@
 		5C350AC92151FE5900BA6E79 /* fa-regular-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-regular-400.ttf"; sourceTree = "<group>"; };
 		5C350ACB2151FEDB00BA6E79 /* fa-solid-900.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-solid-900.ttf"; sourceTree = "<group>"; };
 		5C350ACD2152056200BA6E79 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
-		5C5CE6EE214C80C1003059F0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		5C5CE6EE214C80C1003059F0 /* BoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxTextField.swift; sourceTree = "<group>"; };
 		5C5F396221531DD900B396E8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5C5F3964215322A000B396E8 /* Uber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Uber.png; sourceTree = "<group>"; };
 		5C5F3966215322A600B396E8 /* 99.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 99.jpeg; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 		5CE5C1C8218264C10004917C /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		5CE5C1CA218264CD0004917C /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		5CE5C1CC218349E00004917C /* PriceEstimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceEstimate.swift; sourceTree = "<group>"; };
+		5CE5C1CE2188B4A30004917C /* LineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTextField.swift; sourceTree = "<group>"; };
 		5CF746E9213A3DB300964ABC /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		5CF746EA213A3DB300964ABC /* MapVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapVC.xib; sourceTree = "<group>"; };
 		5CF746EF213A3E1500964ABC /* SearchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchesVC.swift; sourceTree = "<group>"; };
@@ -256,7 +258,8 @@
 				5CDA7A592139DBE2009F24CB /* PopUpView.swift */,
 				5CF74701213CF39C00964ABC /* SlidingView.swift */,
 				5CF746F3213C8ED500964ABC /* TouchesPassThroughView.swift */,
-				5C5CE6EE214C80C1003059F0 /* TextField.swift */,
+				5C5CE6EE214C80C1003059F0 /* BoxTextField.swift */,
+				5CE5C1CE2188B4A30004917C /* LineTextField.swift */,
 				5C175B112162D8C200C1FDA2 /* Map */,
 				5CDA7A542139DB6C009F24CB /* SearchResults */,
 				5CDA7A532139DB65009F24CB /* Search */,
@@ -596,7 +599,7 @@
 				5CF746F1213A3E1500964ABC /* SearchesVC.swift in Sources */,
 				5194E33821558B110015B0DF /* CarpUser.swift in Sources */,
 				5194E33A21558F3D0015B0DF /* Car.swift in Sources */,
-				5C5CE6EF214C80C1003059F0 /* TextField.swift in Sources */,
+				5C5CE6EF214C80C1003059F0 /* BoxTextField.swift in Sources */,
 				5C350AC82151D2AB00BA6E79 /* Ride.swift in Sources */,
 				5CDA7A612139DC4B009F24CB /* ResultsCell.swift in Sources */,
 				5CD41B352159432400996514 /* RideRequestsManager.swift in Sources */,
@@ -604,6 +607,7 @@
 				5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */,
 				5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */,
 				5C175B782166C63400C1FDA2 /* UsersStackView.swift in Sources */,
+				5CE5C1CF2188B4A30004917C /* LineTextField.swift in Sources */,
 				5CDA7A4D2139DB22009F24CB /* Colors.swift in Sources */,
 				5C175B172162E9C500C1FDA2 /* PersistantDataManager.swift in Sources */,
 				5CDA7A5A2139DBE2009F24CB /* PopUpView.swift in Sources */,

@@ -77,8 +77,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ote-AF-uNQ">
                             <rect key="frame" x="0.0" y="290" width="375" height="100"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2w-ys-ALY">
-                                    <rect key="frame" x="20" y="35" width="335" height="30"/>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2w-ys-ALY" customClass="LineTextField" customModule="Carp" customModuleProvider="target">
+                                    <rect key="frame" x="45" y="35" width="285" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -86,11 +86,10 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="Z2w-ys-ALY" firstAttribute="leading" secondItem="ote-AF-uNQ" secondAttribute="leading" constant="20" id="7te-gL-XxM"/>
-                                <constraint firstItem="Z2w-ys-ALY" firstAttribute="centerX" secondItem="ote-AF-uNQ" secondAttribute="centerX" id="ULx-HM-BBG"/>
+                                <constraint firstItem="Z2w-ys-ALY" firstAttribute="leading" secondItem="ote-AF-uNQ" secondAttribute="leading" constant="45" id="7te-gL-XxM"/>
                                 <constraint firstItem="Z2w-ys-ALY" firstAttribute="centerY" secondItem="ote-AF-uNQ" secondAttribute="centerY" id="exo-A6-VEr"/>
                                 <constraint firstAttribute="height" constant="100" id="fC3-ij-ZPv"/>
-                                <constraint firstAttribute="trailing" secondItem="Z2w-ys-ALY" secondAttribute="trailing" constant="20" id="vWc-G5-Z4u"/>
+                                <constraint firstAttribute="trailing" secondItem="Z2w-ys-ALY" secondAttribute="trailing" constant="45" id="vWc-G5-Z4u"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-K6-EsH">

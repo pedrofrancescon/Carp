@@ -8,12 +8,12 @@
 
 import UIKit
 
-class TextField: UITextField {
+class BoxTextField: UITextField {
 
     override func layoutSubviews() {
         font = UIFont(name: "Lato-Regular", size: 15.0)
         textColor = UIColor(color: .greyText)
-        backgroundColor = UIColor(color: .softGreyBoxes)
+        backgroundColor = UIColor(color: .lightGreyBoxes)
         
         super.layoutSubviews()
     }
