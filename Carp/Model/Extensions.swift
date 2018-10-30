@@ -27,3 +27,20 @@ extension UIView {
     }
     
 }
+
+extension UITextField {
+    var string: String { return text ?? "" }
+}
+
+extension String {
+    var numbers: String { return components(separatedBy: Numbers.characterSet.inverted).joined() }
+    var integer: Int { return Int(numbers) ?? 0 }
+}
+
+extension NumberFormatter {
+    convenience init(numberStyle: NumberFormatter.Style) {
+        self.init()
+        self.numberStyle = numberStyle
+        self.currencySymbol = self.currencySymbol.appending(" ")
+    }
+}

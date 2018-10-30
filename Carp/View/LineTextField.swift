@@ -10,8 +10,59 @@ import UIKit
 
 class LineTextField: UITextField {
     
+    static let max_digits = 4
+    static var locale:Locale!
+    
+    var value: Float {
+        
+        get{
+            Formatter.currency.locale = Locale.current
+            let divider:Double = pow(Double(10), Double(Formatter.currency.maximumFractionDigits))
+            
+            if let t = text {
+                return Float(t.numbers.integer) / Float(divider)
+            } else {
+                return 0.0
+            }
+        }
+        
+        set(newVal) {
+            
+            if newVal == 0 {
+                text = ""
+            } else {
+                Formatter.currency.locale = Locale.current
+                text = Formatter.currency.string(from: NSNumber(value: newVal))
+            }
+        }
+    }
+    
+    var placeholderValue: Float {
+        
+        get {
+            Formatter.currency.locale = Locale.current
+            let divider:Double = pow(Double(10), Double(Formatter.currency.maximumFractionDigits))
+            
+            if let t = placeholder {
+                return Float(t.numbers.integer) / Float(divider)
+            } else{
+                return 0.0
+            }
+        }
+        
+        set(newVal){
+            Formatter.currency.locale = Locale.current
+            
+            let stringValue = Formatter.currency.string(from: NSNumber(value: newVal))
+            
+            guard stringValue != nil else { return }
+            
+            placeholder = "Preço sugerido: \(stringValue!)"
+        }
+    }
+    
     override func layoutSubviews() {
-        font = UIFont(name: "Lato-Bold", size: 19.0)
+        font = UIFont(name: "Lato-Bold", size: 18.0)
         textColor = UIColor(color: .darkGreyText)
         backgroundColor = .white
         
@@ -25,7 +76,7 @@ class LineTextField: UITextField {
         heightAnchor.constraint(equalToConstant: viewHeight).isActive = true
         
         let border = CALayer()
-        let width = CGFloat(2.0)
+        let width = CGFloat(1.0)
         border.borderColor = UIColor(color: .lightGreyText).cgColor
         border.frame = CGRect(x: 0, y: frame.size.height - width, width: frame.size.width, height: frame.size.height)
         
@@ -38,7 +89,7 @@ class LineTextField: UITextField {
         guard let placeholder = placeholder else { return }
         
         let placeholderAttributes = [
-            NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 19.0) as Any,
+            NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 18.0) as Any,
             NSAttributedString.Key.foregroundColor: UIColor(color: .lightGreyText) as Any
         ]
         
@@ -56,4 +107,34 @@ class LineTextField: UITextField {
         return super.canPerformAction(action, withSender: sender)
     }
     
+    override func didMoveToSuperview() {
+        keyboardType = .numberPad
+        addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        Formatter.currency.locale = Locale.current
+    }
+    
+    func setPlaceholderText(with number: Double) {
+        
+        let numberText = String(number)
+        let max = String(numberText.numbers.prefix(LineTextField.max_digits))
+        
+        self.placeholderValue = (Float(max.numbers.integer) / 10.0)
+        
+    }
+    
+    @objc func editingChanged(_ textField: UITextField) {
+
+        let max = String(string.numbers.prefix(LineTextField.max_digits))
+        
+        let divider:Double = pow(Double(10), Double(Formatter.currency.maximumFractionDigits))
+        self.value = (Float(max.numbers.integer) / Float(divider))
+    }
+    
 }
+
+struct Formatter {
+    static let currency = NumberFormatter(numberStyle: .currency)
+}
+
+struct Numbers { static let characterSet = CharacterSet(charactersIn: "0123456789") }
+

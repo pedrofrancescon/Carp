@@ -133,7 +133,7 @@ class AlertView: UIView {
             priceInputContainerView.isHidden = false
             buttonContainerView.isHidden = false
             
-            priceInputField.placeholder = "Preço sugerido: R$ \(String(format: "%.0f", priceEstimate!.upperPrice)),00"
+            priceInputField.setPlaceholderText(with: priceEstimate!.upperPrice)
             
             titleLabel.text = "Quanto vai custar?"
             
