@@ -52,8 +52,6 @@ class RideDetailsVC: UIViewController {
             
             PersistantDataManager.dataManager.saveRideToDisk(ride: newRide)
             
-            print(newRide.priceEstimate.upperPrice)
-            
             guard let parent = parent as? MainVC else { return }
             
             parent.callResultsVC(ride: newRide)

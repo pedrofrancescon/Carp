@@ -64,8 +64,6 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
     
     func callPriceAlertVC() {
         
-        print(ride.priceEstimate.upperPrice)
-        
         let alertVC = AlertVC(priceEstimate: ride.priceEstimate)
         
         alertVC.modalTransitionStyle = .crossDissolve

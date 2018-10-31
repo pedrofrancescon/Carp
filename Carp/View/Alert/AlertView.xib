@@ -36,7 +36,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="B5H-ye-TK6">
-                    <rect key="frame" x="0.0" y="40" width="375" height="490"/>
+                    <rect key="frame" x="0.0" y="52.5" width="375" height="465"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brz-pc-lJe">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -75,10 +75,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ote-AF-uNQ">
-                            <rect key="frame" x="0.0" y="290" width="375" height="100"/>
+                            <rect key="frame" x="0.0" y="290" width="375" height="75"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2w-ys-ALY" customClass="LineTextField" customModule="Carp" customModuleProvider="target">
-                                    <rect key="frame" x="45" y="35" width="285" height="30"/>
+                                    <rect key="frame" x="45" y="30" width="285" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -87,13 +87,13 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Z2w-ys-ALY" firstAttribute="leading" secondItem="ote-AF-uNQ" secondAttribute="leading" constant="45" id="7te-gL-XxM"/>
-                                <constraint firstItem="Z2w-ys-ALY" firstAttribute="centerY" secondItem="ote-AF-uNQ" secondAttribute="centerY" id="exo-A6-VEr"/>
-                                <constraint firstAttribute="height" constant="100" id="fC3-ij-ZPv"/>
+                                <constraint firstItem="Z2w-ys-ALY" firstAttribute="centerY" secondItem="ote-AF-uNQ" secondAttribute="centerY" multiplier="1.2" id="exo-A6-VEr"/>
+                                <constraint firstAttribute="height" constant="75" id="fC3-ij-ZPv"/>
                                 <constraint firstAttribute="trailing" secondItem="Z2w-ys-ALY" secondAttribute="trailing" constant="45" id="vWc-G5-Z4u"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-K6-EsH">
-                            <rect key="frame" x="0.0" y="390" width="375" height="100"/>
+                            <rect key="frame" x="0.0" y="365" width="375" height="100"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0H7-rq-YLC">
                                     <rect key="frame" x="25" y="25" width="325" height="50"/>

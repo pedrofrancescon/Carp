@@ -29,7 +29,6 @@ class MapVC: UIViewController, MapControllerDelegate {
         })
     }
     
-
     init() {
         locationsManager = LocationsManager.locationsManager
         super.init(nibName: "MapVC", bundle: nil)

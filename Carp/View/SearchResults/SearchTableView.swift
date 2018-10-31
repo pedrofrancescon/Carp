@@ -10,6 +10,8 @@ import UIKit
 
 class SearchTableView: UITableView {
     
+    static var cellHeight: CGFloat = 50.0
+    
     lazy var layout: () -> Void = {
         
         separatorStyle = .singleLine
@@ -30,15 +32,15 @@ class SearchTableView: UITableView {
     
     func changeHeightTo(numberOfCells number: Int) {
         
-        if number > 1 {
-            separatorStyle = .singleLine
-        } else {
-            separatorStyle = .none
-        }
+//        if number > 1 {
+//            separatorStyle = .singleLine
+//        } else {
+//            separatorStyle = .none
+//        }
         
-        let tableHeight: CGFloat = 50 * CGFloat(number)
+        let tableHeight: CGFloat = SearchTableView.cellHeight * CGFloat(number)
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.25) {
             self.heightAnchor.constraint(equalToConstant: tableHeight)
             self.frame.size.height = tableHeight
         }

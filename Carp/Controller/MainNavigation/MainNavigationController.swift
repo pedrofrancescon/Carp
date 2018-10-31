@@ -26,13 +26,12 @@ class MainNavigationController: UINavigationController {
         let mainVC = MainVC()
         setViewControllers([mainVC], animated: false)
         
-        // Dismiss keyboard
-        /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        navigationBar.addGestureRecognizer(tap)
         
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     init() {
@@ -44,9 +43,6 @@ class MainNavigationController: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        topViewController?.view.endEditing(true)
-    }
+    
 
 }

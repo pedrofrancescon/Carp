@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class MainVC: UIViewController, DismissKeyboardProtocol {
 
     private let searchesVC: SearchesVC
     private let mapVC: MapVC
@@ -39,11 +39,16 @@ class MainVC: UIViewController {
         view.addSubview(mapVC.view)
         view.addSubview(searchesVC.view)
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewEndEditing))
+        tap.cancelsTouchesInView = false
+        navigationController?.navigationBar.addGestureRecognizer(tap)
+        
+        mapVC.mapView.dismissKeyboard = self
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    @objc func viewEndEditing() {
+        self.view.endEditing(true)
     }
     
     func callRideDetailsVC(origin: Place, destiny: Place) {
@@ -145,4 +150,10 @@ class MainVC: UIViewController {
         
     }
 
+}
+
+protocol DismissKeyboardProtocol: class {
+    
+    func viewEndEditing()
+    
 }

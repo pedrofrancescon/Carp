@@ -42,7 +42,7 @@ class SearchesVC: UIViewController {
     private var origin: Place? {
         didSet {
             DispatchQueue.main.async {
-                self.viewEndEditing()
+                self.didTapNextButton()
                 self.originSearchView.textField.text = self.origin?.name
                 self.mapDelegate.createMapMarker(of: .origin, with: self.origin!)
             }
@@ -51,7 +51,7 @@ class SearchesVC: UIViewController {
     private var destiny: Place? {
         didSet {
             DispatchQueue.main.async {
-                self.viewEndEditing()
+                self.didTapNextButton()
                 self.destinySearchView.textField.text = self.destiny?.name
                 self.mapDelegate.createMapMarker(of: .destiny, with: self.destiny!)
             }
@@ -77,6 +77,7 @@ class SearchesVC: UIViewController {
         
         destinyTableView.delegate = self
         destinyTableView.dataSource = self
+        
         
         originTableView.delegate = self
         originTableView.dataSource = self
@@ -153,10 +154,12 @@ extension SearchesVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return SearchTableView.cellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.viewEndEditing()
+        
         if tableView == destinyTableView {
             guard let placeID = destinyPredictions[indexPath.row].placeID else { return }
             locationsManager.getPlace(ofID: placeID) { (place) in
@@ -194,7 +197,7 @@ extension SearchesVC: SearchViewDelegate {
             }
         }
         
-        slidingView?.slideViewAnimated(to: currentState.opposite, withDuration: 1.0)
+        slidingView?.slideViewAnimated(to: currentState.opposite, withDuration: 0.7)
         
     }
     
@@ -219,6 +222,8 @@ extension SearchesVC: SearchViewDelegate {
     }
     
     func primaryActionTriggered(_ view: UIView) {
+        self.viewEndEditing()
+        
         if view == destinySearchView {
             guard let placeID = destinyPredictions.first?.placeID else { return }
             locationsManager.getPlace(ofID: placeID) { (place) in

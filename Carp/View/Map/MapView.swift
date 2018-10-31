@@ -9,10 +9,12 @@
 import UIKit
 import GoogleMaps
 
-class MapView: GMSMapView {
+class MapView: GMSMapView, GMSMapViewDelegate {
 
     private var originMapMarker: GMSMarker = GMSMarker()
     private var destinyMapMarker: GMSMarker = GMSMarker()
+    
+    weak var dismissKeyboard: DismissKeyboardProtocol?
     
     override func layoutSubviews() {
         originMapMarker.icon = UIImage(named: "origin_map_marker")
@@ -27,6 +29,12 @@ class MapView: GMSMapView {
         settings.myLocationButton = true
         isMyLocationEnabled = true
         
+        isExclusiveTouch = false
+        isMultipleTouchEnabled = true
+        isUserInteractionEnabled = true
+        
+        delegate = self
+        
         do {
             if let styleURL = Bundle.main.url(forResource: "MapStyle", withExtension: "json") {
                 mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
@@ -36,6 +44,10 @@ class MapView: GMSMapView {
         } catch {
             NSLog("One or more of the map styles failed to load. \(error)")
         }
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        dismissKeyboard?.viewEndEditing()
     }
     
     func createMapMarker(of placeType: PlaceType, with place: Place) {
@@ -66,7 +78,7 @@ class MapView: GMSMapView {
                 let points = routeOverviewPolyline.object(forKey: "points")
                 let path = GMSPath.init(fromEncodedPath: points! as! String)
                 let polyline = GMSPolyline.init(path: path)
-                polyline.strokeWidth = 5
+                polyline.strokeWidth = 3
                 polyline.strokeColor = UIColor(color: .mainGreen)
                 
                 let bounds = GMSCoordinateBounds(path: path!)

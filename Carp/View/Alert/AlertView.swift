@@ -35,18 +35,18 @@ class AlertView: UIView {
     
     var parentVC: AlertVC?
     
-    init(frame: CGRect, priceEstimate: PriceEstimate) {
+    init(priceEstimate: PriceEstimate) {
         self.priceEstimate = priceEstimate
         self.kind = .priceInput
         
-        super.init(frame: frame)
+        super.init(frame: CGRect.zero)
         commonInit()
     }
     
-    override init(frame: CGRect) {
+    init() {
         self.kind = .disclaimer
         
-        super.init(frame: frame)
+        super.init(frame: CGRect.zero)
         commonInit()
     }
     

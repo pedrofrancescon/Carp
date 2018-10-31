@@ -61,7 +61,20 @@ class LineTextField: UITextField {
         }
     }
     
-    override func layoutSubviews() {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(copy(_:)) || action == #selector(selectAll(_:)) || action == #selector(paste(_:)) {
+            
+            return false
+        }
+        
+        return super.canPerformAction(action, withSender: sender)
+    }
+    
+    override func didMoveToSuperview() {
+        keyboardType = .numberPad
+        addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        Formatter.currency.locale = Locale.current
+        
         font = UIFont(name: "Lato-Bold", size: 18.0)
         textColor = UIColor(color: .darkGreyText)
         backgroundColor = .white
@@ -86,31 +99,14 @@ class LineTextField: UITextField {
         
         super.layoutSubviews()
         
-        guard let placeholder = placeholder else { return }
-        
         let placeholderAttributes = [
             NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 18.0) as Any,
             NSAttributedString.Key.foregroundColor: UIColor(color: .lightGreyText) as Any
         ]
         
-        let placeholderText = NSMutableAttributedString(string: placeholder, attributes: placeholderAttributes)
+        let placeholderText = NSMutableAttributedString(string: "", attributes: placeholderAttributes)
         
         attributedPlaceholder = placeholderText
-    }
-    
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if action == #selector(copy(_:)) || action == #selector(selectAll(_:)) || action == #selector(paste(_:)) {
-            
-            return false
-        }
-        
-        return super.canPerformAction(action, withSender: sender)
-    }
-    
-    override func didMoveToSuperview() {
-        keyboardType = .numberPad
-        addTarget(self, action: #selector(editingChanged), for: .editingChanged)
-        Formatter.currency.locale = Locale.current
     }
     
     func setPlaceholderText(with number: Double) {
