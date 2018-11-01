@@ -33,7 +33,9 @@ class RideRequestsManager {
                 print("Could not retrieve matches: \(error)")
             } else {
                 snapshot!.documents.forEach({ doc in
-                    let hostRideId = doc.data()["hostRequest"] as! String
+                    guard let hostRideId = doc.data()["hostRequest"] as? String else {
+                        return
+                    }
                     self
                         .db
                         .document("ride-requests/\(hostRideId)")
@@ -41,7 +43,9 @@ class RideRequestsManager {
                         if let error = error {
                             print("Could not retrieve host ride: \(error)")
                         } else {
-                            let ride = try! RideFromDbFormat(docId: rideRef!.documentID, rideRef!.data() ?? [:])
+                            guard let rideRef = rideRef, let ride = try? RideFromDbFormat(docId: rideRef.documentID, rideRef.data() ?? [:]) else {
+                                return
+                            }
                             onUpdate([try? CarFromDbFormat(docId: doc.documentID, riders: [], owner: ride, doc.data())].filter({ $0 != nil }) as! [Car])
                         }
                     })

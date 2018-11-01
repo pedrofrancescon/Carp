@@ -459,6 +459,7 @@
 				5CDA7A292139DA4E009F24CB /* Frameworks */,
 				5CDA7A2A2139DA4E009F24CB /* Resources */,
 				3D3BAB2BA99881C19CF78DC9 /* [CP] Copy Pods Resources */,
+				51B8E6FF218BC6CC0087CA64 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -566,6 +567,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Carp/Pods-Carp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		51B8E6FF218BC6CC0087CA64 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" --lenient\n";
 		};
 		EE6BCF3136239229EAD30DBF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
