@@ -76,7 +76,7 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
     
     func createNewCar(price: Float) {
         
-        
+        resultsView.changeStateTo(.resultsAndCar)
         
     }
     
@@ -95,11 +95,6 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 74
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let _ = cell as! ResultsCell
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -138,6 +133,3 @@ protocol AlertDelegate: class {
     func createNewCar(price: Float)
     
 }
-
-
-

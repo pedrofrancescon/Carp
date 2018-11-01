@@ -91,7 +91,7 @@ class AlertView: UIView {
             NSAttributedString.Key.foregroundColor: UIColor.white as Any
         ]
         
-        let lineBreak = NSMutableAttributedString(string: " \n\n", attributes: lineBreakTextAttributes)
+        let lineBreak = NSMutableAttributedString(string: "\n\n", attributes: lineBreakTextAttributes)
         
         let combination = NSMutableAttributedString()
         

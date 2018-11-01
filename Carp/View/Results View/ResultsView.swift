@@ -10,6 +10,10 @@ enum ResultsViewState {
     case onlyResults,resultsAndCar
 }
 
+enum ResultsViewButtons {
+    case results,car
+}
+
 import UIKit
 
 class ResultsView: PopUpView {
@@ -46,27 +50,24 @@ class ResultsView: PopUpView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        changeStateTo(.onlyResults)
     }
     
     override func layoutSubviews() {
         let greenIconAttributes = [
-            NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 16.0) as Any,
-            NSAttributedString.Key.foregroundColor: UIColor(color: .greenText) as Any
+            NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 16.0) as Any
         ]
         
         let greenTextAttributes = [
-            NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16.0) as Any,
-            NSAttributedString.Key.foregroundColor: UIColor(color: .greenText) as Any
+            NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16.0) as Any
         ]
         
         let greyIconAttributes = [
-            NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 16.0) as Any,
-            NSAttributedString.Key.foregroundColor: UIColor(color: .greyText) as Any
+            NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 16.0) as Any
         ]
         
         let greyTextAttributes = [
-            NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16.0) as Any,
-            NSAttributedString.Key.foregroundColor: UIColor(color: .greyText) as Any
+            NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16.0) as Any
         ]
         
         let resultsStringIcon = NSMutableAttributedString(string: "\u{f0ca}", attributes: greenIconAttributes)
@@ -92,11 +93,8 @@ class ResultsView: PopUpView {
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .singleLine
         tableView.frame = contentView.frame
-        containerView.addSubview(tableView)
         
         newCarLabel.textColor = UIColor(color: .green)
-        
-        changeStateTo(.onlyResults)
     }
     
     func changeStateTo(_ state: ResultsViewState) {
@@ -105,19 +103,48 @@ class ResultsView: PopUpView {
         case .onlyResults:
             buttonsView.isHidden = true
             newCarLabelView.isHidden = false
-            break
+            didTap(.results)
+            
         case .resultsAndCar:
             buttonsView.isHidden = false
             newCarLabelView.isHidden = true
-            break
+            didTap(.car)
+        }
+    }
+    
+    func didTap(_ button: ResultsViewButtons) {
+        
+        for s_view in containerView.subviews {
+            s_view.removeFromSuperview()
+        }
+        
+        switch button {
+        case .results:
+            containerView.insertSubview(tableView, at: 0)
+            resultsButton.setTitleColor(UIColor(color: .greenText), for: .normal)
+            resultsButton.tintColor = UIColor(color: .greenText)
+            chatButton.setTitleColor(UIColor(color: .greyText), for: .normal)
+            chatButton.tintColor = UIColor(color: .greyText)
+        case .car:
+            containerView.insertSubview(UIView(), at: 0)
+            resultsButton.setTitleColor(UIColor(color: .greyText), for: .normal)
+            resultsButton.tintColor = UIColor(color: .greyText)
+            chatButton.setTitleColor(UIColor(color: .greenText), for: .normal)
+            chatButton.tintColor = UIColor(color: .greenText)
         }
         
     }
     
     @IBAction func didTapNewCarLabel(_ sender: Any) {
-        
         resultsDelegate?.callAlertVC()
-        
+    }
+    
+    @IBAction func didTapCarButton(_ sender: Any) {
+        didTap(.car)
+    }
+    
+    @IBAction func didTapResultsButton(_ sender: Any) {
+        didTap(.results)
     }
     
     

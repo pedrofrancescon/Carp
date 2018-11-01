@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,12 +13,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultsView" customModule="Carp" customModuleProvider="target">
             <connections>
                 <outlet property="buttonsView" destination="kV3-eV-UQu" id="IFK-at-jeW"/>
-                <outlet property="chatButton" destination="sL2-Dw-6Pv" id="zUM-mc-fbm"/>
+                <outlet property="chatButton" destination="lwu-Eu-oft" id="tHW-ii-f80"/>
                 <outlet property="containerView" destination="pWX-mJ-mVR" id="7lI-em-Akp"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="xc9-WO-V2c"/>
                 <outlet property="newCarLabel" destination="rIh-IM-w5I" id="fVL-ss-fHF"/>
                 <outlet property="newCarLabelView" destination="QAz-Ax-hIh" id="Kmd-F0-BWz"/>
-                <outlet property="resultsButton" destination="lwu-Eu-oft" id="yam-9l-NN2"/>
+                <outlet property="resultsButton" destination="sL2-Dw-6Pv" id="5eN-xu-bEg"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,9 +34,15 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sL2-Dw-6Pv">
                                     <rect key="frame" x="0.0" y="0.0" width="187.5" height="70"/>
+                                    <connections>
+                                        <action selector="didTapResultsButton:" destination="-1" eventType="touchUpInside" id="phV-kL-Ayt"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwu-Eu-oft">
                                     <rect key="frame" x="187.5" y="0.0" width="187.5" height="70"/>
+                                    <connections>
+                                        <action selector="didTapCarButton:" destination="-1" eventType="touchUpInside" id="xQ7-Kx-9fj"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAT-99-IzY">
                                     <rect key="frame" x="187" y="17.5" width="1" height="35"/>
