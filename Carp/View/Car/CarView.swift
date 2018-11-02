@@ -39,6 +39,7 @@ class CarView: UIView {
         cellStackView.addSubview(carTableView)
         
         carTableView.isScrollEnabled = false
+        carTableView.separatorStyle = .none
     }
     
     override func layoutSubviews() {

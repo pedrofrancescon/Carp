@@ -78,10 +78,19 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
         
     }
     
-    func createNewCar(price: Float) {
+    func callCarVC(car: Car) {
+        let carVC = CarVC(car: car)
+        
+        addChildViewController(carVC)
+        resultsView.carView = carVC.view
         resultsView.changeStateTo(.resultsAndCar)
     }
     
+    func createNewCar(price: Float) {
+        let newCar = Car.init(riders: [], owner: self.ride, price: price)
+        
+        callCarVC(car: newCar)
+    }
 
 }
 
@@ -124,17 +133,8 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let selectedCar = cars[indexPath.row]
-        
-        let carVC = CarVC(car: selectedCar)
-        
-        addChildViewController(carVC)
-        resultsView.carView = carVC.view
-        resultsView.changeStateTo(.resultsAndCar)
-        
+        callCarVC(car: cars[indexPath.row])
     }
-    
 }
 
 protocol ResultsDelegate: class {
