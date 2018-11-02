@@ -30,7 +30,7 @@ class ResultsView: PopUpView {
     
     @IBOutlet weak var containerView: UIView!
     
-    var tableView: UITableView = UITableView()
+    var resultsTableView = UITableView()
     
     weak var resultsDelegate: ResultsDelegate?
     
@@ -47,13 +47,14 @@ class ResultsView: PopUpView {
     private func commonInit() {
         Bundle.main.loadNibNamed("ResultsView", owner: self, options: nil)
         addSubview(contentView)
-        contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        contentView.frame = self.bounds
         
         changeStateTo(.onlyResults)
     }
     
     override func layoutSubviews() {
+        
         let greenIconAttributes = [
             NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 16.0) as Any
         ]
@@ -90,9 +91,9 @@ class ResultsView: PopUpView {
         
         chatButton.setAttributedTitle(carCombination, for: .normal)
         
-        tableView.tableFooterView = UIView()
-        tableView.separatorStyle = .singleLine
-        tableView.frame = contentView.frame
+        resultsTableView.tableFooterView = UIView()
+        resultsTableView.separatorStyle = .singleLine
+        resultsTableView.frame = containerView.bounds
         
         newCarLabel.textColor = UIColor(color: .green)
     }
@@ -114,19 +115,19 @@ class ResultsView: PopUpView {
     
     func didTap(_ button: ResultsViewButtons) {
         
-        for s_view in containerView.subviews {
-            s_view.removeFromSuperview()
+        for sView in containerView.subviews {
+            sView.removeFromSuperview()
         }
         
         switch button {
         case .results:
-            containerView.insertSubview(tableView, at: 0)
+            containerView.addSubview(resultsTableView)
             resultsButton.setTitleColor(UIColor(color: .greenText), for: .normal)
             resultsButton.tintColor = UIColor(color: .greenText)
             chatButton.setTitleColor(UIColor(color: .greyText), for: .normal)
             chatButton.tintColor = UIColor(color: .greyText)
         case .car:
-            containerView.insertSubview(UIView(), at: 0)
+            containerView.addSubview(UIView())
             resultsButton.setTitleColor(UIColor(color: .greyText), for: .normal)
             resultsButton.tintColor = UIColor(color: .greyText)
             chatButton.setTitleColor(UIColor(color: .greenText), for: .normal)

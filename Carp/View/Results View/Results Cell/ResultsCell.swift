@@ -10,6 +10,8 @@ import UIKit
 
 class ResultsCell: UITableViewCell {
     
+    static var cellHeight: CGFloat = 74.0
+    
     @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak private var originIcon: UILabel!
@@ -40,11 +42,6 @@ class ResultsCell: UITableViewCell {
         originDistanceLabel.textColor = UIColor(rgb: 0x6D6D6D)
         destinyDistanceLabel.textColor = UIColor(rgb: 0x6D6D6D)
         timeLabel.textColor = UIColor(rgb: 0x6D6D6D)
-        
-    }
-    
-    func addToStackView(image: UIImage) {
-        
         
     }
     

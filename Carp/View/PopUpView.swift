@@ -39,7 +39,6 @@ class PopUpView: UIView {
     override func didMoveToSuperview() {
         layout()
         addGestureRecognizer(panRecognizer)
-        addGestureRecognizer(tapRecognizer)
     }
     
     func showView() {
@@ -84,12 +83,6 @@ class PopUpView: UIView {
     private var runningAnimators = [UIViewPropertyAnimator]()
     
     private var animationProgress = [CGFloat]()
-    
-    private lazy var tapRecognizer: UITapGestureRecognizer = {
-        let recognizer = UITapGestureRecognizer()
-        recognizer.addTarget(self, action: #selector(popupViewTapped(recognizer:)))
-        return recognizer
-    }()
     
     private lazy var panRecognizer: UIPanGestureRecognizer = {
         let recognizer = UIPanGestureRecognizer()
@@ -192,15 +185,6 @@ class PopUpView: UIView {
             
         default:
             ()
-        }
-    }
-    
-    @objc private func popupViewTapped(recognizer: UITapGestureRecognizer) {
-        if currentState == .closed {
-            DispatchQueue.main.async {
-                self.animateTransitionIfNeeded(to: self.currentState.opposite, duration: 1.0)
-                self.runningAnimators.forEach { $0.startAnimation() }
-            }
         }
     }
 

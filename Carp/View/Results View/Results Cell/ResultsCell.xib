@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -22,7 +22,7 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultsCell" rowHeight="74" id="FPE-Bc-cgt" customClass="ResultsCell" customModule="Carp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="456" height="77"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FPE-Bc-cgt" id="PKU-Ra-9rv">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FPE-Bc-cgt" id="PKU-Ra-9rv">
                 <rect key="frame" x="0.0" y="0.0" width="456" height="76.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -106,7 +106,7 @@
                 <outlet property="timeLabel" destination="5hl-kr-fiC" id="dlF-r2-6h8"/>
                 <outlet property="usersStackView" destination="ouc-te-76H" id="J6c-ZE-ykk"/>
             </connections>
-            <point key="canvasLocation" x="38" y="56.5"/>
+            <point key="canvasLocation" x="36.799999999999997" y="56.221889055472268"/>
         </tableViewCell>
     </objects>
 </document>

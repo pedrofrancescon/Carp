@@ -30,10 +30,6 @@ class MainNavigationController: UINavigationController {
         
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
     init() {
         
         super.init(nibName: "MainNavigationController", bundle: nil)

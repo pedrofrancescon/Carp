@@ -22,9 +22,6 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
         view = resultsView
         resultsView.resultsDelegate = self
         
-        resultsView.tableView.dataSource = self
-        resultsView.tableView.delegate = self
-        
         _ = RideRequestsManager().findMatches( ride,
             onUpdate: { cars in
                 self.cars = self.cars.filter({ car in
@@ -33,10 +30,17 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
                     })
                 })
                 self.cars.append(contentsOf: cars)
-                self.resultsView.tableView.reloadData()
-                    }
+                self.resultsView.resultsTableView.reloadData()
+            }
         )
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        resultsView.resultsTableView.dataSource = self
+        resultsView.resultsTableView.delegate = self
     }
     
     init(ride: Ride) {
@@ -75,9 +79,7 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
     }
     
     func createNewCar(price: Float) {
-        
         resultsView.changeStateTo(.resultsAndCar)
-        
     }
     
 
@@ -94,7 +96,7 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 74
+        return ResultsCell.cellHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,6 +121,10 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
         cell?.usersStackView.add("+2")
         
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("HAHAHAHA")
     }
     
 }

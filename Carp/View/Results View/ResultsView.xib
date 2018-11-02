@@ -14,7 +14,7 @@
             <connections>
                 <outlet property="buttonsView" destination="kV3-eV-UQu" id="IFK-at-jeW"/>
                 <outlet property="chatButton" destination="lwu-Eu-oft" id="tHW-ii-f80"/>
-                <outlet property="containerView" destination="pWX-mJ-mVR" id="7lI-em-Akp"/>
+                <outlet property="containerView" destination="mLu-wx-bGu" id="Lf3-BD-joR"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="xc9-WO-V2c"/>
                 <outlet property="newCarLabel" destination="rIh-IM-w5I" id="fVL-ss-fHF"/>
                 <outlet property="newCarLabelView" destination="QAz-Ax-hIh" id="Kmd-F0-BWz"/>
@@ -108,23 +108,23 @@
                         </view>
                     </subviews>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWX-mJ-mVR">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLu-wx-bGu">
                     <rect key="frame" x="0.0" y="145" width="375" height="373"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="370" id="L2E-RY-ywx"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="370" id="DDZ-Lv-clF"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mLu-wx-bGu" secondAttribute="bottom" id="Bo0-Qn-eBG"/>
                 <constraint firstItem="jZp-v2-2aL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="MrJ-9c-fX1"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pWX-mJ-mVR" secondAttribute="trailing" id="Q0w-pr-iMk"/>
                 <constraint firstItem="jZp-v2-2aL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="STl-EW-WQ9"/>
-                <constraint firstItem="pWX-mJ-mVR" firstAttribute="top" secondItem="jZp-v2-2aL" secondAttribute="bottom" id="VkA-5t-doL"/>
-                <constraint firstItem="pWX-mJ-mVR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZHq-KV-B1R"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pWX-mJ-mVR" secondAttribute="bottom" id="c17-ta-2gc"/>
+                <constraint firstItem="mLu-wx-bGu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="X3x-lv-XNa"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jZp-v2-2aL" secondAttribute="trailing" id="l68-Gp-9Qy"/>
+                <constraint firstItem="mLu-wx-bGu" firstAttribute="top" secondItem="jZp-v2-2aL" secondAttribute="bottom" id="tf9-gv-GZb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mLu-wx-bGu" secondAttribute="trailing" id="y1n-WK-tUP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

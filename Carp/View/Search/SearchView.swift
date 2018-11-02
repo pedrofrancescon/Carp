@@ -68,8 +68,7 @@ class SearchView: UIView {
     }
     
     private var timeoutInSeconds: TimeInterval {
-        
-        return 0.5 //second
+        return 0.5
     }
     
     private var idleTimer: Timer?
@@ -93,7 +92,6 @@ class SearchView: UIView {
     
     @IBAction func didChangeTextField(_ sender: Any) {
         self.resetIdleTimer()
-        
     }
     
     @IBAction func primaryActionTriggered(_ sender: Any) {
