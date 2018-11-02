@@ -124,7 +124,15 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("HAHAHAHA")
+        
+        let selectedCar = cars[indexPath.row]
+        
+        let carVC = CarVC(car: selectedCar)
+        
+        addChildViewController(carVC)
+        resultsView.carView = carVC.view
+        resultsView.changeStateTo(.resultsAndCar)
+        
     }
     
 }

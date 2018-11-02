@@ -39,11 +39,11 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
         view.addSubview(mapVC.view)
         view.addSubview(searchesVC.view)
         
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewEndEditing))
-//        tap.cancelsTouchesInView = false
-//        navigationController?.navigationBar.addGestureRecognizer(tap)
-//        
-//        mapVC.mapView.dismissKeyboard = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewEndEditing))
+        tap.cancelsTouchesInView = false
+        navigationController?.navigationBar.addGestureRecognizer(tap)
+        
+        mapVC.mapView.dismissKeyboard = self
         
     }
     

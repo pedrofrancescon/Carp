@@ -43,6 +43,8 @@ class ResultsCell: UITableViewCell {
         destinyDistanceLabel.textColor = UIColor(rgb: 0x6D6D6D)
         timeLabel.textColor = UIColor(rgb: 0x6D6D6D)
         
+        selectionStyle = .none
+        
     }
     
 }

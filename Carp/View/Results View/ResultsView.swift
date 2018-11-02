@@ -31,6 +31,7 @@ class ResultsView: PopUpView {
     @IBOutlet weak var containerView: UIView!
     
     var resultsTableView = UITableView()
+    var carView: UIView = UIView()
     
     weak var resultsDelegate: ResultsDelegate?
     
@@ -127,7 +128,7 @@ class ResultsView: PopUpView {
             chatButton.setTitleColor(UIColor(color: .greyText), for: .normal)
             chatButton.tintColor = UIColor(color: .greyText)
         case .car:
-            containerView.addSubview(UIView())
+            containerView.addSubview(carView)
             resultsButton.setTitleColor(UIColor(color: .greyText), for: .normal)
             resultsButton.tintColor = UIColor(color: .greyText)
             chatButton.setTitleColor(UIColor(color: .greenText), for: .normal)
