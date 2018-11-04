@@ -210,5 +210,14 @@ private func convertGenderRestriction(_ dbRestriction: GenderRestriction) -> Res
 }
 
 private func dicDeserialize<T: Decodable>(_ dictionary: [String: Any]) throws -> T {
-    return try JSONDecoder().decode(T.self, from: try JSONSerialization.data(withJSONObject: dictionary, options: []))
+    if !JSONSerialization.isValidJSONObject(dictionary) {
+        throw NSError(domain: "Could not transform db object into JSON.", code: 0, userInfo: [:])
+    }
+    return try JSONDecoder().decode(
+        T.self,
+        from: try JSONSerialization.data(
+            withJSONObject: dictionary,
+            options: []
+        )
+    )
 }
