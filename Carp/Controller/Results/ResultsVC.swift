@@ -81,6 +81,10 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
     func callCarVC(car: Car) {
         let carVC = CarVC(car: car)
         
+        for childVC in childViewControllers {
+            childVC.removeFromParentViewController()
+        }
+        
         addChildViewController(carVC)
         resultsView.carView = carVC.view
         resultsView.changeStateTo(.resultsAndCar)

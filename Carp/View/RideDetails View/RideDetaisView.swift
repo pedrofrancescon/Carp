@@ -58,6 +58,7 @@ class RideDetailsView: PopUpView {
     private func comminInit() {
         Bundle.main.loadNibNamed("RideDetailsView", owner: self, options: nil)
         addSubview(contentView)
+        
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
@@ -100,9 +101,9 @@ class RideDetailsView: PopUpView {
         
         originIcon.textColor = UIColor(color: .mainGreen)
         destinyIcon.textColor = UIColor(color: .mainGreen)
-        timeIcon.textColor = UIColor(color: .mainBlue)
+        timeIcon.textColor = UIColor(color: .greyIcon)
         seatsIcon.textColor = UIColor(color: .mainOrange)
-        restrictionsIcon.textColor = UIColor(color: .greyIcon)
+        restrictionsIcon.textColor = UIColor(color: .mainBlue)
         
         makeButtonSelected(oneSeatButton)
         

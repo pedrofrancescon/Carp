@@ -105,7 +105,7 @@ class AlertView: UIView {
             
             titleLabel.text = "Deseja criar um carro?"
             
-            let firstPart = NSMutableAttributedString(string: "Quando você cria o seu próprio carro o ponto e a hora de partida são exatamente aqueles que você já escolheu!", attributes: normalTextAttributes)
+            let firstPart = NSMutableAttributedString(string: "Quando você cria o seu próprio carro, o ponto e a hora de partida são exatamente aqueles que você já escolheu!", attributes: normalTextAttributes)
             
             let secondPart = NSMutableAttributedString(string: "Entretanto, a responsabilidade de ", attributes: normalTextAttributes)
             
