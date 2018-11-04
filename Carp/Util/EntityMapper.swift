@@ -9,22 +9,22 @@
 import Foundation
 import Firebase
 
-fileprivate struct TimeRange: Codable {
+private struct TimeRange: Codable {
     var min: Double
     var max: Double
 }
 
-fileprivate struct Geopoint: Codable {
+private struct Geopoint: Codable {
     var latitude: Double
     var longitude: Double
 }
 
-fileprivate struct DbPlace: Codable {
+private struct DbPlace: Codable {
     var legibleName: String
     var geopoint: Geopoint
 }
 
-fileprivate struct RideRequest: Codable {
+private struct RideRequest: Codable {
     var departureTimeRange: TimeRange
     var destination: DbPlace
     var origin: DbPlace
@@ -33,12 +33,12 @@ fileprivate struct RideRequest: Codable {
     var uid: String
 }
 
-fileprivate enum GenderRestriction: String, Codable {
+private enum GenderRestriction: String, Codable {
     case noRestriction
     case sameSex
 }
 
-fileprivate struct DbUser: Codable {
+private struct DbUser: Codable {
     var creationTime: Double
     var firstName: String
     var lastName: String
@@ -47,13 +47,13 @@ fileprivate struct DbUser: Codable {
     var gender: String?
 }
 
-fileprivate struct DbCar: Codable {
+private struct DbCar: Codable {
     var rideRequests: [String]?
     var hostRequest: String
     var price: Float
 }
 
-func RideToDbFormat(ride: Ride) -> [String : Any] {
+func rideToDbFormat(ride: Ride) -> [String: Any] {
     return [
         "departureTimeRange": [
             "min": ride.timeInterval.start.timeIntervalSince1970,
@@ -77,8 +77,8 @@ func RideToDbFormat(ride: Ride) -> [String : Any] {
     ]
 }
 
-func RideFromDbFormat(docId: String, _ dictionary: [String: Any]) throws -> Ride {
-    let ride: RideRequest = try DicDeserialize(dictionary)
+func rideFromDbFormat(docId: String, _ dictionary: [String: Any]) throws -> Ride {
+    let ride: RideRequest = try dicDeserialize(dictionary)
     return Ride(
         origin: Place(
             name: ride.origin.legibleName,
@@ -111,14 +111,14 @@ func RideFromDbFormat(docId: String, _ dictionary: [String: Any]) throws -> Ride
             end: Date(timeIntervalSince1970: ride.departureTimeRange.max)
         ),
         numberOfSeats: NumberOfSeats(rawValue: ride.numberOfSeats) ?? NumberOfSeats.one,
-        restriction: ConvertGenderRestriction(ride.genderRestriction),
+        restriction: convertGenderRestriction(ride.genderRestriction),
         userId: ride.uid,
         id: docId,
         priceEstimate: PriceEstimate.init(lowerPrice: 12.0, upperPrice: 14.0)
     )
 }
 
-func UserToDbFormat(user: CarpUser) -> [String: Any] {
+func userToDbFormat(user: CarpUser) -> [String: Any] {
     var outputObj = [
         "firstName": user.firstName,
         "lastName": user.lastName,
@@ -133,8 +133,8 @@ func UserToDbFormat(user: CarpUser) -> [String: Any] {
     return outputObj
 }
 
-func UserFromDbFormat(_ dictionary: [String: Any]) throws -> CarpUser {
-    let user: DbUser = try DicDeserialize(dictionary)
+func userFromDbFormat(_ dictionary: [String: Any]) throws -> CarpUser {
+    let user: DbUser = try dicDeserialize(dictionary)
     return CarpUser(
         id: user.uid,
         firstName: user.firstName,
@@ -144,7 +144,7 @@ func UserFromDbFormat(_ dictionary: [String: Any]) throws -> CarpUser {
     )
 }
 
-func CarToDbFormat(_ car: Car) -> [String: Any] {
+func carToDbFormat(_ car: Car) -> [String: Any] {
     return [
         "hostRequest": car.owner.id,
         "rideRequests": car.riders.map({ $0.id }),
@@ -152,8 +152,8 @@ func CarToDbFormat(_ car: Car) -> [String: Any] {
     ]
 }
 
-func CarFromDbFormat(docId: String, riders: [Ride], owner: Ride, _ dictionary: [String: Any]) throws -> Car {
-    let car: DbCar = try DicDeserialize(dictionary)
+func carFromDbFormat(docId: String, riders: [Ride], owner: Ride, _ dictionary: [String: Any]) throws -> Car {
+    let car: DbCar = try dicDeserialize(dictionary)
     return Car(
         riders: riders,
         owner: owner,
@@ -161,7 +161,7 @@ func CarFromDbFormat(docId: String, riders: [Ride], owner: Ride, _ dictionary: [
     )
 }
 
-fileprivate func ConvertGenderRestriction(_ dbRestriction: GenderRestriction) -> Restrictions {
+private func convertGenderRestriction(_ dbRestriction: GenderRestriction) -> Restrictions {
     switch dbRestriction {
     case GenderRestriction.sameSex:
         return Restrictions.sameSex
@@ -170,6 +170,6 @@ fileprivate func ConvertGenderRestriction(_ dbRestriction: GenderRestriction) ->
     }
 }
 
-fileprivate func DicDeserialize<T: Decodable>(_ dictionary: [String: Any]) throws -> T {
+private func dicDeserialize<T: Decodable>(_ dictionary: [String: Any]) throws -> T {
     return try JSONDecoder().decode(T.self, from: try JSONSerialization.data(withJSONObject: dictionary, options: []))
 }

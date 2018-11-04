@@ -10,15 +10,15 @@ import Foundation
 import Firebase
 
 class RideRequestsManager {
-    
+
     static var rideRequestsManager = RideRequestsManager()
-    
-    private let db = Firestore.firestore()
-    
+
+    private let dbRef = Firestore.firestore()
+
     func createRide(_ ride: Ride) {
-        
-        var ref: DocumentReference? = nil
-        ref = db.collection("ride-requests").addDocument(data: RideToDbFormat(ride: ride)) { err in
+
+        var ref: DocumentReference?
+        ref = dbRef.collection("ride-requests").addDocument(data: rideToDbFormat(ride: ride)) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
@@ -26,9 +26,9 @@ class RideRequestsManager {
             }
         }
     }
-    
+
     func findMatches(_ ride: Ride, onUpdate: @escaping ([Car]) -> Void) -> ListenerRegistration {
-        return db.collection("cars").addSnapshotListener({ (snapshot, error) in
+        return dbRef.collection("cars").addSnapshotListener({ (snapshot, error) in
             if let error = error {
                 print("Could not retrieve matches: \(error)")
             } else {
@@ -37,16 +37,26 @@ class RideRequestsManager {
                         return
                     }
                     self
-                        .db
+                        .dbRef
                         .document("ride-requests/\(hostRideId)")
                         .getDocument(completion: { (rideRef, error) in
                         if let error = error {
                             print("Could not retrieve host ride: \(error)")
                         } else {
-                            guard let rideRef = rideRef, let ride = try? RideFromDbFormat(docId: rideRef.documentID, rideRef.data() ?? [:]) else {
-                                return
-                            }
-                            onUpdate([try? CarFromDbFormat(docId: doc.documentID, riders: [], owner: ride, doc.data())].filter({ $0 != nil }) as! [Car])
+                            guard let rideRef = rideRef,
+                                let ride = try? rideFromDbFormat(
+                                    docId: rideRef.documentID,
+                                    rideRef.data() ?? [:]
+                                ) else { return }
+
+                            guard let car = try? carFromDbFormat(
+                                docId: doc.documentID,
+                                riders: [],
+                                owner: ride,
+                                doc.data()
+                            ) else { return }
+
+                            onUpdate([car])
                         }
                     })
                 })
