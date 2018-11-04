@@ -42,6 +42,16 @@ class LocationsManager: CLLocationManager, CLLocationManagerDelegate, GMSAutocom
         placesFetcher?.sourceTextHasChanged(text)
     }
 
+    func getDistanceInMetersBetween(pointA: CLLocationCoordinate2D, and pointB: CLLocationCoordinate2D) -> Double {
+        return CLLocation(
+            latitude: pointA.latitude,
+            longitude: pointA.longitude
+        ).distance(from: CLLocation(
+            latitude: pointB.latitude,
+            longitude: pointB.longitude)
+        )
+    }
+
     func getPlace(ofID id: String, _ completion: @escaping (Place) -> Void) {
 
         //swiftlint:disable line_length

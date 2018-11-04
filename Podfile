@@ -4,5 +4,6 @@ target 'Carp' do
   	pod 'GooglePlaces'
 	pod 'Firebase/Core'
 	pod 'Firebase/Firestore'
-        pod 'SwiftLint'
+    pod 'Firebase/Auth'
+    pod 'SwiftLint'
 end

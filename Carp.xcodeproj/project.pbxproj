@@ -11,6 +11,9 @@
 		511B79F821545F930025B110 /* EntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511B79F721545F930025B110 /* EntityMapper.swift */; };
 		5194E33821558B110015B0DF /* CarpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33721558B110015B0DF /* CarpUser.swift */; };
 		5194E33A21558F3D0015B0DF /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33921558F3D0015B0DF /* Car.swift */; };
+		51E82B32218F65DE00069616 /* UserSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E82B31218F65DE00069616 /* UserSessionManager.swift */; };
+		51E82B34218F669200069616 /* SocialCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E82B33218F669200069616 /* SocialCredential.swift */; };
+		51E82B36218F941D00069616 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E82B35218F941D00069616 /* UserDataManager.swift */; };
 		5C0D0A32213A0DF500385A3A /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A722139DDBE009F24CB /* Lato-Black.ttf */; };
 		5C0D0A33213A0DFC00385A3A /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A752139DDBE009F24CB /* Lato-BlackItalic.ttf */; };
 		5C0D0A34213A0E0200385A3A /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A712139DDBE009F24CB /* Lato-Bold.ttf */; };
@@ -81,6 +84,9 @@
 		511B79F721545F930025B110 /* EntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityMapper.swift; sourceTree = "<group>"; };
 		5194E33721558B110015B0DF /* CarpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarpUser.swift; sourceTree = "<group>"; };
 		5194E33921558F3D0015B0DF /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		51E82B31218F65DE00069616 /* UserSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionManager.swift; sourceTree = "<group>"; };
+		51E82B33218F669200069616 /* SocialCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialCredential.swift; sourceTree = "<group>"; };
+		51E82B35218F941D00069616 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		5C0D0A40213A28C200385A3A /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		5C0D0A41213A28C200385A3A /* MainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
 		5C0D0A46213A294C00385A3A /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -185,6 +191,8 @@
 				5C175B162162E9C500C1FDA2 /* PersistantDataManager.swift */,
 				5CDA7A462139DAD6009F24CB /* LocationsManager.swift */,
 				5CD41B342159432400996514 /* RideRequestsManager.swift */,
+				51E82B31218F65DE00069616 /* UserSessionManager.swift */,
+				51E82B35218F941D00069616 /* UserDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -248,6 +256,7 @@
 				5C5F396221531DD900B396E8 /* Extensions.swift */,
 				5194E33721558B110015B0DF /* CarpUser.swift */,
 				5194E33921558F3D0015B0DF /* Car.swift */,
+				51E82B33218F669200069616 /* SocialCredential.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -623,7 +632,9 @@
 				5CD41B352159432400996514 /* RideRequestsManager.swift in Sources */,
 				5CBA6DC2214B38560062EBF2 /* RideDetailsVC.swift in Sources */,
 				5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */,
+				51E82B32218F65DE00069616 /* UserSessionManager.swift in Sources */,
 				5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */,
+				51E82B34218F669200069616 /* SocialCredential.swift in Sources */,
 				5C175B782166C63400C1FDA2 /* UsersStackView.swift in Sources */,
 				5CE5C1CF2188B4A30004917C /* LineTextField.swift in Sources */,
 				5CDA7A4D2139DB22009F24CB /* Colors.swift in Sources */,
@@ -644,6 +655,7 @@
 				5CE5C1C9218264C10004917C /* AlertView.swift in Sources */,
 				5CDA7A492139DAED009F24CB /* Place.swift in Sources */,
 				5C0D0A42213A28C200385A3A /* MainVC.swift in Sources */,
+				51E82B36218F941D00069616 /* UserDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

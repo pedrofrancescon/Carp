@@ -15,4 +15,17 @@ struct CarpUser {
     var lastName: String
     var profilePictureUrl: String
     var gender: String?
+    var privateData: PrivateUserData?
+}
+
+struct PrivateUserData {
+    var email: String
+    var phoneNumber: String
+    var documentInfo: DocumentInfo
+}
+
+struct DocumentInfo {
+    var country: String
+    var number: String
+    var type: String
 }

@@ -47,6 +47,19 @@ private struct DbUser: Codable {
     var gender: String?
 }
 
+private struct DbPrivateUserData: Codable {
+    var creationTime: Double
+    var email: String
+    var phoneNumber: String
+    var documentInfo: DbDocumentInfo
+}
+
+private struct DbDocumentInfo: Codable {
+    var country: String
+    var number: String
+    var type: String
+}
+
 private struct DbCar: Codable {
     var rideRequests: [String]?
     var hostRequest: String
@@ -125,11 +138,11 @@ func userToDbFormat(user: CarpUser) -> [String: Any] {
         "profilePictureUrl": user.profilePictureUrl,
         "uid": user.id
     ]
-    
+
     if let gender = user.gender {
         outputObj["gender"] = gender
     }
-    
+
     return outputObj
 }
 
@@ -140,7 +153,33 @@ func userFromDbFormat(_ dictionary: [String: Any]) throws -> CarpUser {
         firstName: user.firstName,
         lastName: user.lastName,
         profilePictureUrl: user.profilePictureUrl,
-        gender: user.gender
+        gender: user.gender,
+        privateData: nil
+    )
+}
+
+func privateUserDataToDbFormat(privateData: PrivateUserData) -> [String: Any] {
+    return [
+        "documentInfo": [
+            "country": privateData.documentInfo.country,
+            "number": privateData.documentInfo.number,
+            "type": privateData.documentInfo.type
+        ],
+        "email": privateData.email,
+        "phoneNumber": privateData.phoneNumber
+    ]
+}
+
+func privateUserDataFromDbFormat(_ dictionary: [String: Any]) throws -> PrivateUserData {
+    let privateData: DbPrivateUserData = try dicDeserialize(dictionary)
+    return PrivateUserData(
+        email: privateData.email,
+        phoneNumber: privateData.phoneNumber,
+        documentInfo: DocumentInfo(
+            country: privateData.documentInfo.country,
+            number: privateData.documentInfo.number,
+            type: privateData.documentInfo.type
+        )
     )
 }
 
