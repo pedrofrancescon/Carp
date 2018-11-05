@@ -30,7 +30,7 @@ class RideRequestsManager {
             if let error = error {
                 print("Could not retrieve matches: \(error)")
             } else {
-                snapshot!.documents.forEach({ doc in
+                snapshot?.documents.forEach({ doc in
                     guard let hostRideId = doc.data()["hostRequest"] as? String else {
                         return
                     }

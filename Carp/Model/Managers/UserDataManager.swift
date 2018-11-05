@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class UserDataManager {
+    static let shared = UserDataManager()
     private let dbRef = Firestore.firestore()
     private let publicDataRef: CollectionReference
     private let privateDataRef: CollectionReference
