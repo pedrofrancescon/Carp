@@ -47,6 +47,7 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
         self.ride = ride
         self.cars = []
         resultsView = ResultsView(frame: .zero)
+        //resultsView.hideView()
         super.init(nibName: "ResultsVC", bundle: nil)
     }
     

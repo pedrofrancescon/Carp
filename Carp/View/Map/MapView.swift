@@ -70,6 +70,13 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         animate(toLocation: place.locations.coordinate.clLocation)
     }
     
+    func resetMap() {
+        isMyLocationEnabled = true
+        clear()
+        animate(toLocation: LocationsManager.locationsManager.userCoordinate)
+        animate(toZoom: 15.0)
+    }
+    
     func draw(routes: NSArray) {
         
         OperationQueue.main.addOperation({

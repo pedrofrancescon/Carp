@@ -52,6 +52,7 @@ class ResultsView: PopUpView {
         contentView.frame = self.bounds
         
         changeStateTo(.onlyResults)
+        hideView()
     }
     
     override func layoutSubviews() {

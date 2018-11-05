@@ -35,6 +35,7 @@ class RideDetailsVC: UIViewController {
 
     init() {
         rideDetailsView = RideDetailsView(frame: .zero)
+        //rideDetailsView.hideView()
         super.init(nibName: "RideDetailsVC", bundle: nil)
     }
     

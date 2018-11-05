@@ -24,8 +24,7 @@ class MapVC: UIViewController, MapControllerDelegate {
         super.viewDidAppear(animated)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.mapView.animate(toLocation: self.locationsManager.userCoordinate)
-            self.mapView.animate(toZoom: 15.0)
+            self.mapView.resetMap()
         })
     }
     
@@ -39,6 +38,9 @@ class MapVC: UIViewController, MapControllerDelegate {
     }
     
     func drawRoute(from origin: Place, to destiny: Place) {
+        
+        createMapMarker(of: .origin, with: origin)
+        createMapMarker(of: .destiny, with: destiny)
         
         let origin = "\(origin.locations.coordinate.lat),\(origin.locations.coordinate.lng)"
         let destination = "\(destiny.locations.coordinate.lat),\(destiny.locations.coordinate.lng)"
