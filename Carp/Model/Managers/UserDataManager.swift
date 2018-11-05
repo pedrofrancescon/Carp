@@ -16,7 +16,7 @@ class UserDataManager {
 
     init() {
         publicDataRef = dbRef.collection("publicUserData")
-        privateDataRef = dbRef.collection("privateDataRef")
+        privateDataRef = dbRef.collection("privateUserData")
     }
 
     func getPublicUserDataWith(uid: String, callback: @escaping (CarpUser?) -> Void) {

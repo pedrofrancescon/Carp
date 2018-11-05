@@ -12,17 +12,15 @@ import Firebase
 class RideRequestsManager {
 
     static var rideRequestsManager = RideRequestsManager()
-
     private let dbRef = Firestore.firestore()
 
-    func createRide(_ ride: Ride) {
-
+    func createRide(_ ride: Ride, callback: @escaping (_ error: Bool, _ docId: String) -> Void) {
         var ref: DocumentReference?
-        ref = dbRef.collection("ride-requests").addDocument(data: rideToDbFormat(ride: ride)) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
+        ref = dbRef.collection("ride-requests").addDocument(data: rideToDbFormat(ride: ride)) { (err) in
+            if err != nil {
+                callback(true, ref?.documentID ?? "")
             } else {
-                print("Document added with ID: \(ref!.documentID)")
+                callback(false, ref?.documentID ?? "")
             }
         }
     }
