@@ -28,14 +28,30 @@ class RideDetailsVC: UIViewController {
         restriction = .noRestriction
         
         guard let origin = origin, let destiny = destiny else { return }
+        
+        let originTap = UITapGestureRecognizer(target: self, action: #selector(didTapOriginTextField))
+        let destinyTap = UITapGestureRecognizer(target: self, action: #selector(didTapDestinyTextField))
+        
         rideDetailsView.originTextField.text = origin.name
         rideDetailsView.destinyTextField.text = destiny.name
         
+        rideDetailsView.originTextField.addGestureRecognizer(originTap)
+        rideDetailsView.destinyTextField.addGestureRecognizer(destinyTap)
+        
+    }
+    
+    @objc func didTapOriginTextField() {
+        guard let parent = parent as? MainVC else { return }
+        parent.show(.searches, at: .origin)
+    }
+    
+    @objc func didTapDestinyTextField() {
+        guard let parent = parent as? MainVC else { return }
+        parent.show(.searches, at: .destiny)
     }
 
     init() {
         rideDetailsView = RideDetailsView(frame: .zero)
-        //rideDetailsView.hideView()
         super.init(nibName: "RideDetailsVC", bundle: nil)
     }
     
