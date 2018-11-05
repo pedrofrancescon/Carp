@@ -42,12 +42,12 @@ class RideDetailsVC: UIViewController {
     
     @objc func didTapOriginTextField() {
         guard let parent = parent as? MainVC else { return }
-        parent.show(.searches, at: .origin)
+        parent.show(.searches, at: .origin, shouldSelect: true)
     }
     
     @objc func didTapDestinyTextField() {
         guard let parent = parent as? MainVC else { return }
-        parent.show(.searches, at: .destiny)
+        parent.show(.searches, at: .destiny, shouldSelect: true)
     }
 
     init() {

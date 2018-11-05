@@ -42,18 +42,21 @@ class SearchesVC: UIViewController {
     private var origin: Place? {
         didSet {
             DispatchQueue.main.async {
-                self.didTapNextButton()
-                self.originSearchView.textField.text = self.origin?.name
-                self.mapDelegate.createMapMarker(of: .origin, with: self.origin!)
+                if self.origin != nil {
+                    self.originSearchView.textField.text = self.origin?.name
+                    self.mapDelegate.createMapMarker(of: .origin, with: self.origin!)
+                }
             }
         }
     }
+    
     private var destiny: Place? {
         didSet {
             DispatchQueue.main.async {
-                self.didTapNextButton()
-                self.destinySearchView.textField.text = self.destiny?.name
-                self.mapDelegate.createMapMarker(of: .destiny, with: self.destiny!)
+                if self.destiny != nil {
+                    self.destinySearchView.textField.text = self.destiny?.name
+                    self.mapDelegate.createMapMarker(of: .destiny, with: self.destiny!)
+                }
             }
         }
     }
@@ -105,10 +108,20 @@ class SearchesVC: UIViewController {
     
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
     
-    func viewEndEditing() {
+    private func viewEndEditing() {
         destinyTableView.isHidden = true
         originTableView.isHidden = true
         view.endEditing(true)
+    }
+    
+    func reset() {
+        origin = nil
+        destiny = nil
+        
+        destinySearchView.resetField()
+        originSearchView.resetField()
+        
+        slidingView?.slideViewAnimated(to: .destiny, withDuration: 0.8)
     }
     
 }

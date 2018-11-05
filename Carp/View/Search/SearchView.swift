@@ -62,6 +62,7 @@ class SearchView: UIView {
         
         textField.borderStyle = .none
         textField.autocorrectionType = .no
+        textField.autocapitalizationType = .sentences
         
         addShadow(blur: 10)
         
@@ -100,6 +101,15 @@ class SearchView: UIView {
     
     @objc func didTapNextButton() {
         delegate?.didTapNextButton()
+    }
+    
+    func resetField() {
+        textField.text = ""
+        
+    }
+    
+    func selectTextField() {
+        textField.becomeFirstResponder()
     }
     
 }

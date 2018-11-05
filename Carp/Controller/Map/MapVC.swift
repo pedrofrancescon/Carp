@@ -39,9 +39,6 @@ class MapVC: UIViewController, MapControllerDelegate {
     
     func drawRoute(from origin: Place, to destiny: Place) {
         
-        createMapMarker(of: .origin, with: origin)
-        createMapMarker(of: .destiny, with: destiny)
-        
         let origin = "\(origin.locations.coordinate.lat),\(origin.locations.coordinate.lng)"
         let destination = "\(destiny.locations.coordinate.lat),\(destiny.locations.coordinate.lng)"
         

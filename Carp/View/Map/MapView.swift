@@ -13,6 +13,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
 
     private var originMapMarker: GMSMarker = GMSMarker()
     private var destinyMapMarker: GMSMarker = GMSMarker()
+    private var polyline: GMSPolyline = GMSPolyline()
     
     weak var dismissKeyboard: DismissKeyboardProtocol?
     
@@ -70,11 +71,32 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         animate(toLocation: place.locations.coordinate.clLocation)
     }
     
+    private func clearPath() {
+        polyline.map = nil
+    }
+    
     func resetMap() {
         isMyLocationEnabled = true
         clear()
         animate(toLocation: LocationsManager.locationsManager.userCoordinate)
         animate(toZoom: 15.0)
+    }
+    
+    func animateTo(_ state: SlidingViewState) {
+        
+        switch state {
+        case .destiny:
+            self.animate(toLocation: destinyMapMarker.position)
+            self.animate(toZoom: 16.0)
+            clearPath()
+        case .origin:
+            self.animate(toLocation: originMapMarker.position)
+            self.animate(toZoom: 16.0)
+            clearPath()
+        case .hidden:
+            break
+        }
+        
     }
     
     func draw(routes: NSArray) {
@@ -84,15 +106,15 @@ class MapView: GMSMapView, GMSMapViewDelegate {
                 let routeOverviewPolyline:NSDictionary = (route as! NSDictionary).value(forKey: "overview_polyline") as! NSDictionary
                 let points = routeOverviewPolyline.object(forKey: "points")
                 let path = GMSPath.init(fromEncodedPath: points! as! String)
-                let polyline = GMSPolyline.init(path: path)
-                polyline.strokeWidth = 3
-                polyline.strokeColor = UIColor(color: .mainGreen)
+                self.polyline = GMSPolyline.init(path: path)
+                self.polyline.strokeWidth = 3
+                self.polyline.strokeColor = UIColor(color: .mainGreen)
                 
                 let bounds = GMSCoordinateBounds(path: path!)
                 // needs fixing for iPhone X
                 self.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 35, left: 20, bottom: 460, right: 20)))
                 
-                polyline.map = self
+                self.polyline.map = self
                 
                 self.isMyLocationEnabled = false
                 

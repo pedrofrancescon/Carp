@@ -72,14 +72,29 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
         self.view.endEditing(true)
     }
     
-    func show(_ viewToShow: MainViewState, at slindingState: SlidingViewState = .destiny) {
+    func show(_ viewToShow: MainViewState, at slindingState: SlidingViewState = .destiny, shouldSelect: Bool = false) {
         
         switch viewToShow {
         case .searches:
-            self.mapVC.mapView.resetMap()
             rideDetailsVC?.rideDetailsView.hideView()
             resultsVC?.resultsView.hideView()
+            
             searchesVC.slidingView?.slideViewAnimated(to: slindingState, withDuration: 0.8)
+            mapVC.mapView.animateTo(slindingState)
+            
+            if shouldSelect {
+                switch slindingState {
+                case .destiny:
+                    searchesVC.destinySearchView.selectTextField()
+                case .origin:
+                    searchesVC.originSearchView.selectTextField()
+                case .hidden:
+                    break
+                }
+            }
+            
+            //searchesVC.reset()
+            //mapVC.mapView.resetMap()
             
             navigationItem.title = "Nova Busca"
             
@@ -179,7 +194,7 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
             case .searches:
                 break
             case .rideDetails:
-                show(.searches, at: .destiny)
+                show(.searches, at: .origin)
             case .results:
                 show(.rideDetails)
             }
