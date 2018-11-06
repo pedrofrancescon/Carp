@@ -72,7 +72,7 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
         self.view.endEditing(true)
     }
     
-    func show(_ viewToShow: MainViewState, at slindingState: SlidingViewState = .destiny, shouldSelect: Bool = false) {
+    func show(_ viewToShow: MainViewState, at slindingState: SlidingViewState = .destination, shouldSelect: Bool = false) {
         
         switch viewToShow {
         case .searches:
@@ -84,8 +84,8 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
             
             if shouldSelect {
                 switch slindingState {
-                case .destiny:
-                    searchesVC.destinySearchView.selectTextField()
+                case .destination:
+                    searchesVC.destinationSearchView.selectTextField()
                 case .origin:
                     searchesVC.originSearchView.selectTextField()
                 case .hidden:
@@ -138,7 +138,7 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
         
     }
     
-    func callRideDetailsVC(origin: Place, destiny: Place) {
+    func callRideDetailsVC(origin: Place, destination: Place) {
         for subVC in childViewControllers {
             if let subVC = subVC as? RideDetailsVC {
                 subVC.view.removeFromSuperview()
@@ -150,7 +150,7 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
         guard let rideDetailsVC = rideDetailsVC else { return }
         
         rideDetailsVC.origin = origin
-        rideDetailsVC.destiny = destiny
+        rideDetailsVC.destination = destination
         
         self.show(.rideDetails)
     }

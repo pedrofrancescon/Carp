@@ -37,10 +37,14 @@ class MapVC: UIViewController, MapControllerDelegate {
         mapView.createMapMarker(of: placeType, with: place)
     }
     
-    func drawRoute(from origin: Place, to destiny: Place) {
+    func animateTo(_ state: SlidingViewState) {
+        mapView.animateTo(state)
+    }
+    
+    func drawRoute(from origin: Place, to destination: Place) {
         
         let origin = "\(origin.locations.coordinate.lat),\(origin.locations.coordinate.lng)"
-        let destination = "\(destiny.locations.coordinate.lat),\(destiny.locations.coordinate.lng)"
+        let destination = "\(destination.locations.coordinate.lat),\(destination.locations.coordinate.lng)"
         
         let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyDwfMVcDzcQ_w8XKJ-edAUu7NwZ1HJuEco"
         
@@ -74,5 +78,6 @@ class MapVC: UIViewController, MapControllerDelegate {
 
 protocol MapControllerDelegate: class {
     func createMapMarker(of placeType: PlaceType, with place: Place)
-    func drawRoute(from origin: Place, to destiny: Place)
+    func drawRoute(from origin: Place, to destination: Place)
+    func animateTo(_ state: SlidingViewState)
 }

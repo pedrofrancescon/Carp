@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchesVC" customModule="Carp" customModuleProvider="target">
             <connections>
-                <outlet property="destinySearchView" destination="YPa-KF-JOj" id="goX-at-Cdm"/>
-                <outlet property="destinyTableView" destination="JBf-sj-E6N" id="TFc-7I-3KV"/>
+                <outlet property="destinationSearchView" destination="YPa-KF-JOj" id="goX-at-Cdm"/>
+                <outlet property="destinationTableView" destination="JBf-sj-E6N" id="TFc-7I-3KV"/>
                 <outlet property="originSearchView" destination="OvS-Hj-GkZ" id="SmS-28-fRO"/>
                 <outlet property="originTableView" destination="uJ8-zz-MTY" id="4jT-bx-9ym"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -67,8 +63,8 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>
-                <outlet property="destinyLeadingConstraint" destination="NeI-wS-u8o" id="3g5-K7-i58"/>
-                <outlet property="destinyWidthConstraint" destination="81E-lN-Pqo" id="c2N-ME-0pI"/>
+                <outlet property="destinationLeadingConstraint" destination="NeI-wS-u8o" id="3g5-K7-i58"/>
+                <outlet property="destinationWidthConstraint" destination="81E-lN-Pqo" id="c2N-ME-0pI"/>
                 <outlet property="originLeadingConstraint" destination="6EO-as-1MO" id="Efs-rs-Tr1"/>
             </connections>
         </view>

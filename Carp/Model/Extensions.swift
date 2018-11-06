@@ -44,3 +44,8 @@ extension NumberFormatter {
         self.currencySymbol = self.currencySymbol.appending(" ")
     }
 }
+
+extension Notification.Name {
+    static let slidginViewStateChanged = Notification.Name(
+        rawValue: "slidginViewStateChanged")
+}

@@ -13,13 +13,13 @@ class RideDetailsView: PopUpView {
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var originIcon: UILabel!
-    @IBOutlet weak var destinyIcon: UILabel!
+    @IBOutlet weak var destinationIcon: UILabel!
     @IBOutlet weak var timeIcon: UILabel!
     @IBOutlet weak var seatsIcon: UILabel!
     @IBOutlet weak var restrictionsIcon: UILabel!
     
     @IBOutlet weak var originTextField: BoxTextField!
-    @IBOutlet weak var destinyTextField: BoxTextField!
+    @IBOutlet weak var destinationTextField: BoxTextField!
     @IBOutlet weak var timeTextField: BoxTextField!
     @IBOutlet weak var timeDeadlineTextField: BoxTextField!
     @IBOutlet weak var restrictionsTextField: BoxTextField!
@@ -65,8 +65,8 @@ class RideDetailsView: PopUpView {
         originIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 10)
         originIcon.text = "\u{f111}"
         
-        destinyIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 15)
-        destinyIcon.text = "\u{f3c5}"
+        destinationIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 15)
+        destinationIcon.text = "\u{f3c5}"
         
         timeIcon.font = UIFont(name: "FontAwesome5FreeSolid", size: 14)
         timeIcon.text = "\u{f017}"
@@ -100,7 +100,7 @@ class RideDetailsView: PopUpView {
         fareEstimateLabel.textColor = UIColor(color: .darkGreyText)
         
         originIcon.textColor = UIColor(color: .mainGreen)
-        destinyIcon.textColor = UIColor(color: .mainGreen)
+        destinationIcon.textColor = UIColor(color: .mainGreen)
         timeIcon.textColor = UIColor(color: .greyIcon)
         seatsIcon.textColor = UIColor(color: .mainOrange)
         restrictionsIcon.textColor = UIColor(color: .mainBlue)

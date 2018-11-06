@@ -12,7 +12,7 @@ import GoogleMaps
 class MapView: GMSMapView, GMSMapViewDelegate {
 
     private var originMapMarker: GMSMarker = GMSMarker()
-    private var destinyMapMarker: GMSMarker = GMSMarker()
+    private var destinationMapMarker: GMSMarker = GMSMarker()
     private var polyline: GMSPolyline = GMSPolyline()
     
     weak var dismissKeyboard: DismissKeyboardProtocol?
@@ -22,9 +22,9 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         originMapMarker.appearAnimation = .pop
         originMapMarker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
         
-        destinyMapMarker.icon = UIImage(named: "destiny_map_marker")
-        destinyMapMarker.appearAnimation = .pop
-        destinyMapMarker.groundAnchor = CGPoint(x: 0.5, y: 0.91)
+        destinationMapMarker.icon = UIImage(named: "destination_map_marker")
+        destinationMapMarker.appearAnimation = .pop
+        destinationMapMarker.groundAnchor = CGPoint(x: 0.5, y: 0.91)
         
         settings.allowScrollGesturesDuringRotateOrZoom = false
         settings.myLocationButton = true
@@ -61,10 +61,10 @@ class MapView: GMSMapView, GMSMapViewDelegate {
             originMapMarker.title = place.name
             originMapMarker.map = self
             
-        case .destiny:
-            destinyMapMarker.position = place.locations.coordinate.clLocation
-            destinyMapMarker.title = place.name
-            destinyMapMarker.map = self
+        case .destination:
+            destinationMapMarker.position = place.locations.coordinate.clLocation
+            destinationMapMarker.title = place.name
+            destinationMapMarker.map = self
         }
         
         moveCamera(GMSCameraUpdate.fit(place.locations.viewPortBounds.gmsViewPortBounds))
@@ -85,8 +85,8 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     func animateTo(_ state: SlidingViewState) {
         
         switch state {
-        case .destiny:
-            self.animate(toLocation: destinyMapMarker.position)
+        case .destination:
+            self.animate(toLocation: destinationMapMarker.position)
             self.animate(toZoom: 16.0)
             clearPath()
         case .origin:
@@ -119,7 +119,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
                 self.isMyLocationEnabled = false
                 
                 self.originMapMarker.position = path!.coordinate(at: 0)
-                self.destinyMapMarker.position = path!.coordinate(at: path!.count() - 1)
+                self.destinationMapMarker.position = path!.coordinate(at: path!.count() - 1)
                 
             }
         })

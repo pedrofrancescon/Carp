@@ -10,19 +10,19 @@ import UIKit
 import GooglePlaces
 
 enum PlaceType {
-    case destiny
+    case destination
     case origin
 }
 
 class SearchesVC: UIViewController {
 
-    @IBOutlet weak var destinySearchView: SearchView!
+    @IBOutlet weak var destinationSearchView: SearchView!
     @IBOutlet weak var originSearchView: SearchView!
     
-    @IBOutlet weak var destinyTableView: SearchTableView!
+    @IBOutlet weak var destinationTableView: SearchTableView!
     @IBOutlet weak var originTableView: SearchTableView!
     
-    private var destinyPredictions: [GMSAutocompletePrediction]
+    private var destinationPredictions: [GMSAutocompletePrediction]
     private var originPredictions: [GMSAutocompletePrediction]
     
     private let locationsManager: LocationsManager
@@ -50,12 +50,12 @@ class SearchesVC: UIViewController {
         }
     }
     
-    private var destiny: Place? {
+    private var destination: Place? {
         didSet {
             DispatchQueue.main.async {
-                if self.destiny != nil {
-                    self.destinySearchView.textField.text = self.destiny?.name
-                    self.mapDelegate.createMapMarker(of: .destiny, with: self.destiny!)
+                if self.destination != nil {
+                    self.destinationSearchView.textField.text = self.destination?.name
+                    self.mapDelegate.createMapMarker(of: .destination, with: self.destination!)
                 }
             }
         }
@@ -66,20 +66,22 @@ class SearchesVC: UIViewController {
         
         view.backgroundColor = .clear
         
+        NotificationCenter.default.addObserver(self, selector: #selector(slidingViewDidChange), name: .slidginViewStateChanged, object: nil)
+        
         // Search View
         /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
         
-        destinySearchView.delegate = self
+        destinationSearchView.delegate = self
         originSearchView.delegate = self
         
-        destinySearchView.textField.placeholder = "Destino"
+        destinationSearchView.textField.placeholder = "Destino"
         originSearchView.textField.placeholder = "Origem"
         
         // Table View
         /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
         
-        destinyTableView.delegate = self
-        destinyTableView.dataSource = self
+        destinationTableView.delegate = self
+        destinationTableView.dataSource = self
         
         
         originTableView.delegate = self
@@ -93,7 +95,7 @@ class SearchesVC: UIViewController {
     }
     
     init(mapDelegate: MapControllerDelegate) {
-        destinyPredictions = [GMSAutocompletePrediction]()
+        destinationPredictions = [GMSAutocompletePrediction]()
         originPredictions = [GMSAutocompletePrediction]()
         
         self.mapDelegate = mapDelegate
@@ -109,19 +111,38 @@ class SearchesVC: UIViewController {
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
     
     private func viewEndEditing() {
-        destinyTableView.isHidden = true
+        destinationTableView.isHidden = true
         originTableView.isHidden = true
         view.endEditing(true)
     }
     
     func reset() {
         origin = nil
-        destiny = nil
+        destination = nil
         
-        destinySearchView.resetField()
+        destinationSearchView.resetField()
         originSearchView.resetField()
         
-        slidingView?.slideViewAnimated(to: .destiny, withDuration: 0.8)
+        slidingView?.slideViewAnimated(to: .destination, withDuration: 0.8)
+    }
+    
+    @objc func slidingViewDidChange() {
+        guard let state = slidingView?.currentState else { return }
+        
+        switch state {
+        case .destination:
+            if destination != nil {
+                mapDelegate.animateTo(.destination)
+            }
+        case .origin:
+            if origin != nil {
+                mapDelegate.animateTo(.origin)
+            }
+        case .hidden:
+            break
+        }
+        
+        
     }
     
 }
@@ -142,9 +163,9 @@ extension SearchesVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let currentCell = cell as! SearchResultsCell
         
-        if tableView == destinyTableView {
-            currentCell.placeAddressLabel.text = destinyPredictions[indexPath.row].attributedFullText.string
-            currentCell.placeNameLabel.text = destinyPredictions[indexPath.row].attributedPrimaryText.string
+        if tableView == destinationTableView {
+            currentCell.placeAddressLabel.text = destinationPredictions[indexPath.row].attributedFullText.string
+            currentCell.placeNameLabel.text = destinationPredictions[indexPath.row].attributedPrimaryText.string
         } else if tableView == originTableView {
             currentCell.placeAddressLabel.text = originPredictions[indexPath.row].attributedFullText.string
             currentCell.placeNameLabel.text = originPredictions[indexPath.row].attributedPrimaryText.string
@@ -157,9 +178,9 @@ extension SearchesVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == destinyTableView {
-            destinyTableView.changeHeightTo(numberOfCells: destinyPredictions.count)
-            return destinyPredictions.count
+        if tableView == destinationTableView {
+            destinationTableView.changeHeightTo(numberOfCells: destinationPredictions.count)
+            return destinationPredictions.count
         }
         
         originTableView.changeHeightTo(numberOfCells: originPredictions.count)
@@ -173,10 +194,10 @@ extension SearchesVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.viewEndEditing()
         
-        if tableView == destinyTableView {
-            guard let placeID = destinyPredictions[indexPath.row].placeID else { return }
+        if tableView == destinationTableView {
+            guard let placeID = destinationPredictions[indexPath.row].placeID else { return }
             locationsManager.getPlace(ofID: placeID) { (place) in
-                self.destiny = place
+                self.destination = place
             }
         } else if tableView == originTableView {
             guard let placeID = originPredictions[indexPath.row].placeID else { return }
@@ -196,14 +217,14 @@ extension SearchesVC: SearchViewDelegate {
         viewEndEditing()
         
         if currentState == SlidingViewState.origin {
-            if let _destiny = self.destiny, let _origin = self.origin  {
+            if let _destination = self.destination, let _origin = self.origin  {
                 guard let parent = parent as? MainVC else { return }
                 slidingView?.slideViewAnimated(to: .hidden, withDuration: 0.8)
                 
-                parent.callRideDetailsVC(origin: _origin, destiny: _destiny)
+                parent.callRideDetailsVC(origin: _origin, destination: _destination)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                    self.mapDelegate.drawRoute(from: _origin, to: _destiny)
+                    self.mapDelegate.drawRoute(from: _origin, to: _destination)
                 }
                 
                 return
@@ -215,13 +236,13 @@ extension SearchesVC: SearchViewDelegate {
     }
     
     func searchFieldDidChange(_ view: UIView, newText: String) {
-        if view == destinySearchView {
-            destinyTableView.isHidden = false
+        if view == destinationSearchView {
+            destinationTableView.isHidden = false
             
             locationsManager.getPlacePredictions(with: newText) { (predictions) in
                 
-                self.destinyPredictions = predictions
-                self.destinyTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                self.destinationPredictions = predictions
+                self.destinationTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
                 
             }
         } else if view == originSearchView {
@@ -237,10 +258,10 @@ extension SearchesVC: SearchViewDelegate {
     func primaryActionTriggered(_ view: UIView) {
         self.viewEndEditing()
         
-        if view == destinySearchView {
-            guard let placeID = destinyPredictions.first?.placeID else { return }
+        if view == destinationSearchView {
+            guard let placeID = destinationPredictions.first?.placeID else { return }
             locationsManager.getPlace(ofID: placeID) { (place) in
-                self.destiny = place
+                self.destination = place
             }
             
         } else if view == originSearchView {

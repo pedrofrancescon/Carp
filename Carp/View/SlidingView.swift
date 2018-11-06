@@ -9,7 +9,7 @@
 import UIKit
 
 enum SlidingViewState {
-    case destiny
+    case destination
     case origin
     case hidden
 }
@@ -17,8 +17,8 @@ enum SlidingViewState {
 extension SlidingViewState {
     var opposite: SlidingViewState {
         switch self {
-        case .origin: return .destiny
-        case .destiny: return .origin
+        case .origin: return .destination
+        case .destination: return .origin
         case .hidden: return .hidden
         }
     }
@@ -26,11 +26,11 @@ extension SlidingViewState {
 
 class SlidingView: TouchesPassThroughView {
     
-    @IBOutlet weak var destinyLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var destinationLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var originLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var destinyWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var destinationWidthConstraint: NSLayoutConstraint!
     
-    private var destinyStateConstraint: CGFloat = 0
+    private var destinationStateConstraint: CGFloat = 0
     private var originStateConstraint: CGFloat = 0
     private var hiddenStateConstraint: CGFloat = 0
     
@@ -47,14 +47,14 @@ class SlidingView: TouchesPassThroughView {
     
     lazy var layout: () -> Void = {
         
-        let searchViewWidth = frame.width * destinyWidthConstraint.multiplier
+        let searchViewWidth = frame.width * destinationWidthConstraint.multiplier
         
         let sideMargins = (frame.width - searchViewWidth)/2.0
         
-        destinyLeadingConstraint.constant = sideMargins
+        destinationLeadingConstraint.constant = sideMargins
         originLeadingConstraint.constant = sideMargins/2.0
         
-        destinyStateConstraint = sideMargins
+        destinationStateConstraint = sideMargins
         originStateConstraint = -searchViewWidth + (sideMargins/2.0)
         hiddenStateConstraint = (-searchViewWidth)*2 - (sideMargins/2.0)
         
@@ -64,8 +64,12 @@ class SlidingView: TouchesPassThroughView {
     
     // MARK: - Animation
     
-    var currentState: SlidingViewState = .destiny
-        private var runningAnimators = [UIViewPropertyAnimator]()
+    var currentState: SlidingViewState = .destination {
+        didSet {
+            NotificationCenter.default.post(name: .slidginViewStateChanged, object: nil)
+        }
+    }
+    private var runningAnimators = [UIViewPropertyAnimator]()
     
     private var animationProgress = [CGFloat]()
     
@@ -82,13 +86,13 @@ class SlidingView: TouchesPassThroughView {
                 let transitionAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1, animations: {
             switch state {
             case .origin:
-                self.destinyLeadingConstraint.constant = self.originStateConstraint
+                self.destinationLeadingConstraint.constant = self.originStateConstraint
                 
-            case .destiny:
-                self.destinyLeadingConstraint.constant = self.destinyStateConstraint
+            case .destination:
+                self.destinationLeadingConstraint.constant = self.destinationStateConstraint
                 
             case .hidden:
-                self.destinyLeadingConstraint.constant = self.hiddenStateConstraint
+                self.destinationLeadingConstraint.constant = self.hiddenStateConstraint
             }
             self.superview?.layoutIfNeeded()
         })
@@ -107,13 +111,13 @@ class SlidingView: TouchesPassThroughView {
             
             switch self.currentState {
             case .origin:
-                self.destinyLeadingConstraint.constant = self.originStateConstraint
+                self.destinationLeadingConstraint.constant = self.originStateConstraint
                 
-            case .destiny:
-                self.destinyLeadingConstraint.constant = self.destinyStateConstraint
+            case .destination:
+                self.destinationLeadingConstraint.constant = self.destinationStateConstraint
                 
             case .hidden:
-                self.destinyLeadingConstraint.constant = self.hiddenStateConstraint
+                self.destinationLeadingConstraint.constant = self.hiddenStateConstraint
             }
             
             self.runningAnimators.removeAll()
@@ -141,7 +145,7 @@ class SlidingView: TouchesPassThroughView {
             let translation = recognizer.translation(in: self)
             var fraction = -translation.x / self.originStateConstraint
             
-            if currentState == .destiny { fraction *= -1 }
+            if currentState == .destination { fraction *= -1 }
             if runningAnimators[0].isReversed { fraction *= -1 }
             
             for (index, animator) in runningAnimators.enumerated() {
@@ -162,7 +166,7 @@ class SlidingView: TouchesPassThroughView {
             case .origin:
                 if !shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
                 if shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
-            case .destiny:
+            case .destination:
                 if shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
                 if !shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
             case .hidden:

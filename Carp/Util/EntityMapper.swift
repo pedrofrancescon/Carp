@@ -60,10 +60,10 @@ func RideToDbFormat(ride: Ride) -> [String : Any] {
             "max": ride.timeInterval.end.timeIntervalSince1970
         ],
         "destination": [
-            "legibleName": ride.destiny.name,
+            "legibleName": ride.destination.name,
             "geopoint": [
-                "latitude": ride.destiny.locations.coordinate.lat,
-                "longitude": ride.destiny.locations.coordinate.lng
+                "latitude": ride.destination.locations.coordinate.lat,
+                "longitude": ride.destination.locations.coordinate.lng
             ]
         ],
         "origin": [
@@ -93,7 +93,7 @@ func RideFromDbFormat(docId: String, _ dictionary: [String: Any]) throws -> Ride
                 )
             )
         ),
-        destiny: Place(
+        destination: Place(
             name: ride.destination.legibleName,
             locations: Locations(
                 coordinate: Coordinate(

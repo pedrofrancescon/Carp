@@ -21,7 +21,7 @@ enum Restrictions: String, Codable, CaseIterable {
 
 struct Ride: Codable {
     let origin: Place
-    let destiny: Place
+    let destination: Place
     let timeInterval: DateInterval
     let numberOfSeats: NumberOfSeats
     let restriction: Restrictions

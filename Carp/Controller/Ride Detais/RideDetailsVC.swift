@@ -13,7 +13,7 @@ class RideDetailsVC: UIViewController {
     let rideDetailsView: RideDetailsView
     
     var origin: Place?
-    var destiny: Place?
+    var destination: Place?
     var timeInterval: DateInterval?
     var numberOfSeats: NumberOfSeats?
     var restriction: Restrictions?
@@ -27,16 +27,16 @@ class RideDetailsVC: UIViewController {
         numberOfSeats = .one
         restriction = .noRestriction
         
-        guard let origin = origin, let destiny = destiny else { return }
+        guard let origin = origin, let destination = destination else { return }
         
         let originTap = UITapGestureRecognizer(target: self, action: #selector(didTapOriginTextField))
-        let destinyTap = UITapGestureRecognizer(target: self, action: #selector(didTapDestinyTextField))
+        let destinationTap = UITapGestureRecognizer(target: self, action: #selector(didTapdestinationTextField))
         
         rideDetailsView.originTextField.text = origin.name
-        rideDetailsView.destinyTextField.text = destiny.name
+        rideDetailsView.destinationTextField.text = destination.name
         
         rideDetailsView.originTextField.addGestureRecognizer(originTap)
-        rideDetailsView.destinyTextField.addGestureRecognizer(destinyTap)
+        rideDetailsView.destinationTextField.addGestureRecognizer(destinationTap)
         
     }
     
@@ -45,9 +45,9 @@ class RideDetailsVC: UIViewController {
         parent.show(.searches, at: .origin, shouldSelect: true)
     }
     
-    @objc func didTapDestinyTextField() {
+    @objc func didTapdestinationTextField() {
         guard let parent = parent as? MainVC else { return }
-        parent.show(.searches, at: .destiny, shouldSelect: true)
+        parent.show(.searches, at: .destination, shouldSelect: true)
     }
 
     init() {
@@ -61,11 +61,11 @@ class RideDetailsVC: UIViewController {
     
     func createRide() {
         
-        if let origin = origin, let destiny = destiny, let timeInterval = timeInterval, let numberOfSeats = numberOfSeats, let restriction = restriction {
+        if let origin = origin, let destination = destination, let timeInterval = timeInterval, let numberOfSeats = numberOfSeats, let restriction = restriction {
             
             let priceEstimate = PriceEstimate.init(lowerPrice: 12.0, upperPrice: 14.0)
             
-            let newRide = Ride.init(origin: origin, destiny: destiny, timeInterval: timeInterval, numberOfSeats: numberOfSeats, restriction: restriction, userId: "", id: "", priceEstimate: priceEstimate)
+            let newRide = Ride.init(origin: origin, destination: destination, timeInterval: timeInterval, numberOfSeats: numberOfSeats, restriction: restriction, userId: "", id: "", priceEstimate: priceEstimate)
             
             PersistantDataManager.dataManager.saveRideToDisk(ride: newRide)
             

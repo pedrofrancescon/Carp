@@ -122,7 +122,7 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell?.originDistanceLabel.text = "\(Int.random(in: ClosedRange<Int>(uncheckedBounds: (lower: 300, upper: 600)))) m"
-        cell?.destinyDistanceLabel.text = "\(Int.random(in: ClosedRange<Int>(uncheckedBounds: (lower: 200, upper: 700)))) m"
+        cell?.destinationDistanceLabel.text = "\(Int.random(in: ClosedRange<Int>(uncheckedBounds: (lower: 200, upper: 700)))) m"
         cell?.timeLabel.text = "14h24"
         
         cell?.priceLabel.text = "R$ \(cars[indexPath.row].price)"
