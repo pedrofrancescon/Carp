@@ -30,7 +30,7 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
                     })
                 })
                 self.cars.append(contentsOf: cars)
-                self.resultsView.resultsTableView.reloadData()
+                self.resultsView.resultsTableView.reloadSections(IndexSet(integer: 0), with: .bottom)
             }
         )
         
@@ -47,7 +47,6 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
         self.ride = ride
         self.cars = []
         resultsView = ResultsView(frame: .zero)
-        //resultsView.hideView()
         super.init(nibName: "ResultsVC", bundle: nil)
     }
     

@@ -135,7 +135,6 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
                 self.currentState = .results
             }
         }
-        
     }
     
     func callRideDetailsVC(origin: Place, destination: Place) {
@@ -189,7 +188,6 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
         case .menu:
             break
         case .back:
-            
             switch currentState {
             case .searches:
                 break
@@ -199,7 +197,6 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
                 show(.rideDetails)
             }
         }
-        
     }
     
     fileprivate func changeLeftBarBtnTo(_ state: BarButtonState) {
@@ -222,9 +219,7 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
             leftBarBtnState = .back
             
         }
-        
     }
-
 }
 
 protocol DismissKeyboardProtocol: class {

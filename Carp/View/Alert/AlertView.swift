@@ -176,5 +176,10 @@ class AlertView: UIView {
         parentVC?.doneButtonPressed()
     }
     
+    @IBAction func didPressExitButton(_ sender: Any) {
+        parentVC?.exitButtonPressed()
+    }
+    
+    
 
 }

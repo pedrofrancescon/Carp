@@ -91,10 +91,13 @@ class AlertVC: UIViewController {
             case .disclaimer:
                 self.delegate?.callPriceAlertVC()
             case .priceInput:
-                //guard let text = alertView.priceInputField.text else { return }
                 self.delegate?.createNewCar(price: alertView.priceInputField.value)
             }
         }
+    }
+    
+    func exitButtonPressed() {
+        dismiss(animated: true, completion: nil)
     }
     
 }

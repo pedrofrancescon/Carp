@@ -141,10 +141,7 @@ class SearchesVC: UIViewController {
         case .hidden:
             break
         }
-        
-        
     }
-    
 }
 
 extension SearchesVC: UITableViewDelegate, UITableViewDataSource {
@@ -170,7 +167,6 @@ extension SearchesVC: UITableViewDelegate, UITableViewDataSource {
             currentCell.placeAddressLabel.text = originPredictions[indexPath.row].attributedFullText.string
             currentCell.placeNameLabel.text = originPredictions[indexPath.row].attributedPrimaryText.string
         }
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
