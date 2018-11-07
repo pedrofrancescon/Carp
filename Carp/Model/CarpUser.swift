@@ -29,3 +29,11 @@ struct DocumentInfo {
     var number: String
     var type: String
 }
+
+struct SocialLoginData {
+    var email: String?
+    var name: String?
+    var firstName: String?
+    var lastName: String?
+    var id: String?
+}

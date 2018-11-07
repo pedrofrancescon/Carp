@@ -1,10 +1,20 @@
 PODS:
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
   - BoringSSL (10.0.6):
     - BoringSSL/Implementation (= 10.0.6)
     - BoringSSL/Interface (= 10.0.6)
   - BoringSSL/Implementation (10.0.6):
     - BoringSSL/Interface (= 10.0.6)
   - BoringSSL/Interface (10.0.6)
+  - FBSDKCoreKit (4.38.1):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.38.1):
+    - FBSDKCoreKit
   - Firebase/Auth (5.8.1):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.0.4)
@@ -66,6 +76,19 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.5.0):
     - GoogleMaps/Base (= 2.5.0)
+  - GoogleSignIn (4.3.0):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMOAuth2 (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.1.4)":
+    - GoogleToolboxForMac/DebugUtils (= 2.1.4)
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.1.4)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.1.4)"
   - GoogleUtilities/AppDelegateSwizzler (5.3.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -111,7 +134,13 @@ PODS:
   - gRPC/Main (1.14.0):
     - gRPC-Core (= 1.14.0)
     - gRPC-RxLibrary (= 1.14.0)
+  - GTMOAuth2 (1.1.6):
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.2.0):
+    - GTMSessionFetcher/Full (= 1.2.0)
   - GTMSessionFetcher/Core (1.2.0)
+  - GTMSessionFetcher/Full (1.2.0):
+    - GTMSessionFetcher/Core (= 1.2.0)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -122,16 +151,21 @@ PODS:
   - SwiftLint (0.27.0)
 
 DEPENDENCIES:
+  - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
   - GoogleMaps
   - GooglePlaces
+  - GoogleSignIn
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Bolts
     - BoringSSL
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -142,12 +176,15 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleMaps
     - GooglePlaces
+    - GoogleSignIn
+    - GoogleToolboxForMac
     - GoogleUtilities
     - gRPC
     - "gRPC-C++"
     - gRPC-Core
     - gRPC-ProtoRPC
     - gRPC-RxLibrary
+    - GTMOAuth2
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
@@ -155,7 +192,10 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
+  FBSDKCoreKit: 8d47857400e2f5bdea697a80daff882e91c84ef6
+  FBSDKLoginKit: 4621c690d9dd8628031a4791497062183ea34b0d
   Firebase: a870ed114d769b424021a0c8ddb0c86c3250a0c5
   FirebaseAnalytics: 361594968a84a04d9598ef0f2e769d3735cd03de
   FirebaseAuth: 504b198ceb3472dca5c65bb95544ea44cfc9439e
@@ -166,18 +206,21 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 7d2552cea4e12d09ce737ef0441887a746585ff3
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   GooglePlaces: dd70d9d71ea1c7944846afe67de3712c99b30a77
+  GoogleSignIn: 11183592dc63e105475c7305a325045ff95e02b7
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GoogleUtilities: 760ccb53b7c7f40f9c02d8c241f76f841a7a6162
   gRPC: 9d4c549f37c7cef22478634bac7a0405b6e3dbfb
   "gRPC-C++": ee0b01db3122f0b6c2be28b5b11039f62fa15fe6
   gRPC-Core: f4836515817c0eb479aeeb9cc27c91c4ba62a9f6
   gRPC-ProtoRPC: 76f6053639a842e1fb45fa82aa598bf3f4d9f66f
   gRPC-RxLibrary: 3c305f32155024b116b780f389323c73a28197e6
+  GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: 32e0b0c00419e15ba59d52db9793b5ffc0bb81c9
+PODFILE CHECKSUM: 22bd74771855d2be9bd76a7a741bcccc12e9603a
 
 COCOAPODS: 1.5.3

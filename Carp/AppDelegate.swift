@@ -10,52 +10,123 @@ import UIKit
 import GooglePlaces
 import GoogleMaps
 import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     var window: UIWindow?
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FBSDKApplicationDelegate.sharedInstance()?.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
         GMSServices.provideAPIKey("AIzaSyDwfMVcDzcQ_w8XKJ-edAUu7NwZ1HJuEco")
         GMSPlacesClient.provideAPIKey("AIzaSyDwfMVcDzcQ_w8XKJ-edAUu7NwZ1HJuEco")
-        
-        UIApplication.shared.statusBarStyle = .lightContent
-        
+
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
-        let initialViewController = MainNavigationController()
-        
+        let initialViewController = RegistrationViewController()
+
         window!.rootViewController = initialViewController
         window!.makeKeyAndVisible()
-        
+
         FirebaseApp.configure()
-        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         return true
     }
-    
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
-    
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-    
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-    
-}
 
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+        let fbHandled = FBSDKApplicationDelegate.sharedInstance()?.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String ?? "",
+            annotation: options[UIApplicationOpenURLOptionsKey.annotation]
+        ) ?? false
+        let gHandled = GIDSignIn.sharedInstance().handle(
+            url,
+            sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+            annotation: [:]
+        )
+        return fbHandled || gHandled
+    }
+
+    func testApiMethods() {
+        let dm = UserDataManager()
+        let testUid = "PRSHQMvzf2nnZ8ObhDHZ"
+        dm.getPublicUserDataWith(uid: testUid) { (user) in
+            if let user = user {
+                print("Successfully retrieved public user data:\n", user)
+            } else {
+                print("Could not retrieve user data")
+            }
+        }
+        dm.getPrivateUserDataWith(uid: testUid) { (data) in
+            if let data = data {
+                print("Successfully retrieved private user data:\n", data)
+            } else {
+                print("Could not retrieve private user data")
+            }
+        }
+        let placeWithNameAndLatLng = { (name: String, lat: Double, lng: Double) in
+            return Place(
+                name: name,
+                locations: Locations(
+                    coordinate: Coordinate(lat: lat, lng: lng),
+                    viewPortBounds: ViewPortBounds.init(
+                        northeast: Coordinate.zero,
+                        southwest: Coordinate.zero)
+                    )
+                )
+        }
+        UserSessionManager.shared.getFbToken { token in
+            if let token = token {
+                print("Successfully got Facebook token: \(token)")
+            } else {
+                print("Failure while retrieving Facebook token")
+            }
+        }
+        UserSessionManager.shared.getFbProfileData { data in
+            if let data = data {
+                print("Facebook data: \(data)")
+            } else {
+                print("Could no retrieve Facebook data.")
+            }
+        }
+        UserSessionManager.shared.getGToken { tokens in
+            if let tokens = tokens {
+                print("Successfully retrieved Google token: \(tokens)")
+            } else {
+                print("Could not get Google token.")
+            }
+        }
+        UserSessionManager.shared.getGProfileData { data in
+            if let data = data {
+                print("Google data: \(data)")
+            } else {
+                print("Could not retrieve Google data.")
+            }
+        }
+        RideRequestsManager.rideRequestsManager.createRide(
+            Ride(
+                origin: placeWithNameAndLatLng("Casa do Eldade", 10, 10),
+                destiny: placeWithNameAndLatLng("Casa da Grazi", 5, 5),
+                timeInterval: DateInterval(start: Date(timeIntervalSince1970: 1541363761), duration: 60*30),
+                numberOfSeats: NumberOfSeats.one,
+                restriction: Restrictions.noRestriction,
+                userId: testUid,
+                id: "",
+                priceEstimate: PriceEstimate(lowerPrice: 10, upperPrice: 15)
+            )
+        ) { (error, createdDocId) in
+            if error {
+                print("Could not create ride request")
+            } else {
+                print("Successfully created ride request with id \(createdDocId)")
+            }
+        }
+    }
+}

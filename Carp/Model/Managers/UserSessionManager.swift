@@ -8,21 +8,26 @@
 
 import Foundation
 import Firebase
+import GoogleSignIn
 
-class UserSessionManager {
+class UserSessionManager: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
 
+    static let shared = UserSessionManager()
     private let authRef = Auth.auth()
     private let dbRef = Firestore.firestore()
     private var subscribers: [Int: (Bool) -> Void] = [:]
     private var loginStatusSubscriber: AuthStateDidChangeListenerHandle?
     private var currentUser: CarpUser?
+    private var googleSignInListener: ((_ token: (token: String, idToken: String)?) -> Void)?
 
-    init() {
+    override init() {
+        super.init()
+        GIDSignIn.sharedInstance()?.delegate = self
         loginStatusSubscriber = authRef.addStateDidChangeListener({
             self.handleStatusChange(user: $1)
         })
     }
-    
+
     deinit {
         if let handler = loginStatusSubscriber {
             authRef.removeStateDidChangeListener(handler)
@@ -73,7 +78,7 @@ class UserSessionManager {
             }
         )
     }
-    
+
     func signIn(email: String, password: String, errorHandler: @escaping (_ reason: String) -> Void) {
         authRef.signIn(
             withEmail: email,
@@ -87,12 +92,90 @@ class UserSessionManager {
     }
 
     func subscribeToStatusChange(callback: @escaping (Bool) -> Void) -> () -> Void {
-        let subscriberId = Int.random(in: 0...Int.max)
+        var subscriberId = Int.random(in: 0...Int.max)
+        while subscribers.keys.contains(subscriberId) {
+            subscriberId = Int.random(in: 0...Int.max)
+        }
         subscribers[subscriberId] = callback
         return {
             if self.subscribers.keys.contains(subscriberId) {
                 self.subscribers.removeValue(forKey: subscriberId)
             }
+        }
+    }
+
+    func getFbToken(callback: @escaping (_ token: String?) -> Void) {
+        FBSDKLoginManager().logIn(
+            withReadPermissions: ["public_profile", "email"],
+            from: nil
+        ) { (loginResult, error) in
+            if error != nil {
+                callback(nil)
+                return
+            }
+            if let token = loginResult?.token.tokenString {
+                callback(token)
+            }
+        }
+    }
+
+    func getFbProfileData(callback: @escaping (_ data: SocialLoginData?) -> Void) {
+        FBSDKGraphRequest(
+            graphPath: "me?fields=id,name,email,gender,first_name,last_name",
+            parameters: nil
+        )?.start(completionHandler: { (_, result, error) in
+            if error != nil {
+                callback(nil)
+                return
+            }
+            if let data = result as? [String: Any] {
+                callback(SocialLoginData(
+                    email: data["email"] as? String,
+                    name: data["name"] as? String,
+                    firstName: data["first_name"] as? String,
+                    lastName: data["last_name"] as? String,
+                    id: "\(data["id"] ?? "")")
+                )
+                return
+            }
+        })
+    }
+
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            googleSignInListener?(nil)
+            print("Google SignIn error: \(error)")
+            return
+        }
+        if let accessToken = user.authentication.accessToken, let idToken = user.authentication.idToken {
+            googleSignInListener?((
+                token: accessToken,
+                idToken: idToken
+            ))
+            googleSignInListener = nil
+        }
+    }
+
+    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) { }
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) { }
+
+    func getGToken(callback: @escaping (_ token: (token: String, idToken: String)?) -> Void) {
+        googleSignInListener = callback
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+
+    func getGProfileData(callback: @escaping (_ data: SocialLoginData?) -> Void) {
+        if let currentUser = GIDSignIn.sharedInstance()?.currentUser, let profileData = currentUser.profile {
+            callback(SocialLoginData(
+                email: profileData.email,
+                name: profileData.name,
+                firstName: profileData.givenName,
+                lastName: profileData.familyName,
+                id: currentUser.userID)
+            )
+        } else {
+            callback(nil)
         }
     }
 }
