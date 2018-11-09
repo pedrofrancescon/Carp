@@ -9,16 +9,14 @@
 import UIKit
 
 class CarVC: UIViewController {
-
-    @IBOutlet weak var containerView: UIView!
     
-    var carView: CarView = CarView(frame: .zero)
+    let carView: CarView
     
     private let car: Car
     
     init(car: Car) {
         self.car = car
-        
+        self.carView = CarView(frame: .zero)
         super.init(nibName: "CarVC", bundle: nil)
     }
     
@@ -28,12 +26,10 @@ class CarVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view = carView
     }
     
     override func viewDidLayoutSubviews() {
-        
-        carView = CarView(frame: containerView.bounds)
-        containerView.addSubview(carView)
         
         carView.carTableView.delegate = self
         carView.carTableView.dataSource = self

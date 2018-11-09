@@ -138,6 +138,7 @@ class PopUpView: UIView {
     }
     
     @objc private func popupViewPanned(recognizer: UIPanGestureRecognizer) {
+        
         switch recognizer.state {
         case .began:
             

@@ -13,7 +13,7 @@ private enum BarButtonState {
 }
 
 enum MainViewState {
-    case searches,rideDetails,results
+    case searches,rideDetails,results,car
 }
 
 class MainVC: UIViewController, DismissKeyboardProtocol {
@@ -22,6 +22,7 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
     private let mapVC: MapVC
     private var resultsVC: ResultsVC?
     private var rideDetailsVC: RideDetailsVC?
+    private var carVC: CarVC?
     
     private var leftBarBtnState: BarButtonState = .menu
     private var currentState: MainViewState = .searches
@@ -72,12 +73,17 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
         self.view.endEditing(true)
     }
     
+    private func hideAllViews() {
+        rideDetailsVC?.rideDetailsView.hideView()
+        resultsVC?.resultsView.hideView()
+        carVC?.carView.hideView()
+    }
+    
     func show(_ viewToShow: MainViewState, at slindingState: SlidingViewState = .destination, shouldSelect: Bool = false) {
         
         switch viewToShow {
         case .searches:
-            rideDetailsVC?.rideDetailsView.hideView()
-            resultsVC?.resultsView.hideView()
+            hideAllViews()
             
             searchesVC.slidingView?.slideViewAnimated(to: slindingState, withDuration: 0.8)
             mapVC.mapView.animateTo(slindingState)
@@ -93,16 +99,13 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
                 }
             }
             
-            //searchesVC.reset()
-            //mapVC.mapView.resetMap()
-            
             navigationItem.title = "Nova Busca"
             
             currentState = .searches
             changeLeftBarBtnTo(.menu)
             
         case .rideDetails:
-            resultsVC?.resultsView.hideView()
+            hideAllViews()
             
             guard let rideDetailsVC = rideDetailsVC else { return }
             
@@ -119,7 +122,7 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
             }
             
         case .results:
-            rideDetailsVC?.rideDetailsView.hideView()
+            hideAllViews()
             
             guard let resultsVC = resultsVC else { return }
             
@@ -133,6 +136,22 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
                 self.navigationItem.title = "Resultados"
                 self.changeLeftBarBtnTo(.back)
                 self.currentState = .results
+            }
+        case .car:
+            hideAllViews()
+            
+            guard let carVC = carVC else { return }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                if carVC.parent == nil {
+                    self.addChildViewController(carVC)
+                    self.view.addSubview(carVC.view)
+                }
+                
+                carVC.carView.showView()
+                self.navigationItem.title = "Carro"
+                self.changeLeftBarBtnTo(.back)
+                self.currentState = .car
             }
         }
     }
@@ -169,15 +188,32 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
         self.show(.results)
     }
     
+    func callCarVC(car: Car) {
+        for subVC in childViewControllers {
+            if let subVC = subVC as? CarVC {
+                subVC.view.removeFromSuperview()
+                subVC.removeFromParentViewController()
+            }
+        }
+        
+        carVC = CarVC(car: car)
+        
+        show(.car)
+    }
+    
     @objc func didTapRightBarBtn() {
         let ride = PersistantDataManager.dataManager.getRideFromDisk()
         
+        for subVC in childViewControllers {
+            if let subVC = subVC as? ResultsVC {
+                subVC.view.removeFromSuperview()
+                subVC.removeFromParentViewController()
+            }
+        }
+        
         resultsVC = ResultsVC(ride: ride)
         
-        guard let resultsVC = resultsVC else { return }
-        
-        self.addChildViewController(resultsVC)
-        self.view.addSubview(resultsVC.view)
+        PersistantDataManager.dataManager.saveRideToDisk(ride: ride)
         
         self.show(.results)
     }
@@ -195,6 +231,8 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
                 show(.searches, at: .origin)
             case .results:
                 show(.rideDetails)
+            case .car:
+                show(.results)
             }
         }
     }

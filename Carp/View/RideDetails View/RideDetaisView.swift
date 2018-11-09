@@ -113,7 +113,7 @@ class RideDetailsView: PopUpView {
         addToStackView(image: UIImage(named: "Cabify")!)
         addToStackView(image: UIImage(named: "99.jpeg")!)
         
-        hideView()
+        //hideView()
         
     }
     

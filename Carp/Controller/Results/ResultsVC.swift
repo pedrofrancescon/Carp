@@ -30,7 +30,7 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
                     })
                 })
                 self.cars.append(contentsOf: cars)
-                self.resultsView.resultsTableView.reloadSections(IndexSet(integer: 0), with: .bottom)
+                self.resultsView.resultsTableView.reloadData()
             }
         )
         
@@ -79,15 +79,8 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
     }
     
     func callCarVC(car: Car) {
-        let carVC = CarVC(car: car)
-        
-        for childVC in childViewControllers {
-            childVC.removeFromParentViewController()
-        }
-        
-        addChildViewController(carVC)
-        resultsView.carView = carVC.view
-        resultsView.changeStateTo(.resultsAndCar)
+        guard let parent = parent as? MainVC else { return }
+        parent.callCarVC(car: car)
     }
     
     func createNewCar(price: Float) {
@@ -138,6 +131,22 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         callCarVC(car: cars[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+            
+        }
+        delete.backgroundColor = UIColor.red
+        
+        let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
+            
+        }
+        share.backgroundColor = UIColor(color: .mainBlue)
+        
+        return [delete, share]
+        
     }
 }
 
