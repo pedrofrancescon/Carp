@@ -89,9 +89,9 @@ class AlertVC: UIViewController {
         dismiss(animated: true) {
             switch alertView.kind {
             case .disclaimer:
-                self.delegate?.callPriceAlertVC()
+                self.delegate?.createNewCar()
             case .priceInput:
-                self.delegate?.createNewCar(price: alertView.priceInputField.value)
+                break
             }
         }
     }

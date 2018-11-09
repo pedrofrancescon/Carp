@@ -66,25 +66,13 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
         
     }
     
-    func callPriceAlertVC() {
-        
-        let alertVC = AlertVC(priceEstimate: ride.priceEstimate)
-        
-        alertVC.modalTransitionStyle = .crossDissolve
-        alertVC.modalPresentationStyle = .overCurrentContext
-        alertVC.delegate = self
-        
-        present(alertVC, animated: true, completion: nil)
-        
-    }
-    
     func callCarVC(car: Car) {
         guard let parent = parent as? MainVC else { return }
         parent.callCarVC(car: car)
     }
     
-    func createNewCar(price: Float) {
-        let newCar = Car.init(riders: [], owner: self.ride, price: price)
+    func createNewCar() {
+        let newCar = Car.init(riders: [], owner: self.ride, price: Float(ride.priceEstimate.upperPrice))
         
         callCarVC(car: newCar)
     }
@@ -156,7 +144,5 @@ protocol ResultsDelegate: class {
 }
 
 protocol AlertDelegate: class {
-    func callPriceAlertVC()
-    func createNewCar(price: Float)
-    
+    func createNewCar()
 }
