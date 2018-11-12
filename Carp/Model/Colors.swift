@@ -25,28 +25,16 @@ extension UIColor {
         )
     }
     
-    convenience init(color: HexColors) {
-        let rgb = color.rawValue
-        
-        self.init(
-            red: (rgb >> 16) & 0xFF,
-            green: (rgb >> 8) & 0xFF,
-            blue: rgb & 0xFF
-        )
-    }
-}
-
-enum HexColors: Int {
-    case mainGreen = 0x087443
-    case green = 0x388F68
-    case greenText = 0x489773
-    case lightGreen = 0xEEF5F2
-    case mainBlue = 0x4A90E2
-    case mainOrange = 0xF5A623
-    case lightGreyBoxes = 0xF5F5F5
-    case greyIcon = 0x6D6D6D
-    case greyText = 0x3F3F3F
-    case lightGreyText = 0xAEAEAE
-    case darkGreyText = 0x717171
+    static var mainGreen = UIColor(rgb: 0x087443)
+    static var green = UIColor(rgb: 0x388F68)
+    static var greenText = UIColor(rgb: 0x489773)
+    static var lightGreen = UIColor(rgb: 0xEEF5F2)
+    static var mainBlue = UIColor(rgb: 0x4A90E2)
+    static var mainOrange = UIColor(rgb: 0xF5A623)
+    static var lightGreyBoxes = UIColor(rgb: 0xF5F5F5)
+    static var greyIcon = UIColor(rgb: 0x6D6D6D)
+    static var greyText = UIColor(rgb: 0x3F3F3F)
+    static var lightGreyText = UIColor(rgb: 0xAEAEAE)
+    static var darkGreyText = UIColor(rgb: 0x717171)
 }
 

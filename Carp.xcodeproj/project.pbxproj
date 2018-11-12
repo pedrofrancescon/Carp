@@ -102,10 +102,10 @@
 		5C5F3964215322A000B396E8 /* Uber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Uber.png; sourceTree = "<group>"; };
 		5C5F3966215322A600B396E8 /* 99.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 99.jpeg; sourceTree = "<group>"; };
 		5C5F3968215322B000B396E8 /* Cabify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cabify.png; sourceTree = "<group>"; };
-		5C75FD13218CE29200E1F48B /* CarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CarView.xib; path = Carp/View/Car/CarView.xib; sourceTree = SOURCE_ROOT; };
-		5C75FD14218CE29200E1F48B /* CarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarView.swift; path = Carp/View/Car/CarView.swift; sourceTree = SOURCE_ROOT; };
-		5C75FD17218CE2AC00E1F48B /* CarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarVC.swift; path = Carp/Controller/Car/CarVC.swift; sourceTree = SOURCE_ROOT; };
-		5C75FD18218CE2AC00E1F48B /* CarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CarVC.xib; path = Carp/Controller/Car/CarVC.xib; sourceTree = SOURCE_ROOT; };
+		5C75FD13218CE29200E1F48B /* CarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CarView.xib; path = "Carp/View/New Group/CarView.xib"; sourceTree = SOURCE_ROOT; };
+		5C75FD14218CE29200E1F48B /* CarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarView.swift; path = "Carp/View/New Group/CarView.swift"; sourceTree = SOURCE_ROOT; };
+		5C75FD17218CE2AC00E1F48B /* CarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarVC.swift; path = "Carp/Controller/New Group/CarVC.swift"; sourceTree = SOURCE_ROOT; };
+		5C75FD18218CE2AC00E1F48B /* CarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CarVC.xib; path = "Carp/Controller/New Group/CarVC.xib"; sourceTree = SOURCE_ROOT; };
 		5C7A9D2B218A7480001724B4 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsVC.swift; sourceTree = "<group>"; };
 		5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideDetailsVC.xib; sourceTree = "<group>"; };
@@ -199,21 +199,21 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		5C75FD11218CE20300E1F48B /* Car */ = {
+		5CA6EE8C219A2303008F0AC1 /* Car */ = {
 			isa = PBXGroup;
 			children = (
-				5C75FD17218CE2AC00E1F48B /* CarVC.swift */,
-				5C75FD18218CE2AC00E1F48B /* CarVC.xib */,
+				5C75FD14218CE29200E1F48B /* CarView.swift */,
+				5C75FD13218CE29200E1F48B /* CarView.xib */,
 			);
 			name = Car;
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		5C75FD12218CE22300E1F48B /* Car */ = {
+		5CA6EE8D219A231A008F0AC1 /* Car */ = {
 			isa = PBXGroup;
 			children = (
-				5C75FD14218CE29200E1F48B /* CarView.swift */,
-				5C75FD13218CE29200E1F48B /* CarView.xib */,
+				5C75FD17218CE2AC00E1F48B /* CarVC.swift */,
+				5C75FD18218CE2AC00E1F48B /* CarVC.xib */,
 			);
 			name = Car;
 			path = "New Group";
@@ -297,7 +297,7 @@
 				5CDA7A512139DB53009F24CB /* RideDetails View */,
 				5CDA7A502139DB43009F24CB /* Results View */,
 				5CE5C1BA21814F480004917C /* Alert */,
-				5C75FD12218CE22300E1F48B /* Car */,
+				5CA6EE8C219A2303008F0AC1 /* Car */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 				5CBA6DC4214B388B0062EBF2 /* Ride Detais */,
 				5CF74700213CEFE100964ABC /* Results */,
 				5CE5C1BF218150590004917C /* Alert */,
-				5C75FD11218CE20300E1F48B /* Car */,
+				5CA6EE8D219A231A008F0AC1 /* Car */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -589,12 +589,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Carp/Pods-Carp-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/MessageKit/MessageKitAssets.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC/gRPCCertificates.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MessageKitAssets.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -809,7 +811,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Carp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -828,7 +830,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Carp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

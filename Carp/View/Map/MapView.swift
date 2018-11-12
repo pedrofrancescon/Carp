@@ -108,7 +108,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
                 let path = GMSPath.init(fromEncodedPath: points! as! String)
                 self.polyline = GMSPolyline.init(path: path)
                 self.polyline.strokeWidth = 3
-                self.polyline.strokeColor = UIColor(color: .mainGreen)
+                self.polyline.strokeColor = UIColor.mainGreen
                 
                 let bounds = GMSCoordinateBounds(path: path!)
                 // needs fixing for iPhone X

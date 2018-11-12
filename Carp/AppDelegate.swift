@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyDwfMVcDzcQ_w8XKJ-edAUu7NwZ1HJuEco")
         GMSPlacesClient.provideAPIKey("AIzaSyDwfMVcDzcQ_w8XKJ-edAUu7NwZ1HJuEco")
         
-        UIApplication.shared.statusBarStyle = .lightContent
-        
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         let initialViewController = MainNavigationController()

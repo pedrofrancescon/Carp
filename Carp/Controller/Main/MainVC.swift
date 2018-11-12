@@ -27,7 +27,7 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
     private var leftBarBtnState: BarButtonState = .menu
     private var currentState: MainViewState = .searches
     
-    let navigationBtnAttributes = [
+    private let navigationBtnAttributes = [
         NSAttributedString.Key.font: UIFont(name: "FontAwesome5FreeSolid", size: 20.0) as Any,
         NSAttributedString.Key.foregroundColor: UIColor.white as Any
     ]
@@ -44,11 +44,8 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
         
         navigationItem.title = "Nova Busca"
         
-        addChildViewController(mapVC)
-        addChildViewController(searchesVC)
-        
-        view.addSubview(mapVC.view)
-        view.addSubview(searchesVC.view)
+        addChildVC(mapVC)
+        addChildVC(searchesVC)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewEndEditing))
         tap.cancelsTouchesInView = false
@@ -109,10 +106,9 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
             
             guard let rideDetailsVC = rideDetailsVC else { return }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                 if rideDetailsVC.parent == nil {
-                    self.addChildViewController(rideDetailsVC)
-                    self.view.addSubview(rideDetailsVC.view)
+                    self.addChildVC(rideDetailsVC)
                 }
                 
                 rideDetailsVC.rideDetailsView.showView()
@@ -126,10 +122,9 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
             
             guard let resultsVC = resultsVC else { return }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                 if resultsVC.parent == nil {
-                    self.addChildViewController(resultsVC)
-                    self.view.addSubview(resultsVC.view)
+                    self.addChildVC(resultsVC)
                 }
                 
                 resultsVC.resultsView.showView()
@@ -142,10 +137,9 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
             
             guard let carVC = carVC else { return }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                 if carVC.parent == nil {
-                    self.addChildViewController(carVC)
-                    self.view.addSubview(carVC.view)
+                    self.addChildVC(carVC)
                 }
                 
                 carVC.carView.showView()
@@ -157,10 +151,9 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
     }
     
     func callRideDetailsVC(origin: Place, destination: Place) {
-        for subVC in childViewControllers {
+        for subVC in children {
             if let subVC = subVC as? RideDetailsVC {
-                subVC.view.removeFromSuperview()
-                subVC.removeFromParentViewController()
+                subVC.removeFromParentVC()
             }
         }
         
@@ -174,10 +167,9 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
     }
     
     func callResultsVC(ride: Ride) {
-        for subVC in childViewControllers {
+        for subVC in children {
             if let subVC = subVC as? ResultsVC {
-                subVC.view.removeFromSuperview()
-                subVC.removeFromParentViewController()
+                subVC.removeFromParentVC()
             }
         }
         
@@ -189,10 +181,9 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
     }
     
     func callCarVC(car: Car) {
-        for subVC in childViewControllers {
+        for subVC in children {
             if let subVC = subVC as? CarVC {
-                subVC.view.removeFromSuperview()
-                subVC.removeFromParentViewController()
+                subVC.removeFromParentVC()
             }
         }
         
@@ -204,10 +195,9 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
     @objc func didTapRightBarBtn() {
         let ride = PersistantDataManager.dataManager.getRideFromDisk()
         
-        for subVC in childViewControllers {
+        for subVC in children {
             if let subVC = subVC as? ResultsVC {
-                subVC.view.removeFromSuperview()
-                subVC.removeFromParentViewController()
+                subVC.removeFromParentVC()
             }
         }
         

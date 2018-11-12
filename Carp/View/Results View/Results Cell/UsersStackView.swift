@@ -64,7 +64,7 @@ class UsersStackView: UIStackView {
         label.font = UIFont(name: "Lato-Bold", size: 14)
         label.text = number
         label.textAlignment = .center
-        label.textColor = UIColor(color: .greenText)
+        label.textColor = UIColor.greenText
         
         addArrangedSubview(label)
         

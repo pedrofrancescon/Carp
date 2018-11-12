@@ -48,7 +48,7 @@ class ResultsView: PopUpView {
         resultsTableView.frame = containerView.bounds
         containerView.addSubview(resultsTableView)
         
-        newCarLabel.textColor = UIColor(color: .green)
+        newCarLabel.textColor = UIColor.green
     }
     
     @IBAction func didTapNewCarLabel(_ sender: Any) {

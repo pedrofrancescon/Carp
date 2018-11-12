@@ -131,7 +131,7 @@ extension ResultsVC: UITableViewDelegate, UITableViewDataSource {
         let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
             
         }
-        share.backgroundColor = UIColor(color: .mainBlue)
+        share.backgroundColor = UIColor.mainBlue
         
         return [delete, share]
         

@@ -20,13 +20,11 @@ class MainNavigationController: UINavigationController {
             NSAttributedString.Key.foregroundColor: UIColor.white as Any
         ]
         
-        navigationBar.barTintColor = UIColor(color: .mainGreen)
+        navigationBar.barTintColor = UIColor.mainGreen
         navigationBar.titleTextAttributes = navigationTitleAttributes
         
         let mainVC = MainVC()
         setViewControllers([mainVC], animated: false)
-        
-        
         
     }
     
@@ -39,6 +37,8 @@ class MainNavigationController: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
 }

@@ -116,16 +116,6 @@ class SearchesVC: UIViewController {
         view.endEditing(true)
     }
     
-    func reset() {
-        origin = nil
-        destination = nil
-        
-        destinationSearchView.resetField()
-        originSearchView.resetField()
-        
-        slidingView?.slideViewAnimated(to: .destination, withDuration: 0.8)
-    }
-    
     @objc func slidingViewDidChange() {
         guard let state = slidingView?.currentState else { return }
         

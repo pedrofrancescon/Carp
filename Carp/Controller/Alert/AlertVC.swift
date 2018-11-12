@@ -38,8 +38,8 @@ class AlertVC: UIViewController {
 
         view.backgroundColor = UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(AlertVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AlertVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlertVC.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlertVC.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -56,7 +56,7 @@ class AlertVC: UIViewController {
         
         alertView.parentVC = self
         
-        containerView.insertSubview(alertView, at: 0)
+        containerView.addSubview(alertView)
     }
     
     @objc func dismissKeyboard() {

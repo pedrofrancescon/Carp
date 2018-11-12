@@ -69,7 +69,7 @@ class AlertView: UIView {
     override func layoutSubviews() {
         
         contentView.backgroundColor = .clear
-        titleLabel.textColor = UIColor(color: .mainGreen)
+        titleLabel.textColor = UIColor.mainGreen
         
         addShadow(blur: 10, opacity: 0.5)
         
@@ -79,7 +79,7 @@ class AlertView: UIView {
         
         let boldTextAttributes = [
             NSAttributedString.Key.font: UIFont(name: "Lato-Bold", size: 15.0) as Any,
-            NSAttributedString.Key.underlineStyle: NSUnderlineStyle.styleSingle.rawValue as Any
+            NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue as Any
         ]
         
         let lineBreakTextAttributes = [
@@ -152,7 +152,7 @@ class AlertView: UIView {
             doneButton.setAttributedTitle(buttonString, for: .normal)
         }
         
-        doneButton.backgroundColor = UIColor(color: .mainGreen)
+        doneButton.backgroundColor = UIColor.mainGreen
         
         // some fucked up messy shit code to fix apple bugs
         textView.textContainerInset = UIEdgeInsets.zero

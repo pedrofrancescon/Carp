@@ -49,3 +49,15 @@ extension Notification.Name {
     static let slidginViewStateChanged = Notification.Name(
         rawValue: "slidginViewStateChanged")
 }
+
+extension UIViewController {
+    func addChildVC(_ vc: UIViewController) {
+        self.addChild(vc)
+        self.view.addSubview(vc.view)
+    }
+    
+    func removeFromParentVC() {
+        self.view.removeFromSuperview()
+        self.removeFromParent()
+    }
+}

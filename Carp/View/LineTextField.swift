@@ -76,7 +76,7 @@ class LineTextField: UITextField {
         Formatter.currency.locale = Locale.current
         
         font = UIFont(name: "Lato-Bold", size: 18.0)
-        textColor = UIColor(color: .darkGreyText)
+        textColor = UIColor.darkGreyText
         backgroundColor = .white
         
         borderStyle = .none
@@ -90,7 +90,7 @@ class LineTextField: UITextField {
         
         let border = CALayer()
         let width = CGFloat(1.0)
-        border.borderColor = UIColor(color: .lightGreyText).cgColor
+        border.borderColor = UIColor.lightGreyText.cgColor
         border.frame = CGRect(x: 0, y: frame.size.height - width, width: frame.size.width, height: frame.size.height)
         
         border.borderWidth = width
@@ -101,7 +101,7 @@ class LineTextField: UITextField {
         
         let placeholderAttributes = [
             NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 18.0) as Any,
-            NSAttributedString.Key.foregroundColor: UIColor(color: .lightGreyText) as Any
+            NSAttributedString.Key.foregroundColor: UIColor.lightGreyText as Any
         ]
         
         let placeholderText = NSMutableAttributedString(string: "", attributes: placeholderAttributes)

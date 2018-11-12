@@ -69,6 +69,7 @@ class SlidingView: TouchesPassThroughView {
             NotificationCenter.default.post(name: .slidginViewStateChanged, object: nil)
         }
     }
+    
     private var runningAnimators = [UIViewPropertyAnimator]()
     
     private var animationProgress = [CGFloat]()

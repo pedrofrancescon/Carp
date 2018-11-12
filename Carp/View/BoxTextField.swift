@@ -12,8 +12,8 @@ class BoxTextField: UITextField {
 
     override func layoutSubviews() {
         font = UIFont(name: "Lato-Regular", size: 15.0)
-        textColor = UIColor(color: .greyText)
-        backgroundColor = UIColor(color: .lightGreyBoxes)
+        textColor = UIColor.greyText
+        backgroundColor = UIColor.lightGreyBoxes
         
         super.layoutSubviews()
     }

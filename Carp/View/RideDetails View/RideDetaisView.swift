@@ -97,13 +97,13 @@ class RideDetailsView: PopUpView {
         
         searchButton.setAttributedTitle(resultsCombination, for: .normal)
         
-        fareEstimateLabel.textColor = UIColor(color: .darkGreyText)
+        fareEstimateLabel.textColor = UIColor.darkGreyText
         
-        originIcon.textColor = UIColor(color: .mainGreen)
-        destinationIcon.textColor = UIColor(color: .mainGreen)
-        timeIcon.textColor = UIColor(color: .greyIcon)
-        seatsIcon.textColor = UIColor(color: .mainOrange)
-        restrictionsIcon.textColor = UIColor(color: .mainBlue)
+        originIcon.textColor = UIColor.mainGreen
+        destinationIcon.textColor = UIColor.mainGreen
+        timeIcon.textColor = UIColor.greyIcon
+        seatsIcon.textColor = UIColor.mainOrange
+        restrictionsIcon.textColor = UIColor.mainBlue
         
         makeButtonSelected(oneSeatButton)
         
@@ -112,8 +112,6 @@ class RideDetailsView: PopUpView {
         addToStackView(image: UIImage(named: "Uber")!)
         addToStackView(image: UIImage(named: "Cabify")!)
         addToStackView(image: UIImage(named: "99.jpeg")!)
-        
-        //hideView()
         
     }
     
@@ -140,38 +138,38 @@ class RideDetailsView: PopUpView {
         
         switch button {
         case oneSeatButton:
-            oneSeatButton.backgroundColor = UIColor(color: .mainOrange)
-            oneSeatButton.setTitleColor(UIColor(color: .lightGreyBoxes), for: .normal)
+            oneSeatButton.backgroundColor = UIColor.mainOrange
+            oneSeatButton.setTitleColor(UIColor.lightGreyBoxes, for: .normal)
             
-            twoSeatsButton.backgroundColor = UIColor(color: .lightGreyBoxes)
-            twoSeatsButton.setTitleColor(UIColor(color: .greyText), for: .normal)
+            twoSeatsButton.backgroundColor = UIColor.lightGreyBoxes
+            twoSeatsButton.setTitleColor(UIColor.greyText, for: .normal)
             
-            threeSeatsButton.backgroundColor = UIColor(color: .lightGreyBoxes)
-            threeSeatsButton.setTitleColor(UIColor(color: .greyText), for: .normal)
+            threeSeatsButton.backgroundColor = UIColor.lightGreyBoxes
+            threeSeatsButton.setTitleColor(UIColor.greyText, for: .normal)
             
             parentVC?.numberOfSeats = .one
             
         case twoSeatsButton:
-            twoSeatsButton.backgroundColor = UIColor(color: .mainOrange)
-            twoSeatsButton.setTitleColor(UIColor(color: .lightGreyBoxes), for: .normal)
+            twoSeatsButton.backgroundColor = UIColor.mainOrange
+            twoSeatsButton.setTitleColor(UIColor.lightGreyBoxes, for: .normal)
             
-            oneSeatButton.backgroundColor = UIColor(color: .lightGreyBoxes)
-            oneSeatButton.setTitleColor(UIColor(color: .greyText), for: .normal)
+            oneSeatButton.backgroundColor = UIColor.lightGreyBoxes
+            oneSeatButton.setTitleColor(UIColor.greyText, for: .normal)
             
-            threeSeatsButton.backgroundColor = UIColor(color: .lightGreyBoxes)
-            threeSeatsButton.setTitleColor(UIColor(color: .greyText), for: .normal)
+            threeSeatsButton.backgroundColor = UIColor.lightGreyBoxes
+            threeSeatsButton.setTitleColor(UIColor.greyText, for: .normal)
             
             parentVC?.numberOfSeats = .two
             
         case threeSeatsButton:
-            threeSeatsButton.backgroundColor = UIColor(color: .mainOrange)
-            threeSeatsButton.setTitleColor(UIColor(color: .lightGreyBoxes), for: .normal)
+            threeSeatsButton.backgroundColor = UIColor.mainOrange
+            threeSeatsButton.setTitleColor(UIColor.lightGreyBoxes, for: .normal)
             
-            oneSeatButton.backgroundColor = UIColor(color: .lightGreyBoxes)
-            oneSeatButton.setTitleColor(UIColor(color: .greyText), for: .normal)
+            oneSeatButton.backgroundColor = UIColor.lightGreyBoxes
+            oneSeatButton.setTitleColor(UIColor.greyText, for: .normal)
             
-            twoSeatsButton.backgroundColor = UIColor(color: .lightGreyBoxes)
-            twoSeatsButton.setTitleColor(UIColor(color: .greyText), for: .normal)
+            twoSeatsButton.backgroundColor = UIColor.lightGreyBoxes
+            twoSeatsButton.setTitleColor(UIColor.greyText, for: .normal)
             
             parentVC?.numberOfSeats = .twree
             
