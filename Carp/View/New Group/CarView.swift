@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CarView: PopUpView {
+class CarCellView: PopUpView {
 
     @IBOutlet var contentView: UIView!
     

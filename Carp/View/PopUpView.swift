@@ -32,6 +32,7 @@ class PopUpView: UIView {
 
     // MARK: - Constants
     
+    // to make sure it disapears on all devices (Xs Max)
     private let popupOffset: CGFloat = 480
     
     // MARK: - View Controller Lifecycle
@@ -45,7 +46,18 @@ class PopUpView: UIView {
         DispatchQueue.main.async {
             self.animateTransitionIfNeeded(to: .open, duration: 1.0)
             self.runningAnimators.forEach { $0.startAnimation() }
+            print("OIE")
+            print(self.frame.height)
+            print(self.bounds.height)
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            print("OIE")
+            print(self.frame.height)
+            print(self.bounds.height)
+        }
+        
+        //438.5
     }
     
     func hideView() {
@@ -72,8 +84,7 @@ class PopUpView: UIView {
         trailingAnchor.constraint(equalTo: superView.trailingAnchor).isActive = true
         bottomConstraint = bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: popupOffset)
         bottomConstraint.isActive = true
-        heightAnchor.constraint(lessThanOrEqualToConstant: popupOffset).isActive = true
-        
+        heightAnchor.constraint(greaterThanOrEqualToConstant: popupOffset - 40).isActive = true
     }
     
     // MARK: - Animation

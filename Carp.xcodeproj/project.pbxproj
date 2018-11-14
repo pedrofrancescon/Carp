@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3851172DF45B102A2B70A3F0 /* libPods-Carp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E16524090A1CAA6184A56BA /* libPods-Carp.a */; };
 		511B79F821545F930025B110 /* EntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511B79F721545F930025B110 /* EntityMapper.swift */; };
 		5194E33821558B110015B0DF /* CarpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33721558B110015B0DF /* CarpUser.swift */; };
 		5194E33A21558F3D0015B0DF /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33921558F3D0015B0DF /* Car.swift */; };
@@ -37,11 +36,14 @@
 		5C5F3965215322A100B396E8 /* Uber.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3964215322A000B396E8 /* Uber.png */; };
 		5C5F3967215322A700B396E8 /* 99.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3966215322A600B396E8 /* 99.jpeg */; };
 		5C5F3969215322B100B396E8 /* Cabify.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F3968215322B000B396E8 /* Cabify.png */; };
-		5C75FD15218CE29200E1F48B /* CarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C75FD13218CE29200E1F48B /* CarView.xib */; };
-		5C75FD16218CE29200E1F48B /* CarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C75FD14218CE29200E1F48B /* CarView.swift */; };
+		5C75FD15218CE29200E1F48B /* CarCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C75FD13218CE29200E1F48B /* CarCellView.xib */; };
+		5C75FD16218CE29200E1F48B /* CarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C75FD14218CE29200E1F48B /* CarCellView.swift */; };
 		5C75FD19218CE2AC00E1F48B /* CarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C75FD17218CE2AC00E1F48B /* CarVC.swift */; };
 		5C75FD1A218CE2AC00E1F48B /* CarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C75FD18218CE2AC00E1F48B /* CarVC.xib */; };
 		5C7A9D2C218A7480001724B4 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A9D2B218A7480001724B4 /* DataModel.swift */; };
+		5CB766B8219B7B4A00E4E210 /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB766B7219B7B4A00E4E210 /* DatabaseRepresentation.swift */; };
+		5CB766BB219B8CF500E4E210 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB766B9219B8CF500E4E210 /* ChatVC.swift */; };
+		5CB766BC219B8CF500E4E210 /* ChatVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CB766BA219B8CF500E4E210 /* ChatVC.xib */; };
 		5CBA6DC2214B38560062EBF2 /* RideDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */; };
 		5CBA6DC3214B38560062EBF2 /* RideDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */; };
 		5CD41B3121593D7900996514 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD41B3021593D7800996514 /* GoogleService-Info.plist */; };
@@ -52,7 +54,6 @@
 		5CDA7A3A2139DA4F009F24CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A382139DA4F009F24CB /* LaunchScreen.storyboard */; };
 		5CDA7A472139DAD6009F24CB /* LocationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A462139DAD6009F24CB /* LocationsManager.swift */; };
 		5CDA7A492139DAED009F24CB /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A482139DAED009F24CB /* Place.swift */; };
-		5CDA7A4B2139DB0C009F24CB /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */; };
 		5CDA7A4D2139DB22009F24CB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A4C2139DB22009F24CB /* Colors.swift */; };
 		5CDA7A562139DB94009F24CB /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A552139DB94009F24CB /* SearchResultsCell.swift */; };
 		5CDA7A582139DBAC009F24CB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA7A572139DBAC009F24CB /* SearchView.swift */; };
@@ -79,6 +80,7 @@
 		5CF746F8213C96AC00964ABC /* ResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF746F6213C96AC00964ABC /* ResultsVC.swift */; };
 		5CF746F9213C96AC00964ABC /* ResultsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF746F7213C96AC00964ABC /* ResultsVC.xib */; };
 		5CF74702213CF39C00964ABC /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF74701213CF39C00964ABC /* SlidingView.swift */; };
+		F914B55F9C2ED1B502580493 /* Pods_Carp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD4366881C708D351AD0341 /* Pods_Carp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,11 +104,14 @@
 		5C5F3964215322A000B396E8 /* Uber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Uber.png; sourceTree = "<group>"; };
 		5C5F3966215322A600B396E8 /* 99.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 99.jpeg; sourceTree = "<group>"; };
 		5C5F3968215322B000B396E8 /* Cabify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cabify.png; sourceTree = "<group>"; };
-		5C75FD13218CE29200E1F48B /* CarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CarView.xib; path = "Carp/View/New Group/CarView.xib"; sourceTree = SOURCE_ROOT; };
-		5C75FD14218CE29200E1F48B /* CarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarView.swift; path = "Carp/View/New Group/CarView.swift"; sourceTree = SOURCE_ROOT; };
+		5C75FD13218CE29200E1F48B /* CarCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CarCellView.xib; path = "Carp/View/New Group/CarCellView.xib"; sourceTree = SOURCE_ROOT; };
+		5C75FD14218CE29200E1F48B /* CarCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarCellView.swift; path = "Carp/View/New Group/CarCellView.swift"; sourceTree = SOURCE_ROOT; };
 		5C75FD17218CE2AC00E1F48B /* CarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarVC.swift; path = "Carp/Controller/New Group/CarVC.swift"; sourceTree = SOURCE_ROOT; };
 		5C75FD18218CE2AC00E1F48B /* CarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CarVC.xib; path = "Carp/Controller/New Group/CarVC.xib"; sourceTree = SOURCE_ROOT; };
 		5C7A9D2B218A7480001724B4 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		5CB766B7219B7B4A00E4E210 /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
+		5CB766B9219B8CF500E4E210 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		5CB766BA219B8CF500E4E210 /* ChatVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatVC.xib; sourceTree = "<group>"; };
 		5CBA6DC0214B38560062EBF2 /* RideDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsVC.swift; sourceTree = "<group>"; };
 		5CBA6DC1214B38560062EBF2 /* RideDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideDetailsVC.xib; sourceTree = "<group>"; };
 		5CD41B3021593D7800996514 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -119,7 +124,6 @@
 		5CDA7A3B2139DA4F009F24CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CDA7A462139DAD6009F24CB /* LocationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsManager.swift; sourceTree = "<group>"; };
 		5CDA7A482139DAED009F24CB /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPath.swift; sourceTree = "<group>"; };
 		5CDA7A4C2139DB22009F24CB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5CDA7A552139DB94009F24CB /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
 		5CDA7A572139DBAC009F24CB /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -156,7 +160,7 @@
 		5CF746F6213C96AC00964ABC /* ResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsVC.swift; sourceTree = "<group>"; };
 		5CF746F7213C96AC00964ABC /* ResultsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsVC.xib; sourceTree = "<group>"; };
 		5CF74701213CF39C00964ABC /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingView.swift; sourceTree = "<group>"; };
-		7E16524090A1CAA6184A56BA /* libPods-Carp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Carp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AD4366881C708D351AD0341 /* Pods_Carp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Carp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B319F3237E5CA8DC30EC3668 /* Pods-Carp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Carp/Pods-Carp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,7 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3851172DF45B102A2B70A3F0 /* libPods-Carp.a in Frameworks */,
+				F914B55F9C2ED1B502580493 /* Pods_Carp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,8 +206,8 @@
 		5CA6EE8C219A2303008F0AC1 /* Car */ = {
 			isa = PBXGroup;
 			children = (
-				5C75FD14218CE29200E1F48B /* CarView.swift */,
-				5C75FD13218CE29200E1F48B /* CarView.xib */,
+				5C75FD14218CE29200E1F48B /* CarCellView.swift */,
+				5C75FD13218CE29200E1F48B /* CarCellView.xib */,
 			);
 			name = Car;
 			path = "New Group";
@@ -217,6 +221,27 @@
 			);
 			name = Car;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		5CA6EE8E219A36C8008F0AC1 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				5CB766B9219B8CF500E4E210 /* ChatVC.swift */,
+				5CB766BA219B8CF500E4E210 /* ChatVC.xib */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		5CA6EE91219A3A36008F0AC1 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				5CDA7A482139DAED009F24CB /* Place.swift */,
+				5C350AC72151D2AB00BA6E79 /* Ride.swift */,
+				5CE5C1CC218349E00004917C /* PriceEstimate.swift */,
+				5194E33721558B110015B0DF /* CarpUser.swift */,
+				5194E33921558F3D0015B0DF /* Car.swift */,
+			);
+			path = Structs;
 			sourceTree = "<group>";
 		};
 		5CBA6DC4214B388B0062EBF2 /* Ride Detais */ = {
@@ -269,15 +294,11 @@
 		5CDA7A412139DA80009F24CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5CA6EE91219A3A36008F0AC1 /* Structs */,
 				5C175B182162E9CE00C1FDA2 /* Managers */,
-				5CDA7A482139DAED009F24CB /* Place.swift */,
-				5C350AC72151D2AB00BA6E79 /* Ride.swift */,
-				5CE5C1CC218349E00004917C /* PriceEstimate.swift */,
-				5CDA7A4A2139DB0C009F24CB /* KeyPath.swift */,
 				5CDA7A4C2139DB22009F24CB /* Colors.swift */,
+				5CB766B7219B7B4A00E4E210 /* DatabaseRepresentation.swift */,
 				5C5F396221531DD900B396E8 /* Extensions.swift */,
-				5194E33721558B110015B0DF /* CarpUser.swift */,
-				5194E33921558F3D0015B0DF /* Car.swift */,
 				5C7A9D2B218A7480001724B4 /* DataModel.swift */,
 			);
 			path = Model;
@@ -313,6 +334,7 @@
 				5CF74700213CEFE100964ABC /* Results */,
 				5CE5C1BF218150590004917C /* Alert */,
 				5CA6EE8D219A231A008F0AC1 /* Car */,
+				5CA6EE8E219A36C8008F0AC1 /* Chat */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -475,7 +497,7 @@
 		D2AB86D407D28876861982A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7E16524090A1CAA6184A56BA /* libPods-Carp.a */,
+				9AD4366881C708D351AD0341 /* Pods_Carp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -492,6 +514,7 @@
 				5CDA7A292139DA4E009F24CB /* Frameworks */,
 				5CDA7A2A2139DA4E009F24CB /* Resources */,
 				3D3BAB2BA99881C19CF78DC9 /* [CP] Copy Pods Resources */,
+				EBAA2296467555B5674B57F7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -548,7 +571,7 @@
 				5CD41B3121593D7900996514 /* GoogleService-Info.plist in Resources */,
 				5CDA7A652139DC72009F24CB /* SearchView.xib in Resources */,
 				5CF746F2213A3E1500964ABC /* SearchesVC.xib in Resources */,
-				5C75FD15218CE29200E1F48B /* CarView.xib in Resources */,
+				5C75FD15218CE29200E1F48B /* CarCellView.xib in Resources */,
 				5C0D0A3B213A0E1300385A3A /* Lato-Regular.ttf in Resources */,
 				5CDA7A6B2139DC8D009F24CB /* ResultsCell.xib in Resources */,
 				5C5F3965215322A100B396E8 /* Uber.png in Resources */,
@@ -563,6 +586,7 @@
 				5C0D0A35213A0E0400385A3A /* Lato-BoldItalic.ttf in Resources */,
 				5CDA7A372139DA4F009F24CB /* Assets.xcassets in Resources */,
 				5CBA6DC3214B38560062EBF2 /* RideDetailsVC.xib in Resources */,
+				5CB766BC219B8CF500E4E210 /* ChatVC.xib in Resources */,
 				5C75FD1A218CE2AC00E1F48B /* CarVC.xib in Resources */,
 				5C350ACC2151FEDC00BA6E79 /* fa-solid-900.ttf in Resources */,
 				5CF746F9213C96AC00964ABC /* ResultsVC.xib in Resources */,
@@ -589,19 +613,57 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Carp/Pods-Carp-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/MessageKit/MessageKitAssets.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC/gRPCCertificates.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MessageKitAssets.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Carp/Pods-Carp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBAA2296467555B5674B57F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Carp/Pods-Carp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageInputBar/MessageInputBar.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageInputBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Carp/Pods-Carp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EE6BCF3136239229EAD30DBF /* [CP] Check Pods Manifest.lock */ = {
@@ -631,6 +693,7 @@
 			files = (
 				5C7A9D2C218A7480001724B4 /* DataModel.swift in Sources */,
 				5CDA7A5C2139DC01009F24CB /* RideDetaisView.swift in Sources */,
+				5CB766BB219B8CF500E4E210 /* ChatVC.swift in Sources */,
 				5CE5C1CD218349E00004917C /* PriceEstimate.swift in Sources */,
 				5CDA7A562139DB94009F24CB /* SearchResultsCell.swift in Sources */,
 				5CE5C1BD218150540004917C /* AlertVC.swift in Sources */,
@@ -646,7 +709,7 @@
 				5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */,
 				5C175B782166C63400C1FDA2 /* UsersStackView.swift in Sources */,
 				5CE5C1CF2188B4A30004917C /* LineTextField.swift in Sources */,
-				5C75FD16218CE29200E1F48B /* CarView.swift in Sources */,
+				5C75FD16218CE29200E1F48B /* CarCellView.swift in Sources */,
 				5CDA7A4D2139DB22009F24CB /* Colors.swift in Sources */,
 				5C75FD19218CE2AC00E1F48B /* CarVC.swift in Sources */,
 				5C175B172162E9C500C1FDA2 /* PersistantDataManager.swift in Sources */,
@@ -654,8 +717,8 @@
 				5CDA7A5E2139DC24009F24CB /* ResultsView.swift in Sources */,
 				5C350ACE2152056200BA6E79 /* SearchTableView.swift in Sources */,
 				511B79F821545F930025B110 /* EntityMapper.swift in Sources */,
+				5CB766B8219B7B4A00E4E210 /* DatabaseRepresentation.swift in Sources */,
 				5CF746EB213A3DB300964ABC /* MapVC.swift in Sources */,
-				5CDA7A4B2139DB0C009F24CB /* KeyPath.swift in Sources */,
 				5CF746F8213C96AC00964ABC /* ResultsVC.swift in Sources */,
 				5CF746F4213C8ED500964ABC /* TouchesPassThroughView.swift in Sources */,
 				5C175B132162D9D600C1FDA2 /* MapView.swift in Sources */,

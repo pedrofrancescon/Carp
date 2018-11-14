@@ -10,13 +10,26 @@ import UIKit
 
 class CarVC: UIViewController {
     
-    let carView: CarView
+    @IBOutlet weak var carCellView: CarCellView!
+    @IBOutlet weak var containerChatView: UIView!
+    
+    @IBOutlet weak var carCellViewHeight: NSLayoutConstraint!
     
     private let car: Car
+    private let chatVC: ChatVC
+    
+    var popUpView: PopUpView? {
+        get {
+            guard let popUp = self.view as? PopUpView else {
+                return nil
+            }
+            return popUp
+        }
+    }
     
     init(car: Car) {
         self.car = car
-        self.carView = CarView(frame: .zero)
+        self.chatVC = ChatVC()
         super.init(nibName: "CarVC", bundle: nil)
     }
     
@@ -26,13 +39,17 @@ class CarVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = carView
+        
+        carCellViewHeight.constant = ResultsCell.cellHeight
+        
+        addChild(chatVC)
+        containerChatView.addSubview(chatVC.view)
     }
     
     override func viewDidLayoutSubviews() {
         
-        carView.carTableView.delegate = self
-        carView.carTableView.dataSource = self
+        carCellView.carTableView.delegate = self
+        carCellView.carTableView.dataSource = self
     }
 }
 

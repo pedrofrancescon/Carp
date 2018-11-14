@@ -73,7 +73,7 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
     private func hideAllViews() {
         rideDetailsVC?.rideDetailsView.hideView()
         resultsVC?.resultsView.hideView()
-        carVC?.carView.hideView()
+        carVC?.popUpView?.hideView()
     }
     
     func show(_ viewToShow: MainViewState, at slindingState: SlidingViewState = .destination, shouldSelect: Bool = false) {
@@ -142,7 +142,7 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
                     self.addChildVC(carVC)
                 }
                 
-                carVC.carView.showView()
+                carVC.popUpView?.showView()
                 self.navigationItem.title = "Carro"
                 self.changeLeftBarBtnTo(.back)
                 self.currentState = .car
