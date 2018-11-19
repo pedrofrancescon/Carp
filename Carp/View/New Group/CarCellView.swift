@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CarCellView: PopUpView {
+class CarCellView: UIView {
 
     @IBOutlet var contentView: UIView!
     
@@ -34,6 +34,7 @@ class CarCellView: PopUpView {
         
         carTableView.isScrollEnabled = false
         carTableView.separatorStyle = .none
+        carTableView.tableFooterView = UIView()
     }
     
     override func layoutSubviews() {

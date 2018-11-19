@@ -46,18 +46,7 @@ class PopUpView: UIView {
         DispatchQueue.main.async {
             self.animateTransitionIfNeeded(to: .open, duration: 1.0)
             self.runningAnimators.forEach { $0.startAnimation() }
-            print("OIE")
-            print(self.frame.height)
-            print(self.bounds.height)
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            print("OIE")
-            print(self.frame.height)
-            print(self.bounds.height)
-        }
-        
-        //438.5
     }
     
     func hideView() {
