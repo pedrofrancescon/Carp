@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 
-class LabelIconField {
+class LabelIconField: NSObject, UITextFieldDelegate, UIComponentProtocol {
     var view = View.fix(UIView())
-    let label = View.fix(UILabel())
+
+    let label: UILabel = {
+        let label = View.fix(UILabel()).defaultFont()
+        label.textColor = UIColor(color: HexColors.lightGreyText)
+        return label
+    }()
+
     lazy var icon: UILabel = {
         let icon = View.fix(UILabel())
         icon.font = UIFont(name: "FontAwesome5FreeSolid", size: 18)
@@ -22,18 +28,23 @@ class LabelIconField {
         icon.backgroundColor = UIColor(color: .lightGreyBoxes)
         return icon
     }()
+
     lazy var field: TextField = {
         let field = View.fix(TextField())
+        field.textColor = UIColor(color: .darkGreyText)
         field.backgroundColor = UIColor(color: .lightGreyBoxes)
         field.padding = UIEdgeInsetsFromString("{10,10,10,0}")
+        field.delegate = self
         return field
     }()
+
+    var onKeyboardReturn: ((UITextField) -> Void)?
+
     init(labelText: String, iconCode: String, fieldHeight: CGFloat = 45) {
+        super.init()
         label.text = labelText
         icon.text = iconCode
-        view.addSubview(field)
-        view.addSubview(label)
-        view.addSubview(self.icon)
+        view.addSubviews([field, label, self.icon])
         label.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         label.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         field.heightAnchor.constraint(equalToConstant: fieldHeight).isActive = true
@@ -46,8 +57,14 @@ class LabelIconField {
         icon.leftAnchor.constraint(equalTo: field.rightAnchor).isActive = true
         icon.widthAnchor.constraint(equalToConstant: 45).isActive = true
     }
+
     @objc
     func iconTapped() {
         field.becomeFirstResponder()
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        onKeyboardReturn?(textField)
+        return true
     }
 }

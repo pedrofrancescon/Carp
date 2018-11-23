@@ -45,6 +45,21 @@ class TextField: UITextField {
     }
 }
 
+class TouchHighlightLabel: UILabel {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.alpha = 0.8
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        self.alpha = 1
+    }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        self.alpha = 1
+    }
+}
+
 extension UIView {
     func constraintEdges(to view: UIView) {
         self.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -58,13 +73,32 @@ extension UIView {
         self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -withMargin).isActive = true
         self.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -withMargin).isActive = true
     }
+    func addSubview(_ view: UIComponentProtocol) {
+        addSubview(view.view)
+    }
     func addSubviews(_ views: [UIView]) {
         views.forEach({ addSubview($0) })
+    }
+    func addSubviews(_ views: [UIComponentProtocol]) {
+        views.forEach({ addSubview($0.view) })
     }
 }
 
 extension UIStackView {
     func addArrangedSubviews(_ views: [UIView]) {
         views.forEach({ addArrangedSubview($0) })
+    }
+    func addArrangedSubviews(_ views: [UIComponentProtocol]) {
+        views.forEach({ addArrangedSubview($0.view) })
+    }
+    func addArrangedSubview(_ view: UIComponentProtocol) {
+        addArrangedSubview(view.view)
+    }
+}
+
+extension UILabel {
+    func defaultFont() -> UILabel {
+        self.font = UIFont(name: "Lato-Regular", size: self.font.pointSize)
+        return self
     }
 }

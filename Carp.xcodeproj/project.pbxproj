@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3851172DF45B102A2B70A3F0 /* libPods-Carp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E16524090A1CAA6184A56BA /* libPods-Carp.a */; };
 		511B79F821545F930025B110 /* EntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511B79F721545F930025B110 /* EntityMapper.swift */; };
+		5182D70B21A7537700D3AF12 /* SeparatorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5182D70A21A7537700D3AF12 /* SeparatorLabel.swift */; };
+		5182D70D21A76A1000D3AF12 /* SocialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5182D70C21A76A1000D3AF12 /* SocialButton.swift */; };
+		5182D70F21A76A2800D3AF12 /* UIComponentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5182D70E21A76A2800D3AF12 /* UIComponentProtocol.swift */; };
+		5182D71121A7741F00D3AF12 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5182D71021A7741F00D3AF12 /* fa-brands-400.ttf */; };
 		5194E33821558B110015B0DF /* CarpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33721558B110015B0DF /* CarpUser.swift */; };
 		5194E33A21558F3D0015B0DF /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33921558F3D0015B0DF /* Car.swift */; };
 		51E6E078219109500070BFB3 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E6E077219109500070BFB3 /* RegistrationViewController.swift */; };
@@ -86,6 +90,10 @@
 /* Begin PBXFileReference section */
 		345E43C47982DE3654D94CA7 /* Pods-Carp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Carp/Pods-Carp.debug.xcconfig"; sourceTree = "<group>"; };
 		511B79F721545F930025B110 /* EntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityMapper.swift; sourceTree = "<group>"; };
+		5182D70A21A7537700D3AF12 /* SeparatorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorLabel.swift; sourceTree = "<group>"; };
+		5182D70C21A76A1000D3AF12 /* SocialButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialButton.swift; sourceTree = "<group>"; };
+		5182D70E21A76A2800D3AF12 /* UIComponentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentProtocol.swift; sourceTree = "<group>"; };
+		5182D71021A7741F00D3AF12 /* fa-brands-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-brands-400.ttf"; sourceTree = "<group>"; };
 		5194E33721558B110015B0DF /* CarpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarpUser.swift; sourceTree = "<group>"; };
 		5194E33921558F3D0015B0DF /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		51E6E0712190C84A0070BFB3 /* Carp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Carp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -206,6 +214,9 @@
 			isa = PBXGroup;
 			children = (
 				51FF42DD2193230300012A8E /* LabelIconField.swift */,
+				5182D70A21A7537700D3AF12 /* SeparatorLabel.swift */,
+				5182D70C21A76A1000D3AF12 /* SocialButton.swift */,
+				5182D70E21A76A2800D3AF12 /* UIComponentProtocol.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -408,6 +419,7 @@
 		5CDA7A6E2139DDB0009F24CB /* Font Awesome */ = {
 			isa = PBXGroup;
 			children = (
+				5182D71021A7741F00D3AF12 /* fa-brands-400.ttf */,
 				5C350AC92151FE5900BA6E79 /* fa-regular-400.ttf */,
 				5C350ACB2151FEDB00BA6E79 /* fa-solid-900.ttf */,
 			);
@@ -584,6 +596,7 @@
 				5CDA7A672139DC7D009F24CB /* RideDetailsView.xib in Resources */,
 				5CDA7A632139DC5D009F24CB /* SearchResultsCell.xib in Resources */,
 				5C0D0A37213A0E0900385A3A /* Lato-HairlineItalic.ttf in Resources */,
+				5182D71121A7741F00D3AF12 /* fa-brands-400.ttf in Resources */,
 				5CD41B3321593E9100996514 /* MapStyle.json in Resources */,
 				5C350ACA2151FE9300BA6E79 /* fa-regular-400.ttf in Resources */,
 				5C0D0A38213A0E0B00385A3A /* Lato-Italic.ttf in Resources */,
@@ -692,9 +705,11 @@
 				5C350ACE2152056200BA6E79 /* SearchTableView.swift in Sources */,
 				511B79F821545F930025B110 /* EntityMapper.swift in Sources */,
 				51FF42DB21925D6E00012A8E /* CustomView.swift in Sources */,
+				5182D70B21A7537700D3AF12 /* SeparatorLabel.swift in Sources */,
 				5CF746EB213A3DB300964ABC /* MapVC.swift in Sources */,
 				5CDA7A4B2139DB0C009F24CB /* KeyPath.swift in Sources */,
 				5CF746F8213C96AC00964ABC /* ResultsVC.swift in Sources */,
+				5182D70D21A76A1000D3AF12 /* SocialButton.swift in Sources */,
 				5CF746F4213C8ED500964ABC /* TouchesPassThroughView.swift in Sources */,
 				5C175B132162D9D600C1FDA2 /* MapView.swift in Sources */,
 				5CDA7A582139DBAC009F24CB /* SearchView.swift in Sources */,
@@ -705,6 +720,7 @@
 				5CDA7A492139DAED009F24CB /* Place.swift in Sources */,
 				5C0D0A42213A28C200385A3A /* MainVC.swift in Sources */,
 				51E82B36218F941D00069616 /* UserDataManager.swift in Sources */,
+				5182D70F21A76A2800D3AF12 /* UIComponentProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
