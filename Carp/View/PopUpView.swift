@@ -39,7 +39,7 @@ class PopUpView: UIView {
     
     override func didMoveToSuperview() {
         layout()
-        addGestureRecognizer(panRecognizer)
+        //addGestureRecognizer(panRecognizer)
     }
     
     func showView() {

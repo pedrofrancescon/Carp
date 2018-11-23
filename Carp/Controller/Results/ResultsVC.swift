@@ -67,8 +67,7 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
     }
     
     func callCarVC(car: Car) {
-        guard let parent = parent as? MainVC else { return }
-        parent.callCarVC(car: car)
+        RootVC.main.callCarVC(car: car)
     }
     
     func createNewCar() {

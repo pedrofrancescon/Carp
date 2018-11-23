@@ -16,8 +16,10 @@ enum MainViewState {
     case searches,rideDetails,results,car
 }
 
-class MainVC: UIViewController, DismissKeyboardProtocol {
+class RootVC: UIViewController, DismissKeyboardProtocol {
 
+    static var main = RootVC()
+    
     private let searchesVC: SearchesVC
     private let mapVC: MapVC
     private var resultsVC: ResultsVC?
@@ -59,7 +61,7 @@ class MainVC: UIViewController, DismissKeyboardProtocol {
         mapVC = MapVC()
         searchesVC = SearchesVC(mapDelegate: mapVC)
         
-        super.init(nibName: "MainVC", bundle: nil)
+        super.init(nibName: "RootVC", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {

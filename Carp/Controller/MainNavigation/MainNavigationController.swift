@@ -23,7 +23,7 @@ class MainNavigationController: UINavigationController {
         navigationBar.barTintColor = UIColor.mainGreen
         navigationBar.titleTextAttributes = navigationTitleAttributes
         
-        let mainVC = MainVC()
+        let mainVC = RootVC.main
         setViewControllers([mainVC], animated: false)
         
     }

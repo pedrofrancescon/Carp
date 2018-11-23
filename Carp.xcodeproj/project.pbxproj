@@ -20,8 +20,8 @@
 		5C0D0A39213A0E0E00385A3A /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A702139DDBE009F24CB /* Lato-Light.ttf */; };
 		5C0D0A3A213A0E1100385A3A /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A732139DDBE009F24CB /* Lato-LightItalic.ttf */; };
 		5C0D0A3B213A0E1300385A3A /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A772139DDBF009F24CB /* Lato-Regular.ttf */; };
-		5C0D0A42213A28C200385A3A /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D0A40213A28C200385A3A /* MainVC.swift */; };
-		5C0D0A43213A28C200385A3A /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0D0A41213A28C200385A3A /* MainVC.xib */; };
+		5C0D0A42213A28C200385A3A /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D0A40213A28C200385A3A /* RootVC.swift */; };
+		5C0D0A43213A28C200385A3A /* RootVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0D0A41213A28C200385A3A /* RootVC.xib */; };
 		5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D0A46213A294C00385A3A /* MainNavigationController.swift */; };
 		5C0D0A49213A294C00385A3A /* MainNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0D0A47213A294C00385A3A /* MainNavigationController.xib */; };
 		5C175B132162D9D600C1FDA2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C175B122162D9D600C1FDA2 /* MapView.swift */; };
@@ -80,6 +80,7 @@
 		5CF746F8213C96AC00964ABC /* ResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF746F6213C96AC00964ABC /* ResultsVC.swift */; };
 		5CF746F9213C96AC00964ABC /* ResultsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF746F7213C96AC00964ABC /* ResultsVC.xib */; };
 		5CF74702213CF39C00964ABC /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF74701213CF39C00964ABC /* SlidingView.swift */; };
+		EB60ABE321A4C803001B595E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60ABE221A4C803001B595E /* Message.swift */; };
 		F914B55F9C2ED1B502580493 /* Pods_Carp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD4366881C708D351AD0341 /* Pods_Carp.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,8 +89,8 @@
 		511B79F721545F930025B110 /* EntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityMapper.swift; sourceTree = "<group>"; };
 		5194E33721558B110015B0DF /* CarpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarpUser.swift; sourceTree = "<group>"; };
 		5194E33921558F3D0015B0DF /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
-		5C0D0A40213A28C200385A3A /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		5C0D0A41213A28C200385A3A /* MainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
+		5C0D0A40213A28C200385A3A /* RootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
+		5C0D0A41213A28C200385A3A /* RootVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootVC.xib; sourceTree = "<group>"; };
 		5C0D0A46213A294C00385A3A /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		5C0D0A47213A294C00385A3A /* MainNavigationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNavigationController.xib; sourceTree = "<group>"; };
 		5C175B122162D9D600C1FDA2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -162,6 +163,7 @@
 		5CF74701213CF39C00964ABC /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingView.swift; sourceTree = "<group>"; };
 		9AD4366881C708D351AD0341 /* Pods_Carp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Carp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B319F3237E5CA8DC30EC3668 /* Pods-Carp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Carp/Pods-Carp.release.xcconfig"; sourceTree = "<group>"; };
+		EB60ABE221A4C803001B595E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 				5CE5C1CC218349E00004917C /* PriceEstimate.swift */,
 				5194E33721558B110015B0DF /* CarpUser.swift */,
 				5194E33921558F3D0015B0DF /* Car.swift */,
+				EB60ABE221A4C803001B595E /* Message.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -452,8 +455,8 @@
 		5CF746FC213CEF9F00964ABC /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				5C0D0A40213A28C200385A3A /* MainVC.swift */,
-				5C0D0A41213A28C200385A3A /* MainVC.xib */,
+				5C0D0A40213A28C200385A3A /* RootVC.swift */,
+				5C0D0A41213A28C200385A3A /* RootVC.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -590,7 +593,7 @@
 				5C75FD1A218CE2AC00E1F48B /* CarVC.xib in Resources */,
 				5C350ACC2151FEDC00BA6E79 /* fa-solid-900.ttf in Resources */,
 				5CF746F9213C96AC00964ABC /* ResultsVC.xib in Resources */,
-				5C0D0A43213A28C200385A3A /* MainVC.xib in Resources */,
+				5C0D0A43213A28C200385A3A /* RootVC.xib in Resources */,
 				5CDA7A672139DC7D009F24CB /* RideDetailsView.xib in Resources */,
 				5CDA7A632139DC5D009F24CB /* SearchResultsCell.xib in Resources */,
 				5C0D0A37213A0E0900385A3A /* Lato-HairlineItalic.ttf in Resources */,
@@ -700,6 +703,7 @@
 				5CF746F1213A3E1500964ABC /* SearchesVC.swift in Sources */,
 				5194E33821558B110015B0DF /* CarpUser.swift in Sources */,
 				5194E33A21558F3D0015B0DF /* Car.swift in Sources */,
+				EB60ABE321A4C803001B595E /* Message.swift in Sources */,
 				5C5CE6EF214C80C1003059F0 /* BoxTextField.swift in Sources */,
 				5C350AC82151D2AB00BA6E79 /* Ride.swift in Sources */,
 				5CDA7A612139DC4B009F24CB /* ResultsCell.swift in Sources */,
@@ -728,7 +732,7 @@
 				5CF74702213CF39C00964ABC /* SlidingView.swift in Sources */,
 				5CE5C1C9218264C10004917C /* AlertView.swift in Sources */,
 				5CDA7A492139DAED009F24CB /* Place.swift in Sources */,
-				5C0D0A42213A28C200385A3A /* MainVC.swift in Sources */,
+				5C0D0A42213A28C200385A3A /* RootVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

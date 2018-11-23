@@ -204,10 +204,9 @@ extension SearchesVC: SearchViewDelegate {
         
         if currentState == SlidingViewState.origin {
             if let _destination = self.destination, let _origin = self.origin  {
-                guard let parent = parent as? MainVC else { return }
                 slidingView?.slideViewAnimated(to: .hidden, withDuration: 0.8)
                 
-                parent.callRideDetailsVC(origin: _origin, destination: _destination)
+                RootVC.main.callRideDetailsVC(origin: _origin, destination: _destination)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                     self.mapDelegate.drawRoute(from: _origin, to: _destination)

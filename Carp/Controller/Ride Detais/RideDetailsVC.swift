@@ -41,13 +41,11 @@ class RideDetailsVC: UIViewController {
     }
     
     @objc func didTapOriginTextField() {
-        guard let parent = parent as? MainVC else { return }
-        parent.show(.searches, at: .origin, shouldSelect: true)
+        RootVC.main.show(.searches, at: .origin, shouldSelect: true)
     }
     
     @objc func didTapdestinationTextField() {
-        guard let parent = parent as? MainVC else { return }
-        parent.show(.searches, at: .destination, shouldSelect: true)
+        RootVC.main.show(.searches, at: .destination, shouldSelect: true)
     }
 
     init() {
@@ -69,9 +67,7 @@ class RideDetailsVC: UIViewController {
             
             PersistantDataManager.dataManager.saveRideToDisk(ride: newRide)
             
-            guard let parent = parent as? MainVC else { return }
-            
-            parent.callResultsVC(ride: newRide)
+            RootVC.main.callResultsVC(ride: newRide)
         }
         
     }
