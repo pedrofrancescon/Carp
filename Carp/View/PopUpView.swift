@@ -32,6 +32,8 @@ class PopUpView: UIView {
 
     // MARK: - Constants
     
+    var originalFrame: CGRect = CGRect()
+    
     // to make sure it disapears on all devices (Xs Max)
     private let popupOffset: CGFloat = 480
     
@@ -39,13 +41,28 @@ class PopUpView: UIView {
     
     override func didMoveToSuperview() {
         layout()
-        //addGestureRecognizer(panRecognizer)
+        
+        panRecognizer.addTarget(self, action: #selector(popupViewPanned(recognizer:)))
+        
+        addGestureRecognizer(panRecognizer)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    @objc func keyboardDidShow(notification: NSNotification) {
+        removeGestureRecognizer(panRecognizer)
+    }
+    
+    @objc func keyboardDidHide(notification: NSNotification) {
+        addGestureRecognizer(panRecognizer)
     }
     
     func showView() {
         DispatchQueue.main.async {
             self.animateTransitionIfNeeded(to: .open, duration: 1.0)
             self.runningAnimators.forEach { $0.startAnimation() }
+            self.originalFrame = self.frame
         }
     }
     
@@ -56,9 +73,22 @@ class PopUpView: UIView {
         }
     }
     
+    func updateFrameTo(_ newFrame: CGRect) {
+        if newFrame == originalFrame {
+            translatesAutoresizingMaskIntoConstraints = false
+            heightConstraint.isActive = true
+        } else {
+            translatesAutoresizingMaskIntoConstraints = true
+            heightConstraint.isActive = false
+        }
+        
+        self.frame = newFrame
+    }
+    
     // MARK: - Layout
     
     private var bottomConstraint = NSLayoutConstraint()
+    private var heightConstraint = NSLayoutConstraint()
     
     private func layout() {
         guard let superView = self.superview else { return }
@@ -73,7 +103,8 @@ class PopUpView: UIView {
         trailingAnchor.constraint(equalTo: superView.trailingAnchor).isActive = true
         bottomConstraint = bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: popupOffset)
         bottomConstraint.isActive = true
-        heightAnchor.constraint(greaterThanOrEqualToConstant: popupOffset - 40).isActive = true
+        heightConstraint = heightAnchor.constraint(greaterThanOrEqualToConstant: popupOffset - 40)
+        heightConstraint.isActive = true
     }
     
     // MARK: - Animation
@@ -84,11 +115,7 @@ class PopUpView: UIView {
     
     private var animationProgress = [CGFloat]()
     
-    private lazy var panRecognizer: UIPanGestureRecognizer = {
-        let recognizer = UIPanGestureRecognizer()
-        recognizer.addTarget(self, action: #selector(popupViewPanned(recognizer:)))
-        return recognizer
-    }()
+    private var panRecognizer = UIPanGestureRecognizer()
 
     private func animateTransitionIfNeeded(to state: State, duration: TimeInterval) {
         

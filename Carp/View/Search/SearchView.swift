@@ -61,7 +61,6 @@ class SearchView: UIView {
         nextBtnLabel.addGestureRecognizer(tapRecognizer)
         
         textField.borderStyle = .none
-        textField.autocorrectionType = .no
         textField.autocapitalizationType = .sentences
         
         addShadow(blur: 10)

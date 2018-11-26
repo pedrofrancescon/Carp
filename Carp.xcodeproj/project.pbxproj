@@ -22,8 +22,8 @@
 		5C0D0A3B213A0E1300385A3A /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA7A772139DDBF009F24CB /* Lato-Regular.ttf */; };
 		5C0D0A42213A28C200385A3A /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D0A40213A28C200385A3A /* RootVC.swift */; };
 		5C0D0A43213A28C200385A3A /* RootVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0D0A41213A28C200385A3A /* RootVC.xib */; };
-		5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D0A46213A294C00385A3A /* MainNavigationController.swift */; };
-		5C0D0A49213A294C00385A3A /* MainNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0D0A47213A294C00385A3A /* MainNavigationController.xib */; };
+		5C0D0A48213A294C00385A3A /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D0A46213A294C00385A3A /* RootNavigationController.swift */; };
+		5C0D0A49213A294C00385A3A /* RootNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0D0A47213A294C00385A3A /* RootNavigationController.xib */; };
 		5C175B132162D9D600C1FDA2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C175B122162D9D600C1FDA2 /* MapView.swift */; };
 		5C175B172162E9C500C1FDA2 /* PersistantDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C175B162162E9C500C1FDA2 /* PersistantDataManager.swift */; };
 		5C175B782166C63400C1FDA2 /* UsersStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C175B772166C63400C1FDA2 /* UsersStackView.swift */; };
@@ -91,8 +91,8 @@
 		5194E33921558F3D0015B0DF /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		5C0D0A40213A28C200385A3A /* RootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
 		5C0D0A41213A28C200385A3A /* RootVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootVC.xib; sourceTree = "<group>"; };
-		5C0D0A46213A294C00385A3A /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
-		5C0D0A47213A294C00385A3A /* MainNavigationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNavigationController.xib; sourceTree = "<group>"; };
+		5C0D0A46213A294C00385A3A /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
+		5C0D0A47213A294C00385A3A /* RootNavigationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootNavigationController.xib; sourceTree = "<group>"; };
 		5C175B122162D9D600C1FDA2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		5C175B162162E9C500C1FDA2 /* PersistantDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantDataManager.swift; sourceTree = "<group>"; };
 		5C175B772166C63400C1FDA2 /* UsersStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersStackView.swift; sourceTree = "<group>"; };
@@ -330,7 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				5CF746FB213CEF9100964ABC /* MainNavigation */,
-				5CF746FC213CEF9F00964ABC /* Main */,
+				5CF746FC213CEF9F00964ABC /* Root */,
 				5CF746FD213CEFAD00964ABC /* Map */,
 				5CF746FE213CEFBC00964ABC /* Searches */,
 				5CBA6DC4214B388B0062EBF2 /* Ride Detais */,
@@ -446,19 +446,19 @@
 		5CF746FB213CEF9100964ABC /* MainNavigation */ = {
 			isa = PBXGroup;
 			children = (
-				5C0D0A46213A294C00385A3A /* MainNavigationController.swift */,
-				5C0D0A47213A294C00385A3A /* MainNavigationController.xib */,
+				5C0D0A46213A294C00385A3A /* RootNavigationController.swift */,
+				5C0D0A47213A294C00385A3A /* RootNavigationController.xib */,
 			);
 			path = MainNavigation;
 			sourceTree = "<group>";
 		};
-		5CF746FC213CEF9F00964ABC /* Main */ = {
+		5CF746FC213CEF9F00964ABC /* Root */ = {
 			isa = PBXGroup;
 			children = (
 				5C0D0A40213A28C200385A3A /* RootVC.swift */,
 				5C0D0A41213A28C200385A3A /* RootVC.xib */,
 			);
-			path = Main;
+			path = Root;
 			sourceTree = "<group>";
 		};
 		5CF746FD213CEFAD00964ABC /* Map */ = {
@@ -580,7 +580,7 @@
 				5C5F3965215322A100B396E8 /* Uber.png in Resources */,
 				5C0D0A32213A0DF500385A3A /* Lato-Black.ttf in Resources */,
 				5C0D0A33213A0DFC00385A3A /* Lato-BlackItalic.ttf in Resources */,
-				5C0D0A49213A294C00385A3A /* MainNavigationController.xib in Resources */,
+				5C0D0A49213A294C00385A3A /* RootNavigationController.xib in Resources */,
 				5C0D0A36213A0E0600385A3A /* Lato-Hairline.ttf in Resources */,
 				5C0D0A34213A0E0200385A3A /* Lato-Bold.ttf in Resources */,
 				5C5F3969215322B100B396E8 /* Cabify.png in Resources */,
@@ -710,7 +710,7 @@
 				5CD41B352159432400996514 /* RideRequestsManager.swift in Sources */,
 				5CBA6DC2214B38560062EBF2 /* RideDetailsVC.swift in Sources */,
 				5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */,
-				5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */,
+				5C0D0A48213A294C00385A3A /* RootNavigationController.swift in Sources */,
 				5C175B782166C63400C1FDA2 /* UsersStackView.swift in Sources */,
 				5CE5C1CF2188B4A30004917C /* LineTextField.swift in Sources */,
 				5C75FD16218CE29200E1F48B /* CarCellView.swift in Sources */,

@@ -13,9 +13,10 @@ import MessageInputBar
 class ChatVC: MessagesViewController {
 
     private let inputContainerView: UIView
+    private var popUpView: PopUpView!
     
-    var messages: [Message]
-    var user: CarpUser!
+    private var messages: [Message]
+    private var user: CarpUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,27 +27,40 @@ class ChatVC: MessagesViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messageInputBar.delegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let parent = parent as? CarVC {
+            if let popView = parent.popUpView {
+                self.popUpView = popView
+            } else {
+                print("Could not get PopUpView from parent ViewController")
+            }
+        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            guard let parent = parent as? CarVC else { return }
-            guard let popUpView = parent.popUpView else { return }
+            let newFrame = CGRect(x: popUpView.frame.origin.x,
+                                  y: RootNavigationController.main.navigationBar.frame.height,
+                                  width: popUpView.frame.width,
+                                  height: RootVC.main.view.frame.height - keyboardSize.height - RootNavigationController.main.navigationBar.frame.height)
             
-            if popUpView.frame.maxY == UIScreen.main.bounds.maxY {
-                popUpView.frame.origin.y -= keyboardSize.height
-            }
+            // needs fixing for the fucking iphone X
+            popUpView.updateFrameTo(newFrame)
         }
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            guard let parent = parent as? CarVC else { return }
-            guard let popUpView = parent.popUpView else { return }
-            
-            if popUpView.frame.maxY != UIScreen.main.bounds.maxY {
-                popUpView.frame.origin.y += keyboardSize.height
-            }
+        if let _ = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            popUpView.updateFrameTo(popUpView.originalFrame)
         }
     }
     

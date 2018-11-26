@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let initialViewController = MainNavigationController()
+        let initialViewController = RootNavigationController()
         
         window!.rootViewController = initialViewController
         window!.makeKeyAndVisible()

@@ -8,8 +8,10 @@
 
 import UIKit
 
-class MainNavigationController: UINavigationController {
+class RootNavigationController: UINavigationController {
 
+    static var main = RootNavigationController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -30,7 +32,7 @@ class MainNavigationController: UINavigationController {
     
     init() {
         
-        super.init(nibName: "MainNavigationController", bundle: nil)
+        super.init(nibName: "RootNavigationController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
