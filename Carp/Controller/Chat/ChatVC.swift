@@ -41,19 +41,18 @@ class ChatVC: MessagesViewController {
             if let popView = parent.popUpView {
                 self.popUpView = popView
             } else {
-                print("Could not get PopUpView from parent ViewController")
+                debugPrint("Could not get PopUpView from parent ViewController")
             }
         }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let newFrame = CGRect(x: popUpView.frame.origin.x,
                                   y: RootNavigationController.main.navigationBar.frame.height,
                                   width: popUpView.frame.width,
                                   height: RootVC.main.view.frame.height - keyboardSize.height - RootNavigationController.main.navigationBar.frame.height)
             
-            // needs fixing for the fucking iphone X
             popUpView.updateFrameTo(newFrame)
         }
     }
