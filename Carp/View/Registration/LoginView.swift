@@ -87,6 +87,15 @@ class LoginView: View {
     let googleButton = SocialButton(text: "Continuar com o Google",
                                       color: UIColor(red: 221/255, green: 75/255, blue: 57/255, alpha: 1),
                                       icon: "\u{f1a0}")
+    var continueAction: (() -> Void)? {
+        set {
+            facebookButton.touchHandler = newValue
+            googleButton.touchHandler = newValue
+        }
+        get {
+            return nil
+        }
+    }
 
     override func setupView() {
 

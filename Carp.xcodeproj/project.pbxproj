@@ -15,6 +15,7 @@
 		5182D71121A7741F00D3AF12 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5182D71021A7741F00D3AF12 /* fa-brands-400.ttf */; };
 		5194E33821558B110015B0DF /* CarpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33721558B110015B0DF /* CarpUser.swift */; };
 		5194E33A21558F3D0015B0DF /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33921558F3D0015B0DF /* Car.swift */; };
+		51A03D0221ADEE1800DA520D /* HorizontalPagedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A03D0121ADEE1800DA520D /* HorizontalPagedScrollView.swift */; };
 		51ABF14A21AC8CCE0094ABFA /* ProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ABF14921AC8CCE0094ABFA /* ProfilePictureView.swift */; };
 		51ABF14C21AC947E0094ABFA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ABF14B21AC947E0094ABFA /* CameraView.swift */; };
 		51ABF15421ACA5A70094ABFA /* camera_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 51ABF15321ACA5A70094ABFA /* camera_frame.png */; };
@@ -99,6 +100,7 @@
 		5182D71021A7741F00D3AF12 /* fa-brands-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-brands-400.ttf"; sourceTree = "<group>"; };
 		5194E33721558B110015B0DF /* CarpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarpUser.swift; sourceTree = "<group>"; };
 		5194E33921558F3D0015B0DF /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		51A03D0121ADEE1800DA520D /* HorizontalPagedScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPagedScrollView.swift; sourceTree = "<group>"; };
 		51ABF14921AC8CCE0094ABFA /* ProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureView.swift; sourceTree = "<group>"; };
 		51ABF14B21AC947E0094ABFA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		51ABF15321ACA5A70094ABFA /* camera_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_frame.png; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				5182D70C21A76A1000D3AF12 /* SocialButton.swift */,
 				5182D70E21A76A2800D3AF12 /* UIComponentProtocol.swift */,
 				51ABF14B21AC947E0094ABFA /* CameraView.swift */,
+				51A03D0121ADEE1800DA520D /* HorizontalPagedScrollView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				5C350AC82151D2AB00BA6E79 /* Ride.swift in Sources */,
 				5CDA7A612139DC4B009F24CB /* ResultsCell.swift in Sources */,
 				5CD41B352159432400996514 /* RideRequestsManager.swift in Sources */,
+				51A03D0221ADEE1800DA520D /* HorizontalPagedScrollView.swift in Sources */,
 				5CBA6DC2214B38560062EBF2 /* RideDetailsVC.swift in Sources */,
 				5CDA7A302139DA4E009F24CB /* AppDelegate.swift in Sources */,
 				51E82B32218F65DE00069616 /* UserSessionManager.swift in Sources */,

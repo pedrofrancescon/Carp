@@ -56,6 +56,23 @@ class ProfilePictureView: View {
     }()
 
     lazy var nextButton = SocialButton(text: "continuar", color: UIColor(color: HexColors.green), icon: nil)
+    var continueAction: (() -> Void)? {
+        set {
+            nextButton.touchHandler = newValue
+        }
+        get {
+            return nil
+        }
+    }
+
+    override func didMoveToWindow() {
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            if self.cameraView.view.frame.width > 0 {
+                self.cameraView.setup()
+                timer.invalidate()
+            }
+        }
+    }
 
     override func setupView() {
         addSubview(cameraView)
@@ -79,10 +96,6 @@ class ProfilePictureView: View {
             nextButton.view.leftAnchor.constraint(equalTo: descView.leftAnchor, constant: 20),
             nextButton.view.rightAnchor.constraint(equalTo: descView.rightAnchor, constant: -20)
         ].forEach({ $0.isActive = true })
-
-        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { _ in
-            self.cameraView.setup()
-        }
     }
 
     @objc

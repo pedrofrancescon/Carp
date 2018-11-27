@@ -24,9 +24,11 @@ class SocialButton: UIComponentProtocol {
     }()
     private lazy var button: UIButton = {
         let button = View.fix(UIButton())
+        button.addTarget(self, action: #selector(handleTouch), for: .touchUpInside)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return button
     }()
+    var touchHandler: (() -> Void)?
 
     init(text: String, color: UIColor, icon: String?) {
         label.text = text
@@ -41,5 +43,10 @@ class SocialButton: UIComponentProtocol {
             iconLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
             iconLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
         }
+    }
+
+    @objc
+    private func handleTouch() {
+        touchHandler?()
     }
 }
