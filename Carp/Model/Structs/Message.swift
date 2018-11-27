@@ -26,24 +26,10 @@ struct Message: Codable {
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()
         
-        guard let created = data["created"] as? Date else {
-            return nil
-        }
-        guard let text = data["content"] as? String else {
-            return nil
-        }
-        guard let userDictionary = data["user"] as? [String : Any] else {
-            return nil
-        }
-        guard let messageId = data["messageID"] as? String else {
-            return nil
-        }
-        
-        let user = CarpUser(id: userDictionary["id"] as! String,
-                            firstName: userDictionary["firstName"] as! String,
-                            lastName: userDictionary["lastName"] as! String,
-                            profilePictureUrl: userDictionary["profilePictureUrl"] as! String,
-                            gender: userDictionary["gender"] as? String)
+        guard let created = data["created"] as? Date else { return nil }
+        guard let text = data["content"] as? String else { return nil }
+        guard let messageId = data["messageID"] as? String else { return nil }
+        guard let user = CarpUser(representation: data["user"] as! [String : Any]) else { return nil }
         
         self.messageId = messageId
         self.user = user
