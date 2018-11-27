@@ -16,3 +16,19 @@ struct CarpUser: Codable {
     let profilePictureUrl: String
     let gender: String?
 }
+
+extension CarpUser: DatabaseRepresentation {
+    
+    var representation: [String : Any] {
+        let rep: [String : Any] = [
+            "id": id,
+            "firstName": firstName,
+            "lastName": lastName,
+            "profilePictureUrl": profilePictureUrl,
+            "gender": gender ?? ""
+        ]
+        
+        return rep
+    }
+    
+}

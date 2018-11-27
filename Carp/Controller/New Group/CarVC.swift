@@ -31,8 +31,7 @@ class CarVC: UIViewController {
     init(car: Car) {
         self.car = car
         self.carCellView = CarCellView()
-        self.chatVC = ChatVC()
-        
+        self.chatVC = ChatVC(car: car)
         super.init(nibName: "CarVC", bundle: nil)
     }
     
@@ -42,6 +41,8 @@ class CarVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        chatVC.parentVC = self
         
         DispatchQueue.main.async {
             self.carCellViewHeight.constant = ResultsCell.cellHeight

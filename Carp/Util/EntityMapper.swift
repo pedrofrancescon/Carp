@@ -157,7 +157,8 @@ func CarFromDbFormat(docId: String, riders: [Ride], owner: Ride, _ dictionary: [
     return Car(
         riders: riders,
         owner: owner,
-        price: car.price
+        price: car.price,
+        id: docId
     )
 }
 

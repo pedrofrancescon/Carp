@@ -9,17 +9,40 @@
 import UIKit
 import MessageKit
 import MessageInputBar
+import Firebase
 
 class ChatVC: MessagesViewController {
 
     private let inputContainerView: UIView
-    private var popUpView: PopUpView!
     
     private var messages: [Message]
     private var user: CarpUser!
     
+    private let db = Firestore.firestore()
+    private var reference: CollectionReference?
+    private var messageListener: ListenerRegistration?
+    
+    private let car: Car
+    
+    var parentVC: CarVC?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let id = car.id else { return }
+        
+        reference = db.collection(["cars", id, "thread"].joined(separator: "/"))
+        
+        messageListener = reference?.addSnapshotListener { querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
+                return
+            }
+            
+            snapshot.documentChanges.forEach { change in
+                self.handleDocumentChange(change)
+            }
+        }
         
         inputContainerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 48)
         view.addSubview(inputContainerView)
@@ -34,41 +57,46 @@ class ChatVC: MessagesViewController {
         
     }
     
-    private func insertNewMessage(_ message: Message) {
-        
-        if messages.contains(where: { $0.messageId == message.messageId } ) {
+    private func insertNewMessage(_ newMessage: Message) {
+        guard !messages.contains(newMessage) else {
             return
         }
         
-        messages.append(message)
-        //messages.sort()
-        
-//        let isLatestMessage = messages.index(of: message) == (messages.count - 1)
-//        let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
-        
+        messages.append(newMessage)
+        messageInputBar.inputTextView.text = ""
         messagesCollectionView.reloadData()
-        
-//        if shouldScrollToBottom {
-//            DispatchQueue.main.async {
-//                self.messagesCollectionView.scrollToBottom(animated: true)
-//            }
-//        }
+        messagesCollectionView.scrollToBottom(animated: true)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if let parent = parent as? CarVC {
-            if let popView = parent.popUpView {
-                self.popUpView = popView
-            } else {
-                debugPrint("Could not get PopUpView from parent ViewController")
+    private func saveToFirebase(_ message: Message) {
+        reference?.addDocument(data: message.representation) { error in
+            if let e = error {
+                print("Error sending message: \(e.localizedDescription)")
+                return
             }
+            
+            self.messagesCollectionView.scrollToBottom()
+        }
+    }
+    
+    private func handleDocumentChange(_ change: DocumentChange) {
+        guard let message = Message(document: change.document) else {
+            return
+        }
+
+        switch change.type {
+        case .added:
+            insertNewMessage(message)
+        default:
+            break
         }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            guard let popUpView = parentVC?.popUpView else { return }
+            
             let newFrame = CGRect(x: popUpView.frame.origin.x,
                                   y: RootNavigationController.main.navigationBar.frame.height,
                                   width: popUpView.frame.width,
@@ -80,6 +108,7 @@ class ChatVC: MessagesViewController {
 
     @objc func keyboardWillHide(notification: NSNotification) {
         if let _ = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            guard let popUpView = parentVC?.popUpView else { return }
             popUpView.updateFrameTo(popUpView.originalFrame)
         }
     }
@@ -95,9 +124,10 @@ class ChatVC: MessagesViewController {
         messageInputBar.frame = inputContainerView.bounds
     }
 
-    init() {
+    init(car: Car) {
         inputContainerView = UIView()
         messages = []
+        self.car = car
         user = CarpUser(id: "123", firstName: "Pedrita", lastName: "Pomposa a Sagaz", profilePictureUrl: "nil", gender: "fluid")
         super.init(nibName: "ChatVC", bundle: nil)
     }
@@ -181,10 +211,8 @@ extension ChatVC: MessageInputBarDelegate {
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
 
         let newMessage = Message(user: user, text: text, messageId: UUID().uuidString)
-
-        messages.append(newMessage)
-        inputBar.inputTextView.text = ""
-        messagesCollectionView.reloadData()
-        messagesCollectionView.scrollToBottom(animated: true)
+        
+        saveToFirebase(newMessage)
+        insertNewMessage(newMessage)
     }
 }

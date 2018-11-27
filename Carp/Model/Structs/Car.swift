@@ -12,4 +12,5 @@ struct Car {
     var riders: [Ride]
     var owner: Ride
     var price: Float
+    var id: String?
 }

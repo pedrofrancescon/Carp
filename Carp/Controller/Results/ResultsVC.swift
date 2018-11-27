@@ -71,7 +71,7 @@ class ResultsVC: UIViewController, ResultsDelegate, AlertDelegate {
     }
     
     func createNewCar() {
-        let newCar = Car.init(riders: [], owner: self.ride, price: Float(ride.priceEstimate.upperPrice))
+        let newCar = Car.init(riders: [], owner: self.ride, price: Float(ride.priceEstimate.upperPrice), id: nil)
         
         callCarVC(car: newCar)
     }
