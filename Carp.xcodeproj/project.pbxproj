@@ -15,6 +15,9 @@
 		5182D71121A7741F00D3AF12 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5182D71021A7741F00D3AF12 /* fa-brands-400.ttf */; };
 		5194E33821558B110015B0DF /* CarpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33721558B110015B0DF /* CarpUser.swift */; };
 		5194E33A21558F3D0015B0DF /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194E33921558F3D0015B0DF /* Car.swift */; };
+		51ABF14A21AC8CCE0094ABFA /* ProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ABF14921AC8CCE0094ABFA /* ProfilePictureView.swift */; };
+		51ABF14C21AC947E0094ABFA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ABF14B21AC947E0094ABFA /* CameraView.swift */; };
+		51ABF15421ACA5A70094ABFA /* camera_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 51ABF15321ACA5A70094ABFA /* camera_frame.png */; };
 		51E6E078219109500070BFB3 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E6E077219109500070BFB3 /* RegistrationViewController.swift */; };
 		51E82B32218F65DE00069616 /* UserSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E82B31218F65DE00069616 /* UserSessionManager.swift */; };
 		51E82B34218F669200069616 /* SocialCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E82B33218F669200069616 /* SocialCredential.swift */; };
@@ -96,6 +99,9 @@
 		5182D71021A7741F00D3AF12 /* fa-brands-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-brands-400.ttf"; sourceTree = "<group>"; };
 		5194E33721558B110015B0DF /* CarpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarpUser.swift; sourceTree = "<group>"; };
 		5194E33921558F3D0015B0DF /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		51ABF14921AC8CCE0094ABFA /* ProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureView.swift; sourceTree = "<group>"; };
+		51ABF14B21AC947E0094ABFA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		51ABF15321ACA5A70094ABFA /* camera_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_frame.png; sourceTree = "<group>"; };
 		51E6E0712190C84A0070BFB3 /* Carp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Carp-Bridging-Header.h"; sourceTree = "<group>"; };
 		51E6E077219109500070BFB3 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		51E82B31218F65DE00069616 /* UserSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionManager.swift; sourceTree = "<group>"; };
@@ -206,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				51FF42D821925C5300012A8E /* LoginView.swift */,
+				51ABF14921AC8CCE0094ABFA /* ProfilePictureView.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -217,6 +224,7 @@
 				5182D70A21A7537700D3AF12 /* SeparatorLabel.swift */,
 				5182D70C21A76A1000D3AF12 /* SocialButton.swift */,
 				5182D70E21A76A2800D3AF12 /* UIComponentProtocol.swift */,
+				51ABF14B21AC947E0094ABFA /* CameraView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -277,6 +285,7 @@
 				5CDA7A2F2139DA4E009F24CB /* AppDelegate.swift */,
 				5C5F3966215322A600B396E8 /* 99.jpeg */,
 				5C5F3968215322B000B396E8 /* Cabify.png */,
+				51ABF15321ACA5A70094ABFA /* camera_frame.png */,
 				5C5F3964215322A000B396E8 /* Uber.png */,
 				5CDA7A362139DA4F009F24CB /* Assets.xcassets */,
 				5CDA7A382139DA4F009F24CB /* LaunchScreen.storyboard */,
@@ -568,6 +577,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51ABF15421ACA5A70094ABFA /* camera_frame.png in Resources */,
 				5CDA7A3A2139DA4F009F24CB /* LaunchScreen.storyboard in Resources */,
 				5C5F3967215322A700B396E8 /* 99.jpeg in Resources */,
 				5CE5C1BE218150540004917C /* AlertVC.xib in Resources */,
@@ -696,6 +706,7 @@
 				51FF42D921925C5300012A8E /* LoginView.swift in Sources */,
 				5C0D0A48213A294C00385A3A /* MainNavigationController.swift in Sources */,
 				51E82B34218F669200069616 /* SocialCredential.swift in Sources */,
+				51ABF14A21AC8CCE0094ABFA /* ProfilePictureView.swift in Sources */,
 				5C175B782166C63400C1FDA2 /* UsersStackView.swift in Sources */,
 				5CE5C1CF2188B4A30004917C /* LineTextField.swift in Sources */,
 				5CDA7A4D2139DB22009F24CB /* Colors.swift in Sources */,
@@ -717,6 +728,7 @@
 				5CDA7A472139DAD6009F24CB /* LocationsManager.swift in Sources */,
 				5CF74702213CF39C00964ABC /* SlidingView.swift in Sources */,
 				5CE5C1C9218264C10004917C /* AlertView.swift in Sources */,
+				51ABF14C21AC947E0094ABFA /* CameraView.swift in Sources */,
 				5CDA7A492139DAED009F24CB /* Place.swift in Sources */,
 				5C0D0A42213A28C200385A3A /* MainVC.swift in Sources */,
 				51E82B36218F941D00069616 /* UserDataManager.swift in Sources */,

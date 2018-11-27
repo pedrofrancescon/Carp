@@ -12,7 +12,7 @@ class SocialButton: UIComponentProtocol {
 
     let view = View.fix(UIView())
     private lazy var label: UILabel = {
-        let label = View.fix(UILabel())
+        let label = View.fix(UILabel().defaultFont())
         label.textColor = .white
         return label
     }()

@@ -79,5 +79,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>NSCameraUsageDescription</key>
+    <string>CARP gostaria de acessar a câmera.</string>
 </dict>
 </plist>
