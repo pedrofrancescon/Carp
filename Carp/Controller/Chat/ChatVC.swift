@@ -34,6 +34,27 @@ class ChatVC: MessagesViewController {
         
     }
     
+    private func insertNewMessage(_ message: Message) {
+        
+        if messages.contains(where: { $0.messageId == message.messageId } ) {
+            return
+        }
+        
+        messages.append(message)
+        //messages.sort()
+        
+//        let isLatestMessage = messages.index(of: message) == (messages.count - 1)
+//        let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
+        
+        messagesCollectionView.reloadData()
+        
+//        if shouldScrollToBottom {
+//            DispatchQueue.main.async {
+//                self.messagesCollectionView.scrollToBottom(animated: true)
+//            }
+//        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -112,31 +133,48 @@ extension ChatVC: MessagesDataSource {
     
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         
-        return 12
+        return 13
     }
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         
         return NSAttributedString(
             string: message.sender.displayName,
-            attributes: [.font: UIFont.systemFont(ofSize: 12)])
+            attributes: [.font: UIFont(name: "Lato-Regular", size: 13.0)!,
+                         .foregroundColor: UIColor.darkGreyChatText])
     }
 }
 
 extension ChatVC: MessagesLayoutDelegate {
     func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        
         return 0
+    }
+    
+    func headerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        return CGSize(width: 0.0, height: 15.0)
+    }
+    
+    func footerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        return CGSize(width: 0.0, height: 7.0)
     }
 }
 
 extension ChatVC: MessagesDisplayDelegate {
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         
-        _ = messages[indexPath.section]
-        let color = UIColor.green
-        avatarView.backgroundColor = color
+        avatarView.image = UIImage(named: "Uber")
     }
+    
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath,
+                         in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        
+        return isFromCurrentSender(message: message) ? UIColor.lightGreen : UIColor.greyChatBubble
+    }
+    
+    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return UIColor.darkGreyChatText
+    }
+    
 }
 
 extension ChatVC: MessageInputBarDelegate {

@@ -36,5 +36,7 @@ extension UIColor {
     static var greyText = UIColor(rgb: 0x3F3F3F)
     static var lightGreyText = UIColor(rgb: 0xAEAEAE)
     static var darkGreyText = UIColor(rgb: 0x717171)
+    static var greyChatBubble = UIColor(rgb: 0xF5F5F5)
+    static var darkGreyChatText = UIColor(rgb: 0x494949)
 }
 
