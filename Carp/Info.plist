@@ -16,12 +16,35 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb342845419854592</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.326870686498-i1nkah46vmej73m821m9ajnbvqab556h</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>342845419854592</string>
+	<key>FacebookDisplayName</key>
+	<string>Carp</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>googlechromes</string>
-		<string>comgooglemaps</string>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -33,6 +56,7 @@
 	<array>
 		<string>fa-regular-400.ttf</string>
 		<string>fa-solid-900.ttf</string>
+		<string>fa-brands-400.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -55,5 +79,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>NSCameraUsageDescription</key>
+    <string>CARP gostaria de acessar a câmera.</string>
 </dict>
 </plist>

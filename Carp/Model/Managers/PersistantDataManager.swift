@@ -48,5 +48,4 @@ class PersistantDataManager {
             fatalError(error.localizedDescription)
         }
     }
-    
 }

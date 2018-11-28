@@ -32,9 +32,9 @@ struct Locations: Codable {
 }
 
 struct Coordinate: Codable {
+    static let zero = Coordinate(lat: 0, lng: 0)
     let lat: Double
     let lng: Double
-    
     var clLocation: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: lat, longitude: lng)
     }
