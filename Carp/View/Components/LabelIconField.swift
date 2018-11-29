@@ -14,26 +14,26 @@ class LabelIconField: NSObject, UITextFieldDelegate, UIComponentProtocol {
 
     let label: UILabel = {
         let label = View.fix(UILabel()).defaultFont()
-        label.textColor = UIColor(color: HexColors.lightGreyText)
+        label.textColor = UIColor.lightGreyText
         return label
     }()
 
     lazy var icon: UILabel = {
         let icon = View.fix(UILabel())
         icon.font = UIFont(name: "FontAwesome5FreeSolid", size: 18)
-        icon.textColor = UIColor(color: .darkGreyText)
+        icon.textColor = .darkGreyText
         icon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(iconTapped)))
         icon.textAlignment = .center
         icon.isUserInteractionEnabled = true
-        icon.backgroundColor = UIColor(color: .lightGreyBoxes)
+        icon.backgroundColor = UIColor.lightGreyBoxes
         return icon
     }()
 
     lazy var field: TextField = {
         let field = View.fix(TextField())
-        field.textColor = UIColor(color: .darkGreyText)
-        field.backgroundColor = UIColor(color: .lightGreyBoxes)
-        field.padding = UIEdgeInsetsFromString("{10,10,10,0}")
+        field.textColor = UIColor.darkGreyText
+        field.backgroundColor = UIColor.lightGreyBoxes
+        field.padding = NSCoder.uiEdgeInsets(for: "{10,10,10,0}")
         field.delegate = self
         return field
     }()

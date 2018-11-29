@@ -18,7 +18,7 @@ class LoginView: View {
 
     lazy var header: View = {
         let container = View.fix(View())
-        container.backgroundColor = UIColor(color: HexColors.lightGreen)
+        container.backgroundColor = UIColor.lightGreen
         return container
     }()
 
@@ -32,7 +32,7 @@ class LoginView: View {
     lazy var titleLabel: UILabel = {
         let title = View.fix(UILabel()).defaultFont()
         title.font = UIFont.systemFont(ofSize: 24)
-        title.textColor = UIColor(color: .greenText)
+        title.textColor = UIColor.greenText
         title.text = "Bem-vindo!"
         return title
     }()
@@ -40,7 +40,7 @@ class LoginView: View {
     lazy var introTextLabel: UILabel = {
         let introText = View.fix(UILabel()).defaultFont()
         introText.text = "Você precisa estar conectado para procurar pessoas, isso ajuda na sua segurança e na de outros usuários."
-        introText.textColor = UIColor(color: HexColors.greyText)
+        introText.textColor = UIColor.greyText
         introText.numberOfLines = 0
         introText.lineBreakMode = .byWordWrapping
         return introText
@@ -73,7 +73,7 @@ class LoginView: View {
         let label = View.fix(TouchHighlightLabel())
         label.text = "Esqueceu sua senha?"
         label.isUserInteractionEnabled = true
-        label.textColor = UIColor(color: HexColors.greenText)
+        label.textColor = UIColor.greenText
         label.font = label.font.withSize(UIFont.buttonFontSize * 0.8)
         label.textAlignment = .right
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(forgotPasswordTapped)))

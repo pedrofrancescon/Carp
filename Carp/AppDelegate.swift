@@ -27,7 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyDwfMVcDzcQ_w8XKJ-edAUu7NwZ1HJuEco")
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let initialViewController = RegistrationViewController()
+        let initialViewController = RootNavigationController()
+        //let initialViewController = RegistrationViewController()
 
         window!.rootViewController = initialViewController
         window!.makeKeyAndVisible()
@@ -39,16 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication,
                      open url: URL,
-                     options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         let fbHandled = FBSDKApplicationDelegate.sharedInstance()?.application(
             app,
             open: url,
-            sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String ?? "",
-            annotation: options[UIApplicationOpenURLOptionsKey.annotation]
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String ?? "",
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
         ) ?? false
         let gHandled = GIDSignIn.sharedInstance().handle(
             url,
-            sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
             annotation: [:]
         )
         return fbHandled || gHandled
@@ -113,7 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RideRequestsManager.rideRequestsManager.createRide(
             Ride(
                 origin: placeWithNameAndLatLng("Casa do Eldade", 10, 10),
-                destiny: placeWithNameAndLatLng("Casa da Grazi", 5, 5),
+                destination: placeWithNameAndLatLng("Casa da Grazi", 5, 5),
                 timeInterval: DateInterval(start: Date(timeIntervalSince1970: 1541363761), duration: 60*30),
                 numberOfSeats: NumberOfSeats.one,
                 restriction: Restrictions.noRestriction,

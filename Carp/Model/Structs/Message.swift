@@ -9,6 +9,7 @@
 import UIKit
 import MessageKit
 import FirebaseFirestore
+import Firebase
 
 struct Message: Codable {
     let user: CarpUser
@@ -49,7 +50,7 @@ extension Message: MessageType {
     }
 }
 
-extension Message: DatabaseRepresentation {
+extension Message {
     
     var representation: [String : Any] {
         let rep: [String : Any] = [

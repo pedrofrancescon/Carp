@@ -12,20 +12,20 @@ class SeparatorLabel: UIComponentProtocol {
 
     private let label: UILabel = {
         let label = View.fix(UILabel())
-        label.textColor = UIColor(color: HexColors.lightGreyText)
+        label.textColor = UIColor.lightGreyText
         return label
     }()
 
     private lazy var leftSep: UIView = {
         let view = View.fix(UIView())
-        view.backgroundColor = UIColor(color: .lightGreyBoxes)
+        view.backgroundColor = UIColor.lightGreyBoxes
         view.heightAnchor.constraint(equalToConstant: 1.5).isActive = true
         return view
     }()
 
     private lazy var rightSep: UIView = {
         let view = View.fix(UIView())
-        view.backgroundColor = UIColor(color: .lightGreyBoxes)
+        view.backgroundColor = UIColor.lightGreyBoxes
         view.heightAnchor.constraint(equalToConstant: 1.5).isActive = true
         return view
     }()

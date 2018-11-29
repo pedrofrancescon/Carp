@@ -79,7 +79,7 @@ class CameraView: NSObject, UIComponentProtocol, AVCapturePhotoCaptureDelegate {
 
 // swiftlint:disable cyclomatic_complexity
 // swiftlint:disable function_body_length
-func createMatchingBackingDataWithImage(imageRef: CGImage?, orienation: UIImageOrientation) -> CGImage? {
+func createMatchingBackingDataWithImage(imageRef: CGImage?, orienation: UIImage.Orientation) -> CGImage? {
     var orientedImage: CGImage?
 
     if let imageRef = imageRef {

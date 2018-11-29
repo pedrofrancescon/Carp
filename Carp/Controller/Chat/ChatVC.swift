@@ -97,12 +97,16 @@ class ChatVC: MessagesViewController {
             
             guard let popUpView = parentVC?.popUpView else { return }
             
+            print(messagesCollectionView.frame)
+            
             let newFrame = CGRect(x: popUpView.frame.origin.x,
                                   y: RootNavigationController.main.navigationBar.frame.height,
                                   width: popUpView.frame.width,
                                   height: RootVC.main.view.frame.height - keyboardSize.height - RootNavigationController.main.navigationBar.frame.height)
             
             popUpView.updateFrameTo(newFrame)
+            
+            print(messagesCollectionView.frame)
         }
     }
 
@@ -128,7 +132,12 @@ class ChatVC: MessagesViewController {
         inputContainerView = UIView()
         messages = []
         self.car = car
-        user = CarpUser(id: "123", firstName: "Pedrita", lastName: "Pomposa a Sagaz", profilePictureUrl: "nil", gender: "fluid")
+        user = CarpUser(id: "123",
+                        firstName: "Pedrita",
+                        lastName: "Pomposa a Sagaz",
+                        profilePictureUrl: "nil",
+                        gender: "fluid",
+                        privateData: nil)
         super.init(nibName: "ChatVC", bundle: nil)
     }
     

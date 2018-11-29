@@ -22,7 +22,7 @@ class ProfilePictureView: View {
 
     lazy var cameraButton: View = {
         let view = View.fix(View())
-        view.backgroundColor = UIColor(color: HexColors.green)
+        view.backgroundColor = UIColor.green
         view.widthAnchor.constraint(equalToConstant: 65).isActive = true
         view.heightAnchor.constraint(equalToConstant: 65).isActive = true
         view.clipsToBounds = true
@@ -41,13 +41,13 @@ class ProfilePictureView: View {
         let label = View.fix(UILabel().defaultFont())
         label.font = label.font.withSize(22)
         label.text = "Foto de perfil"
-        label.textColor = UIColor(color: HexColors.greenText)
+        label.textColor = UIColor.greenText
         return label
     }()
 
     lazy var explanationLabel: UILabel = {
         let label = View.fix(UILabel().defaultFont())
-        label.textColor = UIColor(color: HexColors.greyText)
+        label.textColor = UIColor.greyText
         label.text = "A foto de perfil é importante para que as pessoas possam se identificar com mais segurança."
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
@@ -55,7 +55,7 @@ class ProfilePictureView: View {
         return label
     }()
 
-    lazy var nextButton = SocialButton(text: "continuar", color: UIColor(color: HexColors.green), icon: nil)
+    lazy var nextButton = SocialButton(text: "continuar", color: UIColor.green, icon: nil)
     var continueAction: (() -> Void)? {
         set {
             nextButton.touchHandler = newValue
