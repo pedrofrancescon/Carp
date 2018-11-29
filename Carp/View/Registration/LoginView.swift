@@ -124,13 +124,6 @@ class LoginView: View {
         fieldsStack.setCustomSpacing(25, after: separator.view)
 
         mainStack.addArrangedSubviews([header, fieldsContainer])
-
-        for family: String in UIFont.familyNames {
-            print(family)
-            for names: String in UIFont.fontNames(forFamilyName: family) {
-                print("== \(names)")
-            }
-        }
     }
 
     @objc
